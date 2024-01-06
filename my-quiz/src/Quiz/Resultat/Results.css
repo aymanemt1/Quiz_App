@@ -115,3 +115,40 @@
     color: black;
   }
 }
+
+
+@media (max-width: 576px) {
+
+  [data-game-finished] {
+
+  
+
+  .result{
+    overflow: visible;
+    margin-top: 6rem;
+  }
+
+  .btnsResult{
+    margin-top:10rem;
+    justify-content: center;
+  }
+
+  .restart-button,.tryagain-button{
+   font-size: 26px;
+   width: 16rem;
+   padding-top: 25px;
+   padding-bottom: 52px;
+  }
+
+  .result-text {
+    font-size: 26px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    line-height: 2;
+  
+  }
+
+}
+
+
+}

@@ -84,11 +84,23 @@
 
   @media (max-width: 576px) {
  .indicator-item{
+
 width: 2rem;
 height: 0.6rem;
 & + & {
   margin-left: 20px;
 }
-}
+
+
+&:last-child::after {
+  font-size: 36px;
+  letter-spacing: 4px;
+ padding-left:25px;
+  }
+&:last-child::before {
+padding: 25px;
+  }
   
+}
+
   }

@@ -98,7 +98,21 @@ li,
 
 @media (max-width: 576px) {
  
-  
+  .question{
+    padding: 1.2rem;
+  }
+ .question-button{
+  padding: 20px;
+ }
+
+ .question-text{
+  font-size: 42px;
+  margin-bottom: 2rem;
+ }
+ label{
+  font-size: 28px;
+ }
+
   
   }
   
