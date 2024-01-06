@@ -1,0 +1,21 @@
+.translate{
+    display: flex;
+    justify-content: flex-end;
+    width: 960px;
+}
+.translate span{
+    margin: 20px 8px;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+.translate span:hover{
+    opacity: 100%;
+}
+.active{
+    color: white;
+    font-weight: bold;
+}
+.not-active{
+    opacity: 0.8;
+}

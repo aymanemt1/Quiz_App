@@ -1,0 +1,61 @@
+.intro-title {
+  margin: 0;
+  display: none;
+  font-size: 42px;
+  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+select{
+  padding: 7px;
+  width: 160px;
+  border-radius: 5px;
+  option{
+    padding: 7px;
+    width: 160px;
+    border-radius: 5px;
+  
+  }
+}
+
+.intro-desc {
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.intro-button {
+  background-color: #1f8197;
+  border: 0;
+  padding: 12px 26px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  transform: translateY(20px);
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 576px) {
+ .intro-desc{
+  font-size: 27px;
+  line-height:45px;
+ }
+ select{
+  font-size: 28px;
+  width: 300px;
+ }
+
+ .intro-button{
+  width: 240px;
+  padding: 15px;
+  font-size: 26px;
+ }
+
+ .intro-title{
+  font-size: 65px;
+ }
+
+
+
+  }
