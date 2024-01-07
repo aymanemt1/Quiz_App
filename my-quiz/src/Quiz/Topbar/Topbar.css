@@ -26,7 +26,8 @@
 .translate{
    justify-content: center;
    margin-left: 33rem;
-  width: 80%;   
+  width: 20%;  
+  display: none; 
 }
 .translate span{
     margin: 5rem 1.2rem 0 1rem;

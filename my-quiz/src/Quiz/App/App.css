@@ -99,22 +99,21 @@ overflow: auto;
 }
 
 .intro{
-  width: 92%;
+  width: 100%;
 }
 .intro-inner{
-  padding: 3rem 4rem; 
+  padding: 2rem 3rem; 
 }
-
 
 .game-area {
  display: none;
 }
 .game {
-  width: 53rem;
+  width: 34rem;
   height: 50%;
    display: block;
    line-height: 4rem;
-   margin: 3rem;
+ 
    position: relative;
  
   &[data-game-started] {
@@ -128,7 +127,7 @@ overflow: auto;
       padding: 1.8rem 0;
       display: block;
       height: auto;
-      margin-top:   5rem;
+      margin-top:5rem;
     }
 
     .game-area {
