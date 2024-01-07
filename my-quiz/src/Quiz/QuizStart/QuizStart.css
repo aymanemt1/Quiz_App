@@ -56,17 +56,16 @@ select{
   font-size: 1.2rem;
  }
 
+
  &[data-game-started] {
  .intro-title{
   display: block;
-  margin:5rem 0 3rem 0;
-  font-size: 6rem;
- }
- select{
- display: none;
- }
  }
 
+ .select{
+  display: none;
+ }
+ }
 
 
   }
