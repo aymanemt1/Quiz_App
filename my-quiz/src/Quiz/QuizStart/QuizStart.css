@@ -57,15 +57,5 @@ select{
  }
 
 
- &[data-game-started] {
- .intro-title{
-  display: block;
- }
-
- .select{
-  display: none;
- }
- }
-
 
   }

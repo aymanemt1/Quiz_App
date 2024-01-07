@@ -124,14 +124,15 @@ width: auto;
   &[data-game-started] {
   width: 47rem;   
     margin-left:3rem;
-    height: 200vh;
+    height: auto;
+    display: none;
 
     .intro {
       background: rgba(27, 5, 107, 0.12);
       width: auto;
       padding: 1.8rem 0;
+      display: block;
       height: auto;
-      display: none;
       margin-top:5rem;
     }
 
