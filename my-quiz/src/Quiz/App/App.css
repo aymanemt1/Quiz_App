@@ -100,8 +100,9 @@ width: auto;
 }
 
 .intro{
-  width: 77%;
-  margin-left: 2rem;
+  width: 78%;
+
+  margin: 0;
 }
 .intro-inner{
   padding: 1rem 2rem; 
