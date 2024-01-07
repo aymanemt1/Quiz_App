@@ -99,10 +99,11 @@ overflow: auto;
 }
 
 .intro{
-  width: 90%;
+  width: 77%;
+  margin-left: 2rem;
 }
 .intro-inner{
-  padding: 1rem 4rem; 
+  padding: 1rem 2rem; 
 
 }
 
