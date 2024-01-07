@@ -53,6 +53,7 @@ function Question({
     if(showAnswer === true){
       setGameFinished(true)
     }
+
     return (
       <div className="question" ref={questionRef}>
         <div className="question-inner">
@@ -99,6 +100,7 @@ function Question({
           >
             {buttonText}
           </button>
+        
         )}
       </div>
     );

@@ -25,8 +25,8 @@
 @media (max-width: 576px) {
 .translate{
    justify-content: center;
-   margin-left: 18rem;
-   
+   margin-left: 33rem;
+  width: 80%;   
 }
 .translate span{
     margin: 5rem 1.2rem 0 1rem;

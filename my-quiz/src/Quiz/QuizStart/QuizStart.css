@@ -38,18 +38,22 @@ select{
 
 @media (max-width: 576px) {
  .intro-desc{
-  font-size: 27px;
-  line-height:45px;
+  font-size: 34px;
+  width: 35rem;
+  line-height:50px;
+  margin-left: 3.6rem;
  }
+
  select{
-  font-size: 28px;
-  width: 300px;
+  font-size: 20px;
+  width: 16rem;
  }
 
  .intro-button{
-  width: 20rem;
+  margin-bottom: 1rem;
+  width: 18rem;
   padding: 1rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
  }
  .intro-title{
   margin:7rem 0 3rem 0;
