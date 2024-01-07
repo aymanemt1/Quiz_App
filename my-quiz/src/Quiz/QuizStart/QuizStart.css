@@ -55,9 +55,13 @@ select{
   padding: 0.6rem;
   font-size: 1.2rem;
  }
+
+ &[data-game-started] {
  .intro-title{
+  display: block;
   margin:5rem 0 3rem 0;
-  font-size: 4rem;
+  font-size: 6rem;
+ }
  }
 
 
