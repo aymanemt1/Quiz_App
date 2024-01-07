@@ -39,9 +39,9 @@ select{
 @media (max-width: 576px) {
  .intro-desc{
   font-size: 23px;
-  width: 22rem;
+  width: 25rem;
   line-height:40px;
-  margin-left: 0.5rem;
+  margin-left:3.3rem;
  }
 
  select{

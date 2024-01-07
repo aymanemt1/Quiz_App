@@ -102,16 +102,17 @@ overflow: auto;
   width: 90%;
 }
 .intro-inner{
-  padding: 2rem 3rem; 
+  padding: 1rem 4rem; 
+
 }
 
 .game-area {
  display: none;
 }
 .game {
-  margin-left: 1.2rem;
+  margin-left: 4.4rem;
 
-  width: 33rem;
+  width: 45rem;
   height: 50%;
    display: block;
    line-height: 4rem;
