@@ -99,7 +99,7 @@ overflow: auto;
 }
 
 .intro{
-  width: 100%;
+  width: 90%;
 }
 .intro-inner{
   padding: 2rem 3rem; 
@@ -109,7 +109,9 @@ overflow: auto;
  display: none;
 }
 .game {
-  width: 34rem;
+  margin-left: 1.2rem;
+
+  width: 33rem;
   height: 50%;
    display: block;
    line-height: 4rem;
