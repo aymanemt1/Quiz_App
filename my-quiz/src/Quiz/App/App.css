@@ -96,6 +96,7 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
 @media (max-width: 576px) {
 body{
 overflow: auto;
+width: auto;
 }
 
 .intro{
@@ -112,8 +113,7 @@ overflow: auto;
 }
 .game {
   margin-left: 4.4rem;
-
-  width: 45rem;
+  width: 37rem;
   height: 50%;
    display: block;
    line-height: 4rem;
