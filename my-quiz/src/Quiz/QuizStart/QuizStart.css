@@ -23,16 +23,21 @@ select{
 }
 
 .intro-button {
-  background-color: #1f8197;
-  border: 0;
-  padding: 12px 26px;
+  height: 40px;
+  border: 1px solid #fff;
+  margin: 11px 7px;
+  background-color: transparent;
   color: #fff;
   border-radius: 4px;
-  font-size: 18px;
-  transform: translateY(20px);
-  cursor: pointer;
+  padding: 3px 30px;
   font-weight: 500;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 15px;
+  &:hover {
+    background-color: #fdfbfb;
+    color: black;
+}
 }
 
 

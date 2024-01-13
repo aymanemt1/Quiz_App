@@ -4,8 +4,8 @@ import "./Question.css"
 import gsap from 'gsap';
 import { LangueContext } from '../../Context/LangueContext';
 
+
 function Question({
- 
     data,
     buttonText,
     hasButton = true,
@@ -14,7 +14,8 @@ function Question({
     markSelection = null
   }) {
     
-    const {setGameFinished} =useContext(LangueContext)
+    const {setGameFinished,setshowCorrectAnswer,showCorrectAnswer,isremoved,setIsremoved} =useContext(LangueContext)
+  
     const [answer, setAnswer] = useState(null);
     const parseValue = (value) => (value ? parseInt(value.split("-")[1]) : null);
     const questionRef = useRef(null);
@@ -45,15 +46,19 @@ function Question({
           stagger: 0.1
         }
       );
-      
+      setshowCorrectAnswer(showAnswer)
     }, [data]);
-
 
 
     if(showAnswer === true){
       setGameFinished(true)
     }
 
+    if(answer){
+      setshowCorrectAnswer(false)
+    }
+  
+const styleshowCorrectAnswer = showCorrectAnswer ? 'showCorrectAnswer' : '';
     return (
       <div className="question" ref={questionRef}>
         <div className="question-inner">
@@ -63,26 +68,31 @@ function Question({
               const value = `q${data.id}-${index}`;
               return (
                 <li
+                id='list'
                 key={index}
                   className={
-                    index === data.correct && showAnswer ? "is-true" : ""
+                    index === data.correct && showCorrectAnswer ? "is-true" : ""
                   }
                   data-selected={markSelection === index ? true : null}
                 >
                   <input
-                 
                     type="radio"
                     name={`q_${data.id}`}
                     value={value}
                     id={value}
                     onChange={(e) => setAnswer(e.target.value)}
+                   
                     checked={
-                      
-                      showAnswer === false ? answer === value : markSelection === index
-
+                      showCorrectAnswer === false ? answer === value : markSelection === index
                     }
                   />
-                  <label className="question-answer" htmlFor={value}>
+                  <label
+id={
+  isremoved && index !== data.correct && index !== ((data.correct + 2) ) % data.answers.length && index !== (data.correct + 2) % data.answers.length
+    ? 'DisabledAnswer'
+    : ''
+} 
+                    className={`question-answer ${styleshowCorrectAnswer}`} htmlFor={value}>
                     {text}
                   </label>
                 </li>
@@ -95,12 +105,14 @@ function Question({
             className="question-button"
            onClick={() => {
       setAnswer('');
+      setIsremoved(false)
+      setshowCorrectAnswer(false)
       onQuestionButtonClick(parseValue(answer), data);
     }}
           >
             {buttonText}
           </button>
-        
+         
         )}
       </div>
     );

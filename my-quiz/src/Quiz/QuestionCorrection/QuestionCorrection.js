@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Question from '../Questions/Question';
 import "./QuestionCorrect.css"
 
-function QuestionCorrection({ data }) {
+function QuestionCorrection({ data}) {
 
   return (
     <div className="correction">

@@ -8,7 +8,8 @@ export const LangueContext = createContext()
    const [langue,setlangue] =useState('React')
    const [gameFinished, setGameFinished] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
-
+  const [showCorrectAnswer, setshowCorrectAnswer] = useState(null);
+  const [isremoved,setIsremoved]=useState(false)
 
   return (
 
@@ -16,7 +17,9 @@ export const LangueContext = createContext()
       langueTrans,setlangueTrans,
       gameFinished,setGameFinished,
       langue,setlangue,
-      gameStarted,setGameStarted
+      gameStarted,setGameStarted,
+      showCorrectAnswer,setshowCorrectAnswer,
+      isremoved,setIsremoved
       }}>
      {children}
     </LangueContext.Provider>

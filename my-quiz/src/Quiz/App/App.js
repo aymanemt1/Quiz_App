@@ -26,7 +26,9 @@ function useCounter(initialState) {
 }
 
 export default function App() {
-  const {setGameFinished,gameFinished,langue,langueTrans,setGameStarted,gameStarted} =useContext(LangueContext)
+
+  const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
+    langueTrans,setGameStarted,gameStarted} =useContext(LangueContext)
 
   const getQuestionsByLanguage = (selectedLangue) => {
     return questionsData.type[selectedLangue] || [];
@@ -99,6 +101,18 @@ const GettranslateLang = questions.find((lan)=>(
     }
   }, [gameStarted]);
 
+
+  const ShowCorrectAnswer = ()=>{
+  setshowCorrectAnswer(true)
+  }
+
+  const RemoveTwoAnswers = () => {
+    setIsremoved(true)
+
+   
+  }
+
+
   return (
 <>
 <Topbar />
@@ -110,9 +124,29 @@ const GettranslateLang = questions.find((lan)=>(
 
       <div className="intro">
         <div className="intro-inner">
-         {gameStarted &&  <Timer gameFinished={gameFinished} />}
+         {gameStarted && <Timer gameFinished={gameFinished} />}
            <QuizStart questions={questionsOntranslate}/>
            <Indicator questions={questionsOntranslate} question={question} />
+         
+         {/* HELPERS */}
+
+       {!gameFinished ? (
+          <div className='buttons_qsts'>
+          <button
+             className="showAnswer-button"
+             onClick={()=>ShowCorrectAnswer()}
+           >
+            ShowAnswer
+           </button>
+           <button
+             className="removeAnswers-button"
+             onClick={()=>RemoveTwoAnswers()}
+           >
+           50:50
+           </button>
+     </div>
+       ) : ''}
+
           <Results
             wrong={wrong.value}
             correct={correct.value}

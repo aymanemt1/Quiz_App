@@ -5,8 +5,7 @@
   font-family:  "Be Vietnam Pro", sans-serif;
 }
 body {
-
-background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
+  background:linear-gradient(300deg, rgb(30, 49, 69), rgb(45, 109, 109));
 
   color: rgb(252, 252, 252);
   font-family:  "Be Vietnam Pro", sans-serif;
@@ -14,9 +13,35 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
   overflow: hidden;
 }
 
+/* helpers */
+
+.buttons_qsts{
+  display: none;
+  justify-content: space-around;
+}
 
 .game-started:after {
   transform: translateX(calc(-50% - 100px));
+}
+
+.showAnswer-button,.removeAnswers-button{
+  height: 40px;
+  border: 1px solid #fff;
+  margin: 11px 7px;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 26px;
+  font-weight: 500;
+  transition: 0.2s;
+  cursor: pointer;
+  animation: result-item 0.2s 1.45s both;
+  transition: all  0.2s ease-out  ;
+
+  &:hover {
+    background-color: #fdfbfb;
+    color: black;
+}
 }
 
 .game {
@@ -33,13 +58,22 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
 
   &[data-game-started] {
     width: 65rem;
-    margin: 1.2rem 6rem;
+    margin: 1.2rem 5.5rem;
     height: 28rem;
 
     .intro {
       width: calc(50% - 100px);
       transition: 0.3s;
     
+    }
+    
+
+    .buttons_qsts{
+      display: flex;
+      justify-content: space-around;
+      width: 12rem;
+      margin-left: 3.2rem;
+      margin-top: 1rem;
     }
     .intro-title{
       display: block;
@@ -58,6 +92,7 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
   }
 }
 
+
 .game-area {
   background-color: #fff;
   overflow: auto;
@@ -71,7 +106,9 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
   color: #fff;
   display: flex;
   align-items: center;
-  background: rgba(27, 5, 107, 0.12);
+  /* background: rgba(27, 5, 107, 0.12); */
+background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
+
  
 }
 .intro-inner {
@@ -91,6 +128,7 @@ background:linear-gradient(35deg, rgb(28, 51, 74), rgb(22, 91, 90));
   animation: result-item 0.4s 1.45s both;
   transition: all  0.7s ease-out  ;
 }
+
 
 
 @media (max-width: 576px) {
@@ -125,7 +163,6 @@ width: auto;
   width: 47rem;   
     margin-left:3rem;
     height: auto;
-    display: none;
 
     .intro {
       background: rgba(27, 5, 107, 0.12);
