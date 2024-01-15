@@ -52,41 +52,40 @@ body {
   display: flex;
   transition: 0.3s;
 
-  &[data-game-started] {
-    width: 65rem;
-    margin: 1.2rem 5.5rem;
-    height: 28rem;
+ 
+}
 
-    .intro {
-      width: calc(50% - 100px);
-      transition: 0.3s;
-       
-    }
-    
-  
-    
+.game-started{
+  width: 65rem;
+  margin: 1.2rem 5.5rem;
+  height: 28rem;
 
-    .buttons_qsts{
-      display: flex;
-      justify-content: space-around;
-      width: 12rem;
-      margin-left: 3.2rem;
-      margin-top: 1rem;
-    }
-    .intro-title{
-      display: block;
-    }
-    select{
-      display: none;
-    }
-    .game-area {
-      display: block;
-      width: calc(50% + 100px);
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 0.7rem;
+  .intro {
+    width: calc(50% - 100px);
+    transition: 0.3s;
      
-    }
+  }
+  
+  .buttons_qsts{
+    display: flex;
+    justify-content: space-around;
+    width: 12rem;
+    margin-left: 3.2rem;
+    margin-top: 1rem;
+  }
+  .intro-title{
+    display: block;
+  }
+  select{
+    display: none;
+  }
+  .game-area {
+    display: block;
+    width: calc(50% + 100px);
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 0.7rem;
+   
   }
 }
 
@@ -145,7 +144,11 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
  
    position: relative;
  
-  &[data-game-started] {
+ 
+
+}
+
+.game-started{
   width: 47rem;   
     margin-left:3rem;
     height: auto;
@@ -170,8 +173,6 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
      
     }
   }
-
-}
 
 #timer{
   margin-top: 4.4rem;
