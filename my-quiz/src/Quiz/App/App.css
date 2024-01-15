@@ -60,7 +60,7 @@ body {
     .intro {
       width: calc(50% - 100px);
       transition: 0.3s;
-    
+       display: none;
     }
     
 
