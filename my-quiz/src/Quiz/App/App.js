@@ -109,10 +109,7 @@ const GettranslateLang = questions.find((lan)=>(
   const RemoveTwoAnswers = () => {
     setIsremoved(true)
 
-   
   }
-
-
   return (
 <>
 <Topbar />
