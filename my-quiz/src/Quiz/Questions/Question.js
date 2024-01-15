@@ -58,7 +58,7 @@ function Question({
       setshowCorrectAnswer(false)
     }
   
-const styleshowCorrectAnswer = showCorrectAnswer ? 'showCorrectAnswer' : '';
+   const styleshowCorrectAnswer = showCorrectAnswer ? 'showCorrectAnswer' : '';
     return (
       <div className="question" ref={questionRef}>
         <div className="question-inner">

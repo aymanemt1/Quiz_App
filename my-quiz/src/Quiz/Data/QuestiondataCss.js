@@ -1,5 +1,4 @@
-export const questionsCss = [
- 
+export const questionsCss = [ 
     {
       lang: "EN",
       qsts: [
