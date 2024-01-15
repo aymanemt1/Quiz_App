@@ -159,9 +159,7 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
       margin-top:5rem;
     }
 
-    .intro-inner {
-      display: none;       
-          }
+    
     .game-area {
       width: 100%;
       height: auto;
