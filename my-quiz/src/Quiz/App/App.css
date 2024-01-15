@@ -60,7 +60,7 @@ body {
     .intro {
       width: calc(50% - 100px);
       transition: 0.3s;
-       display: none;
+       
     }
     
 
@@ -155,6 +155,7 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
       display: block;
       height: auto;
       margin-top:5rem;
+      display: none;
     }
 
     .game-area {
