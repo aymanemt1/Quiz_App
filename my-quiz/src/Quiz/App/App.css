@@ -135,6 +135,7 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
   .intro-desc{
     font-size: 17px;
     width: 20rem;
+    display: none;
     line-height:40px;
     margin-left:2.5rem;
    }
@@ -142,7 +143,7 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
    select{
     font-size: 14px;
     width: 13rem;
-    
+    display: none;
    }
   
    .intro-button{
@@ -150,8 +151,9 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
     width: 13rem;
     padding: 0.6rem;
     font-size: 1.2rem;
+    display: none;
    }
-   
+
 body{
 overflow: auto;
 width: auto;
