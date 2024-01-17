@@ -190,6 +190,7 @@ width: auto;
 #timer{
   margin-top: 4.4rem;
   font-size: 33px;
+  height: 100vh;
 }
 
 [data-game-finished] {
