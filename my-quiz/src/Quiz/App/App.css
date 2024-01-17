@@ -132,27 +132,7 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
 
 
 @media (max-width: 576px) {
-  .intro-desc{
-    font-size: 17px;
-    width: 20rem;
-    display: none;
-    line-height:40px;
-    margin-left:2.5rem;
-   }
   
-   select{
-    font-size: 14px;
-    width: 13rem;
-    display: none;
-   }
-  
-   .intro-button{
-    margin-bottom: 1rem;
-    width: 13rem;
-    padding: 0.6rem;
-    font-size: 1.2rem;
-    display: none;
-   }
 
 body{
 overflow: auto;
@@ -205,6 +185,28 @@ width: auto;
      
     }
   }
+
+  .intro-desc{
+    font-size: 17px;
+    width: 20rem;
+    display: none;
+    line-height:40px;
+    margin-left:2.5rem;
+   }
+  
+   select{
+    font-size: 14px;
+    width: 13rem;
+    display: none;
+   }
+  
+   .intro-button{
+    margin-bottom: 1rem;
+    width: 13rem;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    display: none;
+   }
 
 }
 
