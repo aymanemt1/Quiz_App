@@ -2,15 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./QuizStart.css"
 import { LangueContext } from '../../Context/LangueContext';
 
-
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 export const QuizStart = ({questions}) => {
 const {langue,setlangue,langueTrans,gameStarted,setGameStarted} =useContext(LangueContext)
+
+
 
   return (
    <>
     <h1 className="intro-title">{langue} Quiz</h1>
 
-      <select onChange={(e)=>setlangue(e.target.value)}>
+      <select className='select_options' onChange={(e)=>setlangue(e.target.value)}>
         <option value='React'>React</option>
         <option value='Python'>Python</option>
         <option value='Javascript'>Javascript</option>

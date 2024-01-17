@@ -58,6 +58,8 @@ function Question({
       setshowCorrectAnswer(false)
     }
   
+    console.log(showCorrectAnswer)
+   
    const styleshowCorrectAnswer = showCorrectAnswer ? 'showCorrectAnswer' : '';
     return (
       <div className="question" ref={questionRef}>
@@ -87,11 +89,15 @@ function Question({
                     }
                   />
                   <label
-id={
+
+
+
+   id={
   isremoved && index !== data.correct && index !== ((data.correct + 2) ) % data.answers.length && index !== (data.correct + 2) % data.answers.length
     ? 'DisabledAnswer'
     : ''
 } 
+
                     className={`question-answer ${styleshowCorrectAnswer}`} htmlFor={value}>
                     {text}
                   </label>

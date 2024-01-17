@@ -16,6 +16,7 @@ import Timer from "../Timer/Timer";
 import { Topbar } from "../Topbar/Topbar";
 import { LangueContext } from "../../Context/LangueContext";
 
+
 function useCounter(initialState) {
 
   const [value, setValue] = useState(initialState);
@@ -104,12 +105,14 @@ const GettranslateLang = questions.find((lan)=>(
 
   const ShowCorrectAnswer = ()=>{
   setshowCorrectAnswer(true)
+
   }
 
   const RemoveTwoAnswers = () => {
     setIsremoved(true)
 
   }
+
   return (
 <>
 <Topbar />
@@ -135,6 +138,7 @@ const GettranslateLang = questions.find((lan)=>(
            >
             ShowAnswer
            </button>
+
            <button
              className="removeAnswers-button"
              onClick={()=>RemoveTwoAnswers()}
