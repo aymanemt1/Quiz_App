@@ -40,27 +40,4 @@ select{
 }
 }
 
-/* 
-@media (max-width: 576px) {
- .intro-desc{
-  font-size: 17px;
-  width: 20rem;
-  line-height:40px;
-  margin-left:2.5rem;
- }
 
- select{
-  font-size: 14px;
-  width: 13rem;
- }
-
- .intro-button{
-  margin-bottom: 1rem;
-  width: 13rem;
-  padding: 0.6rem;
-  font-size: 1.2rem;
- }
-
-
-
-  } */

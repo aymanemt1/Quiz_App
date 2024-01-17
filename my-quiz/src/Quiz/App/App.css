@@ -129,9 +129,29 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
   transition: all  0.7s ease-out  ;
 }
 
-/* 
+
 
 @media (max-width: 576px) {
+  .intro-desc{
+    font-size: 17px;
+    width: 20rem;
+    line-height:40px;
+    margin-left:2.5rem;
+   }
+  
+   select{
+    font-size: 14px;
+    width: 13rem;
+    
+   }
+  
+   .intro-button{
+    margin-bottom: 1rem;
+    width: 13rem;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+   }
+   
 body{
 overflow: auto;
 width: auto;
@@ -203,4 +223,4 @@ width: auto;
 }
 
 
- */
+
