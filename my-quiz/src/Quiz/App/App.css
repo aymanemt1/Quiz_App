@@ -61,12 +61,6 @@ body {
     margin: 1.2rem 5.5rem;
     height: 28rem;
 
-    .intro {
-      width: calc(50% - 100px);
-      transition: 0.3s;
-    
-    }
-
 
     .buttons_qsts{
       display: flex;
@@ -75,12 +69,7 @@ body {
       margin-left: 3.2rem;
       margin-top: 1rem;
     }
-    .intro-title{
-      display: block;
-    }
-    select{
-      display: none;
-    }
+  
     .game-area {
       flex-shrink: 0;
       width: calc(50% + 100px);
@@ -100,22 +89,8 @@ body {
 
 }
 
-.intro {
-  width: 100%;
-  flex-shrink: 0;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  /* background: rgba(27, 5, 107, 0.12); */
-background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
 
- 
-}
-.intro-inner {
-  text-align: center;
-  padding: 0 4rem;
-  width: 100%;
-}
+
 
 #timer{
   position: absolute;
@@ -137,15 +112,7 @@ overflow: auto;
 width: auto;
 }
 
-.intro{
-  width: 78%;
 
-  margin: 0;
-}
-.intro-inner{
-  padding: 1rem 2rem; 
-
-}
 
 .game-area {
  display: none;
@@ -163,23 +130,15 @@ width: auto;
   width: 47rem;   
     margin-left:3rem;
     padding-right: 24px;
-    height: 200vh !important;
-
-    .intro {
-      background: rgba(27, 5, 107, 0.12);
-      width: auto;
-      padding: 1.8rem 0;
-      display: none !important;
-      height: auto;
-      margin-top:5rem;
-    }
+    height: auto;
 
     .game-area {
       width: 100%;
-      height: 110vh !important;
+      height: 110vh;
+      overflow-y: scroll;
       padding: 20px;
       margin-top: 15px;
-     display: block !important;
+     display: block;
      
     }
   }
@@ -189,7 +148,6 @@ width: auto;
 #timer{
   margin-top: 4.4rem;
   font-size: 33px;
-  display: none;
 }
 
 [data-game-finished] {

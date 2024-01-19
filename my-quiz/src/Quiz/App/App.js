@@ -122,8 +122,7 @@ const GettranslateLang = questions.find((lan)=>(
       data-game-finished={question.value > totalQuestion ? true : null}
     >
 
-      <div className="intro">
-        <div className="intro-inner">
+    
          {gameStarted && <Timer gameFinished={gameFinished} />}
            <QuizStart questions={questionsOntranslate}/>
            <Indicator questions={questionsOntranslate} question={question} />
@@ -168,8 +167,7 @@ const GettranslateLang = questions.find((lan)=>(
             
           </button>
          </div>
-        </div>
-      </div>
+     
 
       <div className="game-area">
         {questionsOntranslate[question.value] && (

@@ -10,7 +10,8 @@ const {langue,setlangue,langueTrans,gameStarted,setGameStarted} =useContext(Lang
 
 
   return (
-   <>
+    <div className="intro">
+        <div className="intro-inner">
     <h1 className="intro-title">{langue} Quiz</h1>
 
       <select className='select_options' onChange={(e)=>setlangue(e.target.value)}>
@@ -43,6 +44,7 @@ const {langue,setlangue,langueTrans,gameStarted,setGameStarted} =useContext(Lang
               </button>
             </>
           )}
-   </>
+   </div>
+   </div>
   )
 }
