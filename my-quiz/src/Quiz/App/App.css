@@ -163,24 +163,23 @@ width: auto;
   width: 47rem;   
     margin-left:3rem;
     padding-right: 24px;
-    height: auto;
+    height: 200vh !important;
 
     .intro {
       background: rgba(27, 5, 107, 0.12);
       width: auto;
       padding: 1.8rem 0;
-      display: block;
+      display: none !important;
       height: auto;
       margin-top:5rem;
     }
 
     .game-area {
       width: 100%;
-      height: 110vh;
-      overflow-y: scroll;
+      height: 110vh !important;
       padding: 20px;
       margin-top: 15px;
-     display: block;
+     display: block !important;
      
     }
   }
@@ -190,7 +189,7 @@ width: auto;
 #timer{
   margin-top: 4.4rem;
   font-size: 33px;
-  height: 100vh;
+  display: none;
 }
 
 [data-game-finished] {
