@@ -961,7 +961,237 @@ export const interviewQuestions = [
       topic: "Docker",
       q: "What is the difference between CMD and ENTRYPOINT in a Dockerfile?",
       a: "ENTRYPOINT defines the fixed executable that always runs when the container starts; CMD provides the default arguments, which can be overridden at docker run time. Together they form the full command — a common pattern is ENTRYPOINT ['node'] with CMD ['server.js']."
-    }
+    },
+    {
+      id: 160,
+      topic: "Supabase",
+      q: "What is Supabase, and how does it differ from Firebase?",
+      a: "Supabase is an open-source backend-as-a-service built on Postgres, so you get a real relational database with SQL, while Firebase is built on NoSQL datastores. Supabase is also self-hostable and gives you Postgres extensions, Row Level Security, and standard SQL tooling."
+    },
+    {
+      id: 161,
+      topic: "Supabase",
+      q: "How do you initialize the Supabase client in a JavaScript app?",
+      a: "Import createClient from @supabase/supabase-js and call it with the project URL and the anon key, usually read from environment variables like import.meta.env.VITE_SUPABASE_URL. The client is then reused across the app for queries, auth, storage, and realtime."
+    },
+    {
+      id: 162,
+      topic: "Supabase",
+      q: "Explain Row Level Security and how you would restrict users to their own rows.",
+      a: "RLS is a Postgres feature that filters which rows a query can see, enforced by the database itself. You enable it on the table and write a policy like using (auth.uid() = user_id) for SELECT, so even if client code is tampered with, users can only ever read their own rows."
+    },
+    {
+      id: 163,
+      topic: "Supabase",
+      q: "What is the difference between the anon key and the service_role key?",
+      a: "The anon key is public and safe for frontend use because every request still goes through RLS policies. The service_role key bypasses RLS entirely and must only live on a trusted server — exposing it in the browser gives anyone full database access."
+    },
+    {
+      id: 164,
+      topic: "Supabase",
+      q: "How do realtime subscriptions work in Supabase?",
+      a: "You open a channel with supabase.channel(), attach a postgres_changes listener for an event, schema, and table, then call .subscribe(). Postgres notifies Supabase of the change via logical replication and the payload is pushed to clients — but the table must be in the supabase_realtime publication and RLS policies must allow the read."
+    },
+    {
+      id: 165,
+      topic: "Supabase",
+      q: "How would you handle file uploads, and public vs private files?",
+      a: "Use supabase.storage.from('bucket').upload(path, file) for uploads, guarding overwrites with the upsert option. Public buckets serve files via getPublicUrl(); private buckets need time-limited signed URLs from createSignedUrl(), and access to both is governed by RLS policies on storage.objects."
+    },
+    {
+      id: 166,
+      topic: "Supabase",
+      q: "What does supabase.auth.getUser() do differently from reading the session?",
+      a: "getUser() re-validates the JWT against the Supabase Auth server, so a forged or revoked token is rejected. Reading the session from localStorage trusts whatever is stored there, which is why security-sensitive checks should prefer getUser() or happen server-side."
+    },
+    {
+      id: 167,
+      topic: "Supabase",
+      q: "How do you call server-side logic — Postgres functions vs Edge Functions?",
+      a: "Use supabase.rpc('fn_name', params) to call a Postgres function for logic that lives close to the data, ideally SECURITY DEFINER with a fixed search_path. Use supabase.functions.invoke('fn-name', { body }) for Edge Functions — Deno-based serverless endpoints — when you need external APIs, secrets, or non-SQL work."
+    },
+    {
+      id: 168,
+      topic: "Supabase",
+      q: "A query returns no rows even though data exists. How do you debug it?",
+      a: "First check RLS: enabled with no policies denies everything, so verify the active policies and that the user is authenticated as expected. Then check the filters (.eq, .or), confirm the table is in the right schema, and inspect the error object — PostgREST errors usually name the exact cause."
+    },
+    {
+      id: 169,
+      topic: "Supabase",
+      q: "How do you model a one-to-many relationship query in supabase-js?",
+      a: "With foreign table embedding: .select('id, title, profiles ( username )') follows the foreign key and nests the related row. This works when the foreign key constraint exists, and you can go multiple levels deep or embed in the reverse direction."
+    },
+    {
+          id: 170,
+          topic: "ExpressJs",
+          q: "What is middleware in Express and how does the middleware chain work?",
+          a: "Middleware are functions with access to req, res, and next that run in registration order. Each one either ends the request-response cycle or calls next() to pass control to the next middleware; this chain is how Express handles logging, auth, parsing, and routing."
+        },
+        {
+          id: 171,
+          topic: "ExpressJs",
+          q: "How do you handle errors in an Express application?",
+          a: "You define error-handling middleware with four parameters (err, req, res, next) registered after all routes, and you forward errors with next(err) or by throwing in sync handlers. In Express 4, async rejections must be caught manually with try/catch and passed to next(err)."
+        },
+        {
+          id: 172,
+          topic: "ExpressJs",
+          q: "Explain the difference between req.params, req.query, and req.body.",
+          a: "req.params holds route path segments like /users/:id, req.query holds the ?key=value pairs of the URL for filtering and pagination, and req.body holds the parsed payload of POST/PUT requests (available only after body-parsing middleware like express.json())."
+        },
+        {
+          id: 173,
+          topic: "ExpressJs",
+          q: "What is express.Router() and when would you use it?",
+          a: "express.Router() creates a mini, isolated router for grouping related routes with their own middleware. You mount it with app.use('/api', router) so all its routes share the /api prefix, which keeps large apps modular."
+        },
+        {
+          id: 174,
+          topic: "ExpressJs",
+          q: "How does the order of middleware registration affect request handling?",
+          a: "Express processes middleware and routes strictly in registration order, so body parsing must come before routes, the 404 catch-all after all routes, and error handlers last. A misplaced catch-all or error handler will silently swallow routes or never run."
+        },
+        {
+          id: 175,
+          topic: "ExpressJs",
+          q: "How do you serve static files and parse request bodies in Express?",
+          a: "You serve static assets with app.use(express.static('public')), and parse bodies with express.json() for JSON and express.urlencoded() for HTML forms — both built in since Express 4.16, replacing the old body-parser package."
+        },
+        {
+          id: 176,
+          topic: "ExpressJs",
+          q: "What is the difference between next(), next('route'), and next('router')?",
+          a: "next() passes control to the next middleware or handler in the chain, next('route') skips the remaining handlers of the current route and jumps to the next matching route, and next('router') exits the current router entirely and continues with middleware after it."
+        },
+        {
+          id: 177,
+          topic: "ExpressJs",
+          q: "How would you protect an Express API with basic security measures?",
+          a: "I'd use helmet for secure HTTP headers, cors to control cross-origin access, express-rate-limit against brute force, validate all input instead of trusting req.body, and never leak err.stack to clients in production."
+        },
+        {
+          id: 178,
+          topic: "ExpressJs",
+          q: "How do route parameters and query strings differ in REST API design?",
+          a: "Route parameters identify a specific resource, like /users/42, while query strings modify how a collection is returned — filtering, sorting, pagination — like /users?role=admin&page=2. Params are required path segments; query values are optional and Express parses repeats into arrays."
+        },
+        {
+          id: 179,
+          topic: "ExpressJs",
+          q: "How do you structure a production-ready Express app (config, shutdown, env)?",
+          a: "I read config from environment variables with sane defaults like process.env.PORT || 3000, keep routes in mounted routers, centralize error handling, and shut down gracefully with server.close() so in-flight requests finish. Secrets never go in code, and stack traces are logged server-side, not sent to clients."
+        },
+    { id: 180, topic: "Agile", q: "What are the three Scrum roles and what is each accountable for?", a: "The Product Owner owns the Product Backlog and maximizes value by ordering it. The Scrum Master serves the team by removing impediments and coaching on Scrum. The Developers build the increment each sprint and decide how the work gets done." },
+    { id: 181, topic: "Agile", q: "Explain the five Scrum events and the purpose of each.", a: "Sprint Planning sets the Sprint Goal and plan; the Daily Standup is a 15-minute team sync; the Sprint Review inspects the increment with stakeholders for feedback; the Retrospective inspects the process for improvements; the Sprint itself is the container event, typically 1-4 weeks." },
+    { id: 182, topic: "Agile", q: "What is a user story, and what makes a good one?", a: "A user story is a short requirement from the user's perspective: 'As a [role], I want [goal], so that [benefit]'. A good story meets INVEST criteria — Independent, Negotiable, Valuable, Estimable, Small, Testable — and has clear acceptance criteria." },
+    { id: 183, topic: "Agile", q: "What is the difference between the Definition of Done and acceptance criteria?", a: "Acceptance criteria are story-specific conditions for that one story to be accepted. The Definition of Done is a shared quality checklist (tested, reviewed, documented) that applies to every increment the team produces." },
+    { id: 184, topic: "Agile", q: "What is velocity, and how should (and shouldn't) it be used?", a: "Velocity is the amount of work, usually in story points, a team completes per sprint. It should be used for forecasting capacity. It should never be used to compare teams or judge individuals, since estimates are team-relative." },
+    { id: 185, topic: "Agile", q: "A stakeholder demands a change mid-sprint. How do you handle it?", a: "Protect the Sprint Goal: the new request goes to the Product Backlog, where the Product Owner prioritizes it for a future sprint. Only the Product Owner can cancel a sprint, and only when its goal becomes obsolete." },
+    { id: 186, topic: "Agile", q: "What is the difference between Scrum and Kanban?", a: "Scrum works in fixed-length sprints with defined roles and ceremonies, estimating in points and measuring velocity. Kanban is a continuous flow system with a visual board, WIP limits, and no prescribed roles or timeboxes — work is pulled as capacity frees up." },
+    { id: 187, topic: "Agile", q: "How do Agile teams estimate work, and why story points instead of hours?", a: "Teams use relative estimation techniques like Planning Poker. Story points express relative size and complexity, which avoids false precision and long debates about exact hours, and keeps estimates stable regardless of who does the work." },
+    { id: 188, topic: "Agile", q: "What is technical debt, and how does Agile address it?", a: "Technical debt is the future cost of shortcuts taken today — skipped tests, rushed design. Agile addresses it through a strong Definition of Done with built-in quality, sustainable pace, refactoring as part of normal work, and making debt visible in the backlog." },
+    { id: 189, topic: "Agile", q: "What does 'responding to change over following a plan' mean in practice?", a: "It means planning in short horizons with feedback loops: near-term work is detailed, long-term is coarse. When you learn something new — from a review, a retro, or the market — you reprioritize the backlog instead of clinging to an outdated plan." },
+    { id: 190, topic: "MaterialUi", q: "What is the sx prop and how does it differ from the style prop?", a: "The sx prop is MUI's styling shortcut that accepts theme-aware values like color: 'primary.main', shorthand spacing (p, mt), responsive breakpoint objects, and nested selectors such as '&:hover'. Unlike style, it resolves values against the theme and generates optimized Emotion classes." },
+    { id: 191, topic: "MaterialUi", q: "How do you customize the MUI theme for a whole application?", a: "Use createTheme() to override palette, typography, spacing, and breakpoints, then provide it via <ThemeProvider>. For component-wide defaults, use the theme's components section with styleOverrides and defaultProps, e.g. components: { MuiButton: { defaultProps: { variant: 'contained' } } }." },
+    { id: 192, topic: "MaterialUi", q: "When should you use styled() instead of the sx prop?", a: "Use sx for one-off, ad-hoc styles on a single element. Use styled() for reusable components or styles that depend on props, and always define styled components outside the render function so they are not recreated on every render." },
+    { id: 193, topic: "MaterialUi", q: "How does responsive design work in MUI?", a: "The sx prop accepts breakpoint objects like display: { xs: 'none', md: 'block' }, theme.breakpoints.up/down() helpers build media queries, and the useMediaQuery hook returns a boolean for a query. Default breakpoints are xs 0, sm 600, md 900, lg 1200, xl 1536." },
+    { id: 194, topic: "MaterialUi", q: "How do you implement dark mode in a MUI app?", a: "Create the theme with createTheme({ palette: { mode: 'dark' } }), keep the mode in state, memoize the theme with useMemo, and pass it to ThemeProvider. Components adapt automatically when they use theme-aware tokens like bgcolor: 'background.paper'." },
+    { id: 195, topic: "MaterialUi", q: "Explain the MUI Grid layout system.", a: "Grid is a 12-column flexbox layout: a container wraps items whose widths are set per breakpoint (xs, md, ...). In v5 you write <Grid item xs={12} md={6}>; in v6's Grid v2 the item prop was replaced by size={{ xs: 12, md: 6 }}. The spacing prop is implemented with a compensating negative margin on the container and padding on items." },
+    { id: 196, topic: "MaterialUi", q: "What are slots, and how do you customize a sub-part of a component like a TextField?", a: "MUI components are composed of named slots (root, input, htmlInput, ...). In v6 you customize a slot via the slotProps prop, e.g. <TextField slotProps={{ htmlInput: { placeholder: 'Search' } }} /> to set a placeholder on the native input." },
+    { id: 197, topic: "MaterialUi", q: "How do controlled components like Dialog, Menu, and Tabs work in MUI?", a: "They do not manage their own open/selected state. The parent holds state (open boolean, anchorEl element, selected value) and passes it down with handlers like onClose or onChange — nothing opens or changes until the parent updates that state." },
+    { id: 198, topic: "MaterialUi", q: "How do you stop a custom styling prop from leaking to the DOM in styled()?", a: "Pass the shouldForwardProp option, e.g. styled(Button, { shouldForwardProp: (prop) => prop !== 'danger' })(...). This filters the prop out so React never sees an unknown DOM attribute and no warning is logged." },
+    { id: 199, topic: "MaterialUi", q: "How would you apply brand colors and a custom button variant app-wide?", a: "Define the brand palette and typography in createTheme(), register the variant under components.MuiButton.variants with its props and style (or styleOverrides for the root slot), then wrap the app in <ThemeProvider theme={theme}> with <CssBaseline /> at the root." },
+    { id: 200, topic: "Gsap", q: "What is the difference between gsap.to(), gsap.from() and gsap.fromTo()?", a: "gsap.to() animates from the element's current values to the given values, gsap.from() animates from the given values back to the current values, and gsap.fromTo() explicitly defines both the start and end values. Use fromTo when you need a guaranteed starting point regardless of prior animations." },
+    { id: 201, topic: "Gsap", q: "How do timelines work and what are position parameters?", a: "A timeline (gsap.timeline()) chains tweens so they play in sequence by default. Position parameters like \"<\", \">\", \"-=0.5\" or an absolute time control exactly when each tween starts, letting you overlap, sync, or gap animations precisely." },
+    { id: 202, topic: "Gsap", q: "Explain repeat, yoyo and repeatDelay.", a: "repeat replays a tween a set number of times (-1 for infinite), yoyo makes each repeat play backwards so the animation goes back and forth, and repeatDelay inserts a pause between repeats. yoyo only takes effect when repeat is set." },
+    { id: 203, topic: "Gsap", q: "What is ScrollTrigger and how do you set one up?", a: "ScrollTrigger is a GSAP plugin that fires animations based on scroll position. After gsap.registerPlugin(ScrollTrigger), you pass a scrollTrigger config with a trigger element, start/end positions like \"top 80%\", and options such as scrub to link progress to the scrollbar or toggleActions to control play/reverse behavior." },
+    { id: 204, topic: "Gsap", q: "What is the recommended pattern for using GSAP in a React component?", a: "Run animations inside useLayoutEffect (so they apply before paint and avoid flashes), scope selectors with gsap.context(() => {...}, ref), and return () => ctx.revert() as cleanup. This also kills ScrollTriggers on unmount and survives StrictMode's double-effect invocation in development." },
+    { id: 205, topic: "Gsap", q: "How do you prevent two tweens from fighting over the same property?", a: "Use overwrite: \"auto\" on the new tween so it immediately kills only the conflicting parts of older tweens on the same targets, or call gsap.killTweensOf(target) before starting the replacement animation." },
+    { id: 206, topic: "Gsap", q: "What is the difference between delay and a timeline position, and when would you use stagger?", a: "delay postpones a single tween's start, while timeline positions schedule tweens relative to each other. stagger is for animating many targets with the same tween, automatically offsetting each target's start time — ideal for lists and grids." },
+    { id: 207, topic: "Gsap", q: "How do you make an animation follow the mouse smoothly without jank?", a: "Use gsap.quickTo(), which creates one reusable tween per property that you can call on every mousemove. Creating a new gsap.to() per mousemove event would spawn hundreds of conflicting tweens and hurt performance." },
+    { id: 208, topic: "Gsap", q: "What are function-based values and invalidateOnRefresh used for?", a: "Function-based values like x: () => window.innerWidth / 2 are evaluated when the tween first renders, so they adapt to layout. With ScrollTrigger, invalidateOnRefresh: true re-evaluates them on refresh (e.g. after resize) so scroll animations stay correct." },
+    { id: 209, topic: "Gsap", q: "How would you build responsive scroll animations that only run on desktop?", a: "Use gsap.matchMedia(): mm.add(\"(min-width: 768px)\", () => { ... }) creates the desktop ScrollTriggers, and GSAP automatically reverts and cleans them up when the media query stops matching — no manual resize listeners needed." },
+    {
+          id: 210,
+          topic: "Convex",
+          q: "What's the difference between a query, a mutation, and an action in Convex?",
+          a: "Queries are read-only, deterministic functions whose results sync reactively to clients. Mutations change data and run as atomic transactions (all writes commit or none do). Actions can call third-party APIs and run non-deterministic code, but they can't touch ctx.db directly — they read and write through ctx.runQuery and ctx.runMutation."
+        },
+        {
+          id: 211,
+          topic: "Convex",
+          q: "How does realtime work in Convex?",
+          a: "useQuery subscribes to a query result; when any write changes data that query depends on, Convex pushes the new result and React re-renders automatically. There's no polling or manual websocket code on the client."
+        },
+        {
+          id: 212,
+          topic: "Convex",
+          q: "How do you define a schema and indexes in Convex?",
+          a: "In convex/schema.ts using defineSchema and defineTable from 'convex/server', with field validators from 'convex/values'. Chain .index('by_user', ['userId']) on a table, then query it with .withIndex('by_user', q => q.eq('userId', id)) for fast lookups instead of full scans."
+        },
+        {
+          id: 213,
+          topic: "Convex",
+          q: "How do you handle authentication and authorization in Convex functions?",
+          a: "Call await ctx.auth.getUserIdentity() — it returns the logged-in identity or null when anonymous. Use identity.subject as the stable user ID: store it on documents (e.g. userId) and check it before reads/writes to scope data to its owner."
+        },
+        {
+          id: 214,
+          topic: "Convex",
+          q: "How do you paginate large result sets in Convex?",
+          a: "Accept paginationOptsValidator from 'convex/server' as an argument and return ctx.db.query('posts').order('desc').paginate(args.paginationOpts). It returns { page, continueCursor, isDone }, and the client passes continueCursor back to load the next page."
+        },
+        {
+          id: 215,
+          topic: "Convex",
+          q: "How do you store and serve files with Convex?",
+          a: "From a mutation, call ctx.storage.generateUploadUrl() and POST the file to that URL from the client, or ctx.storage.store(blob) server-side — both give you a storage ID. In a query, turn it into a viewable URL with ctx.storage.getUrl(storageId), and delete it with ctx.storage.delete(storageId)."
+        },
+        {
+          id: 216,
+          topic: "Convex",
+          q: "How do you run code on a schedule in Convex?",
+          a: "For one-off delayed runs, use ctx.scheduler.runAfter or runAt inside a mutation or action, targeting an internal function. For recurring jobs, define convex/crons.ts with cronJobs() and crons.interval('name', { hours: 1 }, internal.jobs.cleanup)."
+        },
+        {
+          id: 217,
+          topic: "Convex",
+          q: "When would you use internalQuery, internalMutation, or internalAction?",
+          a: "When a function must never be callable from the client — for example an admin cleanup job triggered by the scheduler or a cron. Internal functions are only reachable from other backend code, which protects privileged operations."
+        },
+        {
+          id: 218,
+          topic: "Convex",
+          q: "What guarantees do Convex mutations give you under concurrent writes?",
+          a: "Mutations are ACID transactions: either all writes commit or none do. If two mutations conflict on the same document, one commits and the other is automatically retried against fresh data — optimistic concurrency control, so you don't write your own locking."
+        },
+        {
+          id: 219,
+          topic: "Convex",
+          q: "How do you expose a public HTTP endpoint, like a Stripe webhook, in Convex?",
+          a: "Define an httpAction and register it on an httpRouter in convex/http.ts with a path and method. The handler still can't use ctx.db directly, so it delegates database work to internal queries and mutations."
+        },
+    { id: 220, topic: "Clerk", q: "What is Clerk, and why would you choose it over building authentication yourself?", a: "Clerk is a complete authentication and user-management platform: prebuilt sign-in/sign-up UI, session management, MFA, social OAuth, organizations and roles. Building it yourself means owning password hashing, session security, email flows and compliance — Clerk removes that risk and ships in hours." },
+    { id: 221, topic: "Clerk", q: "How do you protect a page in a React SPA using Clerk?", a: "Wrap the app in <ClerkProvider>, then guard the route with useAuth(): wait for isLoaded, redirect to /sign-in when not signed in, or render conditionally with <SignedIn>/<SignedOut>. Never rely on UI hiding alone — the API must also verify the token." },
+    { id: 222, topic: "Clerk", q: "What is the difference between useUser() and useAuth()?", a: "useUser() returns the full user resource (profile data, emails, isLoaded, isSignedIn). useAuth() returns lightweight auth state and helpers — userId, sessionId, getToken, signOut — without fetching the whole user object, so it is cheaper for guards and API calls." },
+    { id: 223, topic: "Clerk", q: "How does your backend verify a request from a Clerk-authenticated user?", a: "The frontend calls getToken() and sends the JWT as a Bearer token. The backend validates the signature against Clerk's keys using verifyToken/clerkClient with the secret key (or clerkMiddleware), then trusts the userId inside — never trust a userId sent as plain data." },
+    { id: 224, topic: "Clerk", q: "Explain Clerk webhooks and how you secure them.", a: "Clerk POSTs events like user.created to your endpoint so you can sync your database. You must verify the svix-id / svix-timestamp / svix-signature headers with the Svix Webhook class using your signing secret, on the raw request body, before processing anything — and make handlers idempotent since events can redeliver." },
+    { id: 225, topic: "Clerk", q: "How do organizations and roles work in Clerk?", a: "Organizations group users for B2B SaaS, with built-in roles like org:admin and org:member plus custom roles and permissions. In the UI you use <OrganizationSwitcher/> and useOrganization(); for checks you use has({ role: 'org:admin' }) or has({ permission: '...' }) from useAuth()." },
+    { id: 226, topic: "Clerk", q: "What is the difference between the publishable key and the secret key?", a: "The publishable key (pk_...) identifies your app and is safe in frontend code. The secret key (sk_...) grants full Backend API access and must live server-side only — exposing it lets anyone manage your users." },
+    { id: 227, topic: "Clerk", q: "How do you enforce authentication in Next.js middleware with Clerk?", a: "Use clerkMiddleware() from @clerk/nextjs/server, define public vs protected routes with createRouteMatcher(), and call auth().protect() (or check auth()) inside the middleware so unauthenticated requests are blocked or redirected before reaching the page." },
+    { id: 228, topic: "Clerk", q: "What happens if the publishable key is missing or invalid?", a: "ClerkProvider throws a 'Missing publishableKey' error and auth state never resolves — useUser()/useAuth() stay in loading state. The fix is passing the correct pk_test_/pk_live_ key, since every Clerk call is scoped to that application instance." },
+    { id: 229, topic: "Clerk", q: "How would you migrate existing users into Clerk?", a: "Use the Backend API to bulk-import users, supplying their existing password hashes (e.g. bcrypt) so they keep their passwords, and store your old IDs as external IDs to map records. Alternatively, invite users to set a new password via the invitation flow." },
+    { id: 230, topic: "Postman", q: "What is Postman and why do developers use it?", a: "Postman is an API client for building, testing, and documenting APIs. Developers use it to send HTTP requests, inspect responses, automate test suites, and share collections with their team." },
+    { id: 231, topic: "Postman", q: "Explain environments and variables in Postman.", a: "An environment is a named set of key-value pairs (dev, staging, prod) you can switch between without editing requests. Variables are referenced with {{name}} syntax and can also hold secrets in their local-only current value." },
+    { id: 232, topic: "Postman", q: "How do you chain requests together?", a: "In the first request's Tests tab you extract a value from the response with pm.environment.set(), then reuse it as {{variable}} in the next request — typically an auth token from a login call." },
+    { id: 233, topic: "Postman", q: "What are pre-request scripts used for?", a: "They run before the request is sent. Common uses: setting dynamic variables, generating timestamps or HMAC signatures, and fetching a fresh token with pm.sendRequest()." },
+    { id: 234, topic: "Postman", q: "How do you write assertions in Postman tests?", a: "With pm.test(), which groups assertions about the response: pm.response.to.have.status(200) for status codes, or pm.expect() with Chai matchers to validate the JSON body." },
+    { id: 235, topic: "Postman", q: "What is Newman and how does it fit into CI/CD?", a: "Newman is Postman's command-line collection runner. You run newman run collection.json -e env.json in the pipeline, and its exit code fails the build when any test fails." },
+    { id: 236, topic: "Postman", q: "What are mock servers and when would you use one?", a: "Mock servers simulate endpoints by returning saved example responses. You use them so frontend development can proceed before the real backend is ready." },
+    { id: 237, topic: "Postman", q: "Explain the variable scope hierarchy.", a: "When a variable exists in multiple scopes, the narrowest wins: local > data > environment > collection > global." },
+    { id: 238, topic: "Postman", q: "How do you handle authentication in Postman?", a: "Through the Authorization tab: Bearer Token, Basic Auth, API Key, or OAuth 2.0 via 'Get New Access Token'. Setting auth on the collection with 'Inherit auth from parent' applies it to every request." },
+    { id: 239, topic: "Postman", q: "What are Postman Monitors?", a: "Scheduled collection runs from the Postman cloud with a results dashboard and failure alerts — ideal for continuously checking the health of a production API." },
     ]
   },
   {
@@ -1926,7 +2156,237 @@ export const interviewQuestions = [
       topic: "Docker",
       q: "Quelle est la différence entre CMD et ENTRYPOINT dans un Dockerfile ?",
       a: "ENTRYPOINT définit l'exécutable fixe qui tourne toujours au démarrage du conteneur ; CMD fournit les arguments par défaut, qu'on peut surcharger au docker run. Ensemble ils forment la commande complète — un pattern courant est ENTRYPOINT ['node'] avec CMD ['server.js']."
-    }
+    },
+    {
+      id: 160,
+      topic: "Supabase",
+      q: "Qu'est-ce que Supabase, et en quoi diffère-t-il de Firebase ?",
+      a: "Supabase est un backend-as-a-service open-source construit sur Postgres : on dispose d'une vraie base relationnelle avec SQL, alors que Firebase repose sur des bases NoSQL. Supabase est aussi auto-hébergeable et offre les extensions Postgres, Row Level Security et l'outillage SQL standard."
+    },
+    {
+      id: 161,
+      topic: "Supabase",
+      q: "Comment initialiser le client Supabase dans une app JavaScript ?",
+      a: "On importe createClient depuis @supabase/supabase-js et on l'appelle avec l'URL du projet et la clé anon, généralement lues depuis les variables d'environnement comme import.meta.env.VITE_SUPABASE_URL. Le client est ensuite réutilisé dans toute l'app pour les requêtes, l'auth, le stockage et le realtime."
+    },
+    {
+      id: 162,
+      topic: "Supabase",
+      q: "Expliquez Row Level Security et comment limiter les utilisateurs à leurs propres lignes.",
+      a: "RLS est une fonctionnalité Postgres qui filtre les lignes visibles par une requête, appliquée par la base elle-même. On l'active sur la table et on écrit une politique comme using (auth.uid() = user_id) pour le SELECT : même si le code client est trafiqué, l'utilisateur ne lit que ses propres lignes."
+    },
+    {
+      id: 163,
+      topic: "Supabase",
+      q: "Quelle est la différence entre la clé anon et la clé service_role ?",
+      a: "La clé anon est publique et utilisable dans le frontend car chaque requête passe par les politiques RLS. La clé service_role contourne entièrement RLS et ne doit vivre que sur un serveur de confiance — l'exposer dans le navigateur donne à quiconque un accès total à la base."
+    },
+    {
+      id: 164,
+      topic: "Supabase",
+      q: "Comment fonctionnent les abonnements realtime dans Supabase ?",
+      a: "On ouvre un canal avec supabase.channel(), on attache un écouteur postgres_changes pour un événement, un schéma et une table, puis on appelle .subscribe(). Postgres notifie Supabase du changement via la réplication logique et le payload est poussé aux clients — mais la table doit être dans la publication supabase_realtime et les politiques RLS doivent autoriser la lecture."
+    },
+    {
+      id: 165,
+      topic: "Supabase",
+      q: "Comment gérer les uploads de fichiers, et les fichiers publics vs privés ?",
+      a: "On utilise supabase.storage.from('bucket').upload(path, file) pour les uploads, en protégeant les écrasements avec l'option upsert. Les buckets publics servent les fichiers via getPublicUrl() ; les buckets privés exigent des URL signées à durée limitée via createSignedUrl(), et l'accès aux deux est régi par des politiques RLS sur storage.objects."
+    },
+    {
+      id: 166,
+      topic: "Supabase",
+      q: "Que fait supabase.auth.getUser() différemment de la lecture de la session ?",
+      a: "getUser() re-valide le JWT auprès du serveur Supabase Auth : un token falsifié ou révoqué est donc rejeté. Lire la session depuis localStorage fait confiance à ce qui y est stocké, d'où l'intérêt de préférer getUser() — ou un contrôle côté serveur — pour les vérifications sensibles."
+    },
+    {
+      id: 167,
+      topic: "Supabase",
+      q: "Comment appeler de la logique côté serveur — fonctions Postgres vs Edge Functions ?",
+      a: "On utilise supabase.rpc('nom_fn', params) pour appeler une fonction Postgres quand la logique vit près des données, idéalement en SECURITY DEFINER avec un search_path fixé. On utilise supabase.functions.invoke('nom-fn', { body }) pour les Edge Functions — des endpoints serverless basés sur Deno — quand il faut des API externes, des secrets ou du travail non-SQL."
+    },
+    {
+      id: 168,
+      topic: "Supabase",
+      q: "Une requête ne retourne aucune ligne alors que des données existent. Comment déboguer ?",
+      a: "D'abord vérifier RLS : activé sans politiques, il refuse tout — on contrôle donc les politiques actives et que l'utilisateur est bien authentifié. Ensuite on vérifie les filtres (.eq, .or), que la table est dans le bon schéma, et on inspecte l'objet error — les erreurs PostgREST nomment généralement la cause exacte."
+    },
+    {
+      id: 169,
+      topic: "Supabase",
+      q: "Comment modéliser une requête de relation un-à-plusieurs dans supabase-js ?",
+      a: "Avec l'imbrication de table étrangère : .select('id, title, profiles ( username )') suit la clé étrangère et imbrique la ligne liée. Cela fonctionne quand la contrainte de clé étrangère existe, et on peut descendre sur plusieurs niveaux ou imbriquer dans le sens inverse."
+    },
+    {
+          id: 170,
+          topic: "ExpressJs",
+          q: "Qu'est-ce qu'un middleware en Express et comment fonctionne la chaîne de middlewares ?",
+          a: "Les middlewares sont des fonctions ayant accès à req, res et next, exécutées dans l'ordre d'enregistrement. Chacun termine le cycle requête-réponse ou appelle next() pour passer le contrôle au suivant ; c'est ainsi qu'Express gère le logging, l'authentification, l'analyse et le routage."
+        },
+        {
+          id: 171,
+          topic: "ExpressJs",
+          q: "Comment gérez-vous les erreurs dans une application Express ?",
+          a: "On définit un middleware de gestion d'erreur à quatre paramètres (err, req, res, next) enregistré après toutes les routes, et on transmet les erreurs avec next(err) ou en les levant dans les gestionnaires synchrones. En Express 4, les rejets async doivent être attrapés manuellement avec try/catch et passés à next(err)."
+        },
+        {
+          id: 172,
+          topic: "ExpressJs",
+          q: "Expliquez la différence entre req.params, req.query et req.body.",
+          a: "req.params contient les segments du chemin comme /users/:id, req.query contient les paires ?clé=valeur de l'URL pour le filtrage et la pagination, et req.body contient le payload analysé des requêtes POST/PUT (disponible uniquement après un middleware d'analyse comme express.json())."
+        },
+        {
+          id: 173,
+          topic: "ExpressJs",
+          q: "Qu'est-ce que express.Router() et quand l'utiliser ?",
+          a: "express.Router() crée un mini-routeur isolé pour regrouper des routes liées avec leurs propres middlewares. On le monte avec app.use('/api', router) pour que toutes ses routes partagent le préfixe /api, ce qui garde les grosses applications modulaires."
+        },
+        {
+          id: 174,
+          topic: "ExpressJs",
+          q: "Comment l'ordre d'enregistrement des middlewares affecte-t-il le traitement des requêtes ?",
+          a: "Express traite middlewares et routes strictement dans l'ordre d'enregistrement : l'analyse du corps doit venir avant les routes, l'attrape-tout 404 après toutes les routes, et les gestionnaires d'erreur en dernier. Un attrape-tout ou un gestionnaire d'erreur mal placé avalera silencieusement des routes ou ne s'exécutera jamais."
+        },
+        {
+          id: 175,
+          topic: "ExpressJs",
+          q: "Comment servir des fichiers statiques et analyser les corps de requête en Express ?",
+          a: "On sert les assets statiques avec app.use(express.static('public')), et on analyse les corps avec express.json() pour le JSON et express.urlencoded() pour les formulaires HTML — les deux intégrés depuis Express 4.16, remplaçant l'ancien paquet body-parser."
+        },
+        {
+          id: 176,
+          topic: "ExpressJs",
+          q: "Quelle est la différence entre next(), next('route') et next('router') ?",
+          a: "next() passe le contrôle au middleware ou gestionnaire suivant de la chaîne, next('route') saute les gestionnaires restants de la route courante et passe à la prochaine route correspondante, et next('router') quitte entièrement le routeur courant pour continuer avec les middlewares situés après lui."
+        },
+        {
+          id: 177,
+          topic: "ExpressJs",
+          q: "Comment protégeriez-vous une API Express avec des mesures de sécurité de base ?",
+          a: "J'utiliserais helmet pour des en-têtes HTTP sécurisés, cors pour contrôler l'accès cross-origin, express-rate-limit contre le brute-force, je validerais toutes les entrées au lieu de faire confiance à req.body, et je ne révélerais jamais err.stack aux clients en production."
+        },
+        {
+          id: 178,
+          topic: "ExpressJs",
+          q: "En conception d'API REST, quelle est la différence entre paramètres de route et query strings ?",
+          a: "Les paramètres de route identifient une ressource précise, comme /users/42, tandis que les query strings modifient la façon dont une collection est renvoyée — filtrage, tri, pagination — comme /users?role=admin&page=2. Les params sont des segments de chemin requis ; les valeurs de requête sont optionnelles et Express convertit les répétitions en tableaux."
+        },
+        {
+          id: 179,
+          topic: "ExpressJs",
+          q: "Comment structurer une application Express prête pour la production (config, arrêt, env) ?",
+          a: "Je lis la configuration depuis les variables d'environnement avec des valeurs par défaut raisonnables comme process.env.PORT || 3000, je garde les routes dans des routeurs montés, je centralise la gestion d'erreurs, et j'arrête proprement avec server.close() pour laisser finir les requêtes en cours. Les secrets ne vont jamais dans le code, et les stack traces sont journalisées côté serveur, pas envoyées aux clients."
+        },
+    { id: 180, topic: "Agile", q: "Quels sont les trois rôles Scrum et de quoi chacun est-il responsable ?", a: "Le Product Owner possède le Product Backlog et maximise la valeur en l'ordonnant. Le Scrum Master sert l'équipe en levant les obstacles et en la coachant sur Scrum. Les développeurs construisent l'incrément à chaque sprint et décident comment réaliser le travail." },
+    { id: 181, topic: "Agile", q: "Expliquez les cinq événements Scrum et le but de chacun.", a: "La planification de sprint fixe l'objectif et le plan ; le Daily Standup est une synchro d'équipe de 15 minutes ; la revue de sprint inspecte l'incrément avec les parties prenantes pour recueillir leurs retours ; la rétrospective examine le processus pour l'améliorer ; le sprint lui-même est l'événement conteneur, typiquement de 1 à 4 semaines." },
+    { id: 182, topic: "Agile", q: "Qu'est-ce qu'une user story, et qu'est-ce qui en fait une bonne ?", a: "Une user story est un besoin court exprimé du point de vue de l'utilisateur : « En tant que [rôle], je veux [objectif], afin de [bénéfice] ». Une bonne story respecte les critères INVEST — Indépendante, Négociable, Valable, Estimable, Petite, Testable — et a des critères d'acceptation clairs." },
+    { id: 183, topic: "Agile", q: "Quelle est la différence entre la Definition of Done et les critères d'acceptation ?", a: "Les critères d'acceptation sont des conditions propres à une story pour qu'elle soit acceptée. La Definition of Done est une checklist qualité partagée (testé, relu, documenté) qui s'applique à chaque incrément produit par l'équipe." },
+    { id: 184, topic: "Agile", q: "Qu'est-ce que la vélocité, et comment doit-on (et ne doit-on pas) l'utiliser ?", a: "La vélocité est la quantité de travail, généralement en story points, qu'une équipe termine par sprint. Elle sert à prévoir la capacité. Elle ne doit jamais servir à comparer des équipes ni à juger des individus, car les estimations sont relatives à chaque équipe." },
+    { id: 185, topic: "Agile", q: "Une partie prenante exige un changement en plein sprint. Comment gérez-vous cela ?", a: "On protège l'objectif du sprint : la nouvelle demande va dans le Product Backlog, où le Product Owner la priorise pour un sprint ultérieur. Seul le Product Owner peut annuler un sprint, et uniquement quand son objectif devient obsolète." },
+    { id: 186, topic: "Agile", q: "Quelle est la différence entre Scrum et Kanban ?", a: "Scrum fonctionne en sprints de durée fixe avec des rôles et des cérémonies définis, estime en points et mesure la vélocité. Kanban est un système de flux continu avec un tableau visuel, des limites WIP, sans rôles ni timeboxes imposés — le travail est tiré dès qu'une capacité se libère." },
+    { id: 187, topic: "Agile", q: "Comment les équipes agiles estiment-elles le travail, et pourquoi des story points plutôt que des heures ?", a: "Les équipes utilisent des techniques d'estimation relative comme le Planning Poker. Les story points expriment une taille et une complexité relatives, ce qui évite la fausse précision et les longs débats sur les heures exactes, et garde les estimations stables quel que soit l'exécutant." },
+    { id: 188, topic: "Agile", q: "Qu'est-ce que la dette technique, et comment l'agilité la traite-t-elle ?", a: "La dette technique est le coût futur des raccourcis pris aujourd'hui — tests sautés, design bâclé. L'agilité la traite via une Definition of Done exigeante avec qualité intégrée, un rythme soutenable, du refactoring dans le travail normal, et en rendant la dette visible dans le backlog." },
+    { id: 189, topic: "Agile", q: "Que signifie « l'adaptation au changement plutôt que le suivi d'un plan » en pratique ?", a: "Cela signifie planifier à horizon court avec des boucles de retour : le court terme est détaillé, le long terme reste grossier. Quand on apprend quelque chose de nouveau — via une revue, une rétro ou le marché — on repriorise le backlog au lieu de s'accrocher à un plan dépassé." },
+    { id: 190, topic: "MaterialUi", q: "Qu'est-ce que la prop sx et en quoi diffère-t-elle de la prop style ?", a: "La prop sx est le raccourci de style de MUI : elle accepte des valeurs liées au thème comme color: 'primary.main', des espacements abrégés (p, mt), des objets de breakpoints responsives et des sélecteurs imbriqués comme '&:hover'. Contrairement à style, elle résout les valeurs via le thème et génère des classes Emotion optimisées." },
+    { id: 191, topic: "MaterialUi", q: "Comment personnaliser le thème MUI pour toute une application ?", a: "Utilisez createTheme() pour surcharger palette, typography, spacing et breakpoints, puis fournissez-le via <ThemeProvider>. Pour des réglages par composant, utilisez la section components du thème avec styleOverrides et defaultProps, par ex. components: { MuiButton: { defaultProps: { variant: 'contained' } } }." },
+    { id: 192, topic: "MaterialUi", q: "Quand faut-il utiliser styled() plutôt que la prop sx ?", a: "Utilisez sx pour des styles ponctuels sur un seul élément. Utilisez styled() pour des composants réutilisables ou des styles dépendant de props, et définissez toujours les composants styled en dehors de la fonction de rendu pour ne pas les recréer à chaque render." },
+    { id: 193, topic: "MaterialUi", q: "Comment fonctionne le responsive design dans MUI ?", a: "La prop sx accepte des objets de breakpoints comme display: { xs: 'none', md: 'block' }, les helpers theme.breakpoints.up/down() construisent des media queries, et le hook useMediaQuery retourne un booléen. Les breakpoints par défaut sont xs 0, sm 600, md 900, lg 1200, xl 1536." },
+    { id: 194, topic: "MaterialUi", q: "Comment implémenter le mode sombre dans une application MUI ?", a: "Créez le thème avec createTheme({ palette: { mode: 'dark' } }), gardez le mode dans un state, mémorisez le thème avec useMemo et passez-le à ThemeProvider. Les composants s'adaptent automatiquement s'ils utilisent des tokens liés au thème comme bgcolor: 'background.paper'." },
+    { id: 195, topic: "MaterialUi", q: "Expliquez le système de grille (Grid) de MUI.", a: "Grid est une mise en page flexbox à 12 colonnes : un conteneur enveloppe des éléments dont la largeur est définie par breakpoint (xs, md, ...). En v5 on écrit <Grid item xs={12} md={6}> ; en v6 avec Grid v2, la prop item est remplacée par size={{ xs: 12, md: 6 }}. La prop spacing est implémentée avec une marge négative compensatrice sur le conteneur et du padding sur les éléments." },
+    { id: 196, topic: "MaterialUi", q: "Que sont les slots et comment personnaliser une sous-partie d'un composant comme TextField ?", a: "Les composants MUI sont composés de slots nommés (root, input, htmlInput, ...). En v6 on personnalise un slot via la prop slotProps, par ex. <TextField slotProps={{ htmlInput: { placeholder: 'Search' } }} /> pour définir un placeholder sur l'input natif." },
+    { id: 197, topic: "MaterialUi", q: "Comment fonctionnent les composants contrôlés comme Dialog, Menu et Tabs dans MUI ?", a: "Ils ne gèrent pas eux-mêmes leur état d'ouverture ou de sélection. Le parent détient l'état (booléen open, élément anchorEl, valeur sélectionnée) et le transmet avec des gestionnaires comme onClose ou onChange — rien ne s'ouvre ni ne change tant que le parent ne met pas à jour cet état." },
+    { id: 198, topic: "MaterialUi", q: "Comment empêcher une prop de style personnalisée de fuir vers le DOM avec styled() ?", a: "Passez l'option shouldForwardProp, par ex. styled(Button, { shouldForwardProp: (prop) => prop !== 'danger' })(...). Cela filtre la prop pour que React ne voie jamais un attribut DOM inconnu et qu'aucun avertissement ne soit affiché." },
+    { id: 199, topic: "MaterialUi", q: "Comment appliquer des couleurs de marque et une variante de bouton personnalisée à toute l'application ?", a: "Définissez la palette de marque et la typographie dans createTheme(), enregistrez la variante sous components.MuiButton.variants avec ses props et son style (ou styleOverrides pour le slot root), puis enveloppez l'application dans <ThemeProvider theme={theme}> avec <CssBaseline /> à la racine." },
+    { id: 200, topic: "Gsap", q: "Quelle est la différence entre gsap.to(), gsap.from() et gsap.fromTo() ?", a: "gsap.to() anime depuis les valeurs actuelles de l'élément vers les valeurs données, gsap.from() anime depuis les valeurs données vers les valeurs actuelles, et gsap.fromTo() définit explicitement le début et la fin. Utilisez fromTo quand vous avez besoin d'un point de départ garanti, quelles que soient les animations précédentes." },
+    { id: 201, topic: "Gsap", q: "Comment fonctionnent les timelines et que sont les paramètres de position ?", a: "Une timeline (gsap.timeline()) enchaîne les tweens pour qu'ils se jouent en séquence par défaut. Les paramètres de position comme « < », « > », « -=0.5 » ou un temps absolu contrôlent exactement le démarrage de chaque tween, permettant de chevaucher, synchroniser ou espacer les animations avec précision." },
+    { id: 202, topic: "Gsap", q: "Expliquez repeat, yoyo et repeatDelay.", a: "repeat rejoue un tween un nombre défini de fois (-1 pour l'infini), yoyo fait jouer chaque répétition à l'envers pour un va-et-vient, et repeatDelay insère une pause entre les répétitions. yoyo n'a d'effet que si repeat est défini." },
+    { id: 203, topic: "Gsap", q: "Qu'est-ce que ScrollTrigger et comment le configure-t-on ?", a: "ScrollTrigger est un plugin GSAP qui déclenche des animations selon la position du défilement. Après gsap.registerPlugin(ScrollTrigger), on passe une config scrollTrigger avec un élément déclencheur, des positions start/end comme « top 80% », et des options comme scrub pour lier la progression à la barre de défilement ou toggleActions pour contrôler le comportement lecture/inversion." },
+    { id: 204, topic: "Gsap", q: "Quel est le pattern recommandé pour utiliser GSAP dans un composant React ?", a: "Lancez les animations dans useLayoutEffect (appliquées avant le paint, sans flash), limitez les sélecteurs avec gsap.context(() => {...}, ref), et retournez () => ctx.revert() comme nettoyage. Cela détruit aussi les ScrollTriggers au démontage et survit à la double exécution des effets de StrictMode en développement." },
+    { id: 205, topic: "Gsap", q: "Comment empêcher deux tweens de se disputer la même propriété ?", a: "Utilisez overwrite: « auto » sur le nouveau tween pour tuer immédiatement uniquement les parties en conflit des anciens tweens sur les mêmes cibles, ou appelez gsap.killTweensOf(cible) avant de démarrer l'animation de remplacement." },
+    { id: 206, topic: "Gsap", q: "Quelle est la différence entre delay et une position de timeline, et quand utiliser stagger ?", a: "delay retarde le démarrage d'un seul tween, tandis que les positions de timeline planifient les tweens les uns par rapport aux autres. stagger sert à animer plusieurs cibles avec le même tween en décalant automatiquement le démarrage de chacune — idéal pour les listes et les grilles." },
+    { id: 207, topic: "Gsap", q: "Comment faire suivre la souris à une animation en douceur, sans saccades ?", a: "Utilisez gsap.quickTo(), qui crée un tween réutilisable par propriété, appelable à chaque mousemove. Créer un nouveau gsap.to() par événement mousemove générerait des centaines de tweens en conflit et nuirait aux performances." },
+    { id: 208, topic: "Gsap", q: "À quoi servent les valeurs fonctionnelles (function-based values) et invalidateOnRefresh ?", a: "Les valeurs fonctionnelles comme x: () => window.innerWidth / 2 sont évaluées au premier rendu du tween et s'adaptent donc à la mise en page. Avec ScrollTrigger, invalidateOnRefresh: true les réévalue au refresh (par ex. après un redimensionnement) pour garder des animations de scroll correctes." },
+    { id: 209, topic: "Gsap", q: "Comment construiriez-vous des animations de scroll responsives qui ne tournent que sur desktop ?", a: "Avec gsap.matchMedia() : mm.add(\"(min-width: 768px)\", () => { ... }) crée les ScrollTriggers desktop, et GSAP les annule et nettoie automatiquement quand la media query ne correspond plus — sans écouteurs de resize manuels." },
+    {
+          id: 210,
+          topic: "Convex",
+          q: "Quelle est la différence entre une query, une mutation et une action dans Convex ?",
+          a: "Les queries sont des fonctions déterministes en lecture seule dont les résultats se synchronisent de façon réactive avec les clients. Les mutations modifient les données et s'exécutent comme des transactions atomiques (tout est validé ou rien ne l'est). Les actions peuvent appeler des API tierces et exécuter du code non déterministe, mais elles ne peuvent pas toucher ctx.db directement — elles lisent et écrivent via ctx.runQuery et ctx.runMutation."
+        },
+        {
+          id: 211,
+          topic: "Convex",
+          q: "Comment fonctionne le temps réel dans Convex ?",
+          a: "useQuery s'abonne au résultat d'une query ; dès qu'une écriture modifie des données dont cette query dépend, Convex pousse le nouveau résultat et React re-rend automatiquement. Aucun polling ni code websocket manuel côté client."
+        },
+        {
+          id: 212,
+          topic: "Convex",
+          q: "Comment définit-on un schéma et des index dans Convex ?",
+          a: "Dans convex/schema.ts avec defineSchema et defineTable de 'convex/server', et des validateurs de champs de 'convex/values'. On chaîne .index('by_user', ['userId']) sur une table, puis on l'interroge avec .withIndex('by_user', q => q.eq('userId', id)) pour des recherches rapides au lieu de scans complets."
+        },
+        {
+          id: 213,
+          topic: "Convex",
+          q: "Comment gère-t-on l'authentification et l'autorisation dans les fonctions Convex ?",
+          a: "On appelle await ctx.auth.getUserIdentity() — elle retourne l'identité connectée ou null en anonyme. On utilise identity.subject comme ID utilisateur stable : on le stocke sur les documents (p. ex. userId) et on le vérifie avant lectures/écritures pour limiter les données à leur propriétaire."
+        },
+        {
+          id: 214,
+          topic: "Convex",
+          q: "Comment pagine-t-on de gros résultats dans Convex ?",
+          a: "On accepte paginationOptsValidator de 'convex/server' en argument et on retourne ctx.db.query('posts').order('desc').paginate(args.paginationOpts). Ça retourne { page, continueCursor, isDone }, et le client renvoie continueCursor pour charger la page suivante."
+        },
+        {
+          id: 215,
+          topic: "Convex",
+          q: "Comment stocke-t-on et sert-on des fichiers avec Convex ?",
+          a: "Depuis une mutation, on appelle ctx.storage.generateUploadUrl() puis on POSTe le fichier vers cette URL côté client, ou ctx.storage.store(blob) côté serveur — les deux donnent un ID de stockage. Dans une query, on le convertit en URL affichable avec ctx.storage.getUrl(storageId), et on le supprime avec ctx.storage.delete(storageId)."
+        },
+        {
+          id: 216,
+          topic: "Convex",
+          q: "Comment exécute-t-on du code planifié dans Convex ?",
+          a: "Pour des exécutions différées uniques, on utilise ctx.scheduler.runAfter ou runAt dans une mutation ou une action, en ciblant une fonction interne. Pour les tâches récurrentes, on définit convex/crons.ts avec cronJobs() et crons.interval('nom', { hours: 1 }, internal.jobs.cleanup)."
+        },
+        {
+          id: 217,
+          topic: "Convex",
+          q: "Quand utiliser internalQuery, internalMutation ou internalAction ?",
+          a: "Quand une fonction ne doit jamais être appelable depuis le client — par exemple un nettoyage admin déclenché par le planificateur ou un cron. Les fonctions internes ne sont accessibles que depuis le code backend, ce qui protège les opérations privilégiées."
+        },
+        {
+          id: 218,
+          topic: "Convex",
+          q: "Quelles garanties les mutations Convex offrent-elles en cas d'écritures concurrentes ?",
+          a: "Les mutations sont des transactions ACID : soit toutes les écritures sont validées, soit aucune. Si deux mutations entrent en conflit sur le même document, l'une commit et l'autre est automatiquement réessayée avec des données fraîches — du contrôle de concurrence optimiste, sans verrous à écrire soi-même."
+        },
+        {
+          id: 219,
+          topic: "Convex",
+          q: "Comment exposer un endpoint HTTP public, comme un webhook Stripe, dans Convex ?",
+          a: "On définit une httpAction et on l'enregistre sur un httpRouter dans convex/http.ts avec un chemin et une méthode. Le handler ne peut toujours pas utiliser ctx.db directement, donc il délègue le travail base de données à des queries et mutations internes."
+        },
+    { id: 220, topic: "Clerk", q: "Qu'est-ce que Clerk, et pourquoi le choisir plutôt que de construire l'authentification soi-même ?", a: "Clerk est une plateforme complète d'authentification et de gestion des utilisateurs : UI de connexion/inscription préconstruite, gestion des sessions, MFA, OAuth social, organisations et rôles. Le construire soi-même signifie assumer le hachage des mots de passe, la sécurité des sessions, les emails et la conformité — Clerk élimine ce risque et se déploie en quelques heures." },
+    { id: 221, topic: "Clerk", q: "Comment protéger une page dans une SPA React avec Clerk ?", a: "Envelopper l'app dans <ClerkProvider>, puis garder la route avec useAuth() : attendre isLoaded, rediriger vers /sign-in si non connecté, ou rendre conditionnellement avec <SignedIn>/<SignedOut>. Ne jamais se fier au seul masquage UI — l'API doit aussi vérifier le token." },
+    { id: 222, topic: "Clerk", q: "Quelle est la différence entre useUser() et useAuth() ?", a: "useUser() retourne la ressource utilisateur complète (profil, emails, isLoaded, isSignedIn). useAuth() retourne un état d'auth léger et des helpers — userId, sessionId, getToken, signOut — sans récupérer tout l'objet utilisateur, donc moins coûteux pour les gardes et les appels API." },
+    { id: 223, topic: "Clerk", q: "Comment votre backend vérifie-t-il une requête d'un utilisateur authentifié via Clerk ?", a: "Le frontend appelle getToken() et envoie le JWT en token Bearer. Le backend valide la signature avec les clés Clerk via verifyToken/clerkClient et la clé secrète (ou clerkMiddleware), puis fait confiance au userId contenu — jamais à un userId envoyé en clair." },
+    { id: 224, topic: "Clerk", q: "Expliquez les webhooks Clerk et comment les sécuriser.", a: "Clerk envoie par POST des événements comme user.created vers votre endpoint pour synchroniser votre base. Il faut vérifier les en-têtes svix-id / svix-timestamp / svix-signature avec la classe Svix Webhook et votre secret de signature, sur le corps brut de la requête, avant tout traitement — et rendre les gestionnaires idempotents car les événements peuvent être relivrés." },
+    { id: 225, topic: "Clerk", q: "Comment fonctionnent les organisations et les rôles dans Clerk ?", a: "Les organisations regroupent les utilisateurs pour le SaaS B2B, avec des rôles intégrés comme org:admin et org:member plus des rôles et permissions personnalisés. Dans l'UI on utilise <OrganizationSwitcher/> et useOrganization() ; pour les vérifications, has({ role: 'org:admin' }) ou has({ permission: '...' }) depuis useAuth()." },
+    { id: 226, topic: "Clerk", q: "Quelle est la différence entre la clé publique et la clé secrète ?", a: "La clé publique (pk_...) identifie votre application et peut figurer dans le code frontend. La clé secrète (sk_...) donne un accès complet à l'API Backend et doit rester côté serveur uniquement — l'exposer permet à n'importe qui de gérer vos utilisateurs." },
+    { id: 227, topic: "Clerk", q: "Comment imposer l'authentification dans le middleware Next.js avec Clerk ?", a: "Utiliser clerkMiddleware() de @clerk/nextjs/server, définir les routes publiques vs protégées avec createRouteMatcher(), et appeler auth().protect() (ou vérifier auth()) dans le middleware pour bloquer ou rediriger les requêtes non authentifiées avant qu'elles n'atteignent la page." },
+    { id: 228, topic: "Clerk", q: "Que se passe-t-il si la clé publique est manquante ou invalide ?", a: "ClerkProvider lève une erreur « Missing publishableKey » et l'état d'auth ne se résout jamais — useUser()/useAuth() restent en chargement. La correction est de passer la bonne clé pk_test_/pk_live_, car chaque appel Clerk est rattaché à cette instance d'application." },
+    { id: 229, topic: "Clerk", q: "Comment migrer des utilisateurs existants vers Clerk ?", a: "Utiliser l'API Backend pour importer les utilisateurs en masse, en fournissant leurs hash de mots de passe existants (ex. bcrypt) pour qu'ils gardent leurs mots de passe, et stocker vos anciens IDs comme IDs externes pour mapper les enregistrements. Alternativement, inviter les utilisateurs à définir un nouveau mot de passe via le flux d'invitation." },
+    { id: 230, topic: "Postman", q: "Qu'est-ce que Postman et pourquoi les développeurs l'utilisent-ils ?", a: "Postman est un client API pour construire, tester et documenter les API. Il permet d'envoyer des requêtes HTTP, d'inspecter les réponses, d'automatiser les suites de tests et de partager des collections avec l'équipe." },
+    { id: 231, topic: "Postman", q: "Expliquez les environnements et les variables dans Postman.", a: "Un environnement est un ensemble nommé de paires clé-valeur (dev, staging, prod) entre lesquels on bascule sans modifier les requêtes. Les variables s'utilisent avec la syntaxe {{nom}} et peuvent contenir des secrets dans leur valeur courante locale." },
+    { id: 232, topic: "Postman", q: "Comment enchaîner des requêtes entre elles ?", a: "Dans l'onglet Tests de la première requête, on extrait une valeur de la réponse avec pm.environment.set(), puis on la réutilise comme {{variable}} dans la requête suivante — typiquement un jeton d'authentification issu du login." },
+    { id: 233, topic: "Postman", q: "À quoi servent les scripts de pré-requête ?", a: "Ils s'exécutent avant l'envoi de la requête. Usages courants : définir des variables dynamiques, générer des horodatages ou des signatures HMAC, et récupérer un jeton frais avec pm.sendRequest()." },
+    { id: 234, topic: "Postman", q: "Comment écrire des assertions dans les tests Postman ?", a: "Avec pm.test(), qui regroupe les assertions sur la réponse : pm.response.to.have.status(200) pour les codes de statut, ou pm.expect() avec les matchers Chai pour valider le corps JSON." },
+    { id: 235, topic: "Postman", q: "Qu'est-ce que Newman et quel est son rôle dans le CI/CD ?", a: "Newman est l'exécuteur en ligne de commande des collections Postman. On lance newman run collection.json -e env.json dans le pipeline, et son code de sortie fait échouer le build dès qu'un test échoue." },
+    { id: 236, topic: "Postman", q: "Que sont les serveurs mock et quand les utiliser ?", a: "Les serveurs mock simulent des endpoints en retournant des exemples de réponses enregistrés. On les utilise pour que le développement frontend avance avant que le vrai backend soit prêt." },
+    { id: 237, topic: "Postman", q: "Expliquez la hiérarchie des portées de variables.", a: "Quand une variable existe dans plusieurs portées, la plus restreinte gagne : local > data > environment > collection > global." },
+    { id: 238, topic: "Postman", q: "Comment gérer l'authentification dans Postman ?", a: "Via l'onglet Authorization : Bearer Token, Basic Auth, API Key ou OAuth 2.0 avec le bouton « Get New Access Token ». Définir l'auth au niveau de la collection avec « Inherit auth from parent » l'applique à toutes les requêtes." },
+    { id: 239, topic: "Postman", q: "Que sont les Monitors Postman ?", a: "Des exécutions planifiées d'une collection depuis le cloud Postman, avec tableau de bord et alertes en cas d'échec — idéal pour surveiller en continu la santé d'une API en production." },
     ]
   }
 ];

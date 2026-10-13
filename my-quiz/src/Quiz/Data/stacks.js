@@ -16,6 +16,14 @@ export const STACK_ICONS = {
   MongoDb: "🍃",
   Git: "🌿",
   Docker: "🐳",
+  Supabase: "⚡",
+  ExpressJs: "🚂",
+  Agile: "🔄",
+  MaterialUi: "🧩",
+  Gsap: "✨",
+  Convex: "🔶",
+  Clerk: "🔐",
+  Postman: "📮",
 };
 
 export const stackIcon = (key) => STACK_ICONS[key] || "🧩";

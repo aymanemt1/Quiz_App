@@ -14,6 +14,14 @@ import { tailwindQuestions } from "./QuestiondataTailwind";
 import { restApiQuestions } from "./QuestiondataRestApi";
 import { gitQuestions } from "./QuestiondataGit";
 import { dockerQuestions } from "./QuestiondataDocker";
+import { supabaseQuestions } from "./QuestiondataSupabase";
+import { expressQuestions } from "./QuestiondataExpress";
+import { agileQuestions } from "./QuestiondataAgile";
+import { materialUiQuestions } from "./QuestiondataMaterialUi";
+import { gsapQuestions } from "./QuestiondataGsap";
+import { convexQuestions } from "./QuestiondataConvex";
+import { clerkQuestions } from "./QuestiondataClerk";
+import { postmanQuestions } from "./QuestiondataPostman";
 
 export const TOPIC_KEYS = [
   "React",
@@ -32,6 +40,14 @@ export const TOPIC_KEYS = [
   "MongoDb",
   "Git",
   "Docker",
+  "Supabase",
+  "ExpressJs",
+  "Agile",
+  "MaterialUi",
+  "Gsap",
+  "Convex",
+  "Clerk",
+  "Postman",
 ];
 
 export const TOPIC_LABELS = {
@@ -51,6 +67,14 @@ export const TOPIC_LABELS = {
   MongoDb: "MongoDb",
   Git: "Git",
   Docker: "Docker",
+  Supabase: "Supabase",
+  ExpressJs: "Express.js",
+  Agile: "Agile/Scrum",
+  MaterialUi: "Material UI",
+  Gsap: "GSAP",
+  Convex: "Convex",
+  Clerk: "Clerk",
+  Postman: "Postman",
 };
 
 export const questionsData = {
@@ -71,6 +95,14 @@ export const questionsData = {
     RestApi: [...restApiQuestions],
     Git: [...gitQuestions],
     Docker: [...dockerQuestions],
+    Supabase: [...supabaseQuestions],
+    ExpressJs: [...expressQuestions],
+    Agile: [...agileQuestions],
+    MaterialUi: [...materialUiQuestions],
+    Gsap: [...gsapQuestions],
+    Convex: [...convexQuestions],
+    Clerk: [...clerkQuestions],
+    Postman: [...postmanQuestions],
   }
 };
 
