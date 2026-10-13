@@ -14,17 +14,18 @@ label {
   display: flex;
   padding: 12px 24px 12px 16px;
   font-size: 15px;
-  border-radius: 4px;
+  border-radius: 10px;
   overflow: hidden;
   align-items: center;
-  border: 2px solid #dde7eb;
-  color: #333;
+  border: 2px solid rgba(129, 140, 248, 0.28);
+  background: rgba(255, 255, 255, 0.045);
+  color: #eef0ff;
   cursor: pointer;
   position: relative;
 
   &:before {
     height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23333' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23a5b4fc' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
     content: "";
     background-size: cover;
     opacity: 0.5;
@@ -42,7 +43,8 @@ li + li {
   margin-top: 18px;
 }
 input:checked + label {
-  background-color: #dde7eb;
+  background-color: rgba(99, 102, 241, 0.3);
+  border-color: #818cf8;
 
   &:before {
     transform: translatex(-24px) translatey(-50%);
@@ -51,20 +53,20 @@ input:checked + label {
 
   
 .question-button{
-  background-color: #1f8197;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border: 0;
   padding: 14px 26px;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   margin-top: 10px;
   font-size: 16px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 
 .question-text {
-  color: #333;
+  color: #f2f4ff;
   margin: 15px 0;
   font-size: 24px;
   
@@ -86,11 +88,11 @@ li,
 
 
 .is-true label {
-  background-color: #7ad6eb;
-  border-color: #82cfe0;
+  background-color: rgba(74, 222, 128, 0.16);
+  border-color: #4ade80;
 
   &:before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%231f8197' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%234ade80' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
     opacity: 1;
     transform: translatex(-24px) translatey(-50%);
   }
@@ -131,8 +133,8 @@ li,
 }
 
 .question-topic {
-  background: #1f8197;
-  border-color: #1f8197;
+  background: #6366f1;
+  border-color: #6366f1;
   color: #fff;
 }
 

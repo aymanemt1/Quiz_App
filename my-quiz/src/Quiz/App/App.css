@@ -5,7 +5,7 @@
   font-family:  "Be Vietnam Pro", sans-serif;
 }
 body {
-  background:linear-gradient(300deg, rgb(30, 49, 69), rgb(45, 109, 109));
+  background: linear-gradient(160deg, #070b21, #131a3d);
 
   color: rgb(252, 252, 252);
   font-family:  "Be Vietnam Pro", sans-serif;
@@ -94,7 +94,7 @@ body {
 
 
 .game-area {
-  background-color: #fff;
+  background-color: #10163a;
   overflow: auto;
   padding: 0px 2.3rem;
 
@@ -107,7 +107,7 @@ body {
   display: flex;
   align-items: center;
   /* background: rgba(27, 5, 107, 0.12); */
-background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
+background: linear-gradient(155deg, #10163a, #1e2660);
 
  
 }
@@ -140,6 +140,16 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
 }
 
 .game-blitz {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1rem;
+  overflow-y: auto;
+}
+
+.game-profile {
   width: 100%;
   min-height: 100vh;
   display: flex;

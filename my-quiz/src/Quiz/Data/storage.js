@@ -33,6 +33,104 @@ const write = (key, value) => {
   }
 };
 
+// ---- Profile: { name, color } ----
+const PROFILE_KEY = "quizapp_profile_v1";
+
+export const AVATAR_COLORS = [
+  "#6366f1",
+  "#8b5cf6",
+  "#ec4899",
+  "#10b981",
+  "#f59e0b",
+  "#ef4444",
+];
+
+export const loadProfile = () => {
+  const p = readObj(PROFILE_KEY);
+  return {
+    name: typeof p.name === "string" && p.name.trim() ? p.name.trim().slice(0, 24) : "Aymane",
+    color: AVATAR_COLORS.includes(p.color) ? p.color : AVATAR_COLORS[0],
+  };
+};
+
+export const saveProfile = (profile) => {
+  const cur = loadProfile();
+  const next = {
+    name: typeof profile.name === "string" && profile.name.trim() ? profile.name.trim().slice(0, 24) : cur.name,
+    color: AVATAR_COLORS.includes(profile.color) ? profile.color : cur.color,
+  };
+  write(PROFILE_KEY, next);
+  return next;
+};
+
+// ---- XP + ranks: 10 XP per correct answer, +50 bonus per completed exam/daily ----
+export const getXP = () => {
+  let xp = 0;
+  loadHistory().forEach((e) => {
+    xp += (e.correct || 0) * 10;
+    if ((e.mode === "exam" || e.mode === "daily") && e.total > 0) xp += 50;
+  });
+  return xp;
+};
+
+export const RANKS = [
+  { min: 0, en: "Beginner", fr: "Débutant" },
+  { min: 500, en: "Intermediate", fr: "Intermédiaire" },
+  { min: 1500, en: "Advanced", fr: "Avancé" },
+  { min: 3000, en: "Expert", fr: "Expert" },
+  { min: 6000, en: "Master", fr: "Maître" },
+];
+
+export const getRank = (xp) => {
+  let idx = 0;
+  RANKS.forEach((r, i) => {
+    if (xp >= r.min) idx = i;
+  });
+  const current = RANKS[idx];
+  const next = RANKS[idx + 1] || null;
+  const progress = next
+    ? Math.min(100, Math.round(((xp - current.min) / (next.min - current.min)) * 100))
+    : 100;
+  return { current, next, progress, xp };
+};
+
+// ---- Aggregated profile stats ----
+export const getProfileStats = () => {
+  const h = loadHistory().filter((e) => e.total > 0);
+  let correct = 0;
+  let total = 0;
+  let best = 0;
+  const per = {};
+  h.forEach((e) => {
+    correct += e.correct || 0;
+    total += e.total;
+    const pct = (e.correct / e.total) * 100;
+    if (pct > best) best = pct;
+    if (
+      e.mode === "quiz" &&
+      Array.isArray(e.topics) &&
+      e.topics.length === 1 &&
+      TOPIC_KEYS.includes(e.topics[0])
+    ) {
+      const t = e.topics[0];
+      per[t] = per[t] || { n: 0, sum: 0 };
+      per[t].n += 1;
+      per[t].sum += pct;
+    }
+  });
+  const stacks = Object.entries(per)
+    .map(([t, s]) => ({ topic: t, avg: Math.round(s.sum / s.n), n: s.n }))
+    .sort((a, b) => b.avg - a.avg);
+  return {
+    sessions: h.length,
+    answered: total,
+    correct,
+    avg: total ? Math.round((correct / total) * 100) : 0,
+    best: Math.round(best),
+    stacks,
+  };
+};
+
 // ---- Score history: { date, mode, topics[], level, correct, total } ----
 export const loadHistory = () => read(HISTORY_KEY);
 

@@ -18,6 +18,7 @@ import { Revision } from "../Revision/Revision";
 import { Blitz } from "../Blitz/Blitz";
 import { ShareButton } from "../Share/ShareCard";
 import { QuestionTimer } from "../QuestionTimer/QuestionTimer";
+import { Profile } from "../Profile/Profile";
 import { getTopicQuestions, getExamQuestions, TOPIC_KEYS } from "../Data/QuestionAllData";
 import { getCodeChallenges } from "../Data/CodeChallenges";
 import { getDailyQuestions } from "../Data/daily";
@@ -236,6 +237,7 @@ export default function App() {
   const showBlitz = mode === 'blitz' && gameStarted;
   const showProgress = mode === 'progress';
   const showNotes = mode === 'notes';
+  const showProfile = mode === 'profile';
   const timedActive = timed && gameStarted &&
     (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');
   const currentQuestion = questionsOntranslate[question.value];
@@ -243,7 +245,11 @@ export default function App() {
   return (
 <>
 <Topbar />
-{showNotes ? (
+{showProfile ? (
+    <div className="game-profile">
+      <Profile />
+    </div>
+) : showNotes ? (
     <div className="game-notes">
       <Revision />
     </div>

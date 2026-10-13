@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { TOPIC_KEYS } from '../Quiz/Data/QuestionAllData'
+import { loadProfile, saveProfile } from '../Quiz/Data/storage'
 
 export const LangueContext = createContext()
 
@@ -25,6 +26,9 @@ export const LangueContext = createContext()
   const [timePerQuestion, setTimePerQuestion] = useState(30)
   // home menu: true = show grouped menu, false = show selected mode's setup
   const [menuOpen, setMenuOpen] = useState(true)
+  // user profile: { name, color }
+  const [profile, setProfileState] = useState(() => loadProfile())
+  const updateProfile = (p) => setProfileState(saveProfile(p))
 
   return (
 
@@ -42,7 +46,8 @@ export const LangueContext = createContext()
       examCount,setExamCount,
       timed,setTimed,
       timePerQuestion,setTimePerQuestion,
-      menuOpen,setMenuOpen
+      menuOpen,setMenuOpen,
+      profile,updateProfile
       }}>
 
      {children}

@@ -4,10 +4,18 @@ import { LangueContext } from '../../Context/LangueContext'
 import { getStreak, getTodayResult } from '../Data/storage'
 
 export const Topbar = () => {
-  const { langueTrans, setlangueTrans } = useContext(LangueContext)
+  const { langueTrans, setlangueTrans, setMode, setMenuOpen, setGameStarted, profile } = useContext(LangueContext)
   const FR = langueTrans === 'FR'
   const streak = getStreak()
   const dailyDone = !!getTodayResult()
+
+  const openProfile = () => {
+    setGameStarted(false)
+    setMode('profile')
+    setMenuOpen(false)
+  }
+
+  const initial = (profile.name || 'A').trim().charAt(0).toUpperCase()
 
   const Langs = [
     { id: 'EN', text: 'EN' },
@@ -43,8 +51,20 @@ export const Topbar = () => {
           📅{dailyDone ? ' ✓' : ''}
         </span>
       </div>
-      <div className='translate'>
-        {LangsTranslate}
+      <div className='topbar-right'>
+        <button
+          type='button'
+          className='topbar-avatar'
+          style={{ background: profile.color }}
+          onClick={openProfile}
+          title={FR ? 'Profil' : 'Profile'}
+          aria-label={FR ? 'Profil' : 'Profile'}
+        >
+          {initial}
+        </button>
+        <div className='translate'>
+          {LangsTranslate}
+        </div>
       </div>
     </div>
   )
