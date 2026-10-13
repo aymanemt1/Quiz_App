@@ -7,7 +7,7 @@ export const Indicator = ({questions,question}) => {
     const indicatorBg = (index) => {
 
         if (question.value > index) {
-          return "#a855f7";
+          return "#c6ff3d";
         } else if (question.value === index) {
           return "#f0abfc";
         } else {

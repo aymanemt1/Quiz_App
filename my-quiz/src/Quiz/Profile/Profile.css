@@ -10,7 +10,7 @@
 }
 
 .profile-card {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -27,7 +27,7 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(220, 255, 122, 0.6), transparent);
 }
 
 .profile-identity {
@@ -46,7 +46,7 @@
   font-size: 30px;
   font-weight: 800;
   color: #fff;
-  border: 3px solid rgba(168, 85, 247, 0.5);
+  border: 3px solid rgba(198, 255, 61, 0.5);
   box-shadow: var(--pq-glow-sm);
   flex-shrink: 0;
 }
@@ -65,8 +65,8 @@
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--pq-purple-light);
-  background: rgba(168, 85, 247, 0.12);
+  color: var(--pq-accent-light);
+  background: rgba(198, 255, 61, 0.12);
   border: 1px solid var(--pq-border);
   padding: 6px 14px;
   border-radius: 999px;
@@ -79,8 +79,8 @@
   font-family: inherit;
   font-size: 13px;
   font-weight: 700;
-  color: var(--pq-purple-light);
-  background: rgba(168, 85, 247, 0.1);
+  color: var(--pq-accent-light);
+  background: rgba(198, 255, 61, 0.1);
   border: 1px solid var(--pq-border);
   border-radius: 999px;
   cursor: pointer;
@@ -89,7 +89,7 @@
 }
 
 .profile-edit-btn:hover {
-  background: rgba(168, 85, 247, 0.2);
+  background: rgba(198, 255, 61, 0.2);
 }
 
 .profile-editor {
@@ -117,7 +117,7 @@
   font-size: 16px;
   font-weight: 600;
   color: var(--pq-text);
-  background: rgba(10, 6, 24, 0.6);
+  background: rgba(7, 8, 10, 0.6);
   border: 1px solid var(--pq-border);
   border-radius: var(--pq-radius-sm);
   outline: none;
@@ -125,8 +125,8 @@
 }
 
 .profile-field input:focus {
-  border-color: var(--pq-purple);
-  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.22);
+  border-color: var(--pq-accent);
+  box-shadow: 0 0 0 3px rgba(198, 255, 61, 0.22);
 }
 
 .profile-colors {
@@ -169,7 +169,7 @@
 .profile-xp-bar {
   height: 12px;
   border-radius: 999px;
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   border: 1px solid var(--pq-border-soft);
   overflow: hidden;
 }
@@ -178,7 +178,7 @@
   height: 100%;
   border-radius: 999px;
   background: var(--pq-grad);
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 14px rgba(198, 255, 61, 0.6);
   transition: width 0.5s ease;
 }
 
@@ -187,7 +187,7 @@
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: var(--pq-purple-light);
+  color: var(--pq-accent-light);
   margin: 0 2px 12px;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .profile-stat {
-  background: linear-gradient(165deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(165deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius-sm);
   padding: 18px 12px;
@@ -234,7 +234,7 @@
   grid-template-columns: 1fr auto;
   gap: 6px 12px;
   align-items: center;
-  background: rgba(168, 85, 247, 0.06);
+  background: rgba(198, 255, 61, 0.06);
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius-sm);
   padding: 12px 16px;
@@ -251,14 +251,14 @@
 .profile-stack-avg {
   font-size: 14px;
   font-weight: 800;
-  color: var(--pq-purple-light);
+  color: var(--pq-accent-light);
 }
 
 .profile-stack-bar {
   grid-column: 1 / -1;
   height: 7px;
   border-radius: 999px;
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   overflow: hidden;
 }
 
@@ -275,7 +275,7 @@
   font-size: 14px;
   line-height: 1.7;
   padding: 30px 16px;
-  background: rgba(168, 85, 247, 0.05);
+  background: rgba(198, 255, 61, 0.05);
   border: 1px dashed var(--pq-border);
   border-radius: var(--pq-radius);
 }

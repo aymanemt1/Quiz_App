@@ -11,7 +11,7 @@
   letter-spacing: -0.4px;
   text-align: center;
   margin: 6px 0 8px;
-  background: linear-gradient(120deg, #fff 30%, var(--pq-purple-light) 70%, var(--pq-pink));
+  background: linear-gradient(120deg, #fff 30%, var(--pq-accent-light) 70%, var(--pq-accent3));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -28,7 +28,7 @@
 }
 
 .interview-card {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -42,8 +42,8 @@
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--pq-purple-light);
-  background: rgba(168, 85, 247, 0.12);
+  color: var(--pq-accent-light);
+  background: rgba(198, 255, 61, 0.12);
   border: 1px solid var(--pq-border-soft);
   padding: 7px 14px;
   border-radius: 999px;
@@ -61,9 +61,9 @@
   font-size: 15px;
   line-height: 1.75;
   color: var(--pq-dim);
-  background: rgba(10, 6, 24, 0.55);
+  background: rgba(7, 8, 10, 0.55);
   border: 1px solid var(--pq-border-soft);
-  border-left: 3px solid var(--pq-purple);
+  border-left: 3px solid var(--pq-accent);
   border-radius: var(--pq-radius-sm);
   padding: 18px;
   margin: 0 0 20px;
@@ -85,8 +85,8 @@
   padding: 14px 24px;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 800;
+  color: #0b0d10;
   background: var(--pq-grad);
   border: none;
   border-radius: 999px;
@@ -115,7 +115,7 @@
 
 /* summary */
 .interview-summary {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -137,7 +137,7 @@
   padding: 18px 10px;
   border-radius: var(--pq-radius-sm);
   border: 1px solid var(--pq-border-soft);
-  background: rgba(10, 6, 24, 0.4);
+  background: rgba(7, 8, 10, 0.4);
 }
 
 .interview-score-item.is-known {

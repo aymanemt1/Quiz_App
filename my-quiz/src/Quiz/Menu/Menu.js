@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import './Menu.css';
 import { LangueContext } from '../../Context/LangueContext';
-import { WeakSpot } from '../WeakSpot/WeakSpot';
-import { getMistakeCount, getTodayResult } from '../Data/storage';
+import { getTodayResult, getStreak } from '../Data/storage';
 
 // Grouped home menu: 4 sections, each card opens one mode's setup step.
-const SECTIONS = [
+// Exported for reuse by the navigation drawer.
+export const SECTIONS = [
   {
     id: 'learn',
     icon: '📚',
@@ -100,21 +100,29 @@ const SECTIONS = [
 export const Menu = ({ onSelect }) => {
   const { langueTrans } = useContext(LangueContext);
   const FR = langueTrans === 'FR';
-  const mistakeCount = getMistakeCount(langueTrans);
+  const streak = getStreak();
   const dailyDone = !!getTodayResult();
 
-  const badgeFor = (badge) => {
-    if (badge === 'mistakes' && mistakeCount > 0) {
-      return <span className="menu-card-badge">{mistakeCount}</span>;
-    }
-    if (badge === 'daily' && dailyDone) {
-      return <span className="menu-card-badge menu-card-badge-done">✓</span>;
-    }
-    return null;
-  };
+  // Home is intentionally minimal: hero + status + 3 quick actions.
+  // Everything else lives in the hamburger drawer.
+  const quickActions = [
+    {
+      mode: 'quiz', icon: '🧠',
+      en: 'Start quiz', fr: 'Démarrer un quiz',
+    },
+    {
+      mode: 'daily', icon: '📅',
+      en: 'Daily challenge', fr: 'Défi du jour',
+      badge: dailyDone ? '✓' : null,
+    },
+    {
+      mode: 'notes', icon: '📖',
+      en: 'Course', fr: 'Cours',
+    },
+  ];
 
   return (
-    <div className="menu">
+    <div className="menu menu-home">
       <div className="menu-hero">
         <img
           src={`${process.env.PUBLIC_URL}/logo.svg`}
@@ -128,37 +136,40 @@ export const Menu = ({ onSelect }) => {
             : "Master your dev stacks, one quiz at a time"}
         </p>
       </div>
-      {SECTIONS.map((s) => (
-        <section key={s.id} className="menu-section">
-          <h2 className="menu-section-title">
-            <span className="menu-section-icon" aria-hidden="true">{s.icon}</span>
-            {FR ? s.fr : s.en}
-          </h2>
-          <div className="menu-cards">
-            {s.cards.map((c) => (
-              <button
-                key={c.mode}
-                type="button"
-                className="menu-card"
-                onClick={() => onSelect(c.mode)}
-              >
-                <span className="menu-card-icon" aria-hidden="true">{c.icon}</span>
-                <span className="menu-card-text">
-                  <span className="menu-card-title">{FR ? c.fr : c.en}</span>
-                  <span className="menu-card-desc">{FR ? c.frDesc : c.enDesc}</span>
-                </span>
-                {badgeFor(c.badge)}
-                <span className="menu-card-arrow" aria-hidden="true">›</span>
-              </button>
-            ))}
-          </div>
-          {s.weakSpot && (
-            <div className="menu-weakspot">
-              <WeakSpot />
-            </div>
-          )}
-        </section>
-      ))}
+
+      <div className="menu-status-row">
+        {streak > 0 && (
+          <span className="menu-status-pill menu-status-streak">
+            🔥 {streak} {FR ? (streak > 1 ? 'jours' : 'jour') : (streak > 1 ? 'days' : 'day')}
+          </span>
+        )}
+        <span className={`menu-status-pill ${dailyDone ? 'menu-status-done' : ''}`}>
+          {dailyDone
+            ? (FR ? '📅 Défi du jour ✓' : '📅 Daily done ✓')
+            : (FR ? '📅 Défi du jour à faire' : '📅 Daily challenge pending')}
+        </span>
+      </div>
+
+      <div className="menu-quick-actions">
+        {quickActions.map((a) => (
+          <button
+            key={a.mode}
+            type="button"
+            className="menu-quick-btn"
+            onClick={() => onSelect(a.mode)}
+          >
+            <span className="menu-quick-icon" aria-hidden="true">{a.icon}</span>
+            <span>{FR ? a.fr : a.en}</span>
+            {a.badge && <span className="menu-quick-badge">{a.badge}</span>}
+          </button>
+        ))}
+      </div>
+
+      <p className="menu-drawer-hint">
+        {FR
+          ? '☰ Tout le reste est dans le menu'
+          : '☰ Everything else is in the menu'}
+      </p>
     </div>
   );
 };

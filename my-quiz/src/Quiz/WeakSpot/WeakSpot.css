@@ -6,13 +6,13 @@
   padding: 18px;
   border-radius: var(--pq-radius);
   border: 1px solid var(--pq-border-soft);
-  background: linear-gradient(165deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.04));
+  background: linear-gradient(165deg, rgba(198, 255, 61, 0.1), rgba(198, 255, 61, 0.04));
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .weak-spot-alert {
   border-color: rgba(251, 191, 36, 0.4);
-  background: linear-gradient(165deg, rgba(251, 191, 36, 0.1), rgba(168, 85, 247, 0.05));
+  background: linear-gradient(165deg, rgba(251, 191, 36, 0.1), rgba(198, 255, 61, 0.05));
 }
 
 .weak-spot-idle {
@@ -33,7 +33,7 @@
 }
 
 .weak-spot-idle .weak-spot-icon {
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   border-color: var(--pq-border-soft);
 }
 
@@ -46,7 +46,7 @@
 }
 
 .weak-spot-text strong {
-  color: var(--pq-purple-light);
+  color: var(--pq-accent-light);
 }
 
 .weak-spot-hint {

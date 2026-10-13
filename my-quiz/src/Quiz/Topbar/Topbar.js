@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import './Topbar.css'
 import { LangueContext } from '../../Context/LangueContext'
+import { Drawer } from '../Drawer/Drawer'
 import { getStreak, getTodayResult } from '../Data/storage'
 
 export const Topbar = () => {
-  const { langueTrans, setlangueTrans, setMode, setMenuOpen, setGameStarted, profile } = useContext(LangueContext)
+  const { langueTrans, setlangueTrans, setMode, setMenuOpen, setGameStarted, setDrawerOpen, profile } = useContext(LangueContext)
   const FR = langueTrans === 'FR'
   const streak = getStreak()
   const dailyDone = !!getTodayResult()
@@ -13,6 +14,12 @@ export const Topbar = () => {
     setGameStarted(false)
     setMode('profile')
     setMenuOpen(false)
+  }
+
+  const goHome = () => {
+    setDrawerOpen(false)
+    setMenuOpen(true)
+    setGameStarted(false)
   }
 
   const initial = (profile.name || 'A').trim().charAt(0).toUpperCase()
@@ -37,13 +44,25 @@ export const Topbar = () => {
   ))
 
   return (
+    <>
     <div className='topbar'>
       <div className='topbar-left'>
+        <button
+          type='button'
+          className='topbar-burger'
+          onClick={() => setDrawerOpen(true)}
+          aria-label={FR ? 'Ouvrir le menu' : 'Open menu'}
+          title={FR ? 'Menu' : 'Menu'}
+        >
+          <span aria-hidden='true' />
+          <span aria-hidden='true' />
+          <span aria-hidden='true' />
+        </button>
         <img
           src={`${process.env.PUBLIC_URL}/logo.svg`}
           alt="Quiz App"
           className='topbar-logo'
-          onClick={() => { setMenuOpen(true); setGameStarted(false); }}
+          onClick={goHome}
         />
         {streak > 0 && (
           <span className='topbar-streak' title={FR ? `${streak} jours de suite` : `${streak} days in a row`}>
@@ -73,5 +92,7 @@ export const Topbar = () => {
         </div>
       </div>
     </div>
+    <Drawer />
+    </>
   )
 }

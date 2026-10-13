@@ -37,8 +37,8 @@ const write = (key, value) => {
 const PROFILE_KEY = "quizapp_profile_v1";
 
 export const AVATAR_COLORS = [
-  "#6366f1",
-  "#8b5cf6",
+  "#a3e635",
+  "#4ade80",
   "#ec4899",
   "#10b981",
   "#f59e0b",

@@ -31,7 +31,7 @@
   font-weight: 600;
   text-align: left;
   color: var(--pq-dim);
-  background: rgba(168, 85, 247, 0.06);
+  background: rgba(198, 255, 61, 0.06);
   border: 1px solid var(--pq-border-soft);
   border-radius: 16px;
   cursor: pointer;
@@ -40,7 +40,7 @@
 }
 
 .stack-btn:hover {
-  border-color: var(--pq-purple);
+  border-color: var(--pq-accent);
   color: var(--pq-text);
   transform: translateY(-2px);
 }
@@ -51,7 +51,7 @@
 
 .stack-btn.stack-active {
   background: var(--pq-grad-soft);
-  border-color: var(--pq-purple);
+  border-color: var(--pq-accent);
   color: #fff;
   box-shadow: var(--pq-glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }

@@ -11,7 +11,7 @@
   letter-spacing: -0.4px;
   text-align: center;
   margin: 6px 0 18px;
-  background: linear-gradient(120deg, #fff 30%, var(--pq-purple-light) 70%, var(--pq-pink));
+  background: linear-gradient(120deg, #fff 30%, var(--pq-accent-light) 70%, var(--pq-accent3));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -25,7 +25,7 @@
 }
 
 .progress-stat {
-  background: linear-gradient(165deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(165deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius-sm);
   padding: 18px 12px;
@@ -57,7 +57,7 @@
 }
 
 .progress-topic {
-  background: rgba(168, 85, 247, 0.06);
+  background: rgba(198, 255, 61, 0.06);
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius-sm);
   padding: 14px 16px;
@@ -65,7 +65,7 @@
 }
 
 .progress-topic:hover {
-  border-color: var(--pq-purple);
+  border-color: var(--pq-accent);
 }
 
 .progress-topic-name {
@@ -88,7 +88,7 @@
 .progress-bar {
   height: 8px;
   border-radius: 999px;
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   overflow: hidden;
 }
 
@@ -96,7 +96,7 @@
   height: 100%;
   border-radius: 999px;
   background: var(--pq-grad);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.55);
+  box-shadow: 0 0 10px rgba(198, 255, 61, 0.55);
   transition: width 0.4s ease;
 }
 
@@ -106,7 +106,7 @@
   padding: 44px 20px;
   font-size: 15px;
   line-height: 1.7;
-  background: rgba(168, 85, 247, 0.05);
+  background: rgba(198, 255, 61, 0.05);
   border: 1px dashed var(--pq-border);
   border-radius: var(--pq-radius);
 }

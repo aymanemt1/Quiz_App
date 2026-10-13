@@ -26,6 +26,8 @@ export const LangueContext = createContext()
   const [timePerQuestion, setTimePerQuestion] = useState(30)
   // home menu: true = show grouped menu, false = show selected mode's setup
   const [menuOpen, setMenuOpen] = useState(true)
+  // slide-in navigation drawer
+  const [drawerOpen, setDrawerOpen] = useState(false)
   // user profile: { name, color }
   const [profile, setProfileState] = useState(() => loadProfile())
   const updateProfile = (p) => setProfileState(saveProfile(p))
@@ -47,6 +49,7 @@ export const LangueContext = createContext()
       timed,setTimed,
       timePerQuestion,setTimePerQuestion,
       menuOpen,setMenuOpen,
+      drawerOpen,setDrawerOpen,
       profile,updateProfile
       }}>
 

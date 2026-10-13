@@ -30,7 +30,7 @@
   font-size: 14px;
   font-weight: 700;
   color: var(--pq-dim);
-  background: rgba(168, 85, 247, 0.07);
+  background: rgba(198, 255, 61, 0.07);
   border: 1px solid var(--pq-border-soft);
   border-radius: 999px;
   cursor: pointer;
@@ -38,7 +38,7 @@
 }
 
 .level-button:hover {
-  border-color: var(--pq-purple);
+  border-color: var(--pq-accent);
   color: var(--pq-text);
   transform: translateY(-1px);
 }
@@ -50,7 +50,8 @@
 .level-button.level-active {
   background: var(--pq-grad);
   border-color: transparent;
-  color: #fff;
+  color: #0b0d10;
+  font-weight: 700;
   box-shadow: var(--pq-glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
@@ -58,7 +59,7 @@
 .timed-toggle {
   margin: 18px 0 6px;
   padding: 16px;
-  background: linear-gradient(165deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.04));
+  background: linear-gradient(165deg, rgba(198, 255, 61, 0.1), rgba(198, 255, 61, 0.04));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius-sm);
   text-align: left;
@@ -103,7 +104,7 @@
 .exam-check input[type="checkbox"] {
   width: 20px;
   height: 20px;
-  accent-color: var(--pq-purple);
+  accent-color: var(--pq-accent);
   cursor: pointer;
 }
 

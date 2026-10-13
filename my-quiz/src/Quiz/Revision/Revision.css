@@ -27,7 +27,7 @@
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: var(--pq-purple-light);
+  color: var(--pq-accent-light);
   margin-bottom: 12px;
   text-align: center;
 }
@@ -35,7 +35,7 @@
 .revision-progress {
   height: 10px;
   border-radius: 999px;
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   border: 1px solid var(--pq-border-soft);
   overflow: hidden;
   margin-bottom: 18px;
@@ -45,12 +45,12 @@
   height: 100%;
   border-radius: 999px;
   background: var(--pq-grad);
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 14px rgba(198, 255, 61, 0.6);
   transition: width 0.35s ease;
 }
 
 .revision-card {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.14), rgba(168, 85, 247, 0.05));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.14), rgba(198, 255, 61, 0.05));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -67,7 +67,7 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(220, 255, 122, 0.6), transparent);
 }
 
 .revision-point {
@@ -80,9 +80,9 @@
 .revision-point code {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.88em;
-  color: #f0abfc;
-  background: rgba(217, 70, 239, 0.12);
-  border: 1px solid rgba(217, 70, 239, 0.28);
+  color: #bef264;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.28);
   padding: 2px 8px;
   border-radius: 8px;
   white-space: nowrap;

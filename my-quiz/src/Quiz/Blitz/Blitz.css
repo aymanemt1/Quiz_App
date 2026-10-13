@@ -19,14 +19,14 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--pq-text);
-  background: rgba(168, 85, 247, 0.1);
+  background: rgba(198, 255, 61, 0.1);
   border: 1px solid var(--pq-border-soft);
   padding: 10px 18px;
   border-radius: 999px;
 }
 
 .blitz-score-count {
-  color: var(--pq-purple-light);
+  color: var(--pq-accent-light);
   font-size: 18px;
 }
 
@@ -37,7 +37,7 @@
 .blitz-bar {
   height: 12px;
   border-radius: 999px;
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(198, 255, 61, 0.12);
   border: 1px solid var(--pq-border-soft);
   overflow: hidden;
   margin-bottom: 18px;
@@ -47,12 +47,12 @@
   height: 100%;
   border-radius: 999px;
   background: var(--pq-grad);
-  box-shadow: 0 0 16px rgba(168, 85, 247, 0.65);
+  box-shadow: 0 0 16px rgba(198, 255, 61, 0.65);
   transition: width 1s linear;
 }
 
 .blitz-card {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -113,7 +113,7 @@
 
 /* end screen */
 .blitz-end {
-  background: linear-gradient(170deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
   border: 1px solid var(--pq-border-soft);
   border-radius: var(--pq-radius);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.42);
@@ -126,7 +126,7 @@
   font-size: clamp(24px, 6vw, 32px);
   font-weight: 800;
   margin: 0 0 8px;
-  background: linear-gradient(120deg, #fff 30%, var(--pq-purple-light) 70%, var(--pq-pink));
+  background: linear-gradient(120deg, #fff 30%, var(--pq-accent-light) 70%, var(--pq-accent3));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -137,7 +137,7 @@
   font-weight: 800;
   letter-spacing: -2px;
   color: #fff;
-  text-shadow: 0 0 36px rgba(168, 85, 247, 0.55);
+  text-shadow: 0 0 36px rgba(198, 255, 61, 0.55);
   line-height: 1;
   margin: 18px 0 6px;
 }
