@@ -52,8 +52,7 @@ body {
 
 /* ---------- Premium primary buttons ---------- */
 .intro-button,
-.restart-button,
-.tryagain-button,
+.retry-button,
 .share-button,
 .profile-save-btn,
 .weak-spot-button,
@@ -80,8 +79,7 @@ body {
 }
 
 .intro-button:hover,
-.restart-button:hover,
-.tryagain-button:hover,
+.retry-button:hover,
 .share-button:hover,
 .profile-save-btn:hover,
 .weak-spot-button:hover,
@@ -92,8 +90,7 @@ body {
 }
 
 .intro-button:active,
-.restart-button:active,
-.tryagain-button:active,
+.retry-button:active,
 .share-button:active,
 .profile-save-btn:active,
 .weak-spot-button:active,
@@ -311,8 +308,7 @@ body {
   }
 
   .intro-button,
-  .restart-button,
-  .tryagain-button {
+  .retry-button {
     width: 100%;
   }
 

@@ -41,7 +41,7 @@ export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
     langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount,
-    timed,timePerQuestion,codeTopic} =useContext(LangueContext)
+    timed,timePerQuestion,codeTopic,setMenuOpen} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
   const questionsOntranslate = useMemo(() => {
@@ -121,7 +121,7 @@ export default function App() {
     questionsOntranslate.map((q) => (q.selection = null));
   };
 
-  const handleRestartClick = () => {
+  const handleBackToMenu = () => {
     setGameFinished(false);
     setGameStarted(false);
     resetSelection();
@@ -131,6 +131,7 @@ export default function App() {
     empty.reset();
     timedOutRef.current.clear();
     setRunKey((k) => k + 1);
+    setMenuOpen(true);
   };
 
   const handleTryagain = () => {
@@ -241,6 +242,11 @@ export default function App() {
   const timedActive = timed && gameStarted &&
     (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');
   const currentQuestion = questionsOntranslate[question.value];
+  const FR = langueTrans === "FR";
+  // A run is only "finished" once every question was consumed…
+  const runFinished = questionsOntranslate.length > 0 && question.value > totalQuestion;
+  // …and results are only meaningful if at least one question was answered
+  const hasAnswers = correct.value + wrong.value > 0;
 
   return (
 <>
@@ -298,30 +304,49 @@ export default function App() {
      </div>
        ) : ''}
 
-          <Results
-            wrong={wrong.value}
-            correct={correct.value}
-            empty={empty.value}
-          />
-         <div className="btnsResult">
-         <button
-            className="restart-button"
-            onClick={() => handleRestartClick()}
-          >
-            {langueTrans === "EN" ? 'Restart Quiz' : 'Recommencer'}
-          </button>
-          <button
-            className="tryagain-button"
-            onClick={() => handleTryagain()}
-            >
-            {langueTrans === "EN" ? ' Try Again' : 'Réessayer'}
-
-          </button>
-          <ShareButton
-            correct={correct.value}
-            total={questionsOntranslate.length}
-          />
-         </div>
+          {runFinished && (
+            hasAnswers ? (
+              <>
+                <Results
+                  wrong={wrong.value}
+                  correct={correct.value}
+                  empty={empty.value}
+                />
+                <div className="btnsResult">
+                  <button
+                    className="retry-button intro-button"
+                    onClick={() => handleTryagain()}
+                  >
+                    {FR ? 'Rejouer' : 'Retry'}
+                  </button>
+                  <button
+                    className="menu-back"
+                    onClick={() => handleBackToMenu()}
+                  >
+                    ← {FR ? 'Menu' : 'Menu'}
+                  </button>
+                  <ShareButton
+                    correct={correct.value}
+                    total={questionsOntranslate.length}
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="results-empty">
+                <p>
+                  {FR
+                    ? "Aucun résultat — termine d'abord un quiz."
+                    : "No results yet — finish a quiz first."}
+                </p>
+                <button
+                  className="menu-back"
+                  onClick={() => handleBackToMenu()}
+                >
+                  ← {FR ? 'Menu' : 'Menu'}
+                </button>
+              </div>
+            )
+          )}
         </div>
       </div>
 
