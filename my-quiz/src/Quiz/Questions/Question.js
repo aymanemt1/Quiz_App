@@ -72,6 +72,11 @@ function Question({
             </div>
           )}
           <h2 className="question-text">{data.text}</h2>
+          {data.code && (
+            <pre className="question-code">
+              <code>{data.code}</code>
+            </pre>
+          )}
           <ul className="question-answers">
             {data.answers.map((text, index) => {
               const value = `q${data.id}-${index}`;

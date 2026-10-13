@@ -1,4 +1,6 @@
 // localStorage persistence: score history + mistakes to review
+import { TOPIC_KEYS } from "./QuestionAllData";
+
 const HISTORY_KEY = "quizapp_history_v1";
 const MISTAKES_KEY = "quizapp_mistakes_v1";
 const DAILY_KEY = "quizapp_daily_v1";
@@ -41,6 +43,34 @@ export const saveHistoryEntry = (entry) => {
 };
 
 export const clearHistory = () => write(HISTORY_KEY, []);
+
+// ---- Weak spot: single-topic quiz stack with the lowest average score ----
+// Requires at least 2 finished sessions on a stack to qualify.
+export const getWeakSpot = () => {
+  const per = {};
+  loadHistory()
+    .filter(
+      (e) =>
+        e.mode === "quiz" &&
+        e.total > 0 &&
+        Array.isArray(e.topics) &&
+        e.topics.length === 1 &&
+        TOPIC_KEYS.includes(e.topics[0])
+    )
+    .forEach((e) => {
+      const t = e.topics[0];
+      per[t] = per[t] || { n: 0, sum: 0 };
+      per[t].n += 1;
+      per[t].sum += (e.correct / e.total) * 100;
+    });
+  let worst = null;
+  Object.entries(per).forEach(([t, s]) => {
+    if (s.n < 2) return;
+    const avg = Math.round(s.sum / s.n);
+    if (!worst || avg < worst.avg) worst = { topic: t, avg };
+  });
+  return worst;
+};
 
 // ---- Mistakes: { id, topic, lang, level, text, answers[], correct } ----
 export const loadMistakes = () => read(MISTAKES_KEY);

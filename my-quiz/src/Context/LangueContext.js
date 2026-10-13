@@ -11,10 +11,12 @@ export const LangueContext = createContext()
   const [gameStarted, setGameStarted] = useState(false);
   const [showCorrectAnswer, setshowCorrectAnswer] =useState(null);
   const [isremoved,setIsremoved]=useState(false)
-  // 'quiz' | 'exam' | 'daily' | 'interview' | 'review' | 'notes' | 'progress'
+  // 'quiz' | 'exam' | 'daily' | 'interview' | 'review' | 'notes' | 'progress' | 'code' | 'blitz'
   const [mode, setMode] = useState('quiz')
   // 'all' | 1..5 — difficulty filter for quiz & exam
   const [level, setLevel] = useState('all')
+  // code-challenge topic: 'All' or one of CODE_TOPICS
+  const [codeTopic, setCodeTopic] = useState('All')
   // exam builder state
   const [examTopics, setExamTopics] = useState([...TOPIC_KEYS])
   const [examCount, setExamCount] = useState(20)
@@ -33,6 +35,7 @@ export const LangueContext = createContext()
       isremoved,setIsremoved,
       mode,setMode,
       level,setLevel,
+      codeTopic,setCodeTopic,
       examTopics,setExamTopics,
       examCount,setExamCount,
       timed,setTimed,

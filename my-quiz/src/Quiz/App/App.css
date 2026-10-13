@@ -139,6 +139,16 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
   overflow-y: auto;
 }
 
+.game-blitz {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1rem;
+  overflow-y: auto;
+}
+
 .game[data-game-started] .mode-selector {
   display: none;
 }

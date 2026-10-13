@@ -199,3 +199,33 @@ li,
   border-color: #a06bff;
   color: #5b21b6;
 }
+
+.question-code {
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #e2e8f0;
+  margin: 12px 0;
+  text-align: left;
+  white-space: pre;
+}
+
+.question-code code {
+  background: none;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .question-code {
+    font-size: 12.5px;
+    padding: 10px 12px;
+  }
+}

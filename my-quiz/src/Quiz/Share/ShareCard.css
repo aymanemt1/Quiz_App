@@ -1,0 +1,35 @@
+.share-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-button {
+  height: 40px;
+  border: 1px solid #818cf8;
+  margin: 11px 7px;
+  background-color: rgba(129, 140, 248, 0.15);
+  color: #fff;
+  border-radius: 4px;
+  padding: 3px 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 15px;
+}
+
+.share-button:hover:not(:disabled) {
+  background-color: #818cf8;
+  color: #0b1220;
+}
+
+.share-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.share-done {
+  font-size: 13px;
+  opacity: 0.8;
+  color: #fff;
+}

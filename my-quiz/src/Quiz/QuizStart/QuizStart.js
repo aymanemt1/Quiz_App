@@ -2,15 +2,19 @@ import React, { useContext } from 'react'
 import "./QuizStart.css"
 import { LangueContext } from '../../Context/LangueContext';
 import { TOPIC_KEYS, TOPIC_LABELS } from '../Data/QuestionAllData';
+import { CODE_TOPICS } from '../Data/CodeChallenges';
 import { LEVELS, levelLabel } from '../Data/levels';
 import { getMistakeCount, getStreak, getTodayResult } from '../Data/storage';
 import { DAILY_COUNT } from '../Data/daily';
 import { Progress } from '../Progress/Progress';
+import { WeakSpot } from '../WeakSpot/WeakSpot';
 
 const MODES = [
   { id: 'quiz', en: 'Quiz', fr: 'Quiz' },
+  { id: 'code', en: 'Code', fr: 'Code' },
   { id: 'exam', en: 'Exam', fr: 'Examen' },
   { id: 'daily', en: 'Daily challenge', fr: 'Défi du jour' },
+  { id: 'blitz', en: 'Blitz', fr: 'Blitz' },
   { id: 'interview', en: 'Interview', fr: 'Entretien' },
   { id: 'review', en: 'Mistakes', fr: 'Erreurs' },
   { id: 'notes', en: 'Notes', fr: 'Fiches' },
@@ -138,7 +142,8 @@ const ExamBuilder = () => {
 
 export const QuizStart = ({questions}) => {
 const {langue,setlangue,langueTrans,gameStarted,setGameStarted,mode,setMode,level,setLevel,
-  setGameFinished,setshowCorrectAnswer,setIsremoved,examTopics,timed,timePerQuestion} =useContext(LangueContext)
+  setGameFinished,setshowCorrectAnswer,setIsremoved,examTopics,timed,timePerQuestion,
+  codeTopic,setCodeTopic} =useContext(LangueContext)
 
 const FR = langueTrans === "FR";
 
@@ -157,7 +162,11 @@ const todayResult = mode === 'daily' ? getTodayResult() : null;
 
 const title = mode === 'exam'
   ? (FR ? "Examen personnalisé" : "Custom exam")
-  : mode === 'daily'
+  : mode === 'code'
+    ? (FR ? "Défi code" : "Code challenge")
+    : mode === 'blitz'
+      ? "Blitz"
+      : mode === 'daily'
     ? (FR ? "Défi du jour" : "Daily challenge")
     : mode === 'interview'
       ? (FR ? "Entretien" : "Interview")
@@ -181,7 +190,15 @@ const desc = mode === 'exam'
   ? (FR
       ? "Choisissez vos stacks, un niveau et le nombre de questions."
       : "Pick your stacks, a level and the question count.")
-  : mode === 'daily'
+  : mode === 'code'
+    ? (FR
+        ? "Lisez le code et devinez ce qu'il affiche."
+        : "Read the code and guess what it outputs.")
+    : mode === 'blitz'
+      ? (FR
+          ? "60 secondes : un maximum de Vrai/Faux. Go !"
+          : "60 seconds: as many True/False as you can. Go!")
+      : mode === 'daily'
     ? (todayResult
         ? (FR
             ? `Défi terminé aujourd'hui : ${todayResult.correct}/${todayResult.total}. Revenez demain !`
@@ -237,6 +254,8 @@ const startLabel = dailyDone
         </p>
       )}
 
+      {!gameStarted && <WeakSpot />}
+
       {mode === 'quiz' && (
         <>
           <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
@@ -252,6 +271,19 @@ const startLabel = dailyDone
       {mode === 'exam' && (
         <>
           <ExamBuilder />
+          <TimedToggle />
+        </>
+      )}
+
+      {mode === 'code' && (
+        <>
+          <select className='select_options' value={codeTopic} onChange={(e)=>setCodeTopic(e.target.value)}>
+            <option value='All'>{FR ? "Tous les stacks" : "All stacks"}</option>
+            {CODE_TOPICS.map((t) => (
+              <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
+            ))}
+          </select>
+          <LevelSelector value={level} onChange={setLevel} FR={FR} />
           <TimedToggle />
         </>
       )}

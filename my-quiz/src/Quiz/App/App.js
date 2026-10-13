@@ -15,8 +15,11 @@ import { QuizStart } from "../QuizStart/QuizStart";
 import { Interview } from "../Interview/Interview";
 import { Progress } from "../Progress/Progress";
 import { Revision } from "../Revision/Revision";
+import { Blitz } from "../Blitz/Blitz";
+import { ShareButton } from "../Share/ShareCard";
 import { QuestionTimer } from "../QuestionTimer/QuestionTimer";
 import { getTopicQuestions, getExamQuestions, TOPIC_KEYS } from "../Data/QuestionAllData";
+import { getCodeChallenges } from "../Data/CodeChallenges";
 import { getDailyQuestions } from "../Data/daily";
 import { loadMistakes, addMistakes, removeMistakes, saveHistoryEntry, todayStr, recordDailyCompletion } from "../Data/storage";
 import Timer from "../Timer/Timer";
@@ -37,13 +40,15 @@ export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
     langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount,
-    timed,timePerQuestion} =useContext(LangueContext)
+    timed,timePerQuestion,codeTopic} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
   const questionsOntranslate = useMemo(() => {
     let set = [];
     if (mode === 'exam') {
       set = getExamQuestions(langueTrans, examTopics, level, examCount);
+    } else if (mode === 'code') {
+      set = getCodeChallenges(langueTrans, codeTopic, level);
     } else if (mode === 'quiz') {
       const topic = TOPIC_KEYS.includes(langue) ? langue : 'React';
       set = getTopicQuestions(topic, langueTrans, level).map((q, i) => ({ ...q, id: i, selection: null, topic }));
@@ -57,13 +62,14 @@ export default function App() {
         topic: m.topic,
         level: m.level,
         text: m.text,
+        code: m.code || undefined,
         answers: m.answers,
         correct: m.correct,
         selection: null,
       }));
     }
     return set;
-  }, [mode, langue, langueTrans, level, examTopics, examCount]);
+  }, [mode, langue, langueTrans, level, examTopics, examCount, codeTopic]);
 
   const totalQuestion = questionsOntranslate.length - 1;
 
@@ -172,13 +178,15 @@ export default function App() {
     const total = questionsOntranslate.length;
     const topics = mode === 'quiz'
       ? [langue]
-      : mode === 'exam'
-        ? [...examTopics]
-        : mode === 'review'
-          ? ['Review']
-          : mode === 'daily'
-            ? ['Daily']
-            : [mode];
+      : mode === 'code'
+        ? [...new Set(questionsOntranslate.map((q) => q.topic).filter(Boolean))]
+        : mode === 'exam'
+          ? [...examTopics]
+          : mode === 'review'
+            ? ['Review']
+            : mode === 'daily'
+              ? ['Daily']
+              : [mode];
     saveHistoryEntry({
       date: new Date().toISOString(),
       mode,
@@ -188,7 +196,7 @@ export default function App() {
       total,
     });
     if (mode === 'daily') recordDailyCompletion(correct.value, total);
-    if (mode === 'quiz' || mode === 'exam' || mode === 'daily') {
+    if (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code') {
       const missed = questionsOntranslate
         .filter((q) => q.selection !== null && q.selection !== q.correct)
         .map((q) => ({
@@ -197,6 +205,7 @@ export default function App() {
           lang: langueTrans,
           level: q.level || 1,
           text: q.text,
+          code: q.code || undefined,
           answers: q.answers,
           correct: q.correct,
         }));
@@ -224,10 +233,11 @@ export default function App() {
   }
 
   const showInterview = mode === 'interview' && gameStarted;
+  const showBlitz = mode === 'blitz' && gameStarted;
   const showProgress = mode === 'progress';
   const showNotes = mode === 'notes';
   const timedActive = timed && gameStarted &&
-    (mode === 'quiz' || mode === 'exam' || mode === 'daily');
+    (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');
   const currentQuestion = questionsOntranslate[question.value];
 
   return (
@@ -244,6 +254,10 @@ export default function App() {
 ) : showInterview ? (
     <div className="game-interview">
       <Interview />
+    </div>
+) : showBlitz ? (
+    <div className="game-blitz">
+      <Blitz />
     </div>
 ) : (
     <div
@@ -297,6 +311,10 @@ export default function App() {
             {langueTrans === "EN" ? ' Try Again' : 'Réessayer'}
 
           </button>
+          <ShareButton
+            correct={correct.value}
+            total={questionsOntranslate.length}
+          />
          </div>
         </div>
       </div>
