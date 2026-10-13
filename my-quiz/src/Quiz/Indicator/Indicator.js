@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext } from 'react'
 import "./Indicator.css"
 import { LangueContext } from '../../Context/LangueContext';
 export const Indicator = ({questions,question}) => {

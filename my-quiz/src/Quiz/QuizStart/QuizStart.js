@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import "./QuizStart.css"
 import { LangueContext } from '../../Context/LangueContext';
 
-import { driver } from "driver.js";
-import "driver.js/dist/driver.css";
 export const QuizStart = ({questions}) => {
 const {langue,setlangue,langueTrans,gameStarted,setGameStarted} =useContext(LangueContext)
 

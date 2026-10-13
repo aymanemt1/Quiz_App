@@ -47,7 +47,7 @@ function Question({
         }
       );
       setshowCorrectAnswer(showAnswer)
-    }, [data]);
+    }, [data, setshowCorrectAnswer, showAnswer]);
 
 
     if(showAnswer === true){
