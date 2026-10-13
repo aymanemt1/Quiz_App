@@ -5,6 +5,7 @@ export const questionsCss = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la color: chno kaydir had l rule l text dyal p? Tfakkar chno kay3ni property color.",
         "text": "What color is the text?",
         "code": "p { color: red; }\n<p>Hi</p>",
         "answers": [
@@ -19,6 +20,7 @@ export const questionsCss = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "Selector .box kay-targeti ghir l elements li 3andhom class box. Chkun ghayakhod l background?",
         "text": "Which element gets a blue background?",
         "code": ".box { background-color: blue; }\n<div class=\"box\">A</div>\n<div>B</div>",
         "answers": [
@@ -33,6 +35,7 @@ export const questionsCss = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "L # kay3ni id, machi class. Chno kay-targeti #main?",
         "text": "Which element does this selector target?",
         "code": "#main { font-size: 20px; }",
         "answers": [
@@ -47,6 +50,7 @@ export const questionsCss = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "L virgule kat-jme3 selectors. Chkun ghay-t2athar b had l rule?",
         "text": "What does this rule do?",
         "code": "h1, h2 { margin: 0; }",
         "answers": [
@@ -61,6 +65,7 @@ export const questionsCss = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "Comments f CSS kayt-tjahalo. Wach l rule li morahom ghaykhdem?",
         "text": "What happens to the comment?",
         "code": "/* sale styles */\n.price { color: red; }",
         "answers": [
@@ -75,6 +80,7 @@ export const questionsCss = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Padding b wa7ed l value kat-tapply 3la ga3 l jihat. Fin ghaytzad l padding?",
         "text": "Where is the padding applied?",
         "code": ".box { padding: 10px; }",
         "answers": [
@@ -89,6 +95,7 @@ export const questionsCss = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "Links 3andhom underline by default. Chno kaydir text-decoration: none?",
         "text": "What is the visual result?",
         "code": "a { text-decoration: none; }",
         "answers": [
@@ -103,6 +110,7 @@ export const questionsCss = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "Mlli kat-7ded ghir l width, chno kaytra l height? Fker f aspect ratio.",
         "text": "What happens to the image height?",
         "code": "img { width: 100px; }\n<img src=\"cat.jpg\">",
         "answers": [
@@ -117,6 +125,7 @@ export const questionsCss = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Text-align kay-controli l alignment dyal text. Chno ghaydir center?",
         "text": "How is the paragraph text aligned?",
         "code": "p { text-align: center; }",
         "answers": [
@@ -131,6 +140,7 @@ export const questionsCss = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Border shorthand: width, style, color. Chno ghayban?",
         "text": "What does the box look like?",
         "code": ".x { border: 2px solid black; }",
         "answers": [
@@ -145,6 +155,7 @@ export const questionsCss = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "CSS kayst3mel l spelling l amrikiya. Chno lmochkil m3a \"colour\"?",
         "text": "Why is the text not red?",
         "code": ".box { colour: red; }",
         "answers": [
@@ -159,6 +170,7 @@ export const questionsCss = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "CSS values khasshom unit (px, em...). Chno kaytra l declaration bla unit?",
         "text": "Why is the font size unchanged?",
         "code": "p { font-size: 16; }",
         "answers": [
@@ -173,6 +185,7 @@ export const questionsCss = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "Had selector kay-targeti id, walakin l div 3ando class. Chno l far9 bin # w .?",
         "text": "Why doesn't this rule apply to the div?",
         "code": "#box { color: red; }\n<div class=\"box\">Hi</div>",
         "answers": [
@@ -187,6 +200,7 @@ export const questionsCss = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "Descendant selector kay-matchi f ay profondeur. Chkun men l paragraphs ghay7mar?",
         "text": "Which paragraphs turn red?",
         "code": "div p { color: red; }\n<div><section><p>Hi</p></section></div>\n<p>Bye</p>",
         "answers": [
@@ -201,6 +215,7 @@ export const questionsCss = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "Auto margins kay-centriw ghir ila kayn space khawi. 3lach had l div ma t-centrach?",
         "text": "Why isn't this box horizontally centered?",
         "code": ".box { margin: 0 auto; }\n<div class=\"box\">Hi</div>",
         "answers": [
@@ -215,6 +230,7 @@ export const questionsCss = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la padding b joj values: chno kay3ni kola wa7da? Fker f l ordre dyalhom.",
         "text": "How much padding does the button get?",
         "code": ".btn { padding: 10px 20px; }",
         "answers": [
@@ -229,6 +245,7 @@ export const questionsCss = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l conflit bin inline style w stylesheet rule. Chkun kayghlb f CSS? Fker f l priority.",
         "text": "What color is the text?",
         "code": "p { color: blue; }\n<p style=\"color: red;\">Hi</p>",
         "answers": [
@@ -243,6 +260,7 @@ export const questionsCss = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la percentages: menin kayt-7seb l width? Fker f l parent.",
         "text": "The parent is 800px wide. How wide is the child?",
         "code": ".child { width: 50%; }",
         "answers": [
@@ -257,6 +275,7 @@ export const questionsCss = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Justify-content ma kaykhdemch bla display flex wla grid. Chno na9es hna?",
         "text": "Why doesn't justify-content center the items?",
         "code": ".row { justify-content: center; }",
         "answers": [
@@ -271,6 +290,7 @@ export const questionsCss = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l semicolon li na9es: chno kaytra l declarations mlli syntax ma kamelch?",
         "text": "What is the result of this rule?",
         "code": ".a { color: red background: blue; }",
         "answers": [
@@ -285,6 +305,7 @@ export const questionsCss = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al 3la specificity: chkun kayghlb, id wla class? Fker f l 7sab dyalhom.",
         "text": "What color is the link?",
         "code": "#nav { color: red; }\n.link { color: blue; }\n<a id=\"nav\" class=\"link\">Home</a>",
         "answers": [
@@ -299,6 +320,7 @@ export const questionsCss = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "Selector li fih element + class kayghlb class bo7dha. Chkun ghayghlb hna?",
         "text": "What color is the text?",
         "code": "div p.note { color: red; }\n.note { color: blue; }\n<div><p class=\"note\">Hi</p></div>",
         "answers": [
@@ -313,6 +335,7 @@ export const questionsCss = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la box-sizing default: wach l width li kat-7ded kay-dkhel fih padding w border wla la? Fker chno kay3ni content-box.",
         "text": "What is the total rendered width of this box?",
         "code": ".box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n}",
         "answers": [
@@ -327,6 +350,7 @@ export const questionsCss = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la box-sizing: border-box: chno l far9 m3a default? Fker chno kaydkhel wast l width.",
         "text": "Same box, but with box-sizing: border-box. What is the total width now?",
         "code": ".box {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n}",
         "answers": [
@@ -341,6 +365,7 @@ export const questionsCss = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Flex container by default kay-rteb l children f row. Kifach ghaybano?",
         "text": "How are the three children laid out?",
         "code": ".row { display: flex; }\n<div class=\"row\"><span>A</span><span>B</span><span>C</span></div>",
         "answers": [
@@ -355,6 +380,7 @@ export const questionsCss = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Column kat-bdel l main axis l vertical. Kifach ghaytrtbo l children?",
         "text": "How are the children laid out now?",
         "code": ".row { display: flex; flex-direction: column; }",
         "answers": [
@@ -369,6 +395,7 @@ export const questionsCss = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la centering vertical f row flex: chno l far9 bin main axis w cross axis? Fker chno kola property kat-controli.",
         "text": "In a row-direction flex container, which property centers items vertically?",
         "code": ".row { display: flex; }",
         "answers": [
@@ -383,6 +410,7 @@ export const questionsCss = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la flex: 1: chno kaydir l grow factor mlli ga3 l children 3andhom nafs l value?",
         "text": "Three children each have flex: 1. What happens?",
         "code": ".row { display: flex; }\n.row > div { flex: 1; }",
         "answers": [
@@ -397,6 +425,7 @@ export const questionsCss = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la !important: chno l priority dyalo 7ta 9oddam inline styles? Fker f l cascade.",
         "text": "What color is the text?",
         "code": "p { color: blue !important; }\n<p style=\"color: red;\">Hi</p>",
         "answers": [
@@ -411,6 +440,7 @@ export const questionsCss = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la joj rules b nafs specificity: chno kay7dd chkun kayghlb? Fker f l source order.",
         "text": "What color is the text?",
         "code": ".a { color: red; }\n.a { color: blue; }",
         "answers": [
@@ -425,6 +455,7 @@ export const questionsCss = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la vertical margins bin joj boxes: wach kayt-jm3o wla kayt-ghlbo? Fker f margin collapse.",
         "text": "What is the gap between the two boxes?",
         "code": ".one { margin-bottom: 20px; }\n.two { margin-top: 30px; }\n<div class=\"one\">A</div>\n<div class=\"two\">B</div>",
         "answers": [
@@ -439,6 +470,7 @@ export const questionsCss = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "Absolute child kayt-positiona 3la a9rab ancestor positioned. Fin ghayban l badge?",
         "text": "Where does the badge appear?",
         "code": ".card { position: relative; }\n.badge { position: absolute; top: 0; right: 0; }\n<div class=\"card\"><span class=\"badge\">New</span></div>",
         "answers": [
@@ -453,6 +485,7 @@ export const questionsCss = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "Fixed kay-lsa9 l element b l viewport. Chno kaytra mlli kat-scrolli?",
         "text": "What happens to this banner when the user scrolls?",
         "code": ".banner { position: fixed; top: 0; }",
         "answers": [
@@ -467,6 +500,7 @@ export const questionsCss = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la z-index: chno l condition bach ykhdem? Fker f position dyal element.",
         "text": "Why is the popup still behind the header despite z-index: 999?",
         "code": ".popup { z-index: 999; }",
         "answers": [
@@ -481,6 +515,7 @@ export const questionsCss = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la joj selectors b nafs specificity: chno kay7dd l color? Fker f l ordre f l source.",
         "text": "Both rules have the same specificity. What color is the link?",
         "code": ".menu .link { color: red; }\n.nav .link { color: blue; }\n<div class=\"menu\"><div class=\"nav\"><a class=\"link\">Hi</a></div></div>",
         "answers": [
@@ -495,6 +530,7 @@ export const questionsCss = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la sibling selectors: chno l far9 bin + w ~? Fker ch7al men sibling kay-matchi kola wa7ed.",
         "text": "Which selector matches BOTH paragraphs?",
         "code": "<div></div>\n<p>One</p>\n<p>Two</p>",
         "answers": [
@@ -509,6 +545,7 @@ export const questionsCss = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Overflow hidden kay-9ta3 ay 7aja kharja men l card. 3lach l tooltip t9at3at?",
         "text": "Why is the tooltip cut off?",
         "code": ".card { overflow: hidden; }\n.tip { position: absolute; top: -20px; }",
         "answers": [
@@ -523,6 +560,7 @@ export const questionsCss = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "Sticky khassha offset bach t3ref fin t-lsa9. Chno na9es hna?",
         "text": "Why doesn't the header stick on scroll?",
         "code": ".header { position: sticky; }",
         "answers": [
@@ -537,6 +575,7 @@ export const questionsCss = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "Chkun kay-khlli l space dyalo f l layout? Fker f l far9 bin display w visibility.",
         "text": "Which one keeps its space in the layout?",
         "code": ".a { display: none; }\n.b { visibility: hidden; }",
         "answers": [
@@ -551,6 +590,7 @@ export const questionsCss = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "Padding ma kay9blch values salba. Chno ghaytra b padding -10px?",
         "text": "What happens with this padding?",
         "code": ".box { padding: -10px; }",
         "answers": [
@@ -565,6 +605,7 @@ export const questionsCss = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "Universal selector 3ando specificity 0. Chkun ghayghlb, * wla p?",
         "text": "What color is the paragraph?",
         "code": "* { color: red; }\np { color: blue; }\n<p>Hi</p>",
         "answers": [
@@ -579,6 +620,7 @@ export const questionsCss = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la :where(): chno kay-zid l specificity? Fker chno kay3ni 'adds zero specificity'.",
         "text": "What color is the text? (:where() adds zero specificity)",
         "code": "div:where(.big) { color: red; }\n.small { color: blue; }\n<div class=\"big small\">Hi</div>",
         "answers": [
@@ -593,6 +635,7 @@ export const questionsCss = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "Ba3d l properties kay-wrtho (b7al color), w ba3din la. Chkun li kay-wrth l paragraph?",
         "text": "Which properties inherit to the paragraph automatically?",
         "code": "body { color: red; margin: 40px; }\n<p>Hi</p>",
         "answers": [
@@ -607,6 +650,7 @@ export const questionsCss = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la em: menin kayt-7seb? Wach kayt-rakeb mlli kayt3awed? Fker f l parent.",
         "text": "The root font size is 16px. How big is the paragraph text?",
         "code": "div { font-size: 1.5em; }\ndiv p { font-size: 1.5em; }\n<div><p>Hi</p></div>",
         "answers": [
@@ -621,6 +665,7 @@ export const questionsCss = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Rem dayman kayt-7sab men root. Chno l far9 bin em w rem hna?",
         "text": "Same structure, but with rem. How big is the paragraph text?",
         "code": "div { font-size: 1.5rem; }\ndiv p { font-size: 1.5rem; }",
         "answers": [
@@ -635,6 +680,7 @@ export const questionsCss = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la var(): chno kaytra mlli l variable ma m-definedach? Fker f l 2eme argument.",
         "text": "What color is the text?",
         "code": ".a { color: var(--brand, red); }",
         "answers": [
@@ -649,6 +695,7 @@ export const questionsCss = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Calc khassha spaces 7da l operators. Chno lmochkil f had l syntax?",
         "text": "Why is the width unchanged?",
         "code": ".box { width: calc(100%-20px); }",
         "answers": [
@@ -663,6 +710,7 @@ export const questionsCss = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "Attribute selector kay-matchi ghir l input li 3ando had l attribut. Chkun ghay-sfar?",
         "text": "Which input gets the yellow background?",
         "code": "input[type=\"text\"] { background: yellow; }\n<input type=\"text\">\n<input type=\"password\">",
         "answers": [
@@ -677,6 +725,7 @@ export const questionsCss = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la :nth-child(): chno kay-7seb, ghir l elements li b7al selector wla ga3 l children? Fker f l h2.",
         "text": "Which paragraph becomes red?",
         "code": "p:nth-child(2) { color: red; }\n<div><h2>Title</h2><p>One</p><p>Two</p></div>",
         "answers": [
@@ -691,6 +740,7 @@ export const questionsCss = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "Pseudo-element ::before ma kaybanch bla content. Chno na9es?",
         "text": "Why does nothing appear before the button?",
         "code": ".btn::before { color: red; }\n<button class=\"btn\">Buy</button>",
         "answers": [
@@ -710,6 +760,7 @@ export const questionsCss = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la color: chno kaydir had l rule l text dyal p? Tfakkar chno kay3ni property color.",
         "text": "De quelle couleur est le texte ?",
         "code": "p { color: red; }\n<p>Hi</p>",
         "answers": [
@@ -724,6 +775,7 @@ export const questionsCss = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "Selector .box kay-targeti ghir l elements li 3andhom class box. Chkun ghayakhod l background?",
         "text": "Quel élément reçoit un fond bleu ?",
         "code": ".box { background-color: blue; }\n<div class=\"box\">A</div>\n<div>B</div>",
         "answers": [
@@ -738,6 +790,7 @@ export const questionsCss = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "L # kay3ni id, machi class. Chno kay-targeti #main?",
         "text": "Quel élément ce sélecteur cible-t-il ?",
         "code": "#main { font-size: 20px; }",
         "answers": [
@@ -752,6 +805,7 @@ export const questionsCss = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "L virgule kat-jme3 selectors. Chkun ghay-t2athar b had l rule?",
         "text": "Que fait cette règle ?",
         "code": "h1, h2 { margin: 0; }",
         "answers": [
@@ -766,6 +820,7 @@ export const questionsCss = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "Comments f CSS kayt-tjahalo. Wach l rule li morahom ghaykhdem?",
         "text": "Qu'arrive-t-il au commentaire ?",
         "code": "/* sale styles */\n.price { color: red; }",
         "answers": [
@@ -780,6 +835,7 @@ export const questionsCss = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Padding b wa7ed l value kat-tapply 3la ga3 l jihat. Fin ghaytzad l padding?",
         "text": "Où le padding est-il appliqué ?",
         "code": ".box { padding: 10px; }",
         "answers": [
@@ -794,6 +850,7 @@ export const questionsCss = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "Links 3andhom underline by default. Chno kaydir text-decoration: none?",
         "text": "Quel est le résultat visuel ?",
         "code": "a { text-decoration: none; }",
         "answers": [
@@ -808,6 +865,7 @@ export const questionsCss = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "Mlli kat-7ded ghir l width, chno kaytra l height? Fker f aspect ratio.",
         "text": "Qu'arrive-t-il à la hauteur de l'image ?",
         "code": "img { width: 100px; }\n<img src=\"cat.jpg\">",
         "answers": [
@@ -822,6 +880,7 @@ export const questionsCss = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Text-align kay-controli l alignment dyal text. Chno ghaydir center?",
         "text": "Comment le texte du paragraphe est-il aligné ?",
         "code": "p { text-align: center; }",
         "answers": [
@@ -836,6 +895,7 @@ export const questionsCss = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Border shorthand: width, style, color. Chno ghayban?",
         "text": "À quoi ressemble la boîte ?",
         "code": ".x { border: 2px solid black; }",
         "answers": [
@@ -850,6 +910,7 @@ export const questionsCss = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "CSS kayst3mel l spelling l amrikiya. Chno lmochkil m3a \"colour\"?",
         "text": "Pourquoi le texte n'est-il pas rouge ?",
         "code": ".box { colour: red; }",
         "answers": [
@@ -864,6 +925,7 @@ export const questionsCss = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "CSS values khasshom unit (px, em...). Chno kaytra l declaration bla unit?",
         "text": "Pourquoi la taille de police ne change-t-elle pas ?",
         "code": "p { font-size: 16; }",
         "answers": [
@@ -878,6 +940,7 @@ export const questionsCss = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "Had selector kay-targeti id, walakin l div 3ando class. Chno l far9 bin # w .?",
         "text": "Pourquoi cette règle ne s'applique-t-elle pas à la div ?",
         "code": "#box { color: red; }\n<div class=\"box\">Hi</div>",
         "answers": [
@@ -892,6 +955,7 @@ export const questionsCss = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "Descendant selector kay-matchi f ay profondeur. Chkun men l paragraphs ghay7mar?",
         "text": "Quels paragraphes deviennent rouges ?",
         "code": "div p { color: red; }\n<div><section><p>Hi</p></section></div>\n<p>Bye</p>",
         "answers": [
@@ -906,6 +970,7 @@ export const questionsCss = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "Auto margins kay-centriw ghir ila kayn space khawi. 3lach had l div ma t-centrach?",
         "text": "Pourquoi cette boîte n'est-elle pas centrée horizontalement ?",
         "code": ".box { margin: 0 auto; }\n<div class=\"box\">Hi</div>",
         "answers": [
@@ -920,6 +985,7 @@ export const questionsCss = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la padding b joj values: chno kay3ni kola wa7da? Fker f l ordre dyalhom.",
         "text": "Quel padding le bouton reçoit-il ?",
         "code": ".btn { padding: 10px 20px; }",
         "answers": [
@@ -934,6 +1000,7 @@ export const questionsCss = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l conflit bin inline style w stylesheet rule. Chkun kayghlb f CSS? Fker f l priority.",
         "text": "De quelle couleur est le texte ?",
         "code": "p { color: blue; }\n<p style=\"color: red;\">Hi</p>",
         "answers": [
@@ -948,6 +1015,7 @@ export const questionsCss = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la percentages: menin kayt-7seb l width? Fker f l parent.",
         "text": "Le parent fait 800px de large. Quelle est la largeur de l'enfant ?",
         "code": ".child { width: 50%; }",
         "answers": [
@@ -962,6 +1030,7 @@ export const questionsCss = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Justify-content ma kaykhdemch bla display flex wla grid. Chno na9es hna?",
         "text": "Pourquoi justify-content ne centre-t-il pas les éléments ?",
         "code": ".row { justify-content: center; }",
         "answers": [
@@ -976,6 +1045,7 @@ export const questionsCss = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l semicolon li na9es: chno kaytra l declarations mlli syntax ma kamelch?",
         "text": "Quel est le résultat de cette règle ?",
         "code": ".a { color: red background: blue; }",
         "answers": [
@@ -990,6 +1060,7 @@ export const questionsCss = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al 3la specificity: chkun kayghlb, id wla class? Fker f l 7sab dyalhom.",
         "text": "De quelle couleur est le lien ?",
         "code": "#nav { color: red; }\n.link { color: blue; }\n<a id=\"nav\" class=\"link\">Home</a>",
         "answers": [
@@ -1004,6 +1075,7 @@ export const questionsCss = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "Selector li fih element + class kayghlb class bo7dha. Chkun ghayghlb hna?",
         "text": "De quelle couleur est le texte ?",
         "code": "div p.note { color: red; }\n.note { color: blue; }\n<div><p class=\"note\">Hi</p></div>",
         "answers": [
@@ -1018,6 +1090,7 @@ export const questionsCss = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la box-sizing default: wach l width li kat-7ded kay-dkhel fih padding w border wla la? Fker chno kay3ni content-box.",
         "text": "Quelle est la largeur totale affichée de cette boîte ?",
         "code": ".box {\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n}",
         "answers": [
@@ -1032,6 +1105,7 @@ export const questionsCss = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la box-sizing: border-box: chno l far9 m3a default? Fker chno kaydkhel wast l width.",
         "text": "Même boîte, mais avec box-sizing: border-box. Quelle est la largeur totale maintenant ?",
         "code": ".box {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n}",
         "answers": [
@@ -1046,6 +1120,7 @@ export const questionsCss = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Flex container by default kay-rteb l children f row. Kifach ghaybano?",
         "text": "Comment les trois enfants sont-ils disposés ?",
         "code": ".row { display: flex; }\n<div class=\"row\"><span>A</span><span>B</span><span>C</span></div>",
         "answers": [
@@ -1060,6 +1135,7 @@ export const questionsCss = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Column kat-bdel l main axis l vertical. Kifach ghaytrtbo l children?",
         "text": "Comment les enfants sont-ils disposés maintenant ?",
         "code": ".row { display: flex; flex-direction: column; }",
         "answers": [
@@ -1074,6 +1150,7 @@ export const questionsCss = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la centering vertical f row flex: chno l far9 bin main axis w cross axis? Fker chno kola property kat-controli.",
         "text": "Dans un conteneur flex en ligne, quelle propriété centre les éléments verticalement ?",
         "code": ".row { display: flex; }",
         "answers": [
@@ -1088,6 +1165,7 @@ export const questionsCss = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la flex: 1: chno kaydir l grow factor mlli ga3 l children 3andhom nafs l value?",
         "text": "Trois enfants ont chacun flex: 1. Que se passe-t-il ?",
         "code": ".row { display: flex; }\n.row > div { flex: 1; }",
         "answers": [
@@ -1102,6 +1180,7 @@ export const questionsCss = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la !important: chno l priority dyalo 7ta 9oddam inline styles? Fker f l cascade.",
         "text": "De quelle couleur est le texte ?",
         "code": "p { color: blue !important; }\n<p style=\"color: red;\">Hi</p>",
         "answers": [
@@ -1116,6 +1195,7 @@ export const questionsCss = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la joj rules b nafs specificity: chno kay7dd chkun kayghlb? Fker f l source order.",
         "text": "De quelle couleur est le texte ?",
         "code": ".a { color: red; }\n.a { color: blue; }",
         "answers": [
@@ -1130,6 +1210,7 @@ export const questionsCss = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la vertical margins bin joj boxes: wach kayt-jm3o wla kayt-ghlbo? Fker f margin collapse.",
         "text": "Quel est l'espace entre les deux boîtes ?",
         "code": ".one { margin-bottom: 20px; }\n.two { margin-top: 30px; }\n<div class=\"one\">A</div>\n<div class=\"two\">B</div>",
         "answers": [
@@ -1144,6 +1225,7 @@ export const questionsCss = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "Absolute child kayt-positiona 3la a9rab ancestor positioned. Fin ghayban l badge?",
         "text": "Où le badge apparaît-il ?",
         "code": ".card { position: relative; }\n.badge { position: absolute; top: 0; right: 0; }\n<div class=\"card\"><span class=\"badge\">New</span></div>",
         "answers": [
@@ -1158,6 +1240,7 @@ export const questionsCss = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "Fixed kay-lsa9 l element b l viewport. Chno kaytra mlli kat-scrolli?",
         "text": "Qu'arrive-t-il à cette bannière quand l'utilisateur fait défiler ?",
         "code": ".banner { position: fixed; top: 0; }",
         "answers": [
@@ -1172,6 +1255,7 @@ export const questionsCss = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la z-index: chno l condition bach ykhdem? Fker f position dyal element.",
         "text": "Pourquoi le popup reste-t-il derrière le header malgré z-index: 999 ?",
         "code": ".popup { z-index: 999; }",
         "answers": [
@@ -1186,6 +1270,7 @@ export const questionsCss = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la joj selectors b nafs specificity: chno kay7dd l color? Fker f l ordre f l source.",
         "text": "Les deux règles ont la même spécificité. De quelle couleur est le lien ?",
         "code": ".menu .link { color: red; }\n.nav .link { color: blue; }\n<div class=\"menu\"><div class=\"nav\"><a class=\"link\">Hi</a></div></div>",
         "answers": [
@@ -1200,6 +1285,7 @@ export const questionsCss = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la sibling selectors: chno l far9 bin + w ~? Fker ch7al men sibling kay-matchi kola wa7ed.",
         "text": "Quel sélecteur correspond aux DEUX paragraphes ?",
         "code": "<div></div>\n<p>One</p>\n<p>Two</p>",
         "answers": [
@@ -1214,6 +1300,7 @@ export const questionsCss = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Overflow hidden kay-9ta3 ay 7aja kharja men l card. 3lach l tooltip t9at3at?",
         "text": "Pourquoi l'infobulle est-elle coupée ?",
         "code": ".card { overflow: hidden; }\n.tip { position: absolute; top: -20px; }",
         "answers": [
@@ -1228,6 +1315,7 @@ export const questionsCss = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "Sticky khassha offset bach t3ref fin t-lsa9. Chno na9es hna?",
         "text": "Pourquoi le header ne reste-t-il pas collé au défilement ?",
         "code": ".header { position: sticky; }",
         "answers": [
@@ -1242,6 +1330,7 @@ export const questionsCss = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "Chkun kay-khlli l space dyalo f l layout? Fker f l far9 bin display w visibility.",
         "text": "Lequel garde sa place dans la mise en page ?",
         "code": ".a { display: none; }\n.b { visibility: hidden; }",
         "answers": [
@@ -1256,6 +1345,7 @@ export const questionsCss = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "Padding ma kay9blch values salba. Chno ghaytra b padding -10px?",
         "text": "Que se passe-t-il avec ce padding ?",
         "code": ".box { padding: -10px; }",
         "answers": [
@@ -1270,6 +1360,7 @@ export const questionsCss = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "Universal selector 3ando specificity 0. Chkun ghayghlb, * wla p?",
         "text": "De quelle couleur est le paragraphe ?",
         "code": "* { color: red; }\np { color: blue; }\n<p>Hi</p>",
         "answers": [
@@ -1284,6 +1375,7 @@ export const questionsCss = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la :where(): chno kay-zid l specificity? Fker chno kay3ni 'adds zero specificity'.",
         "text": "De quelle couleur est le texte ? (:where() ajoute une spécificité nulle)",
         "code": "div:where(.big) { color: red; }\n.small { color: blue; }\n<div class=\"big small\">Hi</div>",
         "answers": [
@@ -1298,6 +1390,7 @@ export const questionsCss = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "Ba3d l properties kay-wrtho (b7al color), w ba3din la. Chkun li kay-wrth l paragraph?",
         "text": "Quelles propriétés sont héritées automatiquement par le paragraphe ?",
         "code": "body { color: red; margin: 40px; }\n<p>Hi</p>",
         "answers": [
@@ -1312,6 +1405,7 @@ export const questionsCss = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la em: menin kayt-7seb? Wach kayt-rakeb mlli kayt3awed? Fker f l parent.",
         "text": "La taille de police racine est 16px. Quelle est la taille du texte du paragraphe ?",
         "code": "div { font-size: 1.5em; }\ndiv p { font-size: 1.5em; }\n<div><p>Hi</p></div>",
         "answers": [
@@ -1326,6 +1420,7 @@ export const questionsCss = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Rem dayman kayt-7sab men root. Chno l far9 bin em w rem hna?",
         "text": "Même structure, mais avec rem. Quelle est la taille du texte du paragraphe ?",
         "code": "div { font-size: 1.5rem; }\ndiv p { font-size: 1.5rem; }",
         "answers": [
@@ -1340,6 +1435,7 @@ export const questionsCss = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la var(): chno kaytra mlli l variable ma m-definedach? Fker f l 2eme argument.",
         "text": "De quelle couleur est le texte ?",
         "code": ".a { color: var(--brand, red); }",
         "answers": [
@@ -1354,6 +1450,7 @@ export const questionsCss = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Calc khassha spaces 7da l operators. Chno lmochkil f had l syntax?",
         "text": "Pourquoi la largeur ne change-t-elle pas ?",
         "code": ".box { width: calc(100%-20px); }",
         "answers": [
@@ -1368,6 +1465,7 @@ export const questionsCss = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "Attribute selector kay-matchi ghir l input li 3ando had l attribut. Chkun ghay-sfar?",
         "text": "Quel champ reçoit le fond jaune ?",
         "code": "input[type=\"text\"] { background: yellow; }\n<input type=\"text\">\n<input type=\"password\">",
         "answers": [
@@ -1382,6 +1480,7 @@ export const questionsCss = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la :nth-child(): chno kay-7seb, ghir l elements li b7al selector wla ga3 l children? Fker f l h2.",
         "text": "Quel paragraphe devient rouge ?",
         "code": "p:nth-child(2) { color: red; }\n<div><h2>Title</h2><p>One</p><p>Two</p></div>",
         "answers": [
@@ -1396,6 +1495,7 @@ export const questionsCss = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "Pseudo-element ::before ma kaybanch bla content. Chno na9es?",
         "text": "Pourquoi rien ne s'affiche avant le bouton ?",
         "code": ".btn::before { color: red; }\n<button class=\"btn\">Buy</button>",
         "answers": [

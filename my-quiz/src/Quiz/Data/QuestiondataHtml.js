@@ -5,6 +5,7 @@ export const questionsHtml = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag p: wach block-level wla inline? Fker f kifach kaybane f l browser mlli katktb joj p mor ba3diyat'hom.",
         "text": "How will this render in the browser?",
         "code": "<p>Hello</p>\n<p>World</p>",
         "answers": [
@@ -19,6 +20,7 @@ export const questionsHtml = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la ul/li: chno l type dyal list li kaydir ul? Fker chno l far9 bin ul w ol.",
         "text": "What does the browser display for this markup?",
         "code": "<ul>\n  <li>Apple</li>\n  <li>Banana</li>\n</ul>",
         "answers": [
@@ -33,6 +35,7 @@ export const questionsHtml = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la link: chno kaydir href f tag a mlli kat-cliqui 3lih? Tfakkar chno kaysewa l href.",
         "text": "What happens when the user clicks this link?",
         "code": "<a href=\"https://example.com\">Visit</a>",
         "answers": [
@@ -47,6 +50,7 @@ export const questionsHtml = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la headings: chno l far9 bin h1 w p men nachiyat l size default? Fker f l hierarchy dyal headings.",
         "text": "Which text appears largest on the page?",
         "code": "<h1>Title</h1>\n<p>Text</p>",
         "answers": [
@@ -61,6 +65,7 @@ export const questionsHtml = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al 3la alt: chno l role dyal alt f l img? Fker chno kayban l user ila tsowira ma loadatch.",
         "text": "If \"cat.jpg\" fails to load, what does the user see?",
         "code": "<img src=\"cat.jpg\" alt=\"A cat\">",
         "answers": [
@@ -75,6 +80,7 @@ export const questionsHtml = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Attribut checked kaygolik l 7ala l awalia dyal checkbox 9bel ma user ydir walo. Chno kay3ni kayn?",
         "text": "What is the state of this checkbox when the page loads?",
         "code": "<input type=\"checkbox\" checked>",
         "answers": [
@@ -89,6 +95,7 @@ export const questionsHtml = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag pre: chno l khassa dyalo m3a l spaces w line breaks? Fker chno kaymiyzo 3la p.",
         "text": "How is this text displayed?",
         "code": "<pre>line1\nline2</pre>",
         "answers": [
@@ -103,6 +110,7 @@ export const questionsHtml = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag button: chno l far9 bin button w ghir text 3adi? Fker chno kayban l user f l page.",
         "text": "What does the user see?",
         "code": "<button>Click me</button>",
         "answers": [
@@ -117,6 +125,7 @@ export const questionsHtml = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Div tag block-level: joj divs mor ba3diyat'hom kifach kaybano? Fker f block vs inline.",
         "text": "How do these two divs render?",
         "code": "<div>Hello</div>\n<div>World</div>",
         "answers": [
@@ -131,6 +140,7 @@ export const questionsHtml = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Span inline: joj spans mlas9in b3diyat'hom kifach kaybano? Qaren m3a div.",
         "text": "How do these two spans render?",
         "code": "<span>one</span><span>two</span>",
         "answers": [
@@ -145,6 +155,7 @@ export const questionsHtml = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la lmochkil dyal had link: chno na9es? Tfakkar chno kay7taj link bach ykhdem.",
         "text": "What is wrong with this link?",
         "code": "<a>Click here</a>",
         "answers": [
@@ -159,6 +170,7 @@ export const questionsHtml = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la kifach kat-7at text default f textarea: wach b attribut value b7al input? Fker chno l far9 bin textarea w input.",
         "text": "What will the user see inside this textarea?",
         "code": "<textarea value=\"Hello\"></textarea>",
         "answers": [
@@ -173,6 +185,7 @@ export const questionsHtml = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al 3la accessibility: chno na9es f had img li kayst3mlo bih screen readers? Fker f l user li ma kaychoufch.",
         "text": "What is the accessibility problem here?",
         "code": "<img src=\"team.jpg\">",
         "answers": [
@@ -187,6 +200,7 @@ export const questionsHtml = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la chno kay7taj input bach l value dyalo twsel l server. Chno na9es f had l input?",
         "text": "The form submits, but the server never receives the username. Why?",
         "code": "<form action=\"/save\">\n  <input type=\"text\" id=\"username\">\n  <button>Save</button>\n</form>",
         "answers": [
@@ -201,6 +215,7 @@ export const questionsHtml = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "P ma kay9blch block elements ldakhel. Chno kaydir l browser mlli kayl9a div wast p?",
         "text": "What does the browser do with this markup?",
         "code": "<p>Price: <div>$10</div></p>",
         "answers": [
@@ -215,6 +230,7 @@ export const questionsHtml = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "Button ldakhel form: chno l type dyalo by default? Fker chno kaytra mlli kat-cliqui 3lih.",
         "text": "This button sits inside a form and should only clear a preview, but clicking it submits the form. Why?",
         "code": "<form>\n  <input name=\"q\">\n  <button>Clear preview</button>\n</form>",
         "answers": [
@@ -229,6 +245,7 @@ export const questionsHtml = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk: kifach kat-afficher code HTML k text bla ma l browser y-fssro k tags? Fker f l 7all li kay-khlli <div> yban k text.",
         "text": "Which snippet displays the literal text \"<div>\" on the page?",
         "answers": [
           "<div>",
@@ -242,6 +259,7 @@ export const questionsHtml = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "Input type=email kaydir validation automatique. Chno kaydir browser mlli l value machi email valid?",
         "text": "What happens when the user submits this form?",
         "code": "<form>\n  <input type=\"email\" value=\"not-an-email\">\n  <button>Send</button>\n</form>",
         "answers": [
@@ -256,6 +274,7 @@ export const questionsHtml = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Radio buttons kayt-groupaw b name. Ila kola wa7ed 3ando name mokhtalef, chno kaytra?",
         "text": "What is wrong with these radio buttons?",
         "code": "<input type=\"radio\" name=\"size-a\" value=\"S\"> S\n<input type=\"radio\" name=\"size-b\" value=\"M\"> M",
         "answers": [
@@ -270,6 +289,7 @@ export const questionsHtml = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "HTML kay-collapse l spaces l zyada. Kifach kayban 'Hello     world' f l browser?",
         "text": "How does this render?",
         "code": "<p>Hello     world</p>",
         "answers": [
@@ -284,6 +304,7 @@ export const questionsHtml = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la fin kat-mchi l value m3a method get: body wla URL? Fker chno kay3ni get.",
         "text": "Where does the value \"shoes\" go when this form submits?",
         "code": "<form method=\"get\" action=\"/search\">\n  <input name=\"q\" value=\"shoes\">\n  <button>Go</button>\n</form>",
         "answers": [
@@ -298,6 +319,7 @@ export const questionsHtml = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la l far9 bin disabled w readonly f l forms. Chkun fihom kayt-sift l value dyalo l server?",
         "text": "Which values reach the server when this form submits?",
         "code": "<form>\n  <input name=\"a\" value=\"1\" disabled>\n  <input name=\"b\" value=\"2\" readonly>\n  <button>Send</button>\n</form>",
         "answers": [
@@ -312,6 +334,7 @@ export const questionsHtml = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "Option bla value: chno kayt-sift? Tfakkar chno kayw9a3 mlli value ma kaynach.",
         "text": "The user selects \"Yearly\" and submits. What value is sent?",
         "code": "<form>\n  <select name=\"plan\">\n    <option value=\"m\">Monthly</option>\n    <option>Yearly</option>\n  </select>\n  <button>Send</button>\n</form>",
         "answers": [
@@ -326,6 +349,7 @@ export const questionsHtml = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la checkbox li ma t-checkatch: wach kayt-sift 7aja l server wla la? Chno ghaywsel men had form?",
         "text": "The checkbox is left unchecked. What data does the server receive?",
         "code": "<form>\n  <input type=\"checkbox\" name=\"news\" value=\"yes\">\n  <input type=\"text\" name=\"city\" value=\"Tanger\">\n  <button>Send</button>\n</form>",
         "answers": [
@@ -340,6 +364,7 @@ export const questionsHtml = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Lien externe f tab jdid: chno l attributs li khasshom bach ykoun secure? Fker f tabnabbing.",
         "text": "Which is the secure way to open an external link in a new tab?",
         "answers": [
           "<a href=\"https://x.com\" target=\"_blank\">",
@@ -353,6 +378,7 @@ export const questionsHtml = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Video bla attribut controls: chno kaychouf l user? Chno na9es bach y9dar y-playi?",
         "text": "The video area is black with no controls. What is missing?",
         "code": "<video src=\"demo.mp4\"></video>",
         "answers": [
@@ -367,6 +393,7 @@ export const questionsHtml = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "Details/summary kaydir toggle natif. Chno kaytra mlli kat-cliqui 3la 'More'?",
         "text": "What happens when the user clicks \"More\"?",
         "code": "<details>\n  <summary>More</summary>\n  <p>Hidden text</p>\n</details>",
         "answers": [
@@ -381,6 +408,7 @@ export const questionsHtml = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "Data attributes kayt-qraw b dataset, w l ism kayt-7awal l camelCase. Chno ghay-logi had code?",
         "text": "What does this JavaScript log?",
         "code": "<div id=\"u\" data-user-id=\"42\"></div>\n<script>\n  console.log(document.getElementById(\"u\").dataset.userId);\n</script>",
         "answers": [
@@ -395,6 +423,7 @@ export const questionsHtml = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "Input type=date kay9bel format wa7ed valid. Chno howa l format li kayfhmoh l browser?",
         "text": "Which value is valid for this date input?",
         "code": "<input type=\"date\" id=\"d\">",
         "answers": [
@@ -409,6 +438,7 @@ export const questionsHtml = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "Label li kay-ghlef input: chno kaytra mlli kat-cliqui 3la text 'Remember me'?",
         "text": "What happens when the user clicks the text \"Remember me\"?",
         "code": "<label><input type=\"checkbox\"> Remember me</label>",
         "answers": [
@@ -423,6 +453,7 @@ export const questionsHtml = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la async scripts: wach l ordre dyal execution kayt-t7ded b l ordre f l HTML? Fker chno kay3ni async.",
         "text": "Both scripts use async. Which one runs first?",
         "code": "<script async src=\"a.js\"></script>\n<script async src=\"b.js\"></script>",
         "answers": [
@@ -437,6 +468,7 @@ export const questionsHtml = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la l conflit bin attribut hidden w inline style. Chkun kayghlb f CSS: attribut HTML wla style inline? Fker f l priority.",
         "text": "Is this div visible?",
         "code": "<div hidden style=\"display: flex;\">Hi</div>",
         "answers": [
@@ -451,6 +483,7 @@ export const questionsHtml = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la l ordre dyal rendering dyal tfoot vs tbody. Wach l ordre f l source howa nafs l ordre f l affichage?",
         "text": "Where does the TOTAL row appear on the page?",
         "code": "<table>\n  <tfoot><tr><td>TOTAL</td></tr></tfoot>\n  <tbody><tr><td>Item</td></tr></tbody>\n</table>",
         "answers": [
@@ -465,6 +498,7 @@ export const questionsHtml = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "A ma kay9blch a ldakhel. Chno kaydir l browser mlli kayl9a anchors m-dakhelin?",
         "text": "What links does the browser create here?",
         "code": "<a href=\"/1\">one <a href=\"/2\">two</a></a>",
         "answers": [
@@ -479,6 +513,7 @@ export const questionsHtml = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "P tag li ma tseddatch: ch7al men paragraph kaydir l browser? Fker f error recovery dyal parser.",
         "text": "How many paragraphs does the browser create?",
         "code": "<p>First<p>Second",
         "answers": [
@@ -493,6 +528,7 @@ export const questionsHtml = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "Tabindex -1 kay7ayyed l element men tab order. Wach ba9i kay9bel focus?",
         "text": "What does tabindex=\"-1\" do?",
         "code": "<button tabindex=\"-1\">Skip</button>",
         "answers": [
@@ -507,6 +543,7 @@ export const questionsHtml = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Form dyal upload khassha enctype khassa bach l file ywsel. Chno na9es hna?",
         "text": "The file never arrives on the server. What is missing?",
         "code": "<form method=\"post\" action=\"/upload\">\n  <input type=\"file\" name=\"avatar\">\n  <button>Upload</button>\n</form>",
         "answers": [
@@ -521,6 +558,7 @@ export const questionsHtml = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la inputmode: chno kay-bdel f l experience dyal user, wach l validation wla 7aja khra?",
         "text": "What is the effect of inputmode=\"numeric\"?",
         "code": "<input type=\"text\" inputmode=\"numeric\">",
         "answers": [
@@ -535,6 +573,7 @@ export const questionsHtml = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la tag base: chno l role dyalo m3a les URLs relatifs? Fker chno ghaykoun l URL kamel.",
         "text": "Where does the browser load \"logo.png\" from?",
         "code": "<head><base href=\"https://cdn.example.com/\"></head>\n<body><img src=\"logo.png\"></body>",
         "answers": [
@@ -549,6 +588,7 @@ export const questionsHtml = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la autoplay: chno l condition li kay-tlboha l browsers l jdida bach video t-playa bo7dha? Fker f l options.",
         "text": "Which video will actually autoplay?",
         "answers": [
           "<video autoplay src=\"v.mp4\">",
@@ -562,6 +602,7 @@ export const questionsHtml = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la chno kay-zid l browser automatiquement wast table, w kifach kayt2athar selector table > tr. Fker f l structure l 7a9i9iya li kay-bniha l parser.",
         "text": "Why doesn't this CSS rule apply?",
         "code": "<table><tr><td>x</td></tr></table>\n<style>table > tr { color: red; }</style>",
         "answers": [
@@ -576,6 +617,7 @@ export const questionsHtml = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "Custom elements khasshom ism fih dash. Chno l ism li valid?",
         "text": "Which tag name can become a valid custom element?",
         "answers": [
           "<usercard>",
@@ -589,6 +631,7 @@ export const questionsHtml = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la forms m-dakhlin: wach HTML kay9bel form wast form? Chno ghaydir l parser b l inner form?",
         "text": "What happens when the button is clicked?",
         "code": "<form id=\"a\" action=\"/a\">\n  <form id=\"b\" action=\"/b\">\n    <button>Go</button>\n  </form>\n</form>",
         "answers": [
@@ -603,6 +646,7 @@ export const questionsHtml = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la input type=image: chno l data li kay-sift mlli kat-cliqui 3lih? Fker chno kaymiyyez image button 3la button 3adi.",
         "text": "What data is sent when this image-button is clicked?",
         "code": "<form action=\"/vote\">\n  <input type=\"image\" src=\"btn.png\" name=\"go\" alt=\"Vote\">\n</form>",
         "answers": [
@@ -617,6 +661,7 @@ export const questionsHtml = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Table kat-9bel ghir ba3d l elements (tr, td...). Chno kaydir l parser m3a text li ma 3andoch blassa wast table? Fin ghaymchi?",
         "text": "Where does the word \"oops\" appear on the page?",
         "code": "<table>oops<tr><td>x</td></tr></table>",
         "answers": [
@@ -631,6 +676,7 @@ export const questionsHtml = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la duplicate ids: chno kaydir getElementById mlli kayl9a joj b nafs l ism? Fker f l behavior dyalo.",
         "text": "What does this log?",
         "code": "<p id=\"x\">first</p><p id=\"x\">second</p>\n<script>\n  console.log(document.getElementById(\"x\").textContent);\n</script>",
         "answers": [
@@ -645,6 +691,7 @@ export const questionsHtml = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Head khassa ghir b metadata. Chno kaydir l parser m3a element visible li t-ktb wast head?",
         "text": "Where does \"Hi\" end up?",
         "code": "<head><title>T</title><div>Hi</div></head>\n<body></body>",
         "answers": [
@@ -659,6 +706,7 @@ export const questionsHtml = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "Attribut form kay-rbet input m3a form wakha ykoun barra. Wach l q ghayt-sift?",
         "text": "Is the \"q\" value submitted with form \"f\"?",
         "code": "<form id=\"f\" action=\"/s\"><button>Go</button></form>\n<input form=\"f\" name=\"q\" value=\"hi\">",
         "answers": [
@@ -673,6 +721,7 @@ export const questionsHtml = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "Button formaction kay-ghleb l action dyal form. Fin ghayt-sift mlli kat-cliqui Preview?",
         "text": "Where is the form submitted when \"Preview\" is clicked?",
         "code": "<form action=\"/save\">\n  <input name=\"t\" value=\"hi\">\n  <button>Save</button>\n  <button formaction=\"/preview\">Preview</button>\n</form>",
         "answers": [
@@ -687,6 +736,7 @@ export const questionsHtml = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la l 3ala9a bin scripts f l head w rendering dyal page. Chno kaydir script 3adi l HTML parsing?",
         "text": "Why does the page stay blank until analytics.js finishes loading?",
         "code": "<head>\n  <script src=\"analytics.js\"></script>\n</head>\n<body><p>Hello</p></body>",
         "answers": [
@@ -706,6 +756,7 @@ export const questionsHtml = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag p: wach block-level wla inline? Fker f kifach kaybane f l browser mlli katktb joj p mor ba3diyat'hom.",
         "text": "Comment ce code va-t-il s'afficher dans le navigateur ?",
         "code": "<p>Hello</p>\n<p>World</p>",
         "answers": [
@@ -720,6 +771,7 @@ export const questionsHtml = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la ul/li: chno l type dyal list li kaydir ul? Fker chno l far9 bin ul w ol.",
         "text": "Qu'affiche le navigateur pour ce balisage ?",
         "code": "<ul>\n  <li>Apple</li>\n  <li>Banana</li>\n</ul>",
         "answers": [
@@ -734,6 +786,7 @@ export const questionsHtml = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la link: chno kaydir href f tag a mlli kat-cliqui 3lih? Tfakkar chno kaysewa l href.",
         "text": "Que se passe-t-il quand l'utilisateur clique sur ce lien ?",
         "code": "<a href=\"https://example.com\">Visit</a>",
         "answers": [
@@ -748,6 +801,7 @@ export const questionsHtml = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la headings: chno l far9 bin h1 w p men nachiyat l size default? Fker f l hierarchy dyal headings.",
         "text": "Quel texte apparaît le plus grand sur la page ?",
         "code": "<h1>Title</h1>\n<p>Text</p>",
         "answers": [
@@ -762,6 +816,7 @@ export const questionsHtml = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al 3la alt: chno l role dyal alt f l img? Fker chno kayban l user ila tsowira ma loadatch.",
         "text": "Si « cat.jpg » ne charge pas, que voit l'utilisateur ?",
         "code": "<img src=\"cat.jpg\" alt=\"A cat\">",
         "answers": [
@@ -776,6 +831,7 @@ export const questionsHtml = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Attribut checked kaygolik l 7ala l awalia dyal checkbox 9bel ma user ydir walo. Chno kay3ni kayn?",
         "text": "Quel est l'état de cette case à cocher au chargement de la page ?",
         "code": "<input type=\"checkbox\" checked>",
         "answers": [
@@ -790,6 +846,7 @@ export const questionsHtml = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag pre: chno l khassa dyalo m3a l spaces w line breaks? Fker chno kaymiyzo 3la p.",
         "text": "Comment ce texte s'affiche-t-il ?",
         "code": "<pre>line1\nline2</pre>",
         "answers": [
@@ -804,6 +861,7 @@ export const questionsHtml = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la tag button: chno l far9 bin button w ghir text 3adi? Fker chno kayban l user f l page.",
         "text": "Que voit l'utilisateur ?",
         "code": "<button>Click me</button>",
         "answers": [
@@ -818,6 +876,7 @@ export const questionsHtml = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Div tag block-level: joj divs mor ba3diyat'hom kifach kaybano? Fker f block vs inline.",
         "text": "Comment ces deux div s'affichent-elles ?",
         "code": "<div>Hello</div>\n<div>World</div>",
         "answers": [
@@ -832,6 +891,7 @@ export const questionsHtml = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Span inline: joj spans mlas9in b3diyat'hom kifach kaybano? Qaren m3a div.",
         "text": "Comment ces deux span s'affichent-ils ?",
         "code": "<span>one</span><span>two</span>",
         "answers": [
@@ -846,6 +906,7 @@ export const questionsHtml = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la lmochkil dyal had link: chno na9es? Tfakkar chno kay7taj link bach ykhdem.",
         "text": "Quel est le problème avec ce lien ?",
         "code": "<a>Click here</a>",
         "answers": [
@@ -860,6 +921,7 @@ export const questionsHtml = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la kifach kat-7at text default f textarea: wach b attribut value b7al input? Fker chno l far9 bin textarea w input.",
         "text": "Que verra l'utilisateur dans ce textarea ?",
         "code": "<textarea value=\"Hello\"></textarea>",
         "answers": [
@@ -874,6 +936,7 @@ export const questionsHtml = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al 3la accessibility: chno na9es f had img li kayst3mlo bih screen readers? Fker f l user li ma kaychoufch.",
         "text": "Quel est le problème d'accessibilité ici ?",
         "code": "<img src=\"team.jpg\">",
         "answers": [
@@ -888,6 +951,7 @@ export const questionsHtml = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la chno kay7taj input bach l value dyalo twsel l server. Chno na9es f had l input?",
         "text": "Le formulaire s'envoie, mais le serveur ne reçoit jamais le nom d'utilisateur. Pourquoi ?",
         "code": "<form action=\"/save\">\n  <input type=\"text\" id=\"username\">\n  <button>Save</button>\n</form>",
         "answers": [
@@ -902,6 +966,7 @@ export const questionsHtml = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "P ma kay9blch block elements ldakhel. Chno kaydir l browser mlli kayl9a div wast p?",
         "text": "Que fait le navigateur avec ce balisage ?",
         "code": "<p>Price: <div>$10</div></p>",
         "answers": [
@@ -916,6 +981,7 @@ export const questionsHtml = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "Button ldakhel form: chno l type dyalo by default? Fker chno kaytra mlli kat-cliqui 3lih.",
         "text": "Ce bouton est dans un formulaire et devrait seulement effacer un aperçu, mais le clic envoie le formulaire. Pourquoi ?",
         "code": "<form>\n  <input name=\"q\">\n  <button>Clear preview</button>\n</form>",
         "answers": [
@@ -930,6 +996,7 @@ export const questionsHtml = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk: kifach kat-afficher code HTML k text bla ma l browser y-fssro k tags? Fker f l 7all li kay-khlli <div> yban k text.",
         "text": "Quel extrait affiche le texte littéral « <div> » sur la page ?",
         "answers": [
           "<div>",
@@ -943,6 +1010,7 @@ export const questionsHtml = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "Input type=email kaydir validation automatique. Chno kaydir browser mlli l value machi email valid?",
         "text": "Que se passe-t-il quand l'utilisateur envoie ce formulaire ?",
         "code": "<form>\n  <input type=\"email\" value=\"not-an-email\">\n  <button>Send</button>\n</form>",
         "answers": [
@@ -957,6 +1025,7 @@ export const questionsHtml = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Radio buttons kayt-groupaw b name. Ila kola wa7ed 3ando name mokhtalef, chno kaytra?",
         "text": "Quel est le problème avec ces boutons radio ?",
         "code": "<input type=\"radio\" name=\"size-a\" value=\"S\"> S\n<input type=\"radio\" name=\"size-b\" value=\"M\"> M",
         "answers": [
@@ -971,6 +1040,7 @@ export const questionsHtml = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "HTML kay-collapse l spaces l zyada. Kifach kayban 'Hello     world' f l browser?",
         "text": "Comment ceci s'affiche-t-il ?",
         "code": "<p>Hello     world</p>",
         "answers": [
@@ -985,6 +1055,7 @@ export const questionsHtml = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la fin kat-mchi l value m3a method get: body wla URL? Fker chno kay3ni get.",
         "text": "Où va la valeur « shoes » quand ce formulaire s'envoie ?",
         "code": "<form method=\"get\" action=\"/search\">\n  <input name=\"q\" value=\"shoes\">\n  <button>Go</button>\n</form>",
         "answers": [
@@ -999,6 +1070,7 @@ export const questionsHtml = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la l far9 bin disabled w readonly f l forms. Chkun fihom kayt-sift l value dyalo l server?",
         "text": "Quelles valeurs atteignent le serveur quand ce formulaire s'envoie ?",
         "code": "<form>\n  <input name=\"a\" value=\"1\" disabled>\n  <input name=\"b\" value=\"2\" readonly>\n  <button>Send</button>\n</form>",
         "answers": [
@@ -1013,6 +1085,7 @@ export const questionsHtml = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "Option bla value: chno kayt-sift? Tfakkar chno kayw9a3 mlli value ma kaynach.",
         "text": "L'utilisateur choisit « Yearly » et envoie. Quelle valeur est transmise ?",
         "code": "<form>\n  <select name=\"plan\">\n    <option value=\"m\">Monthly</option>\n    <option>Yearly</option>\n  </select>\n  <button>Send</button>\n</form>",
         "answers": [
@@ -1027,6 +1100,7 @@ export const questionsHtml = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la checkbox li ma t-checkatch: wach kayt-sift 7aja l server wla la? Chno ghaywsel men had form?",
         "text": "La case reste décochée. Quelles données le serveur reçoit-il ?",
         "code": "<form>\n  <input type=\"checkbox\" name=\"news\" value=\"yes\">\n  <input type=\"text\" name=\"city\" value=\"Tanger\">\n  <button>Send</button>\n</form>",
         "answers": [
@@ -1041,6 +1115,7 @@ export const questionsHtml = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Lien externe f tab jdid: chno l attributs li khasshom bach ykoun secure? Fker f tabnabbing.",
         "text": "Quelle est la façon sécurisée d'ouvrir un lien externe dans un nouvel onglet ?",
         "answers": [
           "<a href=\"https://x.com\" target=\"_blank\">",
@@ -1054,6 +1129,7 @@ export const questionsHtml = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Video bla attribut controls: chno kaychouf l user? Chno na9es bach y9dar y-playi?",
         "text": "La zone vidéo est noire, sans contrôles. Que manque-t-il ?",
         "code": "<video src=\"demo.mp4\"></video>",
         "answers": [
@@ -1068,6 +1144,7 @@ export const questionsHtml = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "Details/summary kaydir toggle natif. Chno kaytra mlli kat-cliqui 3la 'More'?",
         "text": "Que se passe-t-il quand l'utilisateur clique sur « More » ?",
         "code": "<details>\n  <summary>More</summary>\n  <p>Hidden text</p>\n</details>",
         "answers": [
@@ -1082,6 +1159,7 @@ export const questionsHtml = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "Data attributes kayt-qraw b dataset, w l ism kayt-7awal l camelCase. Chno ghay-logi had code?",
         "text": "Qu'affiche ce JavaScript dans la console ?",
         "code": "<div id=\"u\" data-user-id=\"42\"></div>\n<script>\n  console.log(document.getElementById(\"u\").dataset.userId);\n</script>",
         "answers": [
@@ -1096,6 +1174,7 @@ export const questionsHtml = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "Input type=date kay9bel format wa7ed valid. Chno howa l format li kayfhmoh l browser?",
         "text": "Quelle valeur est valide pour ce champ de date ?",
         "code": "<input type=\"date\" id=\"d\">",
         "answers": [
@@ -1110,6 +1189,7 @@ export const questionsHtml = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "Label li kay-ghlef input: chno kaytra mlli kat-cliqui 3la text 'Remember me'?",
         "text": "Que se passe-t-il quand l'utilisateur clique sur le texte « Remember me » ?",
         "code": "<label><input type=\"checkbox\"> Remember me</label>",
         "answers": [
@@ -1124,6 +1204,7 @@ export const questionsHtml = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la async scripts: wach l ordre dyal execution kayt-t7ded b l ordre f l HTML? Fker chno kay3ni async.",
         "text": "Les deux scripts utilisent async. Lequel s'exécute en premier ?",
         "code": "<script async src=\"a.js\"></script>\n<script async src=\"b.js\"></script>",
         "answers": [
@@ -1138,6 +1219,7 @@ export const questionsHtml = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la l conflit bin attribut hidden w inline style. Chkun kayghlb f CSS: attribut HTML wla style inline? Fker f l priority.",
         "text": "Cette div est-elle visible ?",
         "code": "<div hidden style=\"display: flex;\">Hi</div>",
         "answers": [
@@ -1152,6 +1234,7 @@ export const questionsHtml = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la l ordre dyal rendering dyal tfoot vs tbody. Wach l ordre f l source howa nafs l ordre f l affichage?",
         "text": "Où apparaît la ligne TOTAL sur la page ?",
         "code": "<table>\n  <tfoot><tr><td>TOTAL</td></tr></tfoot>\n  <tbody><tr><td>Item</td></tr></tbody>\n</table>",
         "answers": [
@@ -1166,6 +1249,7 @@ export const questionsHtml = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "A ma kay9blch a ldakhel. Chno kaydir l browser mlli kayl9a anchors m-dakhelin?",
         "text": "Quels liens le navigateur crée-t-il ici ?",
         "code": "<a href=\"/1\">one <a href=\"/2\">two</a></a>",
         "answers": [
@@ -1180,6 +1264,7 @@ export const questionsHtml = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "P tag li ma tseddatch: ch7al men paragraph kaydir l browser? Fker f error recovery dyal parser.",
         "text": "Combien de paragraphes le navigateur crée-t-il ?",
         "code": "<p>First<p>Second",
         "answers": [
@@ -1194,6 +1279,7 @@ export const questionsHtml = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "Tabindex -1 kay7ayyed l element men tab order. Wach ba9i kay9bel focus?",
         "text": "Que fait tabindex=\"-1\" ?",
         "code": "<button tabindex=\"-1\">Skip</button>",
         "answers": [
@@ -1208,6 +1294,7 @@ export const questionsHtml = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Form dyal upload khassha enctype khassa bach l file ywsel. Chno na9es hna?",
         "text": "Le fichier n'arrive jamais sur le serveur. Que manque-t-il ?",
         "code": "<form method=\"post\" action=\"/upload\">\n  <input type=\"file\" name=\"avatar\">\n  <button>Upload</button>\n</form>",
         "answers": [
@@ -1222,6 +1309,7 @@ export const questionsHtml = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la inputmode: chno kay-bdel f l experience dyal user, wach l validation wla 7aja khra?",
         "text": "Quel est l'effet de inputmode=\"numeric\" ?",
         "code": "<input type=\"text\" inputmode=\"numeric\">",
         "answers": [
@@ -1236,6 +1324,7 @@ export const questionsHtml = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la tag base: chno l role dyalo m3a les URLs relatifs? Fker chno ghaykoun l URL kamel.",
         "text": "D'où le navigateur charge-t-il « logo.png » ?",
         "code": "<head><base href=\"https://cdn.example.com/\"></head>\n<body><img src=\"logo.png\"></body>",
         "answers": [
@@ -1250,6 +1339,7 @@ export const questionsHtml = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la autoplay: chno l condition li kay-tlboha l browsers l jdida bach video t-playa bo7dha? Fker f l options.",
         "text": "Quelle vidéo démarrera vraiment automatiquement ?",
         "answers": [
           "<video autoplay src=\"v.mp4\">",
@@ -1263,6 +1353,7 @@ export const questionsHtml = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la chno kay-zid l browser automatiquement wast table, w kifach kayt2athar selector table > tr. Fker f l structure l 7a9i9iya li kay-bniha l parser.",
         "text": "Pourquoi cette règle CSS ne s'applique-t-elle pas ?",
         "code": "<table><tr><td>x</td></tr></table>\n<style>table > tr { color: red; }</style>",
         "answers": [
@@ -1277,6 +1368,7 @@ export const questionsHtml = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "Custom elements khasshom ism fih dash. Chno l ism li valid?",
         "text": "Quel nom de balise peut devenir un custom element valide ?",
         "answers": [
           "<usercard>",
@@ -1290,6 +1382,7 @@ export const questionsHtml = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la forms m-dakhlin: wach HTML kay9bel form wast form? Chno ghaydir l parser b l inner form?",
         "text": "Que se passe-t-il quand on clique sur le bouton ?",
         "code": "<form id=\"a\" action=\"/a\">\n  <form id=\"b\" action=\"/b\">\n    <button>Go</button>\n  </form>\n</form>",
         "answers": [
@@ -1304,6 +1397,7 @@ export const questionsHtml = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la input type=image: chno l data li kay-sift mlli kat-cliqui 3lih? Fker chno kaymiyyez image button 3la button 3adi.",
         "text": "Quelles données sont envoyées quand on clique sur ce bouton-image ?",
         "code": "<form action=\"/vote\">\n  <input type=\"image\" src=\"btn.png\" name=\"go\" alt=\"Vote\">\n</form>",
         "answers": [
@@ -1318,6 +1412,7 @@ export const questionsHtml = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Table kat-9bel ghir ba3d l elements (tr, td...). Chno kaydir l parser m3a text li ma 3andoch blassa wast table? Fin ghaymchi?",
         "text": "Où le mot « oops » apparaît-il sur la page ?",
         "code": "<table>oops<tr><td>x</td></tr></table>",
         "answers": [
@@ -1332,6 +1427,7 @@ export const questionsHtml = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la duplicate ids: chno kaydir getElementById mlli kayl9a joj b nafs l ism? Fker f l behavior dyalo.",
         "text": "Qu'affiche ce code ?",
         "code": "<p id=\"x\">first</p><p id=\"x\">second</p>\n<script>\n  console.log(document.getElementById(\"x\").textContent);\n</script>",
         "answers": [
@@ -1346,6 +1442,7 @@ export const questionsHtml = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Head khassa ghir b metadata. Chno kaydir l parser m3a element visible li t-ktb wast head?",
         "text": "Où finit « Hi » ?",
         "code": "<head><title>T</title><div>Hi</div></head>\n<body></body>",
         "answers": [
@@ -1360,6 +1457,7 @@ export const questionsHtml = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "Attribut form kay-rbet input m3a form wakha ykoun barra. Wach l q ghayt-sift?",
         "text": "La valeur « q » est-elle envoyée avec le formulaire « f » ?",
         "code": "<form id=\"f\" action=\"/s\"><button>Go</button></form>\n<input form=\"f\" name=\"q\" value=\"hi\">",
         "answers": [
@@ -1374,6 +1472,7 @@ export const questionsHtml = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "Button formaction kay-ghleb l action dyal form. Fin ghayt-sift mlli kat-cliqui Preview?",
         "text": "Où le formulaire est-il envoyé quand on clique sur « Preview » ?",
         "code": "<form action=\"/save\">\n  <input name=\"t\" value=\"hi\">\n  <button>Save</button>\n  <button formaction=\"/preview\">Preview</button>\n</form>",
         "answers": [
@@ -1388,6 +1487,7 @@ export const questionsHtml = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la l 3ala9a bin scripts f l head w rendering dyal page. Chno kaydir script 3adi l HTML parsing?",
         "text": "Pourquoi la page reste-t-elle blanche jusqu'à la fin du chargement d'analytics.js ?",
         "code": "<head>\n  <script src=\"analytics.js\"></script>\n</head>\n<body><p>Hello</p></body>",
         "answers": [

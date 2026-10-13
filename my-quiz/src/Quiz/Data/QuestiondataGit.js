@@ -5,6 +5,7 @@ export const gitQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al 3la git status: ila bdllti file tracked w ma drtich add, git kay-classe l file f category mo3ayana. Fker l far9 bin l working tree w l staging area.",
         "text": "You edited the tracked file app.js but staged nothing. What does git status report for app.js?",
         "code": "$ git status",
         "answers": [
@@ -19,6 +20,7 @@ export const gitQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al 3la git add: had l command kat-n9l l changes mn l working tree l l staging area. Fker chnu ghadi y-gol status mn ba3d l add.",
         "text": "What does git status report now?",
         "code": "$ git add app.js\n$ git status",
         "answers": [
@@ -33,6 +35,7 @@ export const gitQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al 3la git commit: had l command kat-cree snapshot jdida mn li kayn f l staging area. Fker fin ghadi ytzad l commit.",
         "text": "The changes were staged first. What happens?",
         "code": "$ git commit -m \"Fix login bug\"",
         "answers": [
@@ -47,6 +50,7 @@ export const gitQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al 3la commit bla add: git commit kat-committi ghir li kayn f l staging area. Ila ma drtich add, chnu kayn f l staging?",
         "text": "You edited app.js but never ran git add. What happens?",
         "code": "$ git commit -m \"update\"",
         "answers": [
@@ -61,6 +65,7 @@ export const gitQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al 3la git log --oneline: had l command kat-afficher l commits b format mkhtasar. Fker l tartib — chkon li kayban lwl, l jdid wla l 9dim?",
         "text": "What does this show?",
         "code": "$ git log --oneline\n3f2a1b0 Add cart page\n9c4d2e1 Fix login bug",
         "answers": [
@@ -75,6 +80,7 @@ export const gitQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "So2al 3la git diff: l diff l 3adi kay-wri l changes li f l working tree (unstaged), w --staged kay-wri li f l staging area. Fker fin kayna l change dyalk.",
         "text": "app.js was edited and staged. Which command shows the staged change?",
         "code": "$ git diff\n$ git diff --staged",
         "answers": [
@@ -89,6 +95,7 @@ export const gitQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al 3la git branch: l branch li 3liha l star (*) hia li checked out daba. Chof l star fin kayna f l output.",
         "text": "Which branch is currently checked out?",
         "code": "$ git branch\n  main\n* feature/login",
         "answers": [
@@ -103,6 +110,7 @@ export const gitQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al 3la checkout -b: l branch l jdida kat-bda mn fin? Fker blli l branch hia ghir pointer 3la commit — mnin ghadi y-bda had l pointer?",
         "text": "You run this from main. Where does feature/cart start?",
         "code": "$ git checkout -b feature/cart",
         "answers": [
@@ -117,6 +125,7 @@ export const gitQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "So2al 3la git clone: had l command kat-jib l repo kamal — l files, l history kamla, w kat-configure l remote 'origin'. Fker chnu kayn f l folder mn ba3d l clone.",
         "text": "What do you get?",
         "code": "$ git clone https://github.com/user/repo.git",
         "answers": [
@@ -131,6 +140,7 @@ export const gitQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "So2al 3la .gitignore: had l file kay-tjahl ghir l files li mazal ma t-trackawch. Ila l file deja tracked, l ignore ma kay-tapplych 3lih.",
         "text": ".gitignore contains *.log, but debug.log was committed last week. After editing debug.log, what does git status show?",
         "code": "$ git status",
         "answers": [
@@ -145,6 +155,7 @@ export const gitQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al 3la push rejected: non-fast-forward kay3ni blli l remote tqddm 3lik — 3andu commits li nta ma 3andkch. Fker chnu khass dir 9bl ma t-push.",
         "text": "Why was the push rejected?",
         "code": "$ git push\n! [rejected] main -> main (non-fast-forward)",
         "answers": [
@@ -159,6 +170,7 @@ export const gitQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al 3la git pull: had l command kat-dir joj 7wayj f wa7ed — kat-jib l changes mn l remote w kat-dmhom f l branch dyalk. Fker chkon homa l joj.",
         "text": "What does git pull do?",
         "code": "$ git pull",
         "answers": [
@@ -173,6 +185,7 @@ export const gitQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al 3la commit -a: l flag -a kat-stage ghir l files li deja tracked. L file l jdid (untracked) khassu git add sari7. Fker notes.txt wach tracked wla la?",
         "text": "Why is notes.txt missing from the commit?",
         "code": "$ touch notes.txt\n$ git commit -am \"add notes\"",
         "answers": [
@@ -187,6 +200,7 @@ export const gitQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al 3la git restore: had l command kat-rjja3 l file l l 7ala li kanat f l akhir commit. Fker chnu ghadi yw9a3 l l edits li ma t-stageawch.",
         "text": "app.js has unwanted edits, not staged. What happens?",
         "code": "$ git restore app.js",
         "answers": [
@@ -201,6 +215,7 @@ export const gitQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "So2al 3la checkout b hash: ila check-outiti commit bla ma tkoun 3la branch, HEAD kay-wlli y-pointi direct 3la l commit. Fker chnu smit had l 7ala.",
         "text": "a1b2c3 is a commit hash. What state is the repo in?",
         "code": "$ git checkout a1b2c3",
         "answers": [
@@ -215,6 +230,7 @@ export const gitQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al 3la stash: had l command kat-khbbi l changes mo2a9atan w kat-rjja3 l working tree ndif, w pop kat-rddhom. Fker l far9 bin stash w commit.",
         "text": "What is the result?",
         "code": "$ git stash\n$ git stash pop",
         "answers": [
@@ -229,6 +245,7 @@ export const gitQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al 3la merge fast-forward: ila l branch l khra ghir zayda 3lik w main ma t-bdlch, git ghir kay-hrk l pointer l qddam. Fker wach kay7taj merge commit f had l 7ala.",
         "text": "feature has 2 commits ahead of main, main is unchanged. What happens?",
         "code": "$ git checkout main\n$ git merge feature",
         "answers": [
@@ -243,6 +260,7 @@ export const gitQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al 3la upstream: f lwl push dyal branch jdida, git ma kay3rfch fin y-pushi. Khass t-golih l remote w l branch b -u. Fker l command li kat-set l upstream.",
         "text": "First push of the new branch feature fails asking to set upstream. What fixes it?",
         "code": "$ git push",
         "answers": [
@@ -257,6 +275,7 @@ export const gitQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "So2al 3la git log A..B: had l syntax kat-wri l commits dyal jiha wa7da. Fker l direction — chkon li 3la l isar w chkon li 3la l imin.",
         "text": "What does this list?",
         "code": "$ git log main..feature --oneline",
         "answers": [
@@ -271,6 +290,7 @@ export const gitQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al 3la branch -d: git kay-7mi l branches li mazal ma t-mergeawch — kay-rfd l delete. Fker chnu ghadi y-golik git.",
         "text": "feature was never merged. What happens?",
         "code": "$ git branch -d feature",
         "answers": [
@@ -285,6 +305,7 @@ export const gitQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al 3la merge conflict: l markers (<<<<<<<, =======, >>>>>>>) kay-wriwk l joj versions. Khass nta t-khtar b idik, t-7iyed l markers, w t-committi.",
         "text": "You see this in app.js after a merge. What must you do?",
         "code": "<<<<<<< HEAD\nconst role = \"admin\";\n=======\nconst role = \"user\";\n>>>>>>> feature",
         "answers": [
@@ -299,6 +320,7 @@ export const gitQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al 3la rebase: had l command kat-3awd t-ktb l commits dyalk fo9 l akhir version dyal l branch l khra. Fker chnu ghadi yw9a3 l l 3 commits dyal feature.",
         "text": "feature has 3 commits on top of an old main. What does the rebase do?",
         "code": "$ git checkout feature\n$ git rebase main",
         "answers": [
@@ -313,6 +335,7 @@ export const gitQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al 3la reset --soft: had l mode kay-7iyed l commit walakin l changes ma kay-m7ihomch. Fker fin ghadi y-mchiw l changes — l staging wla l working tree?",
         "text": "You committed too early and need to add one more file. What is the result?",
         "code": "$ git reset --soft HEAD~1",
         "answers": [
@@ -327,6 +350,7 @@ export const gitQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al 3la revert: had l command ma kay-m7ich l history — kay-cree commit jdida. Fker chnu l far9 bin revert li kay-zid commit w reset li kay-7iyed.",
         "text": "A bad commit was already pushed and shared. What does this do?",
         "code": "$ git revert a1b2c3",
         "answers": [
@@ -341,6 +365,7 @@ export const gitQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "So2al 3la reflog: git kay-7tfz l history dyal fin kan HEAD — 7ta mn ba3d l reset. Fker fin t-9dr t-l9a l hash dyal l commit li mcha.",
         "text": "Oops, that reset discarded the wrong commit. How can you find it?",
         "code": "$ git reset --hard HEAD~1",
         "answers": [
@@ -355,6 +380,7 @@ export const gitQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "So2al 3la cherry-pick: had l command kat-akhd commit wa7ed mn branch w kat-3awd t-applyih 3la l branch li nta fiha b7al commit jdida. Fker wach l branch l khra kat-tbdl.",
         "text": "a1b2c3 is a commit from feature. What happens?",
         "code": "$ git checkout main\n$ git cherry-pick a1b2c3",
         "answers": [
@@ -369,6 +395,7 @@ export const gitQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al 3la stash -u: l stash l 3adi kay-khbbi ghir l changes dyal l files l tracked. L files l jdad (untracked) khasshom flag khassa. Fker chkon hia.",
         "text": "A new untracked file survived a plain git stash. Why, and what includes it?",
         "code": "$ git stash       # new file remains\n$ git stash -u    # stashes it too",
         "answers": [
@@ -383,6 +410,7 @@ export const gitQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al 3la fetch + merge: had l approach kat-jib l changes lwl bla ma t-dmhom, bach t-chofhom 9bl ma t-mergi. Fker chkon l avantage 3la pull l mobachir.",
         "text": "Why would you do this instead of git pull?",
         "code": "$ git fetch origin\n$ git merge origin/main",
         "answers": [
@@ -397,6 +425,7 @@ export const gitQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al 3la rebase conflict: mn ba3d ma t-7l l conflict, khass t-stage l file w t-kmml l rebase b command khassa. Fker chnu hia l command li kat-kmml l process.",
         "text": "During git rebase main you get a conflict in app.js, and you fixed the file. What is the next command?",
         "code": "# CONFLICT in app.js (you fixed it)",
         "answers": [
@@ -411,6 +440,7 @@ export const gitQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al 3la git show: had l command kat-wri l details dyal commit wa7ed — l message, l author, w l diff dyalo. Fker chnu ghadi y-ban.",
         "text": "What does this display?",
         "code": "$ git show a1b2c3",
         "answers": [
@@ -425,6 +455,7 @@ export const gitQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al 3la force-push: l rebase kat-3awd t-ktb l history — l hashes kat-tbdlo. L teammate li 3andu l history l 9dima ghadi y-l9a rasha diverged. Fker chnu kay3ni diverged.",
         "text": "You rebased feature and force-pushed. Your teammate says they can't pull anymore. What happened on their side?",
         "code": "# teammate: \"I can't pull feature anymore\"",
         "answers": [
@@ -439,6 +470,7 @@ export const gitQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al 3la reset --hard origin/branch: had l command kat-rjja3 l branch l 7ala dyal l remote bdabt. Fker chnu ghadi yw9a3 l l commits l local li zaydin 3la l remote.",
         "text": "You want your local feature branch to exactly match the remote. What is the result?",
         "code": "$ git checkout feature\n$ git reset --hard origin/feature",
         "answers": [
@@ -453,6 +485,7 @@ export const gitQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al 3la branch recovery: l branch li t-m7at, l commits dyalha mazalin kaynin f l repo. L reflog kay-7tfz fin kan l tip. Fker kifach t-3awd t-cree l branch mn l hash.",
         "text": "You deleted the branch by mistake. How can you recover it?",
         "code": "$ git branch -D feature",
         "answers": [
@@ -467,6 +500,7 @@ export const gitQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al 3la amend + push: --amend kat-3awd t-ktb l commit li t-pusha deja — l hash kay-tbdl. L push l 3adi ghadi y-trejecta. Fker chkon l fix l safe.",
         "text": "Why was the push rejected, and what is the safe fix?",
         "code": "$ git commit --amend\n$ git push   # rejected",
         "answers": [
@@ -481,6 +515,7 @@ export const gitQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al 3la 'both added': had l 7ala kat-w9a3 ila joj branches zado nafs l file l jdid b content mkhtalf. Git ma kay-9drch y-khtar b7alo — khass nta t-7lha.",
         "text": "What does \"both added\" mean?",
         "code": "$ git status\n# both added:      config.json",
         "answers": [
@@ -495,6 +530,7 @@ export const gitQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al 3la git bisect: had l tool kay-dir binary search 3la l commits bach y-l9a fin dkhlt l bug. Kat-markiw l bad w l good w hwa kay-9ssm l tri9.",
         "text": "What is git bisect used for here?",
         "code": "$ git bisect start\n$ git bisect bad\n$ git bisect good v1.0",
         "answers": [
@@ -509,6 +545,7 @@ export const gitQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "So2al 3la --follow: git log l 3adi kay-tb3 l path, w l rename kay-bdl l path. L flag --follow kat-khli git y-tb3 l file 7ta mn ba3d l rename.",
         "text": "file.js was renamed to app.js, and git log -- app.js shows only recent commits. How do you see the history from before the rename?",
         "code": "$ git log -- app.js",
         "answers": [
@@ -523,6 +560,7 @@ export const gitQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al 3la git clean -fd: had l command khatira — kat-m7i l files w l directories li untracked definitivement. Fker chnu ghadi y-tm7a.",
         "text": "What does this do?",
         "code": "$ git clean -fd",
         "answers": [
@@ -537,6 +575,7 @@ export const gitQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al 3la HEAD~2: l tilde w l number kay3ni ch7al step l wra mn HEAD. Fker l chain A <- B <- C — fin ghadi twsl b joj steps l wra?",
         "text": "Linear history: A <- B <- C (HEAD = C). What does HEAD~2 point to?",
         "code": "$ git log --oneline\nc3d4e5f C\nb2c3d4e B\na1b2c3d A",
         "answers": [
@@ -551,6 +590,7 @@ export const gitQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al 3la stash pop conflict: l changes dyal l stash w l changes li f l working tree kay-t3ardo. Kayt-7lo b7al ay merge conflict. Fker chnu khass dir.",
         "text": "What happened, and what now?",
         "code": "$ git stash pop\n# CONFLICT in app.js",
         "answers": [
@@ -565,6 +605,7 @@ export const gitQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al 3la rebase -i: f l list l interactive, kol action 3andha dawr — wa7da kat-khli l commit w wa7da kat-dmjo m3a li 9blo. Fker kifach t-rd 5 commits commit wa7ed.",
         "text": "feature has 5 messy commits and the PR needs 1 clean commit. What do you do in the interactive list?",
         "code": "$ git rebase -i HEAD~5",
         "answers": [
@@ -579,6 +620,7 @@ export const gitQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al 3la secrets f git: l file li t-pusha kay-b9a f l history 7ta ila m7itih mn ba3d. W l keys li t-exposaw khasshom y-tbdlo. Fker chnu khass dir kamal.",
         "text": "A .env with API keys was committed and pushed. What must you do?",
         "code": "# .env with live API keys is on GitHub",
         "answers": [
@@ -593,6 +635,7 @@ export const gitQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al 3la tags: git push l 3adi ma kay-pushich l tags — khass command khassa bach t-pushi tag. Fker chkon hia.",
         "text": "The tag is missing on GitHub. Why?",
         "code": "$ git tag v1.0\n$ git push",
         "answers": [
@@ -607,6 +650,7 @@ export const gitQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al 3la --unshallow: l shallow clone kat-jib ghir chi commits l khrin. Ila 7tjti l history kamla mn ba3d, khass t-kmml l fetch. Fker imta kat-7taj hadchi.",
         "text": "When is this needed?",
         "code": "$ git fetch --unshallow",
         "answers": [
@@ -621,6 +665,7 @@ export const gitQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "So2al 3la detached commits: l commits li drtihom w nta f detached HEAD ma kaynin 3la ta branch. Git ma kay-m7ihomch direct. Fker fin t-9dr t-l9ahom.",
         "text": "Where are the 2 hotfix commits now?",
         "code": "$ git checkout a1b2c3\n$ git commit -m \"hotfix\"   # twice\n$ git checkout main",
         "answers": [
@@ -635,6 +680,7 @@ export const gitQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al 3la --ours f merge: fker nta wa9f 3la ina branch daba w kat-mergi mnin — 'ours' hia l jiha dyalk. Chkon l version li ghadi t-b9a?",
         "text": "During a merge, app.js is conflicted and you want YOUR branch's version. What does --ours mean here?",
         "code": "$ git checkout --ours app.js\n$ git add app.js",
         "answers": [
@@ -649,6 +695,7 @@ export const gitQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "So2al 3la worktree: had l command kat-cree working directory tani l nafs l repo, bach t-khdm 3la joj branches f nafs l wa9t. Fker chnu ghadi ykoun f ../hotfix.",
         "text": "What does this give you?",
         "code": "$ git worktree add ../hotfix main",
         "answers": [
@@ -663,6 +710,7 @@ export const gitQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al 3la git config: kayn config global w config local dyal l repo. Fker chkon li a9rb l l repo — w chkon li ghadi y-trb7.",
         "text": "Which email will new commits in this repo use?",
         "code": "# ~/.gitconfig:          email = personal@x.com\n# repo .git/config:     email = work@x.com",
         "answers": [
@@ -677,6 +725,7 @@ export const gitQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al 3la -X theirs: had l option kat-gol l git chnu y-dir m3a l conflicting hunks — fker chnu kay3ni 'theirs' f l merge.",
         "text": "What does -X theirs do?",
         "code": "$ git merge -X theirs feature",
         "answers": [
@@ -691,6 +740,7 @@ export const gitQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al 3la commit -S: had l flag kat-signer l commit b GPG key dyalk bach y-t2kd l nas blli nta li drtih. Fker chnu l far9 bin signing w squashing.",
         "text": "What does -S do?",
         "code": "$ git commit -S -m \"release\"",
         "answers": [
@@ -710,6 +760,7 @@ export const gitQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al 3la git status: ila bdllti file tracked w ma drtich add, git kay-classe l file f category mo3ayana. Fker l far9 bin l working tree w l staging area.",
         "text": "Vous avez modifié le fichier suivi app.js sans rien indexer. Que rapporte git status pour app.js ?",
         "code": "$ git status",
         "answers": [
@@ -724,6 +775,7 @@ export const gitQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al 3la git add: had l command kat-n9l l changes mn l working tree l l staging area. Fker chnu ghadi y-gol status mn ba3d l add.",
         "text": "Que rapporte git status maintenant ?",
         "code": "$ git add app.js\n$ git status",
         "answers": [
@@ -738,6 +790,7 @@ export const gitQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al 3la git commit: had l command kat-cree snapshot jdida mn li kayn f l staging area. Fker fin ghadi ytzad l commit.",
         "text": "Les changements ont d'abord été indexés. Que se passe-t-il ?",
         "code": "$ git commit -m \"Fix login bug\"",
         "answers": [
@@ -752,6 +805,7 @@ export const gitQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al 3la commit bla add: git commit kat-committi ghir li kayn f l staging area. Ila ma drtich add, chnu kayn f l staging?",
         "text": "Vous avez modifié app.js mais jamais lancé git add. Que se passe-t-il ?",
         "code": "$ git commit -m \"update\"",
         "answers": [
@@ -766,6 +820,7 @@ export const gitQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al 3la git log --oneline: had l command kat-afficher l commits b format mkhtasar. Fker l tartib — chkon li kayban lwl, l jdid wla l 9dim?",
         "text": "Qu'est-ce que cela affiche ?",
         "code": "$ git log --oneline\n3f2a1b0 Add cart page\n9c4d2e1 Fix login bug",
         "answers": [
@@ -780,6 +835,7 @@ export const gitQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "So2al 3la git diff: l diff l 3adi kay-wri l changes li f l working tree (unstaged), w --staged kay-wri li f l staging area. Fker fin kayna l change dyalk.",
         "text": "app.js a été modifié et indexé. Quelle commande montre le changement indexé ?",
         "code": "$ git diff\n$ git diff --staged",
         "answers": [
@@ -794,6 +850,7 @@ export const gitQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al 3la git branch: l branch li 3liha l star (*) hia li checked out daba. Chof l star fin kayna f l output.",
         "text": "Quelle branche est actuellement extraite ?",
         "code": "$ git branch\n  main\n* feature/login",
         "answers": [
@@ -808,6 +865,7 @@ export const gitQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al 3la checkout -b: l branch l jdida kat-bda mn fin? Fker blli l branch hia ghir pointer 3la commit — mnin ghadi y-bda had l pointer?",
         "text": "Vous lancez ceci depuis main. Où commence feature/cart ?",
         "code": "$ git checkout -b feature/cart",
         "answers": [
@@ -822,6 +880,7 @@ export const gitQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "So2al 3la git clone: had l command kat-jib l repo kamal — l files, l history kamla, w kat-configure l remote 'origin'. Fker chnu kayn f l folder mn ba3d l clone.",
         "text": "Qu'obtenez-vous ?",
         "code": "$ git clone https://github.com/user/repo.git",
         "answers": [
@@ -836,6 +895,7 @@ export const gitQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "So2al 3la .gitignore: had l file kay-tjahl ghir l files li mazal ma t-trackawch. Ila l file deja tracked, l ignore ma kay-tapplych 3lih.",
         "text": ".gitignore contient *.log, mais debug.log a été commité la semaine dernière. Après modification de debug.log, que montre git status ?",
         "code": "$ git status",
         "answers": [
@@ -850,6 +910,7 @@ export const gitQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al 3la push rejected: non-fast-forward kay3ni blli l remote tqddm 3lik — 3andu commits li nta ma 3andkch. Fker chnu khass dir 9bl ma t-push.",
         "text": "Pourquoi le push a-t-il été rejeté ?",
         "code": "$ git push\n! [rejected] main -> main (non-fast-forward)",
         "answers": [
@@ -864,6 +925,7 @@ export const gitQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al 3la git pull: had l command kat-dir joj 7wayj f wa7ed — kat-jib l changes mn l remote w kat-dmhom f l branch dyalk. Fker chkon homa l joj.",
         "text": "Que fait git pull ?",
         "code": "$ git pull",
         "answers": [
@@ -878,6 +940,7 @@ export const gitQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al 3la commit -a: l flag -a kat-stage ghir l files li deja tracked. L file l jdid (untracked) khassu git add sari7. Fker notes.txt wach tracked wla la?",
         "text": "Pourquoi notes.txt manque-t-il dans le commit ?",
         "code": "$ touch notes.txt\n$ git commit -am \"add notes\"",
         "answers": [
@@ -892,6 +955,7 @@ export const gitQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al 3la git restore: had l command kat-rjja3 l file l l 7ala li kanat f l akhir commit. Fker chnu ghadi yw9a3 l l edits li ma t-stageawch.",
         "text": "app.js contient des modifications non désirées, non indexées. Que se passe-t-il ?",
         "code": "$ git restore app.js",
         "answers": [
@@ -906,6 +970,7 @@ export const gitQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "So2al 3la checkout b hash: ila check-outiti commit bla ma tkoun 3la branch, HEAD kay-wlli y-pointi direct 3la l commit. Fker chnu smit had l 7ala.",
         "text": "a1b2c3 est un hash de commit. Dans quel état est le dépôt ?",
         "code": "$ git checkout a1b2c3",
         "answers": [
@@ -920,6 +985,7 @@ export const gitQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al 3la stash: had l command kat-khbbi l changes mo2a9atan w kat-rjja3 l working tree ndif, w pop kat-rddhom. Fker l far9 bin stash w commit.",
         "text": "Quel est le résultat ?",
         "code": "$ git stash\n$ git stash pop",
         "answers": [
@@ -934,6 +1000,7 @@ export const gitQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al 3la merge fast-forward: ila l branch l khra ghir zayda 3lik w main ma t-bdlch, git ghir kay-hrk l pointer l qddam. Fker wach kay7taj merge commit f had l 7ala.",
         "text": "feature a 2 commits d'avance sur main, main est inchangé. Que se passe-t-il ?",
         "code": "$ git checkout main\n$ git merge feature",
         "answers": [
@@ -948,6 +1015,7 @@ export const gitQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al 3la upstream: f lwl push dyal branch jdida, git ma kay3rfch fin y-pushi. Khass t-golih l remote w l branch b -u. Fker l command li kat-set l upstream.",
         "text": "Le premier push de la nouvelle branche feature échoue en demandant de définir upstream. Que faire ?",
         "code": "$ git push",
         "answers": [
@@ -962,6 +1030,7 @@ export const gitQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "So2al 3la git log A..B: had l syntax kat-wri l commits dyal jiha wa7da. Fker l direction — chkon li 3la l isar w chkon li 3la l imin.",
         "text": "Qu'est-ce que cela liste ?",
         "code": "$ git log main..feature --oneline",
         "answers": [
@@ -976,6 +1045,7 @@ export const gitQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al 3la branch -d: git kay-7mi l branches li mazal ma t-mergeawch — kay-rfd l delete. Fker chnu ghadi y-golik git.",
         "text": "feature n'a jamais été fusionnée. Que se passe-t-il ?",
         "code": "$ git branch -d feature",
         "answers": [
@@ -990,6 +1060,7 @@ export const gitQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al 3la merge conflict: l markers (<<<<<<<, =======, >>>>>>>) kay-wriwk l joj versions. Khass nta t-khtar b idik, t-7iyed l markers, w t-committi.",
         "text": "Vous voyez ceci dans app.js après une fusion. Que devez-vous faire ?",
         "code": "<<<<<<< HEAD\nconst role = \"admin\";\n=======\nconst role = \"user\";\n>>>>>>> feature",
         "answers": [
@@ -1004,6 +1075,7 @@ export const gitQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al 3la rebase: had l command kat-3awd t-ktb l commits dyalk fo9 l akhir version dyal l branch l khra. Fker chnu ghadi yw9a3 l l 3 commits dyal feature.",
         "text": "feature a 3 commits au-dessus d'un vieux main. Que fait le rebase ?",
         "code": "$ git checkout feature\n$ git rebase main",
         "answers": [
@@ -1018,6 +1090,7 @@ export const gitQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al 3la reset --soft: had l mode kay-7iyed l commit walakin l changes ma kay-m7ihomch. Fker fin ghadi y-mchiw l changes — l staging wla l working tree?",
         "text": "Vous avez commité trop tôt et devez ajouter un fichier. Quel est le résultat ?",
         "code": "$ git reset --soft HEAD~1",
         "answers": [
@@ -1032,6 +1105,7 @@ export const gitQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al 3la revert: had l command ma kay-m7ich l history — kay-cree commit jdida. Fker chnu l far9 bin revert li kay-zid commit w reset li kay-7iyed.",
         "text": "Un mauvais commit a déjà été poussé et partagé. Que fait ceci ?",
         "code": "$ git revert a1b2c3",
         "answers": [
@@ -1046,6 +1120,7 @@ export const gitQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "So2al 3la reflog: git kay-7tfz l history dyal fin kan HEAD — 7ta mn ba3d l reset. Fker fin t-9dr t-l9a l hash dyal l commit li mcha.",
         "text": "Oups, ce reset a écarté le mauvais commit. Comment le retrouver ?",
         "code": "$ git reset --hard HEAD~1",
         "answers": [
@@ -1060,6 +1135,7 @@ export const gitQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "So2al 3la cherry-pick: had l command kat-akhd commit wa7ed mn branch w kat-3awd t-applyih 3la l branch li nta fiha b7al commit jdida. Fker wach l branch l khra kat-tbdl.",
         "text": "a1b2c3 est un commit de feature. Que se passe-t-il ?",
         "code": "$ git checkout main\n$ git cherry-pick a1b2c3",
         "answers": [
@@ -1074,6 +1150,7 @@ export const gitQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al 3la stash -u: l stash l 3adi kay-khbbi ghir l changes dyal l files l tracked. L files l jdad (untracked) khasshom flag khassa. Fker chkon hia.",
         "text": "Un nouveau fichier non suivi a survécu à un git stash simple. Pourquoi, et qu'est-ce qui l'inclut ?",
         "code": "$ git stash       # le nouveau fichier reste\n$ git stash -u    # l'inclut aussi",
         "answers": [
@@ -1088,6 +1165,7 @@ export const gitQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al 3la fetch + merge: had l approach kat-jib l changes lwl bla ma t-dmhom, bach t-chofhom 9bl ma t-mergi. Fker chkon l avantage 3la pull l mobachir.",
         "text": "Pourquoi feriez-vous ceci plutôt que git pull ?",
         "code": "$ git fetch origin\n$ git merge origin/main",
         "answers": [
@@ -1102,6 +1180,7 @@ export const gitQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al 3la rebase conflict: mn ba3d ma t-7l l conflict, khass t-stage l file w t-kmml l rebase b command khassa. Fker chnu hia l command li kat-kmml l process.",
         "text": "Pendant git rebase main vous avez un conflit dans app.js, et vous avez corrigé le fichier. Quelle est la prochaine commande ?",
         "code": "# CONFLIT dans app.js (vous l'avez corrigé)",
         "answers": [
@@ -1116,6 +1195,7 @@ export const gitQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al 3la git show: had l command kat-wri l details dyal commit wa7ed — l message, l author, w l diff dyalo. Fker chnu ghadi y-ban.",
         "text": "Qu'est-ce que cela affiche ?",
         "code": "$ git show a1b2c3",
         "answers": [
@@ -1130,6 +1210,7 @@ export const gitQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al 3la force-push: l rebase kat-3awd t-ktb l history — l hashes kat-tbdlo. L teammate li 3andu l history l 9dima ghadi y-l9a rasha diverged. Fker chnu kay3ni diverged.",
         "text": "Vous avez rebasé feature et forcé le push. Votre collègue dit qu'il ne peut plus pull. Que s'est-il passé de son côté ?",
         "code": "# collègue : « je ne peux plus pull feature »",
         "answers": [
@@ -1144,6 +1225,7 @@ export const gitQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al 3la reset --hard origin/branch: had l command kat-rjja3 l branch l 7ala dyal l remote bdabt. Fker chnu ghadi yw9a3 l l commits l local li zaydin 3la l remote.",
         "text": "Vous voulez que votre branche locale feature corresponde exactement au distant. Quel est le résultat ?",
         "code": "$ git checkout feature\n$ git reset --hard origin/feature",
         "answers": [
@@ -1158,6 +1240,7 @@ export const gitQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al 3la branch recovery: l branch li t-m7at, l commits dyalha mazalin kaynin f l repo. L reflog kay-7tfz fin kan l tip. Fker kifach t-3awd t-cree l branch mn l hash.",
         "text": "Vous avez supprimé la branche par erreur. Comment la récupérer ?",
         "code": "$ git branch -D feature",
         "answers": [
@@ -1172,6 +1255,7 @@ export const gitQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al 3la amend + push: --amend kat-3awd t-ktb l commit li t-pusha deja — l hash kay-tbdl. L push l 3adi ghadi y-trejecta. Fker chkon l fix l safe.",
         "text": "Pourquoi le push a-t-il été rejeté, et quelle est la correction sûre ?",
         "code": "$ git commit --amend\n$ git push   # rejeté",
         "answers": [
@@ -1186,6 +1270,7 @@ export const gitQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al 3la 'both added': had l 7ala kat-w9a3 ila joj branches zado nafs l file l jdid b content mkhtalf. Git ma kay-9drch y-khtar b7alo — khass nta t-7lha.",
         "text": "Que signifie « both added » ?",
         "code": "$ git status\n# both added:      config.json",
         "answers": [
@@ -1200,6 +1285,7 @@ export const gitQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al 3la git bisect: had l tool kay-dir binary search 3la l commits bach y-l9a fin dkhlt l bug. Kat-markiw l bad w l good w hwa kay-9ssm l tri9.",
         "text": "À quoi sert git bisect ici ?",
         "code": "$ git bisect start\n$ git bisect bad\n$ git bisect good v1.0",
         "answers": [
@@ -1214,6 +1300,7 @@ export const gitQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "So2al 3la --follow: git log l 3adi kay-tb3 l path, w l rename kay-bdl l path. L flag --follow kat-khli git y-tb3 l file 7ta mn ba3d l rename.",
         "text": "file.js a été renommé en app.js, et git log -- app.js ne montre que les commits récents. Comment voir l'historique d'avant le renommage ?",
         "code": "$ git log -- app.js",
         "answers": [
@@ -1228,6 +1315,7 @@ export const gitQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al 3la git clean -fd: had l command khatira — kat-m7i l files w l directories li untracked definitivement. Fker chnu ghadi y-tm7a.",
         "text": "Que fait ceci ?",
         "code": "$ git clean -fd",
         "answers": [
@@ -1242,6 +1330,7 @@ export const gitQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al 3la HEAD~2: l tilde w l number kay3ni ch7al step l wra mn HEAD. Fker l chain A <- B <- C — fin ghadi twsl b joj steps l wra?",
         "text": "Historique linéaire : A <- B <- C (HEAD = C). Sur quoi pointe HEAD~2 ?",
         "code": "$ git log --oneline\nc3d4e5f C\nb2c3d4e B\na1b2c3d A",
         "answers": [
@@ -1256,6 +1345,7 @@ export const gitQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al 3la stash pop conflict: l changes dyal l stash w l changes li f l working tree kay-t3ardo. Kayt-7lo b7al ay merge conflict. Fker chnu khass dir.",
         "text": "Que s'est-il passé, et que faire ?",
         "code": "$ git stash pop\n# CONFLIT dans app.js",
         "answers": [
@@ -1270,6 +1360,7 @@ export const gitQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al 3la rebase -i: f l list l interactive, kol action 3andha dawr — wa7da kat-khli l commit w wa7da kat-dmjo m3a li 9blo. Fker kifach t-rd 5 commits commit wa7ed.",
         "text": "feature a 5 commits brouillons et la PR exige 1 commit propre. Que faites-vous dans la liste interactive ?",
         "code": "$ git rebase -i HEAD~5",
         "answers": [
@@ -1284,6 +1375,7 @@ export const gitQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al 3la secrets f git: l file li t-pusha kay-b9a f l history 7ta ila m7itih mn ba3d. W l keys li t-exposaw khasshom y-tbdlo. Fker chnu khass dir kamal.",
         "text": "Un .env avec des clés API a été commité et poussé. Que devez-vous faire ?",
         "code": "# .env avec des clés API réelles est sur GitHub",
         "answers": [
@@ -1298,6 +1390,7 @@ export const gitQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al 3la tags: git push l 3adi ma kay-pushich l tags — khass command khassa bach t-pushi tag. Fker chkon hia.",
         "text": "Le tag est absent sur GitHub. Pourquoi ?",
         "code": "$ git tag v1.0\n$ git push",
         "answers": [
@@ -1312,6 +1405,7 @@ export const gitQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al 3la --unshallow: l shallow clone kat-jib ghir chi commits l khrin. Ila 7tjti l history kamla mn ba3d, khass t-kmml l fetch. Fker imta kat-7taj hadchi.",
         "text": "Quand est-ce nécessaire ?",
         "code": "$ git fetch --unshallow",
         "answers": [
@@ -1326,6 +1420,7 @@ export const gitQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "So2al 3la detached commits: l commits li drtihom w nta f detached HEAD ma kaynin 3la ta branch. Git ma kay-m7ihomch direct. Fker fin t-9dr t-l9ahom.",
         "text": "Où sont maintenant les 2 commits hotfix ?",
         "code": "$ git checkout a1b2c3\n$ git commit -m \"hotfix\"   # deux fois\n$ git checkout main",
         "answers": [
@@ -1340,6 +1435,7 @@ export const gitQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al 3la --ours f merge: fker nta wa9f 3la ina branch daba w kat-mergi mnin — 'ours' hia l jiha dyalk. Chkon l version li ghadi t-b9a?",
         "text": "Pendant une fusion, app.js est en conflit et vous voulez la version de VOTRE branche. Que signifie --ours ici ?",
         "code": "$ git checkout --ours app.js\n$ git add app.js",
         "answers": [
@@ -1354,6 +1450,7 @@ export const gitQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "So2al 3la worktree: had l command kat-cree working directory tani l nafs l repo, bach t-khdm 3la joj branches f nafs l wa9t. Fker chnu ghadi ykoun f ../hotfix.",
         "text": "Qu'est-ce que cela vous donne ?",
         "code": "$ git worktree add ../hotfix main",
         "answers": [
@@ -1368,6 +1465,7 @@ export const gitQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al 3la git config: kayn config global w config local dyal l repo. Fker chkon li a9rb l l repo — w chkon li ghadi y-trb7.",
         "text": "Quel email utiliseront les nouveaux commits dans ce dépôt ?",
         "code": "# ~/.gitconfig :         email = personal@x.com\n# .git/config du dépôt : email = work@x.com",
         "answers": [
@@ -1382,6 +1480,7 @@ export const gitQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al 3la -X theirs: had l option kat-gol l git chnu y-dir m3a l conflicting hunks — fker chnu kay3ni 'theirs' f l merge.",
         "text": "Que fait -X theirs ?",
         "code": "$ git merge -X theirs feature",
         "answers": [
@@ -1396,6 +1495,7 @@ export const gitQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al 3la commit -S: had l flag kat-signer l commit b GPG key dyalk bach y-t2kd l nas blli nta li drtih. Fker chnu l far9 bin signing w squashing.",
         "text": "Que fait -S ?",
         "code": "$ git commit -S -m \"release\"",
         "answers": [

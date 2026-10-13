@@ -5,6 +5,7 @@ export const laravelQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la routes f Laravel: chnu kayw9e3 mli katzoor /hello? Fker f l return dyal l closure.",
         "text": "What does visiting /hello return?",
         "code": "Route::get('/hello', function () {\n    return 'Hello!';\n});",
         "answers": [
@@ -19,6 +20,7 @@ export const laravelQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la {{ }} f Blade: wach kaykhli l HTML kima howa wla kay7mih? Fker f escaping.",
         "text": "What does this Blade line output? ($name is \"<b>Aymane</b>\")",
         "code": "{{ $name }}",
         "answers": [
@@ -33,6 +35,7 @@ export const laravelQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la route parameters: chnu kat3mel {id} mli katji 9ima f l URL? Fker fih.",
         "text": "What does visiting /users/42 return?",
         "code": "Route::get('/users/{id}', function ($id) {\n    return \"User \" . $id;\n});",
         "answers": [
@@ -47,6 +50,7 @@ export const laravelQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la find(1): wach kayrje3 model wa7ed wla collection? Fker fih.",
         "text": "A user with id 1 exists. What does this return?",
         "code": "$user = User::find(1);",
         "answers": [
@@ -61,6 +65,7 @@ export const laravelQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la @foreach: chnu kaytbe3 f kol dawra? Fker f $user->name.",
         "text": "What does this Blade block do?",
         "code": "@foreach ($users as $user)\n    {{ $user->name }}\n@endforeach",
         "answers": [
@@ -75,6 +80,7 @@ export const laravelQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la redirect(): wach kay affichi view wla kaysift l browser l blassa khra? Fker f HTTP redirect.",
         "text": "What does this do in a controller?",
         "code": "return redirect('/home');",
         "answers": [
@@ -89,6 +95,7 @@ export const laravelQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la all(): wach kayrje3 wa7ed wla kolchi? Fker f collection.",
         "text": "What does User::all() return?",
         "code": "$users = User::all();",
         "answers": [
@@ -103,6 +110,7 @@ export const laravelQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la view(): chnu kayw9e3 b l data li kat3tiha? Fker f $name f Blade.",
         "text": "What happens here?",
         "code": "return view('profile', ['name' => 'Aymane']);",
         "answers": [
@@ -117,6 +125,7 @@ export const laravelQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la request('name'): chnu kayrje3 mli kat3tih smit l input? Fker f l 9ima li tsiftat.",
         "text": "A form submitted name=Aymane. What is $name?",
         "code": "// in a controller\n$name = request('name');",
         "answers": [
@@ -131,6 +140,7 @@ export const laravelQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la Route::post: chnu l far9 binha w bin Route::get? Fker f l HTTP method.",
         "text": "What does this line define?",
         "code": "Route::post('/login', [AuthController::class, 'login']);",
         "answers": [
@@ -145,6 +155,7 @@ export const laravelQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la {!! !!}: chnu l far9 binha w bin {{ }}? Fker f raw HTML.",
         "text": "What is rendered in the browser? ($html is \"<b>Hi</b>\")",
         "code": "{!! $html !!}",
         "answers": [
@@ -159,6 +170,7 @@ export const laravelQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la find(999): mli l id ma kaynch, chnu kayrje3 find? Fker f null->name.",
         "text": "What happens on the second line?",
         "code": "$user = User::find(999); // no user with id 999\n$user->name;",
         "answers": [
@@ -173,6 +185,7 @@ export const laravelQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la mass assignment: 3lach Laravel kay7mi mn create b ay fields? Fker f $fillable.",
         "text": "The User model has no $fillable set. What happens?",
         "code": "User::create(['name' => 'Aymane', 'role' => 'admin']);",
         "answers": [
@@ -187,6 +200,7 @@ export const laravelQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la error 419: chnu na9es f l form? Fker f CSRF.",
         "text": "Submitting this form returns a 419 error. What's missing?",
         "code": "<form method=\"POST\" action=\"/save\">\n    <input name=\"title\">\n    <button>Save</button>\n</form>",
         "answers": [
@@ -201,6 +215,7 @@ export const laravelQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la where()->get(): wach kayrje3 wa7ed wla collection? Fker f get.",
         "text": "What does $active contain?",
         "code": "$active = User::where('active', 1)->get();",
         "answers": [
@@ -215,6 +230,7 @@ export const laravelQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la count(): chnu kat7seb hna? Fker f 3adad l users.",
         "text": "What is $count?",
         "code": "$count = User::all()->count();",
         "answers": [
@@ -229,6 +245,7 @@ export const laravelQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l ordre dyal routes: chkun kaytmatcha lwel m3a /users/create? Fker f {id}.",
         "text": "Visiting /users/create shows...?",
         "code": "Route::get('/users/{id}', fn($id) => \"show $id\");\nRoute::get('/users/create', fn() => \"create form\");",
         "answers": [
@@ -243,6 +260,7 @@ export const laravelQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la config cache: chnu khass tdir bach l app t9ra .env jdid? Fker f artisan commands dyal config.",
         "text": "After editing .env, the app still uses the old values (config is cached). Which command fixes it?",
         "answers": [
           "php artisan config:clear",
@@ -256,6 +274,7 @@ export const laravelQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la has(): mta kayrje3 true? Fker f wjod l input f l request.",
         "text": "When is the block executed?",
         "code": "if ($request->has('email')) { ... }",
         "answers": [
@@ -270,6 +289,7 @@ export const laravelQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la first(): mli ma kayn walo, chnu kayrje3 - null wla collection khawya? Fker fih.",
         "text": "No user has that email. What is $user?",
         "code": "$user = User::where('email', 'a@x.com')->first();",
         "answers": [
@@ -284,6 +304,7 @@ export const laravelQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la belongsTo: l post kayntami l chkun? Fker f l author dyalo.",
         "text": "What is printed? ($post is a Post)",
         "code": "class Post extends Model {\n    public function user() {\n        return $this->belongsTo(User::class);\n    }\n}\necho $post->user->name;",
         "answers": [
@@ -298,6 +319,7 @@ export const laravelQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la hasMany: l user 3ndo ch7al mn post? Fker f collection.",
         "text": "What is $posts?",
         "code": "class User extends Model {\n    public function posts() {\n        return $this->hasMany(Post::class);\n    }\n}\n$posts = $user->posts;",
         "answers": [
@@ -312,6 +334,7 @@ export const laravelQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la N+1: 3lach kayn bzzaf dyal queries f l loop? Fker f eager loading.",
         "text": "With 100 posts, what's the performance problem and the fix?",
         "code": "$posts = Post::all();\nforeach ($posts as $post) {\n    echo $post->user->name;\n}",
         "answers": [
@@ -326,6 +349,7 @@ export const laravelQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la query builder: chnu howa l filter w chnu howa l tri? Fker f age w name.",
         "text": "What does this return?",
         "code": "$users = User::where('age', '>', 18)->orderBy('name')->get();",
         "answers": [
@@ -340,6 +364,7 @@ export const laravelQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la create 3la relation: wach l comment kaytlinka wahdo l post? Fker f foreign key.",
         "text": "What happens?",
         "code": "$post->comments()->create(['body' => 'Nice!']);",
         "answers": [
@@ -354,6 +379,7 @@ export const laravelQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la chaining: l where kat7ded chkun? Fker f posts dyal had l user.",
         "text": "What is $published?",
         "code": "$published = $user->posts()->where('published', true)->get();",
         "answers": [
@@ -368,6 +394,7 @@ export const laravelQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la attach: chnu kaytzad f l pivot table? Fker f ligne jjdida katlinki user w role.",
         "text": "roles() is belongsToMany. What does this do?",
         "code": "$user->roles()->attach($roleId);",
         "answers": [
@@ -382,6 +409,7 @@ export const laravelQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la withCount: chnu hiya comments_count - ra9m wla collection? Fker fih.",
         "text": "What is printed?",
         "code": "$posts = Post::withCount('comments')->get();\necho $posts[0]->comments_count;",
         "answers": [
@@ -396,6 +424,7 @@ export const laravelQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la sum('price'): chnu katjme3? Fker f l prices dyal l items.",
         "text": "What is $total?",
         "code": "$total = $order->items->sum('price');",
         "answers": [
@@ -410,6 +439,7 @@ export const laravelQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la nested eager loading: chnu kaytloada m3a users? Fker f posts w comments dyalhom.",
         "text": "What does with('posts.comments') do?",
         "code": "$users = User::with('posts.comments')->get();",
         "answers": [
@@ -424,6 +454,7 @@ export const laravelQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la query builder: chnu homa l conditions? Fker f active w age.",
         "text": "What does this return?",
         "code": "$users = DB::table('users')\n    ->where('active', 1)\n    ->where('age', '>', 18)\n    ->get();",
         "answers": [
@@ -438,6 +469,7 @@ export const laravelQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la firstOrFail: chnu l far9 binha w bin first() mli ma kayn walo? Fker fih.",
         "text": "No user has that email. What happens?",
         "code": "$user = User::where('email', $email)->firstOrFail();",
         "answers": [
@@ -452,6 +484,7 @@ export const laravelQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la updateOrCreate: mli l user kayn deja, wach kaytzad wa7ed jdid? Fker f update.",
         "text": "A user with $email already exists. What happens?",
         "code": "User::updateOrCreate(\n    ['email' => $email],\n    ['name' => $name]\n);",
         "answers": [
@@ -466,6 +499,7 @@ export const laravelQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la middleware auth: guest li ma msjelch fin kaymchi? Fker f login.",
         "text": "A guest (not logged in) visits /dashboard. What happens?",
         "code": "Route::get('/dashboard', [DashController::class, 'index'])\n    ->middleware('auth');",
         "answers": [
@@ -480,6 +514,7 @@ export const laravelQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la validation: mli l email ghalet, chnu kayw9e3? Fker f redirect back m3a errors.",
         "text": "The submitted email is 'not-an-email'. What happens?",
         "code": "$request->validate([\n    'email' => 'required|email',\n]);",
         "answers": [
@@ -494,6 +529,7 @@ export const laravelQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la chunk(): chnu l fayda m3a 10,000 users? Fker f batches dyal 100.",
         "text": "With 10,000 users, what does chunk() do?",
         "code": "User::chunk(100, function ($users) {\n    // send newsletter\n});",
         "answers": [
@@ -508,6 +544,7 @@ export const laravelQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la Cache::remember: tanya merra f 60s, wach kaymchi l DB? Fker f cache hit.",
         "text": "What happens on the second request within 60 seconds?",
         "code": "$users = Cache::remember('users', 60, function () {\n    return User::all();\n});",
         "answers": [
@@ -522,6 +559,7 @@ export const laravelQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la transactions: mli katw9e3 exception, chnu kayw9e3 l save? Fker f rollback.",
         "text": "What happens to the saved order?",
         "code": "DB::transaction(function () {\n    $order->save();\n    throw new \\Exception('oops');\n});",
         "answers": [
@@ -536,6 +574,7 @@ export const laravelQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la response()->json: chnu kaywsel l client - HTML wla JSON? Fker f status 201.",
         "text": "What does the client receive?",
         "code": "return response()->json(['ok' => true], 201);",
         "answers": [
@@ -550,6 +589,7 @@ export const laravelQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la SoftDeletes: wach delete katmse7 nihaiyan? Fker f deleted_at.",
         "text": "After this, is the user in $all? (User uses SoftDeletes)",
         "code": "$user = User::find(1);\n$user->delete();\n$all = User::all();",
         "answers": [
@@ -564,6 +604,7 @@ export const laravelQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la route model binding: mli l user ma kaynch, chnu kaydir Laravel automatiquement? Fker fih.",
         "text": "Visiting /users/999 with no such user. What happens? (implicit route model binding)",
         "code": "Route::get('/users/{user}', function (User $user) {\n    return $user->name;\n});",
         "answers": [
@@ -578,6 +619,7 @@ export const laravelQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la get() bla nata2ij: wach kayrje3 null? Fker f empty collection.",
         "text": "No user matches. What is $none?",
         "code": "$none = User::where('active', 9)->get();",
         "answers": [
@@ -592,6 +634,7 @@ export const laravelQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la update 3la model: chnu kayrje3 - l model wla true/false? Fker fih.",
         "text": "The update succeeds. What is $ok?",
         "code": "$ok = $user->update(['name' => 'X']);",
         "answers": [
@@ -606,6 +649,7 @@ export const laravelQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la collections: chnu kaydir map l kol element? Fker f *2.",
         "text": "What is $names?",
         "code": "$names = collect([1, 2, 3])\n    ->map(fn($n) => $n * 2)\n    ->toArray();",
         "answers": [
@@ -620,6 +664,7 @@ export const laravelQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la Str::slug: chnu kaydir l string? Fker f lowercase w dashes.",
         "text": "What is printed?",
         "code": "echo Str::slug('Hello World!');",
         "answers": [
@@ -634,6 +679,7 @@ export const laravelQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la Carbon: now()->addDay() chnu kat3ti? Fker f isTomorrow().",
         "text": "What is printed?",
         "code": "var_dump(now()->addDay()->isTomorrow());",
         "answers": [
@@ -648,6 +694,7 @@ export const laravelQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la wasRecentlyCreated: mor create, wach l model jdid? Fker fih.",
         "text": "What is printed?",
         "code": "$fresh = User::create(['name' => 'Z']);\nvar_dump($fresh->wasRecentlyCreated);",
         "answers": [
@@ -662,6 +709,7 @@ export const laravelQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la update 3la builder: chnu kayrje3 - boolean wla 3adad? Fker f affected rows.",
         "text": "What does update() return on a query builder?",
         "code": "User::where('active', 1)->update(['banned' => true]);",
         "answers": [
@@ -676,6 +724,7 @@ export const laravelQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la insertGetId: chnu kayrje3 - ghir l id wla l row kamla? Fker fih.",
         "text": "What is $id?",
         "code": "$id = DB::table('users')->insertGetId(['name' => 'A']);",
         "answers": [
@@ -690,6 +739,7 @@ export const laravelQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la session(): kifach kat7et 9ima w kat9raha? Fker f l key w l value.",
         "text": "What is $theme?",
         "code": "session(['theme' => 'dark']);\n$theme = session('theme');",
         "answers": [
@@ -709,6 +759,7 @@ export const laravelQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la routes f Laravel: chnu kayw9e3 mli katzoor /hello? Fker f l return dyal l closure.",
         "text": "Que retourne la visite de /hello ?",
         "code": "Route::get('/hello', function () {\n    return 'Hello!';\n});",
         "answers": [
@@ -723,6 +774,7 @@ export const laravelQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la {{ }} f Blade: wach kaykhli l HTML kima howa wla kay7mih? Fker f escaping.",
         "text": "Qu'affiche cette ligne Blade ? ($name vaut \"<b>Aymane</b>\")",
         "code": "{{ $name }}",
         "answers": [
@@ -737,6 +789,7 @@ export const laravelQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la route parameters: chnu kat3mel {id} mli katji 9ima f l URL? Fker fih.",
         "text": "Que retourne la visite de /users/42 ?",
         "code": "Route::get('/users/{id}', function ($id) {\n    return \"User \" . $id;\n});",
         "answers": [
@@ -751,6 +804,7 @@ export const laravelQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la find(1): wach kayrje3 model wa7ed wla collection? Fker fih.",
         "text": "Un utilisateur avec l'id 1 existe. Que retourne ceci ?",
         "code": "$user = User::find(1);",
         "answers": [
@@ -765,6 +819,7 @@ export const laravelQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la @foreach: chnu kaytbe3 f kol dawra? Fker f $user->name.",
         "text": "Que fait ce bloc Blade ?",
         "code": "@foreach ($users as $user)\n    {{ $user->name }}\n@endforeach",
         "answers": [
@@ -779,6 +834,7 @@ export const laravelQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la redirect(): wach kay affichi view wla kaysift l browser l blassa khra? Fker f HTTP redirect.",
         "text": "Que fait ceci dans un contrôleur ?",
         "code": "return redirect('/home');",
         "answers": [
@@ -793,6 +849,7 @@ export const laravelQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la all(): wach kayrje3 wa7ed wla kolchi? Fker f collection.",
         "text": "Que retourne User::all() ?",
         "code": "$users = User::all();",
         "answers": [
@@ -807,6 +864,7 @@ export const laravelQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la view(): chnu kayw9e3 b l data li kat3tiha? Fker f $name f Blade.",
         "text": "Que se passe-t-il ici ?",
         "code": "return view('profile', ['name' => 'Aymane']);",
         "answers": [
@@ -821,6 +879,7 @@ export const laravelQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la request('name'): chnu kayrje3 mli kat3tih smit l input? Fker f l 9ima li tsiftat.",
         "text": "Un formulaire a envoyé name=Aymane. Que vaut $name ?",
         "code": "// dans un contrôleur\n$name = request('name');",
         "answers": [
@@ -835,6 +894,7 @@ export const laravelQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "So2al kaysewlk 3la Route::post: chnu l far9 binha w bin Route::get? Fker f l HTTP method.",
         "text": "Que définit cette ligne ?",
         "code": "Route::post('/login', [AuthController::class, 'login']);",
         "answers": [
@@ -849,6 +909,7 @@ export const laravelQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la {!! !!}: chnu l far9 binha w bin {{ }}? Fker f raw HTML.",
         "text": "Qu'est-ce qui s'affiche dans le navigateur ? ($html vaut \"<b>Hi</b>\")",
         "code": "{!! $html !!}",
         "answers": [
@@ -863,6 +924,7 @@ export const laravelQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la find(999): mli l id ma kaynch, chnu kayrje3 find? Fker f null->name.",
         "text": "Que se passe-t-il à la deuxième ligne ?",
         "code": "$user = User::find(999); // aucun utilisateur avec l'id 999\n$user->name;",
         "answers": [
@@ -877,6 +939,7 @@ export const laravelQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la mass assignment: 3lach Laravel kay7mi mn create b ay fields? Fker f $fillable.",
         "text": "Le modèle User n'a pas de $fillable. Que se passe-t-il ?",
         "code": "User::create(['name' => 'Aymane', 'role' => 'admin']);",
         "answers": [
@@ -891,6 +954,7 @@ export const laravelQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la error 419: chnu na9es f l form? Fker f CSRF.",
         "text": "L'envoi de ce formulaire retourne une erreur 419. Que manque-t-il ?",
         "code": "<form method=\"POST\" action=\"/save\">\n    <input name=\"title\">\n    <button>Save</button>\n</form>",
         "answers": [
@@ -905,6 +969,7 @@ export const laravelQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la where()->get(): wach kayrje3 wa7ed wla collection? Fker f get.",
         "text": "Que contient $active ?",
         "code": "$active = User::where('active', 1)->get();",
         "answers": [
@@ -919,6 +984,7 @@ export const laravelQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la count(): chnu kat7seb hna? Fker f 3adad l users.",
         "text": "Que vaut $count ?",
         "code": "$count = User::all()->count();",
         "answers": [
@@ -933,6 +999,7 @@ export const laravelQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la l ordre dyal routes: chkun kaytmatcha lwel m3a /users/create? Fker f {id}.",
         "text": "La visite de /users/create affiche... ?",
         "code": "Route::get('/users/{id}', fn($id) => \"show $id\");\nRoute::get('/users/create', fn() => \"create form\");",
         "answers": [
@@ -947,6 +1014,7 @@ export const laravelQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la config cache: chnu khass tdir bach l app t9ra .env jdid? Fker f artisan commands dyal config.",
         "text": "Après modification du .env, l'app utilise toujours les anciennes valeurs (config en cache). Quelle commande corrige ça ?",
         "answers": [
           "php artisan config:clear",
@@ -960,6 +1028,7 @@ export const laravelQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la has(): mta kayrje3 true? Fker f wjod l input f l request.",
         "text": "Quand le bloc est-il exécuté ?",
         "code": "if ($request->has('email')) { ... }",
         "answers": [
@@ -974,6 +1043,7 @@ export const laravelQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la first(): mli ma kayn walo, chnu kayrje3 - null wla collection khawya? Fker fih.",
         "text": "Aucun utilisateur n'a cet email. Que vaut $user ?",
         "code": "$user = User::where('email', 'a@x.com')->first();",
         "answers": [
@@ -988,6 +1058,7 @@ export const laravelQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la belongsTo: l post kayntami l chkun? Fker f l author dyalo.",
         "text": "Qu'est-ce qui s'affiche ? ($post est un Post)",
         "code": "class Post extends Model {\n    public function user() {\n        return $this->belongsTo(User::class);\n    }\n}\necho $post->user->name;",
         "answers": [
@@ -1002,6 +1073,7 @@ export const laravelQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la hasMany: l user 3ndo ch7al mn post? Fker f collection.",
         "text": "Que vaut $posts ?",
         "code": "class User extends Model {\n    public function posts() {\n        return $this->hasMany(Post::class);\n    }\n}\n$posts = $user->posts;",
         "answers": [
@@ -1016,6 +1088,7 @@ export const laravelQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la N+1: 3lach kayn bzzaf dyal queries f l loop? Fker f eager loading.",
         "text": "Avec 100 posts, quel est le problème de performance et sa solution ?",
         "code": "$posts = Post::all();\nforeach ($posts as $post) {\n    echo $post->user->name;\n}",
         "answers": [
@@ -1030,6 +1103,7 @@ export const laravelQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la query builder: chnu howa l filter w chnu howa l tri? Fker f age w name.",
         "text": "Que retourne ceci ?",
         "code": "$users = User::where('age', '>', 18)->orderBy('name')->get();",
         "answers": [
@@ -1044,6 +1118,7 @@ export const laravelQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la create 3la relation: wach l comment kaytlinka wahdo l post? Fker f foreign key.",
         "text": "Que se passe-t-il ?",
         "code": "$post->comments()->create(['body' => 'Nice!']);",
         "answers": [
@@ -1058,6 +1133,7 @@ export const laravelQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la chaining: l where kat7ded chkun? Fker f posts dyal had l user.",
         "text": "Que vaut $published ?",
         "code": "$published = $user->posts()->where('published', true)->get();",
         "answers": [
@@ -1072,6 +1148,7 @@ export const laravelQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la attach: chnu kaytzad f l pivot table? Fker f ligne jjdida katlinki user w role.",
         "text": "roles() est un belongsToMany. Que fait ceci ?",
         "code": "$user->roles()->attach($roleId);",
         "answers": [
@@ -1086,6 +1163,7 @@ export const laravelQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la withCount: chnu hiya comments_count - ra9m wla collection? Fker fih.",
         "text": "Qu'est-ce qui s'affiche ?",
         "code": "$posts = Post::withCount('comments')->get();\necho $posts[0]->comments_count;",
         "answers": [
@@ -1100,6 +1178,7 @@ export const laravelQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la sum('price'): chnu katjme3? Fker f l prices dyal l items.",
         "text": "Que vaut $total ?",
         "code": "$total = $order->items->sum('price');",
         "answers": [
@@ -1114,6 +1193,7 @@ export const laravelQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la nested eager loading: chnu kaytloada m3a users? Fker f posts w comments dyalhom.",
         "text": "Que fait with('posts.comments') ?",
         "code": "$users = User::with('posts.comments')->get();",
         "answers": [
@@ -1128,6 +1208,7 @@ export const laravelQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la query builder: chnu homa l conditions? Fker f active w age.",
         "text": "Que retourne ceci ?",
         "code": "$users = DB::table('users')\n    ->where('active', 1)\n    ->where('age', '>', 18)\n    ->get();",
         "answers": [
@@ -1142,6 +1223,7 @@ export const laravelQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la firstOrFail: chnu l far9 binha w bin first() mli ma kayn walo? Fker fih.",
         "text": "Aucun utilisateur n'a cet email. Que se passe-t-il ?",
         "code": "$user = User::where('email', $email)->firstOrFail();",
         "answers": [
@@ -1156,6 +1238,7 @@ export const laravelQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la updateOrCreate: mli l user kayn deja, wach kaytzad wa7ed jdid? Fker f update.",
         "text": "Un utilisateur avec cet $email existe déjà. Que se passe-t-il ?",
         "code": "User::updateOrCreate(\n    ['email' => $email],\n    ['name' => $name]\n);",
         "answers": [
@@ -1170,6 +1253,7 @@ export const laravelQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la middleware auth: guest li ma msjelch fin kaymchi? Fker f login.",
         "text": "Un invité (non connecté) visite /dashboard. Que se passe-t-il ?",
         "code": "Route::get('/dashboard', [DashController::class, 'index'])\n    ->middleware('auth');",
         "answers": [
@@ -1184,6 +1268,7 @@ export const laravelQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la validation: mli l email ghalet, chnu kayw9e3? Fker f redirect back m3a errors.",
         "text": "L'email soumis est 'not-an-email'. Que se passe-t-il ?",
         "code": "$request->validate([\n    'email' => 'required|email',\n]);",
         "answers": [
@@ -1198,6 +1283,7 @@ export const laravelQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la chunk(): chnu l fayda m3a 10,000 users? Fker f batches dyal 100.",
         "text": "Avec 10 000 utilisateurs, que fait chunk() ?",
         "code": "User::chunk(100, function ($users) {\n    // send newsletter\n});",
         "answers": [
@@ -1212,6 +1298,7 @@ export const laravelQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la Cache::remember: tanya merra f 60s, wach kaymchi l DB? Fker f cache hit.",
         "text": "Que se passe-t-il à la deuxième requête dans les 60 secondes ?",
         "code": "$users = Cache::remember('users', 60, function () {\n    return User::all();\n});",
         "answers": [
@@ -1226,6 +1313,7 @@ export const laravelQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la transactions: mli katw9e3 exception, chnu kayw9e3 l save? Fker f rollback.",
         "text": "Qu'advient-il de la commande enregistrée ?",
         "code": "DB::transaction(function () {\n    $order->save();\n    throw new \\Exception('oops');\n});",
         "answers": [
@@ -1240,6 +1328,7 @@ export const laravelQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la response()->json: chnu kaywsel l client - HTML wla JSON? Fker f status 201.",
         "text": "Que reçoit le client ?",
         "code": "return response()->json(['ok' => true], 201);",
         "answers": [
@@ -1254,6 +1343,7 @@ export const laravelQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la SoftDeletes: wach delete katmse7 nihaiyan? Fker f deleted_at.",
         "text": "Après ceci, l'utilisateur est-il dans $all ? (User utilise SoftDeletes)",
         "code": "$user = User::find(1);\n$user->delete();\n$all = User::all();",
         "answers": [
@@ -1268,6 +1358,7 @@ export const laravelQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la route model binding: mli l user ma kaynch, chnu kaydir Laravel automatiquement? Fker fih.",
         "text": "Visite de /users/999 sans utilisateur existant. Que se passe-t-il ? (route model binding implicite)",
         "code": "Route::get('/users/{user}', function (User $user) {\n    return $user->name;\n});",
         "answers": [
@@ -1282,6 +1373,7 @@ export const laravelQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la get() bla nata2ij: wach kayrje3 null? Fker f empty collection.",
         "text": "Aucun utilisateur ne correspond. Que vaut $none ?",
         "code": "$none = User::where('active', 9)->get();",
         "answers": [
@@ -1296,6 +1388,7 @@ export const laravelQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la update 3la model: chnu kayrje3 - l model wla true/false? Fker fih.",
         "text": "La mise à jour réussit. Que vaut $ok ?",
         "code": "$ok = $user->update(['name' => 'X']);",
         "answers": [
@@ -1310,6 +1403,7 @@ export const laravelQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la collections: chnu kaydir map l kol element? Fker f *2.",
         "text": "Que vaut $names ?",
         "code": "$names = collect([1, 2, 3])\n    ->map(fn($n) => $n * 2)\n    ->toArray();",
         "answers": [
@@ -1324,6 +1418,7 @@ export const laravelQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la Str::slug: chnu kaydir l string? Fker f lowercase w dashes.",
         "text": "Qu'est-ce qui s'affiche ?",
         "code": "echo Str::slug('Hello World!');",
         "answers": [
@@ -1338,6 +1433,7 @@ export const laravelQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la Carbon: now()->addDay() chnu kat3ti? Fker f isTomorrow().",
         "text": "Qu'est-ce qui s'affiche ?",
         "code": "var_dump(now()->addDay()->isTomorrow());",
         "answers": [
@@ -1352,6 +1448,7 @@ export const laravelQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la wasRecentlyCreated: mor create, wach l model jdid? Fker fih.",
         "text": "Qu'est-ce qui s'affiche ?",
         "code": "$fresh = User::create(['name' => 'Z']);\nvar_dump($fresh->wasRecentlyCreated);",
         "answers": [
@@ -1366,6 +1463,7 @@ export const laravelQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la update 3la builder: chnu kayrje3 - boolean wla 3adad? Fker f affected rows.",
         "text": "Que retourne update() sur un query builder ?",
         "code": "User::where('active', 1)->update(['banned' => true]);",
         "answers": [
@@ -1380,6 +1478,7 @@ export const laravelQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la insertGetId: chnu kayrje3 - ghir l id wla l row kamla? Fker fih.",
         "text": "Que vaut $id ?",
         "code": "$id = DB::table('users')->insertGetId(['name' => 'A']);",
         "answers": [
@@ -1394,6 +1493,7 @@ export const laravelQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la session(): kifach kat7et 9ima w kat9raha? Fker f l key w l value.",
         "text": "Que vaut $theme ?",
         "code": "session(['theme' => 'dark']);\n$theme = session('theme');",
         "answers": [

@@ -5,6 +5,7 @@ export const tailwindQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "P f Tailwind kay3ni padding. Chno kaydir p-4?",
         "text": "What does this div get?",
         "code": "<div class=\"p-4\">Hi</div>",
         "answers": [
@@ -19,6 +20,7 @@ export const tailwindQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "Font-bold kat-ghleD l text. Kifach ghayban?",
         "text": "How does the text look?",
         "code": "<p class=\"font-bold\">Hi</p>",
         "answers": [
@@ -33,6 +35,7 @@ export const tailwindQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "Bg kay3ni background, text kay3ni color dyal text. Chno ghayban?",
         "text": "What does this div look like?",
         "code": "<div class=\"bg-blue-500 text-white\">Hi</div>",
         "answers": [
@@ -47,6 +50,7 @@ export const tailwindQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "M kay3ni margin. Chno l far9 bin m-4 w p-4?",
         "text": "What does m-4 do?",
         "code": "<div class=\"m-4\">Hi</div>",
         "answers": [
@@ -61,6 +65,7 @@ export const tailwindQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "Text-center kat-centri l text. Kifach ghayban?",
         "text": "How is the text aligned?",
         "code": "<p class=\"text-center\">Hi</p>",
         "answers": [
@@ -75,6 +80,7 @@ export const tailwindQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Flex f Tailwind kay-rteb l children f row. Kifach ghaybano A w B?",
         "text": "What happens to the children?",
         "code": "<div class=\"flex\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -89,6 +95,7 @@ export const tailwindQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "W-full kay3ni l width kamel dyal parent. Ch7al ghaykoun l width dyal image?",
         "text": "How wide is the image?",
         "code": "<img src=\"a.jpg\" class=\"w-full\">",
         "answers": [
@@ -103,6 +110,7 @@ export const tailwindQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "Rounded-lg kaydir corners mdawrin. Chno ghayban l div?",
         "text": "What does rounded-lg do?",
         "code": "<div class=\"rounded-lg\">Hi</div>",
         "answers": [
@@ -117,6 +125,7 @@ export const tailwindQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Text-sm wa7ed men l sizes sghar. Kifach ghayban l text?",
         "text": "How big is the text?",
         "code": "<p class=\"text-sm\">Hi</p>",
         "answers": [
@@ -131,6 +140,7 @@ export const tailwindQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Class border kat-zid border b default width. Chno ghaytzad?",
         "text": "What does class=\"border\" add?",
         "code": "<div class=\"border\">Hi</div>",
         "answers": [
@@ -145,6 +155,7 @@ export const tailwindQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "Tailwind kayst3mel abbreviations. Chno l ism s7i7 dyal padding?",
         "text": "Why is there no padding?",
         "code": "<div class=\"padding-4\">Hi</div>",
         "answers": [
@@ -159,6 +170,7 @@ export const tailwindQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "Centering f flex khassha joj classes. Chno na9es hna?",
         "text": "Why isn't the content centered?",
         "code": "<div class=\"flex center\">Hi</div>",
         "answers": [
@@ -173,6 +185,7 @@ export const tailwindQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "Bold f Tailwind kayt-ktb b font, machi text. Chno l class s7i7a?",
         "text": "Why isn't the text bold?",
         "code": "<p class=\"text-bold\">Hi</p>",
         "answers": [
@@ -187,6 +200,7 @@ export const tailwindQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "Margin l barra, padding l dakhel. Chno l khata2 li dar l developer?",
         "text": "The red box has empty space OUTSIDE it, but the developer wanted space INSIDE. What went wrong?",
         "code": "<div class=\"m-4 bg-red-500\">Hi</div>",
         "answers": [
@@ -201,6 +215,7 @@ export const tailwindQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "Kola unit f Tailwind = 0.25rem. Ch7al ghaykoun 16 units b pixels?",
         "text": "How big is this box in pixels?",
         "code": "<div class=\"w-16 h-16\"></div>",
         "answers": [
@@ -215,6 +230,7 @@ export const tailwindQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la responsive prefixes: chno kay3ni md:? Fker f l breakpoint w kifach kayt-jm3o hidden m3a md:block.",
         "text": "When is this div visible?",
         "code": "<div class=\"hidden md:block\">Hi</div>",
         "answers": [
@@ -229,6 +245,7 @@ export const tailwindQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "Responsive prefixes ma kay-khdmoch ta7t l breakpoint. 3lach f telephone ma kaynach row?",
         "text": "On a phone, the items are NOT in a row. Why?",
         "code": "<div class=\"md:flex\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -243,6 +260,7 @@ export const tailwindQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "Hover: kat-bdel style mlli l mouse fo9. Chno ghaytra mlli kat-hoveri?",
         "text": "What happens when the user hovers the button?",
         "code": "<button class=\"bg-blue-500 hover:bg-blue-700\">Hi</button>",
         "answers": [
@@ -257,6 +275,7 @@ export const tailwindQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Bg khassa b background. Chno l class dyal red text?",
         "text": "The developer expected red TEXT, but got a red BACKGROUND. Why?",
         "code": "<p class=\"bg-red-500\">Hi</p>",
         "answers": [
@@ -271,6 +290,7 @@ export const tailwindQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "Tailwind kay-generi ghir l classes li kay-l9ahom mktobin. 3lach had l padding ma khdamch?",
         "text": "Why does this padding never apply?",
         "code": "const s = 4;\nreturn <div className={'p-' + s}>Hi</div>;",
         "answers": [
@@ -285,6 +305,7 @@ export const tailwindQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "Joj axes: main w cross. Chno kaydir had l combo?",
         "text": "How is the content positioned?",
         "code": "<div class=\"flex items-center justify-center h-screen\">Hi</div>",
         "answers": [
@@ -299,6 +320,7 @@ export const tailwindQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "Grid-cols-3 kat-qsem l grid l 3 colonnes. Kifach ghaytrtbo l cards?",
         "text": "How are the cards laid out?",
         "code": "<div class=\"grid grid-cols-3 gap-4\"><div>A</div><div>B</div><div>C</div></div>",
         "answers": [
@@ -313,6 +335,7 @@ export const tailwindQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "Space-x kat-zid margin bin children, gap kat-setti l flex gap. Chno l far9?",
         "text": "What is the difference between these two?",
         "code": "<div class=\"flex space-x-4\">...</div>\n<div class=\"flex gap-4\">...</div>",
         "answers": [
@@ -327,6 +350,7 @@ export const tailwindQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la breakpoint md: menin kay-bda? Fker f l default breakpoints dyal Tailwind.",
         "text": "At which screen width does md:text-lg kick in?",
         "code": "<p class=\"text-sm md:text-lg\">Hi</p>",
         "answers": [
@@ -341,6 +365,7 @@ export const tailwindQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Container + mx-auto: chno l effect dyalhom 3la l div?",
         "text": "What does this classic wrapper do?",
         "code": "<div class=\"container mx-auto\">Hi</div>",
         "answers": [
@@ -355,6 +380,7 @@ export const tailwindQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Flex-col kat-bdel direction l vertical. Kifach ghaytrtbo l children?",
         "text": "How do the children stack?",
         "code": "<div class=\"flex flex-col\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -369,6 +395,7 @@ export const tailwindQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la justify-between: kifach kay-wzze3 l space bin items? Fker f l far9 binha w justify-center.",
         "text": "How are the two buttons spaced?",
         "code": "<div class=\"flex justify-between\"><button>A</button><button>B</button></div>",
         "answers": [
@@ -383,6 +410,7 @@ export const tailwindQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la w-1/2: chno kay3ni l fraction? W menin kayt-7seb, screen wla parent?",
         "text": "How wide is the sidebar?",
         "code": "<div class=\"flex\"><aside class=\"w-1/2\">...</aside><main>...</main></div>",
         "answers": [
@@ -397,6 +425,7 @@ export const tailwindQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "Max-w kay-7ded l width l max, mx-auto kat-centri. Chno ghayban?",
         "text": "What does this card pattern do?",
         "code": "<div class=\"max-w-md mx-auto\">Hi</div>",
         "answers": [
@@ -411,6 +440,7 @@ export const tailwindQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "Mobile-first: base l mobile, md: l desktop. Chno l classes li kat-dir had l effect?",
         "text": "On mobile the text is small; on desktop it is large. Which classes do that?",
         "code": "<p class=\"???\">Hi</p>",
         "answers": [
@@ -425,6 +455,7 @@ export const tailwindQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "@apply kat-dkhel l utilities f custom CSS. Chno kaydir hna?",
         "text": "What does @apply do here?",
         "code": ".btn {\n  @apply px-4 py-2 bg-blue-500 text-white;\n}",
         "answers": [
@@ -439,6 +470,7 @@ export const tailwindQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "Arbitrary values kat-tktb b square brackets. Chno l class s7i7a l color custom?",
         "text": "Which class gives the div a custom brand-blue background (#1da1f2)?",
         "code": "<div class=\"???\">Hi</div>",
         "answers": [
@@ -453,6 +485,7 @@ export const tailwindQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "Dark: kat-applya ghir mlli dark mode khdam. Imta ghayban l background l dark?",
         "text": "When does the dark background apply?",
         "code": "<div class=\"bg-white dark:bg-gray-900\">Hi</div>",
         "answers": [
@@ -467,6 +500,7 @@ export const tailwindQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "Mlli joj classes kay-tnafsou, l ordre f l CSS li kay-7kem. Chkun ghayghlb?",
         "text": "A developer writes class=\"p-4 p-8\". Which padding wins?",
         "answers": [
           "p-4 — the first class wins",
@@ -480,6 +514,7 @@ export const tailwindQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la flex-1: chno kaydir l basis? Wach l text twil ghay2athar 3la l width?",
         "text": "Two cards should share the row equally even though one has longer text. Does this work?",
         "code": "<div class=\"flex\"><div class=\"flex-1\">short</div><div class=\"flex-1\">much longer text here</div></div>",
         "answers": [
@@ -494,6 +529,7 @@ export const tailwindQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "Absolute child kayt-positiona 3la a9rab ancestor positioned. Chno na9es 3la l card?",
         "text": "The badge should stay glued to the card's corner, but it positions relative to the page. What is missing on the card?",
         "code": "<div class=\"card\">\n  <span class=\"absolute top-0 right-0\">New</span>\n</div>",
         "answers": [
@@ -508,6 +544,7 @@ export const tailwindQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Flex items kayt-sghro mlli space daye9. Chno kaymna3 shrink-0?",
         "text": "What does shrink-0 prevent?",
         "code": "<div class=\"flex\"><div class=\"shrink-0 w-32\">A</div><div>B</div></div>",
         "answers": [
@@ -522,6 +559,7 @@ export const tailwindQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "Stacking f Tailwind b z-index utilities. Chno l class s7i7a?",
         "text": "How do you give an element a higher stacking order in Tailwind?",
         "code": "<div class=\"???\">popup</div>",
         "answers": [
@@ -536,6 +574,7 @@ export const tailwindQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "Purge kay7taj content paths kamlin. 3lach l CSS ba9i kbir f production?",
         "text": "Why is the production CSS still huge?",
         "code": "// tailwind.config.js\nmodule.exports = {\n  content: [\"./src/**/*.{js,jsx}\"],\n}",
         "answers": [
@@ -550,6 +589,7 @@ export const tailwindQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la khfi element bla ma t-7yyed l space dyalo: chno l far9 bin hidden w invisible f Tailwind?",
         "text": "Which class hides the element while keeping its layout space?",
         "code": "<div class=\"???\">Hi</div>",
         "answers": [
@@ -564,6 +604,7 @@ export const tailwindQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "Group-hover kat-bdel style dyal child mlli kat-hoveri l parent. Chno ghaytra?",
         "text": "What happens when the user hovers the card?",
         "code": "<div class=\"group\">\n  <p class=\"group-hover:text-red-500\">Hi</p>\n</div>",
         "answers": [
@@ -578,6 +619,7 @@ export const tailwindQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "Peer kat-khlli sibling yt2athar b state dyal input. Chno ghaytra mlli t-checki?",
         "text": "What happens when the checkbox is ticked?",
         "code": "<input type=\"checkbox\" class=\"peer\">\n<p class=\"peer-checked:font-bold\">Hi</p>",
         "answers": [
@@ -592,6 +634,7 @@ export const tailwindQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "Divide kat-zid borders bin children. Chno l far9 bin divide-x w space-x?",
         "text": "What is the difference between divide-x and space-x?",
         "code": "<div class=\"flex divide-x divide-gray-300\">...</div>",
         "answers": [
@@ -606,6 +649,7 @@ export const tailwindQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la content khfi visually walakin accessible l screen readers: chno l class li kat-dir hadchi?",
         "text": "Which class hides content visually but keeps it available to screen readers?",
         "code": "<span class=\"???\">Menu</span>",
         "answers": [
@@ -620,6 +664,7 @@ export const tailwindQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Truncate kat-9ta3 l text b ... Chno ghayban l filename?",
         "text": "What does the long filename look like in this fixed-width box?",
         "code": "<div class=\"w-32 truncate\">very-long-file-name.txt</div>",
         "answers": [
@@ -634,6 +679,7 @@ export const tailwindQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "Focus ring kay-beyen l element mlli kaykoun focused. Chno l classes li kat-dirha?",
         "text": "Which classes add an accessible focus ring to the button?",
         "code": "<button class=\"???\">Save</button>",
         "answers": [
@@ -648,6 +694,7 @@ export const tailwindQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Transition kat-dir animation smooth. Chno ghaytra mlli kat-hoveri l button?",
         "text": "What do these classes do together?",
         "code": "<button class=\"transition duration-300 hover:bg-blue-700\">Hi</button>",
         "answers": [
@@ -662,6 +709,7 @@ export const tailwindQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la aspect-video: chno kay7fed? Fker f l ratio dyal video.",
         "text": "What shape does this div keep?",
         "code": "<div class=\"aspect-video w-full\"></div>",
         "answers": [
@@ -676,6 +724,7 @@ export const tailwindQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "Object-cover kay-ghetti l frame bla ma y-tshwah. Kifach ghayban l photo?",
         "text": "How does the photo fill its square frame?",
         "code": "<img src=\"photo.jpg\" class=\"w-40 h-40 object-cover\">",
         "answers": [
@@ -690,6 +739,7 @@ export const tailwindQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "@apply khassha PostCSS dyal Tailwind. 3lach ma khdamch f had l file?",
         "text": "Why did the custom utility stop working after moving it to a plain CSS file?",
         "code": "/* styles.css — not processed by Tailwind */\n.card {\n  @apply bg-[#1da1f2];\n}",
         "answers": [
@@ -709,6 +759,7 @@ export const tailwindQuestions = [
       {
         "id": 0,
         "level": 1,
+        "explain_dr": "P f Tailwind kay3ni padding. Chno kaydir p-4?",
         "text": "Que reçoit cette div ?",
         "code": "<div class=\"p-4\">Hi</div>",
         "answers": [
@@ -723,6 +774,7 @@ export const tailwindQuestions = [
       {
         "id": 1,
         "level": 1,
+        "explain_dr": "Font-bold kat-ghleD l text. Kifach ghayban?",
         "text": "À quoi ressemble le texte ?",
         "code": "<p class=\"font-bold\">Hi</p>",
         "answers": [
@@ -737,6 +789,7 @@ export const tailwindQuestions = [
       {
         "id": 2,
         "level": 1,
+        "explain_dr": "Bg kay3ni background, text kay3ni color dyal text. Chno ghayban?",
         "text": "À quoi ressemble cette div ?",
         "code": "<div class=\"bg-blue-500 text-white\">Hi</div>",
         "answers": [
@@ -751,6 +804,7 @@ export const tailwindQuestions = [
       {
         "id": 3,
         "level": 1,
+        "explain_dr": "M kay3ni margin. Chno l far9 bin m-4 w p-4?",
         "text": "Que fait m-4 ?",
         "code": "<div class=\"m-4\">Hi</div>",
         "answers": [
@@ -765,6 +819,7 @@ export const tailwindQuestions = [
       {
         "id": 4,
         "level": 1,
+        "explain_dr": "Text-center kat-centri l text. Kifach ghayban?",
         "text": "Comment le texte est-il aligné ?",
         "code": "<p class=\"text-center\">Hi</p>",
         "answers": [
@@ -779,6 +834,7 @@ export const tailwindQuestions = [
       {
         "id": 5,
         "level": 1,
+        "explain_dr": "Flex f Tailwind kay-rteb l children f row. Kifach ghaybano A w B?",
         "text": "Qu'arrive-t-il aux enfants ?",
         "code": "<div class=\"flex\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -793,6 +849,7 @@ export const tailwindQuestions = [
       {
         "id": 6,
         "level": 1,
+        "explain_dr": "W-full kay3ni l width kamel dyal parent. Ch7al ghaykoun l width dyal image?",
         "text": "Quelle est la largeur de l'image ?",
         "code": "<img src=\"a.jpg\" class=\"w-full\">",
         "answers": [
@@ -807,6 +864,7 @@ export const tailwindQuestions = [
       {
         "id": 7,
         "level": 1,
+        "explain_dr": "Rounded-lg kaydir corners mdawrin. Chno ghayban l div?",
         "text": "Que fait rounded-lg ?",
         "code": "<div class=\"rounded-lg\">Hi</div>",
         "answers": [
@@ -821,6 +879,7 @@ export const tailwindQuestions = [
       {
         "id": 8,
         "level": 1,
+        "explain_dr": "Text-sm wa7ed men l sizes sghar. Kifach ghayban l text?",
         "text": "Quelle est la taille du texte ?",
         "code": "<p class=\"text-sm\">Hi</p>",
         "answers": [
@@ -835,6 +894,7 @@ export const tailwindQuestions = [
       {
         "id": 9,
         "level": 1,
+        "explain_dr": "Class border kat-zid border b default width. Chno ghaytzad?",
         "text": "Qu'ajoute class=\"border\" ?",
         "code": "<div class=\"border\">Hi</div>",
         "answers": [
@@ -849,6 +909,7 @@ export const tailwindQuestions = [
       {
         "id": 10,
         "level": 2,
+        "explain_dr": "Tailwind kayst3mel abbreviations. Chno l ism s7i7 dyal padding?",
         "text": "Pourquoi n'y a-t-il pas de padding ?",
         "code": "<div class=\"padding-4\">Hi</div>",
         "answers": [
@@ -863,6 +924,7 @@ export const tailwindQuestions = [
       {
         "id": 11,
         "level": 2,
+        "explain_dr": "Centering f flex khassha joj classes. Chno na9es hna?",
         "text": "Pourquoi le contenu n'est-il pas centré ?",
         "code": "<div class=\"flex center\">Hi</div>",
         "answers": [
@@ -877,6 +939,7 @@ export const tailwindQuestions = [
       {
         "id": 12,
         "level": 2,
+        "explain_dr": "Bold f Tailwind kayt-ktb b font, machi text. Chno l class s7i7a?",
         "text": "Pourquoi le texte n'est-il pas en gras ?",
         "code": "<p class=\"text-bold\">Hi</p>",
         "answers": [
@@ -891,6 +954,7 @@ export const tailwindQuestions = [
       {
         "id": 13,
         "level": 2,
+        "explain_dr": "Margin l barra, padding l dakhel. Chno l khata2 li dar l developer?",
         "text": "La boîte rouge a un espace vide À L'EXTÉRIEUR, mais le développeur voulait un espace À L'INTÉRIEUR. Que s'est-il passé ?",
         "code": "<div class=\"m-4 bg-red-500\">Hi</div>",
         "answers": [
@@ -905,6 +969,7 @@ export const tailwindQuestions = [
       {
         "id": 14,
         "level": 2,
+        "explain_dr": "Kola unit f Tailwind = 0.25rem. Ch7al ghaykoun 16 units b pixels?",
         "text": "Quelle est la taille de cette boîte en pixels ?",
         "code": "<div class=\"w-16 h-16\"></div>",
         "answers": [
@@ -919,6 +984,7 @@ export const tailwindQuestions = [
       {
         "id": 15,
         "level": 2,
+        "explain_dr": "So2al kaysewlk 3la responsive prefixes: chno kay3ni md:? Fker f l breakpoint w kifach kayt-jm3o hidden m3a md:block.",
         "text": "Quand cette div est-elle visible ?",
         "code": "<div class=\"hidden md:block\">Hi</div>",
         "answers": [
@@ -933,6 +999,7 @@ export const tailwindQuestions = [
       {
         "id": 16,
         "level": 2,
+        "explain_dr": "Responsive prefixes ma kay-khdmoch ta7t l breakpoint. 3lach f telephone ma kaynach row?",
         "text": "Sur un téléphone, les éléments ne sont PAS en ligne. Pourquoi ?",
         "code": "<div class=\"md:flex\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -947,6 +1014,7 @@ export const tailwindQuestions = [
       {
         "id": 17,
         "level": 2,
+        "explain_dr": "Hover: kat-bdel style mlli l mouse fo9. Chno ghaytra mlli kat-hoveri?",
         "text": "Que se passe-t-il quand l'utilisateur survole le bouton ?",
         "code": "<button class=\"bg-blue-500 hover:bg-blue-700\">Hi</button>",
         "answers": [
@@ -961,6 +1029,7 @@ export const tailwindQuestions = [
       {
         "id": 18,
         "level": 2,
+        "explain_dr": "Bg khassa b background. Chno l class dyal red text?",
         "text": "Le développeur attendait du texte ROUGE, mais a obtenu un FOND rouge. Pourquoi ?",
         "code": "<p class=\"bg-red-500\">Hi</p>",
         "answers": [
@@ -975,6 +1044,7 @@ export const tailwindQuestions = [
       {
         "id": 19,
         "level": 2,
+        "explain_dr": "Tailwind kay-generi ghir l classes li kay-l9ahom mktobin. 3lach had l padding ma khdamch?",
         "text": "Pourquoi ce padding ne s'applique-t-il jamais ?",
         "code": "const s = 4;\nreturn <div className={'p-' + s}>Hi</div>;",
         "answers": [
@@ -989,6 +1059,7 @@ export const tailwindQuestions = [
       {
         "id": 20,
         "level": 3,
+        "explain_dr": "Joj axes: main w cross. Chno kaydir had l combo?",
         "text": "Comment le contenu est-il positionné ?",
         "code": "<div class=\"flex items-center justify-center h-screen\">Hi</div>",
         "answers": [
@@ -1003,6 +1074,7 @@ export const tailwindQuestions = [
       {
         "id": 21,
         "level": 3,
+        "explain_dr": "Grid-cols-3 kat-qsem l grid l 3 colonnes. Kifach ghaytrtbo l cards?",
         "text": "Comment les cartes sont-elles disposées ?",
         "code": "<div class=\"grid grid-cols-3 gap-4\"><div>A</div><div>B</div><div>C</div></div>",
         "answers": [
@@ -1017,6 +1089,7 @@ export const tailwindQuestions = [
       {
         "id": 22,
         "level": 3,
+        "explain_dr": "Space-x kat-zid margin bin children, gap kat-setti l flex gap. Chno l far9?",
         "text": "Quelle est la différence entre les deux ?",
         "code": "<div class=\"flex space-x-4\">...</div>\n<div class=\"flex gap-4\">...</div>",
         "answers": [
@@ -1031,6 +1104,7 @@ export const tailwindQuestions = [
       {
         "id": 23,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la breakpoint md: menin kay-bda? Fker f l default breakpoints dyal Tailwind.",
         "text": "À partir de quelle largeur d'écran md:text-lg s'applique-t-il ?",
         "code": "<p class=\"text-sm md:text-lg\">Hi</p>",
         "answers": [
@@ -1045,6 +1119,7 @@ export const tailwindQuestions = [
       {
         "id": 24,
         "level": 3,
+        "explain_dr": "Container + mx-auto: chno l effect dyalhom 3la l div?",
         "text": "Que fait ce wrapper classique ?",
         "code": "<div class=\"container mx-auto\">Hi</div>",
         "answers": [
@@ -1059,6 +1134,7 @@ export const tailwindQuestions = [
       {
         "id": 25,
         "level": 3,
+        "explain_dr": "Flex-col kat-bdel direction l vertical. Kifach ghaytrtbo l children?",
         "text": "Comment les enfants s'empilent-ils ?",
         "code": "<div class=\"flex flex-col\"><span>A</span><span>B</span></div>",
         "answers": [
@@ -1073,6 +1149,7 @@ export const tailwindQuestions = [
       {
         "id": 26,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la justify-between: kifach kay-wzze3 l space bin items? Fker f l far9 binha w justify-center.",
         "text": "Comment les deux boutons sont-ils espacés ?",
         "code": "<div class=\"flex justify-between\"><button>A</button><button>B</button></div>",
         "answers": [
@@ -1087,6 +1164,7 @@ export const tailwindQuestions = [
       {
         "id": 27,
         "level": 3,
+        "explain_dr": "So2al kaysewlk 3la w-1/2: chno kay3ni l fraction? W menin kayt-7seb, screen wla parent?",
         "text": "Quelle est la largeur de la barre latérale ?",
         "code": "<div class=\"flex\"><aside class=\"w-1/2\">...</aside><main>...</main></div>",
         "answers": [
@@ -1101,6 +1179,7 @@ export const tailwindQuestions = [
       {
         "id": 28,
         "level": 3,
+        "explain_dr": "Max-w kay-7ded l width l max, mx-auto kat-centri. Chno ghayban?",
         "text": "Que fait ce motif de carte ?",
         "code": "<div class=\"max-w-md mx-auto\">Hi</div>",
         "answers": [
@@ -1115,6 +1194,7 @@ export const tailwindQuestions = [
       {
         "id": 29,
         "level": 3,
+        "explain_dr": "Mobile-first: base l mobile, md: l desktop. Chno l classes li kat-dir had l effect?",
         "text": "Sur mobile le texte est petit ; sur desktop il est grand. Quelles classes font cela ?",
         "code": "<p class=\"???\">Hi</p>",
         "answers": [
@@ -1129,6 +1209,7 @@ export const tailwindQuestions = [
       {
         "id": 30,
         "level": 4,
+        "explain_dr": "@apply kat-dkhel l utilities f custom CSS. Chno kaydir hna?",
         "text": "Que fait @apply ici ?",
         "code": ".btn {\n  @apply px-4 py-2 bg-blue-500 text-white;\n}",
         "answers": [
@@ -1143,6 +1224,7 @@ export const tailwindQuestions = [
       {
         "id": 31,
         "level": 4,
+        "explain_dr": "Arbitrary values kat-tktb b square brackets. Chno l class s7i7a l color custom?",
         "text": "Quelle classe donne à la div un fond bleu de marque personnalisé (#1da1f2) ?",
         "code": "<div class=\"???\">Hi</div>",
         "answers": [
@@ -1157,6 +1239,7 @@ export const tailwindQuestions = [
       {
         "id": 32,
         "level": 4,
+        "explain_dr": "Dark: kat-applya ghir mlli dark mode khdam. Imta ghayban l background l dark?",
         "text": "Quand le fond sombre s'applique-t-il ?",
         "code": "<div class=\"bg-white dark:bg-gray-900\">Hi</div>",
         "answers": [
@@ -1171,6 +1254,7 @@ export const tailwindQuestions = [
       {
         "id": 33,
         "level": 4,
+        "explain_dr": "Mlli joj classes kay-tnafsou, l ordre f l CSS li kay-7kem. Chkun ghayghlb?",
         "text": "Un développeur écrit class=\"p-4 p-8\". Quel padding gagne ?",
         "answers": [
           "p-4 — la première classe gagne",
@@ -1184,6 +1268,7 @@ export const tailwindQuestions = [
       {
         "id": 34,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la flex-1: chno kaydir l basis? Wach l text twil ghay2athar 3la l width?",
         "text": "Deux cartes devraient se partager la ligne équitablement même si l'une a un texte plus long. Est-ce que ça marche ?",
         "code": "<div class=\"flex\"><div class=\"flex-1\">short</div><div class=\"flex-1\">much longer text here</div></div>",
         "answers": [
@@ -1198,6 +1283,7 @@ export const tailwindQuestions = [
       {
         "id": 35,
         "level": 4,
+        "explain_dr": "Absolute child kayt-positiona 3la a9rab ancestor positioned. Chno na9es 3la l card?",
         "text": "Le badge devrait rester collé au coin de la carte, mais il se positionne par rapport à la page. Que manque-t-il sur la carte ?",
         "code": "<div class=\"card\">\n  <span class=\"absolute top-0 right-0\">New</span>\n</div>",
         "answers": [
@@ -1212,6 +1298,7 @@ export const tailwindQuestions = [
       {
         "id": 36,
         "level": 4,
+        "explain_dr": "Flex items kayt-sghro mlli space daye9. Chno kaymna3 shrink-0?",
         "text": "Qu'est-ce que shrink-0 empêche ?",
         "code": "<div class=\"flex\"><div class=\"shrink-0 w-32\">A</div><div>B</div></div>",
         "answers": [
@@ -1226,6 +1313,7 @@ export const tailwindQuestions = [
       {
         "id": 37,
         "level": 4,
+        "explain_dr": "Stacking f Tailwind b z-index utilities. Chno l class s7i7a?",
         "text": "Comment donner à un élément un ordre d'empilement supérieur dans Tailwind ?",
         "code": "<div class=\"???\">popup</div>",
         "answers": [
@@ -1240,6 +1328,7 @@ export const tailwindQuestions = [
       {
         "id": 38,
         "level": 4,
+        "explain_dr": "Purge kay7taj content paths kamlin. 3lach l CSS ba9i kbir f production?",
         "text": "Pourquoi le CSS de production est-il toujours énorme ?",
         "code": "// tailwind.config.js\nmodule.exports = {\n  content: [\"./src/**/*.{js,jsx}\"],\n}",
         "answers": [
@@ -1254,6 +1343,7 @@ export const tailwindQuestions = [
       {
         "id": 39,
         "level": 4,
+        "explain_dr": "So2al kaysewlk 3la khfi element bla ma t-7yyed l space dyalo: chno l far9 bin hidden w invisible f Tailwind?",
         "text": "Quelle classe cache l'élément tout en gardant sa place dans la mise en page ?",
         "code": "<div class=\"???\">Hi</div>",
         "answers": [
@@ -1268,6 +1358,7 @@ export const tailwindQuestions = [
       {
         "id": 40,
         "level": 5,
+        "explain_dr": "Group-hover kat-bdel style dyal child mlli kat-hoveri l parent. Chno ghaytra?",
         "text": "Que se passe-t-il quand l'utilisateur survole la carte ?",
         "code": "<div class=\"group\">\n  <p class=\"group-hover:text-red-500\">Hi</p>\n</div>",
         "answers": [
@@ -1282,6 +1373,7 @@ export const tailwindQuestions = [
       {
         "id": 41,
         "level": 5,
+        "explain_dr": "Peer kat-khlli sibling yt2athar b state dyal input. Chno ghaytra mlli t-checki?",
         "text": "Que se passe-t-il quand la case est cochée ?",
         "code": "<input type=\"checkbox\" class=\"peer\">\n<p class=\"peer-checked:font-bold\">Hi</p>",
         "answers": [
@@ -1296,6 +1388,7 @@ export const tailwindQuestions = [
       {
         "id": 42,
         "level": 5,
+        "explain_dr": "Divide kat-zid borders bin children. Chno l far9 bin divide-x w space-x?",
         "text": "Quelle est la différence entre divide-x et space-x ?",
         "code": "<div class=\"flex divide-x divide-gray-300\">...</div>",
         "answers": [
@@ -1310,6 +1403,7 @@ export const tailwindQuestions = [
       {
         "id": 43,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la content khfi visually walakin accessible l screen readers: chno l class li kat-dir hadchi?",
         "text": "Quelle classe cache visuellement le contenu tout en le gardant accessible aux lecteurs d'écran ?",
         "code": "<span class=\"???\">Menu</span>",
         "answers": [
@@ -1324,6 +1418,7 @@ export const tailwindQuestions = [
       {
         "id": 44,
         "level": 5,
+        "explain_dr": "Truncate kat-9ta3 l text b ... Chno ghayban l filename?",
         "text": "À quoi ressemble le long nom de fichier dans cette boîte à largeur fixe ?",
         "code": "<div class=\"w-32 truncate\">very-long-file-name.txt</div>",
         "answers": [
@@ -1338,6 +1433,7 @@ export const tailwindQuestions = [
       {
         "id": 45,
         "level": 5,
+        "explain_dr": "Focus ring kay-beyen l element mlli kaykoun focused. Chno l classes li kat-dirha?",
         "text": "Quelles classes ajoutent un anneau de focus accessible au bouton ?",
         "code": "<button class=\"???\">Save</button>",
         "answers": [
@@ -1352,6 +1448,7 @@ export const tailwindQuestions = [
       {
         "id": 46,
         "level": 5,
+        "explain_dr": "Transition kat-dir animation smooth. Chno ghaytra mlli kat-hoveri l button?",
         "text": "Que font ces classes ensemble ?",
         "code": "<button class=\"transition duration-300 hover:bg-blue-700\">Hi</button>",
         "answers": [
@@ -1366,6 +1463,7 @@ export const tailwindQuestions = [
       {
         "id": 47,
         "level": 5,
+        "explain_dr": "So2al kaysewlk 3la aspect-video: chno kay7fed? Fker f l ratio dyal video.",
         "text": "Quelle forme cette div garde-t-elle ?",
         "code": "<div class=\"aspect-video w-full\"></div>",
         "answers": [
@@ -1380,6 +1478,7 @@ export const tailwindQuestions = [
       {
         "id": 48,
         "level": 5,
+        "explain_dr": "Object-cover kay-ghetti l frame bla ma y-tshwah. Kifach ghayban l photo?",
         "text": "Comment la photo remplit-elle son cadre carré ?",
         "code": "<img src=\"photo.jpg\" class=\"w-40 h-40 object-cover\">",
         "answers": [
@@ -1394,6 +1493,7 @@ export const tailwindQuestions = [
       {
         "id": 49,
         "level": 5,
+        "explain_dr": "@apply khassha PostCSS dyal Tailwind. 3lach ma khdamch f had l file?",
         "text": "Pourquoi l'utilitaire personnalisé a-t-il cessé de fonctionner après son déplacement dans un fichier CSS ordinaire ?",
         "code": "/* styles.css — non traité par Tailwind */\n.card {\n  @apply bg-[#1da1f2];\n}",
         "answers": [

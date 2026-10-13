@@ -18,6 +18,8 @@ function Question({
     const {setGameFinished,setshowCorrectAnswer,showCorrectAnswer,isremoved,setIsremoved,langueTrans} =useContext(LangueContext)
   
     const [answer, setAnswer] = useState(null);
+    const [showExplain, setShowExplain] = useState(false);
+    const explainLabel = langueTrans === "FR" ? "💡 Explique-moi" : langueTrans === "DR" ? "💡 Chreh liya" : "💡 Explain";
     const parseValue = (value) => (value ? parseInt(value.split("-")[1]) : null);
     const questionRef = useRef(null);
  
@@ -48,6 +50,7 @@ function Question({
         }
       );
       setshowCorrectAnswer(showAnswer)
+      setShowExplain(false)
     }, [data, setshowCorrectAnswer, showAnswer]);
 
 
@@ -71,7 +74,27 @@ function Question({
               {data.level && <span className={`question-level level-${data.level}`}>{levelBadgeText(data.level, langueTrans)}</span>}
             </div>
           )}
-          <h2 className="question-text">{data.text}</h2>
+          <div className="question-text-row">
+            <h2 className="question-text">{data.text}</h2>
+            {data.explain_dr && (
+              <button
+                type="button"
+                className={`explain-btn${showExplain ? " is-open" : ""}`}
+                onClick={() => setShowExplain((v) => !v)}
+                title={explainLabel}
+                aria-label={explainLabel}
+                aria-expanded={showExplain}
+              >
+                💡
+              </button>
+            )}
+          </div>
+          {showExplain && data.explain_dr && (
+            <div className="explain-panel">
+              <span className="explain-panel-label">{explainLabel}</span>
+              <p>{data.explain_dr}</p>
+            </div>
+          )}
           {data.code && (
             <pre className="question-code">
               <code>{data.code}</code>
