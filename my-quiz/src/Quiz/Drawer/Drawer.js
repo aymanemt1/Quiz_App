@@ -16,6 +16,7 @@ export const Drawer = () => {
     drawerOpen, setDrawerOpen,
   } = useContext(LangueContext);
   const FR = langueTrans === 'FR';
+  const DR = langueTrans === 'DR';
   const mistakeCount = getMistakeCount(langueTrans);
   const dailyDone = !!getTodayResult();
 
@@ -55,19 +56,19 @@ export const Drawer = () => {
   return (
     <div className={`drawer-root ${drawerOpen ? 'drawer-open' : ''}`} aria-hidden={!drawerOpen}>
       <div className="drawer-backdrop" onClick={close} />
-      <nav className="drawer-panel" aria-label={FR ? 'Navigation' : 'Navigation'}>
+      <nav className="drawer-panel" aria-label="Navigation">
         <div className="drawer-header">
           <img
             src={`${process.env.PUBLIC_URL}/logo.svg`}
             alt=""
             className="drawer-logo"
           />
-          <span className="drawer-title">{FR ? 'Menu' : 'Menu'}</span>
+          <span className="drawer-title">Menu</span>
           <button
             type="button"
             className="drawer-close"
             onClick={close}
-            aria-label={FR ? 'Fermer' : 'Close'}
+            aria-label={DR ? 'Sekker' : FR ? 'Fermer' : 'Close'}
           >
             ✕
           </button>
@@ -76,14 +77,14 @@ export const Drawer = () => {
         <div className="drawer-scroll">
           <button type="button" className="drawer-row drawer-row-home" onClick={goHome}>
             <span className="drawer-row-icon" aria-hidden="true">🏠</span>
-            <span className="drawer-row-label">{FR ? 'Accueil' : 'Home'}</span>
+            <span className="drawer-row-label">{DR ? 'Home' : FR ? 'Accueil' : 'Home'}</span>
           </button>
 
           {SECTIONS.map((s) => (
             <div key={s.id} className="drawer-section">
               <div className="drawer-section-title">
                 <span aria-hidden="true">{s.icon}</span>
-                {FR ? s.fr : s.en}
+                {DR ? s.dr : FR ? s.fr : s.en}
               </div>
               {s.cards.map((c) => (
                 <button
@@ -93,7 +94,7 @@ export const Drawer = () => {
                   onClick={() => selectMode(c.mode)}
                 >
                   <span className="drawer-row-icon" aria-hidden="true">{c.icon}</span>
-                  <span className="drawer-row-label">{FR ? c.fr : c.en}</span>
+                  <span className="drawer-row-label">{DR ? c.dr : FR ? c.fr : c.en}</span>
                   {badgeFor(c.badge)}
                   <span className="drawer-row-arrow" aria-hidden="true">›</span>
                 </button>
@@ -112,7 +113,7 @@ export const Drawer = () => {
             onClick={() => selectMode('profile')}
           >
             <span className="drawer-row-icon" aria-hidden="true">👤</span>
-            <span className="drawer-row-label">{FR ? 'Profil' : 'Profile'}</span>
+            <span className="drawer-row-label">{DR ? 'Profile' : FR ? 'Profil' : 'Profile'}</span>
             <span className="drawer-row-arrow" aria-hidden="true">›</span>
           </button>
         </div>

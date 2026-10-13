@@ -74,11 +74,11 @@ export const getXP = () => {
 };
 
 export const RANKS = [
-  { min: 0, en: "Beginner", fr: "Débutant" },
-  { min: 500, en: "Intermediate", fr: "Intermédiaire" },
-  { min: 1500, en: "Advanced", fr: "Avancé" },
-  { min: 3000, en: "Expert", fr: "Expert" },
-  { min: 6000, en: "Master", fr: "Maître" },
+  { min: 0, en: "Beginner", fr: "Débutant", dr: "Mobtadi2" },
+  { min: 500, en: "Intermediate", fr: "Intermédiaire", dr: "Mutawssit" },
+  { min: 1500, en: "Advanced", fr: "Avancé", dr: "Muta9adim" },
+  { min: 3000, en: "Expert", fr: "Expert", dr: "Khabir" },
+  { min: 6000, en: "Master", fr: "Maître", dr: "Ostadh" },
 ];
 
 export const getRank = (xp) => {

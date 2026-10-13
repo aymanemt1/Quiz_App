@@ -15,13 +15,18 @@ const renderRich = (text) => {
 export const Revision = () => {
   const { langueTrans, langue, setlangue, setMode, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
 
   const [topic, setTopic] = useState(
     TOPIC_KEYS.includes(langue) ? langue : "React"
   );
   const [step, setStep] = useState(0);
+  // One thing per page: the stack grid is only shown to pick/change the
+  // stack; the reading view shows ONLY the step card (no grid above it).
+  const [showGrid, setShowGrid] = useState(false);
 
-  const notes = getRevisionNotes(topic, langueTrans);
+  // Revision notes only exist in EN/FR — DR UI reads EN content.
+  const notes = getRevisionNotes(topic, langueTrans === "DR" ? "EN" : langueTrans);
   const total = notes.length;
 
   // Reset to first card when topic or language changes
@@ -30,32 +35,68 @@ export const Revision = () => {
   }, [topic, langueTrans]);
 
   // When the user picks a stack on the start screen then hits "Cours",
-  // open the notes scoped to that stack
+  // open the notes scoped to that stack (straight into reading view)
   useEffect(() => {
-    if (TOPIC_KEYS.includes(langue)) setTopic(langue);
+    if (TOPIC_KEYS.includes(langue)) {
+      setTopic(langue);
+      setShowGrid(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langue]);
 
   const go = (delta) =>
     setStep((s) => Math.min(Math.max(s + delta, 0), total - 1));
 
+  const pickStack = (t) => {
+    setTopic(t);
+    setlangue(t);
+    setShowGrid(false);
+  };
+
+  const backToMenu = () => {
+    setMode("quiz");
+    setMenuOpen(true);
+  };
+
   const pct = total > 0 ? ((step + 1) / total) * 100 : 0;
 
+  // Step 1 — stack picker only (no card on this page)
+  if (showGrid) {
+    return (
+      <div className="revision">
+        <h1 className="intro-title">
+          {DR ? "Doros" : FR ? "Fiches de révision" : "Revision notes"}
+        </h1>
+
+        <StackGrid
+          options={stackOptions(TOPIC_KEYS)}
+          value={topic}
+          onSelect={pickStack}
+          label={DR ? "Stack :" : "Stack:"}
+        />
+
+        <button
+          type="button"
+          className="intro-button revision-back"
+          onClick={backToMenu}
+        >
+          ← {DR ? "Rje3" : FR ? "Retour" : "Back"}
+        </button>
+      </div>
+    );
+  }
+
+  // Step 2+ — reading view only: back link + progress + step label +
+  // concept card + Previous/Next (no stack grid on this page)
   return (
     <div className="revision">
-      <h1 className="intro-title">
-        {FR ? "Fiches de révision" : "Revision notes"}
-      </h1>
-
-      <StackGrid
-        options={stackOptions(TOPIC_KEYS)}
-        value={topic}
-        onSelect={(t) => {
-          setTopic(t);
-          setlangue(t);
-        }}
-        label={FR ? "Stack :" : "Stack:"}
-      />
+      <button
+        type="button"
+        className="revision-stacks-link"
+        onClick={() => setShowGrid(true)}
+      >
+        ← Stacks
+      </button>
 
       {total > 0 ? (
         <div className="revision-card-wrap">
@@ -66,7 +107,7 @@ export const Revision = () => {
             />
           </div>
           <p className="revision-step-label">
-            {FR ? `Étape ${step + 1}/${total}` : `Step ${step + 1}/${total}`}
+            {DR ? `Khotwa ${step + 1}/${total}` : FR ? `Étape ${step + 1}/${total}` : `Step ${step + 1}/${total}`}
           </p>
 
           <div className="revision-card" key={`${topic}-${step}`}>
@@ -81,7 +122,7 @@ export const Revision = () => {
               disabled={step === 0}
               style={step === 0 ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
             >
-              ← {FR ? "Précédent" : "Previous"}
+              ← {DR ? "Qbel" : FR ? "Précédent" : "Previous"}
             </button>
             <button
               type="button"
@@ -90,22 +131,22 @@ export const Revision = () => {
               disabled={step === total - 1}
               style={step === total - 1 ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
             >
-              {FR ? "Suivant" : "Next"} →
+              {DR ? "Doz" : FR ? "Suivant" : "Next"} →
             </button>
           </div>
         </div>
       ) : (
         <p className="intro-desc">
-          {FR ? "Aucune fiche pour ce sujet." : "No notes for this topic."}
+          {DR ? "Makaynach doros lhad lmawdo3." : FR ? "Aucune fiche pour ce sujet." : "No notes for this topic."}
         </p>
       )}
 
       <button
         type="button"
         className="intro-button revision-back"
-        onClick={() => { setMode("quiz"); setMenuOpen(true); }}
+        onClick={backToMenu}
       >
-        ← {FR ? "Retour" : "Back"}
+        ← {DR ? "Rje3" : FR ? "Retour" : "Back"}
       </button>
     </div>
   );

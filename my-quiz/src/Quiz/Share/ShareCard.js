@@ -144,6 +144,7 @@ export const ShareButton = ({ correct, total }) => {
   const { langueTrans, mode, langue, examTopics, codeTopic, level } =
     useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState("");
 
@@ -154,29 +155,31 @@ export const ShareButton = ({ correct, total }) => {
     modeText = "Quiz";
     topicText = topicLabel(langue);
   } else if (mode === "code") {
-    modeText = FR ? "Défi code" : "Code challenge";
-    topicText = codeTopic === "All" ? (FR ? "Tous les stacks" : "All stacks") : topicLabel(codeTopic);
+    modeText = DR ? "Tahadi code" : FR ? "Défi code" : "Code challenge";
+    topicText = codeTopic === "All" ? (DR ? "Ga3 stacks" : FR ? "Tous les stacks" : "All stacks") : topicLabel(codeTopic);
   } else if (mode === "exam") {
-    modeText = FR ? "Examen" : "Exam";
+    modeText = DR ? "Mtihan" : FR ? "Examen" : "Exam";
     topicText =
       examTopics.length >= 16
-        ? FR
+        ? DR
+          ? "Ga3 stacks"
+          : FR
           ? "Tous les stacks"
           : "All stacks"
         : examTopics.map(topicLabel).slice(0, 3).join(", ") +
           (examTopics.length > 3 ? "…" : "");
   } else if (mode === "daily") {
-    modeText = FR ? "Défi du jour" : "Daily challenge";
-    topicText = FR ? "Tous les stacks" : "All stacks";
+    modeText = DR ? "Tahadi lyoum" : FR ? "Défi du jour" : "Daily challenge";
+    topicText = DR ? "Ga3 stacks" : FR ? "Tous les stacks" : "All stacks";
   } else if (mode === "review") {
-    modeText = FR ? "Erreurs" : "Mistakes";
-    topicText = FR ? "Révision" : "Review";
+    modeText = DR ? "Aghlat" : FR ? "Erreurs" : "Mistakes";
+    topicText = DR ? "Lmoraja3a" : FR ? "Révision" : "Review";
   } else if (mode === "blitz") {
     modeText = "Blitz";
-    topicText = FR ? "Vrai/Faux · Tous les stacks" : "True/False · All stacks";
+    topicText = DR ? "S7i7/Ghalt · Ga3 stacks" : FR ? "Vrai/Faux · Tous les stacks" : "True/False · All stacks";
   }
   if (level !== "all" && (mode === "quiz" || mode === "code" || mode === "exam")) {
-    topicText += ` · ${FR ? "Niveau" : "Level"} ${level}`;
+    topicText += ` · ${DR ? "Mostawa" : FR ? "Niveau" : "Level"} ${level}`;
   }
 
   const share = async () => {
@@ -184,7 +187,7 @@ export const ShareButton = ({ correct, total }) => {
     setDone("");
     try {
       const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
-      const dateText = new Date().toLocaleDateString(FR ? "fr-FR" : "en-US", {
+      const dateText = new Date().toLocaleDateString(DR ? "en-US" : FR ? "fr-FR" : "en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -200,7 +203,7 @@ export const ShareButton = ({ correct, total }) => {
       const file = new File([blob], "quiz-app-score.png", { type: "image/png" });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ files: [file], title: "Quiz App" });
-        setDone(FR ? "Partagé !" : "Shared!");
+        setDone(DR ? "Tpartaja !" : FR ? "Partagé !" : "Shared!");
       } else {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
@@ -210,10 +213,10 @@ export const ShareButton = ({ correct, total }) => {
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 5000);
-        setDone(FR ? "Image téléchargée !" : "Image downloaded!");
+        setDone(DR ? "Tsjelt tsawra !" : FR ? "Image téléchargée !" : "Image downloaded!");
       }
     } catch (e) {
-      if (!e || e.name !== "AbortError") setDone(FR ? "Échec du partage" : "Share failed");
+      if (!e || e.name !== "AbortError") setDone(DR ? "Lpartage fchel" : FR ? "Échec du partage" : "Share failed");
     } finally {
       setBusy(false);
     }
@@ -227,7 +230,7 @@ export const ShareButton = ({ correct, total }) => {
         onClick={share}
         disabled={busy}
       >
-        {busy ? "…" : FR ? "Partager" : "Share"}
+        {busy ? "…" : DR ? "Share" : FR ? "Partager" : "Share"}
       </button>
       {done && <span className="share-done">{done}</span>}
     </span>

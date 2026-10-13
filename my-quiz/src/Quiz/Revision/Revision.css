@@ -103,3 +103,19 @@
     min-height: 260px;
   }
 }
+
+/* Small "← Stacks" back link shown above the reading view (one thing per page) */
+.revision-stacks-link {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--pq-accent-light);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 2px;
+  margin-bottom: 10px;
+}
+.revision-stacks-link:hover {
+  text-decoration: underline;
+}

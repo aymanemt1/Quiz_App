@@ -17,6 +17,7 @@ export const Wizard = ({
 }) => {
   const { langueTrans, setMenuOpen, setGameStarted } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
 
   const goToMenu = () => {
     setGameStarted(false);
@@ -33,7 +34,7 @@ export const Wizard = ({
 
       <div className="wizard-progress" aria-hidden="true">
         <span className="wizard-step-label">
-          {FR ? `Étape ${step}/${totalSteps}` : `Step ${step}/${totalSteps}`}
+          {DR ? `Khotwa ${step}/${totalSteps}` : FR ? `Étape ${step}/${totalSteps}` : `Step ${step}/${totalSteps}`}
         </span>
         <div className="wizard-bar">
           <div
@@ -50,7 +51,7 @@ export const Wizard = ({
       <div className="wizard-nav">
         {step > 1 ? (
           <button type="button" className="wizard-back" onClick={onBack}>
-            ← {FR ? "Retour" : "Back"}
+            ← {DR ? "Rje3" : FR ? "Retour" : "Back"}
           </button>
         ) : (
           <span />
@@ -73,9 +74,11 @@ export const Wizard = ({
 
 // Single-choice time picker: no timer, or a per-question countdown.
 // Replaces the old checkbox-based toggle in wizard flows.
-export const TimeSelector = ({ FR }) => {
-  const { timed, setTimed, timePerQuestion, setTimePerQuestion } =
+export const TimeSelector = () => {
+  const { timed, setTimed, timePerQuestion, setTimePerQuestion, langueTrans } =
     useContext(LangueContext);
+  const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
 
   const pick = (d) => {
     if (d === null) {
@@ -91,7 +94,7 @@ export const TimeSelector = ({ FR }) => {
   return (
     <div className="level-selector">
       <span className="level-selector-label">
-        {FR ? "Temps :" : "Time:"}
+        {DR ? "Lwa9t :" : FR ? "Temps :" : "Time:"}
       </span>
       <div className="level-buttons">
         <button
@@ -99,7 +102,7 @@ export const TimeSelector = ({ FR }) => {
           className={`level-button ${isActive(null) ? "level-active" : ""}`}
           onClick={() => pick(null)}
         >
-          {FR ? "Sans chrono" : "No timer"}
+          {DR ? "Bla wa9t" : FR ? "Sans chrono" : "No timer"}
         </button>
         {[15, 30, 60].map((d) => (
           <button

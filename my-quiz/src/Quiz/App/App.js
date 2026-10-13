@@ -44,17 +44,19 @@ export default function App() {
     timed,timePerQuestion,codeTopic,setMenuOpen,notesOpen,reviewTopic} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
+  // UI can be EN/FR/DR, but question content only exists in EN/FR — DR reads EN content.
   const questionsOntranslate = useMemo(() => {
+    const contentLang = langueTrans === "DR" ? "EN" : langueTrans;
     let set = [];
     if (mode === 'exam') {
-      set = getExamQuestions(langueTrans, examTopics, level, examCount);
+      set = getExamQuestions(contentLang, examTopics, level, examCount);
     } else if (mode === 'code') {
-      set = getCodeChallenges(langueTrans, codeTopic, level);
+      set = getCodeChallenges(contentLang, codeTopic, level);
     } else if (mode === 'quiz') {
       const topic = TOPIC_KEYS.includes(langue) ? langue : 'React';
-      set = getTopicQuestions(topic, langueTrans, level).map((q, i) => ({ ...q, id: i, selection: null, topic }));
+      set = getTopicQuestions(topic, contentLang, level).map((q, i) => ({ ...q, id: i, selection: null, topic }));
     } else if (mode === 'daily') {
-      set = getDailyQuestions(langueTrans, todayStr());
+      set = getDailyQuestions(contentLang, todayStr());
     } else if (mode === 'review') {
       const mistakes = loadMistakes().filter(
         (m) => m.lang === langueTrans && (reviewTopic === 'All' || m.topic === reviewTopic)
@@ -245,6 +247,7 @@ export default function App() {
     (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');
   const currentQuestion = questionsOntranslate[question.value];
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
   // A run is only "finished" once every question was consumed…
   const runFinished = questionsOntranslate.length > 0 && question.value > totalQuestion;
   // …and results are only meaningful if at least one question was answered
@@ -299,7 +302,7 @@ export default function App() {
                     className="retry-button intro-button"
                     onClick={() => handleTryagain()}
                   >
-                    {FR ? 'Rejouer' : 'Retry'}
+                    {DR ? '3awd' : FR ? 'Rejouer' : 'Retry'}
                   </button>
                   <button
                     className="menu-back"
@@ -316,7 +319,9 @@ export default function App() {
             ) : (
               <div className="results-empty">
                 <p>
-                  {FR
+                  {DR
+                    ? "Mazal makayn nata2ij — kmel quiz lwel."
+                    : FR
                     ? "Aucun résultat — termine d'abord un quiz."
                     : "No results yet — finish a quiz first."}
                 </p>
@@ -337,7 +342,7 @@ export default function App() {
       <div className="game-area game-live">
         {questionsOntranslate.length === 0 ? (
           <div className="results-empty">
-            <p>{FR ? "Aucune question disponible." : "No questions available."}</p>
+            <p>{DR ? "Makaynach las2ila." : FR ? "Aucune question disponible." : "No questions available."}</p>
             <button className="menu-back" onClick={() => handleBackToMenu()}>
               ← {FR ? 'Menu' : 'Menu'}
             </button>
@@ -351,7 +356,6 @@ export default function App() {
             seconds={timePerQuestion}
             questionId={currentQuestion.id}
             onTimeout={handleTimeout}
-            FR={langueTrans === "FR"}
           />
         )}
         {questionsOntranslate[question.value] && (
@@ -359,10 +363,9 @@ export default function App() {
             key={`r${runKey}-q${questionsOntranslate[question.value].id}`}
             data={questionsOntranslate[question.value]}
             buttonText = {
-              (question.value !== totalQuestion && langueTrans === "EN") ? "Next Question" :
-              (question.value !== totalQuestion && langueTrans === "FR") ? "Question Suivante" :
-              (langueTrans === "FR") ? "Terminer Quiz" :
-              "Finish Quiz"
+              question.value !== totalQuestion
+                ? (DR ? "So2al li jay" : FR ? "Question Suivante" : "Next Question")
+                : (DR ? "Sali Quiz" : FR ? "Terminer Quiz" : "Finish Quiz")
             }
 
             onQuestionButtonClick={handleNewQuestionClick}
@@ -374,7 +377,7 @@ export default function App() {
              className="showAnswer-button"
              onClick={()=>ShowCorrectAnswer()}
            >
-            ShowAnswer
+            {DR ? "Werri ljawab" : "ShowAnswer"}
            </button>
 
            <button

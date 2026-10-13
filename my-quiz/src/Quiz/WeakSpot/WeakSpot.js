@@ -9,6 +9,7 @@ import { TOPIC_LABELS } from "../Data/QuestionAllData";
 export const WeakSpot = () => {
   const { langueTrans, setlangue, setMode } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
   const weak = getWeakSpot();
 
   const goToCourse = () => {
@@ -25,7 +26,12 @@ export const WeakSpot = () => {
             ⚠
           </span>
           <p className="weak-spot-text">
-            {FR ? (
+            {DR ? (
+              <>
+                No9tat do3f : <strong>{TOPIC_LABELS[weak.topic] || weak.topic}</strong>{" "}
+                ({weak.avg} %) — raje3ha !
+              </>
+            ) : FR ? (
               <>
                 Point faible : <strong>{TOPIC_LABELS[weak.topic] || weak.topic}</strong>{" "}
                 ({weak.avg} %) — révise-le !
@@ -42,12 +48,14 @@ export const WeakSpot = () => {
             className="weak-spot-button"
             onClick={goToCourse}
           >
-            {FR ? "Voir le cours" : "Open course"}
+            {DR ? "7el lcours" : FR ? "Voir le cours" : "Open course"}
           </button>
         </>
       ) : (
         <p className="weak-spot-text weak-spot-hint">
-          {FR
+          {DR
+            ? "Kmel chi quiz bach t3raf no9tat do3f dyalk."
+            : FR
             ? "Termine des quiz pour découvrir ton point faible."
             : "Finish some quizzes to discover your weak spot."}
         </p>

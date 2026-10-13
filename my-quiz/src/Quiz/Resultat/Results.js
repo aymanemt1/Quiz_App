@@ -5,6 +5,7 @@ import { LangueContext } from '../../Context/LangueContext';
 function Results({ wrong, correct, empty }) {
 
   const {langueTrans} =useContext(LangueContext)
+  const DR = langueTrans === "DR"
   
     return (
       <div className="result">
@@ -25,7 +26,7 @@ function Results({ wrong, correct, empty }) {
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01 9 11.01"></path>
             </svg>
-            CORRECT
+            {DR ? "S7I7" : "CORRECT"}
           </span>
         </div>
         <div className="result-item is-wrong">
@@ -46,7 +47,7 @@ function Results({ wrong, correct, empty }) {
               <path d="M15 9L9 15"></path>
               <path d="M9 9L15 15"></path>
             </svg>
-            {langueTrans === "EN" ? "WRONG" :'FAUX'} 
+            {langueTrans === "EN" ? "WRONG" : langueTrans === "FR" ? "FAUX" : "GHALT"} 
           </span>
         </div>
         <div className="result-item is-empty">
@@ -66,7 +67,7 @@ function Results({ wrong, correct, empty }) {
               <circle cx="12" cy="12" r="10"></circle>
               <path d="M8 12L16 12"></path>
             </svg>
-            {langueTrans === "EN" ? "EMPTY" :'VIDE'} 
+            {langueTrans === "EN" ? "EMPTY" : langueTrans === "FR" ? "VIDE" : "KHAWI"} 
 
           </span>
         </div>

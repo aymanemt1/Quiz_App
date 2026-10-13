@@ -7,6 +7,7 @@ import { getStreak, getTodayResult } from '../Data/storage'
 export const Topbar = () => {
   const { langueTrans, setlangueTrans, setMode, setMenuOpen, setGameStarted, setDrawerOpen, profile } = useContext(LangueContext)
   const FR = langueTrans === 'FR'
+  const DR = langueTrans === 'DR'
   const streak = getStreak()
   const dailyDone = !!getTodayResult()
 
@@ -27,6 +28,7 @@ export const Topbar = () => {
   const Langs = [
     { id: 'EN', text: 'EN' },
     { id: 'FR', text: 'FR' },
+    { id: 'DR', text: 'DR' },
   ]
 
   const hanldTranslate = (id) => {
@@ -51,7 +53,7 @@ export const Topbar = () => {
           type='button'
           className='topbar-burger'
           onClick={() => setDrawerOpen(true)}
-          aria-label={FR ? 'Ouvrir le menu' : 'Open menu'}
+          aria-label={DR ? '7el menu' : FR ? 'Ouvrir le menu' : 'Open menu'}
           title={FR ? 'Menu' : 'Menu'}
         >
           <span aria-hidden='true' />
@@ -65,13 +67,13 @@ export const Topbar = () => {
           onClick={goHome}
         />
         {streak > 0 && (
-          <span className='topbar-streak' title={FR ? `${streak} jours de suite` : `${streak} days in a row`}>
+          <span className='topbar-streak' title={DR ? `${streak} nhar mor b3d` : FR ? `${streak} jours de suite` : `${streak} days in a row`}>
             🔥 {streak}
           </span>
         )}
         <span
           className={`topbar-daily ${dailyDone ? 'daily-done' : 'daily-todo'}`}
-          title={dailyDone ? (FR ? 'Défi du jour terminé' : 'Daily challenge done') : (FR ? 'Défi du jour à faire' : 'Daily challenge pending')}
+          title={dailyDone ? (DR ? 'Tahadi lyoum saliti' : FR ? 'Défi du jour terminé' : 'Daily challenge done') : (DR ? 'Tahadi lyoum mazal' : FR ? 'Défi du jour à faire' : 'Daily challenge pending')}
         >
           📅{dailyDone ? ' ✓' : ''}
         </span>
@@ -82,8 +84,8 @@ export const Topbar = () => {
           className='topbar-avatar'
           style={{ background: profile.color }}
           onClick={openProfile}
-          title={FR ? 'Profil' : 'Profile'}
-          aria-label={FR ? 'Profil' : 'Profile'}
+          title={DR ? 'Profile' : FR ? 'Profil' : 'Profile'}
+          aria-label={DR ? 'Profile' : FR ? 'Profil' : 'Profile'}
         >
           {initial}
         </button>

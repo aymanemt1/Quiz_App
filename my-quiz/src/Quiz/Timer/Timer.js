@@ -39,7 +39,7 @@ const Timer = () => {
   return (
     <div id='timer'>
       {gameFinished ? (
-        <p className='spentTimer'>{langueTrans === "EN" ? "You spent :" : "Tu as depensé :" }  {formatTime(stoppedTime)}</p>
+        <p className='spentTimer'>{langueTrans === "EN" ? "You spent :" : langueTrans === "FR" ? "Tu as depensé :" : "Dwzti :" }  {formatTime(stoppedTime)}</p>
       ) : (
         <p>{formatTime(timeLeft)}</p>
       ) }

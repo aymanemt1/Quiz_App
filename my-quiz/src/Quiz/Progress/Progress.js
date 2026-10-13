@@ -7,6 +7,7 @@ import { loadHistory, clearHistory } from '../Data/storage';
 export const Progress = () => {
   const { langueTrans, setMode, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
   const [, force] = useState(0);
 
   const stats = useMemo(() => {
@@ -35,11 +36,12 @@ export const Progress = () => {
 
   return (
     <div className="progress">
-      <h2 className="progress-title">{FR ? "Mes progrès" : "My progress"}</h2>
+      <h2 className="progress-title">{DR ? "Taqadom dyali" : FR ? "Mes progrès" : "My progress"}</h2>
 
       {stats.totalRuns === 0 ? (
         <p className="progress-empty">
-          {FR ? "Aucun quiz terminé pour le moment. Lancez un quiz pour voir vos statistiques ici."
+          {DR ? "Mazal makmelt ta quiz. Bda quiz bach tchouf l7sabat dyalk hna."
+              : FR ? "Aucun quiz terminé pour le moment. Lancez un quiz pour voir vos statistiques ici."
               : "No completed quizzes yet. Start a quiz to see your stats here."}
         </p>
       ) : (
@@ -47,19 +49,19 @@ export const Progress = () => {
           <div className="progress-overall">
             <div className="progress-stat">
               <span className="progress-stat-count">{stats.totalRuns}</span>
-              <span className="progress-stat-label">{FR ? "sessions" : "sessions"}</span>
+              <span className="progress-stat-label">{DR ? "sessions" : "sessions"}</span>
             </div>
             <div className="progress-stat">
               <span className="progress-stat-count">{stats.avgPct}%</span>
-              <span className="progress-stat-label">{FR ? "score moyen" : "avg score"}</span>
+              <span className="progress-stat-label">{DR ? "lmo3adal" : FR ? "score moyen" : "avg score"}</span>
             </div>
             <div className="progress-stat">
               <span className="progress-stat-count">{stats.bestPct}%</span>
-              <span className="progress-stat-label">{FR ? "meilleur" : "best"}</span>
+              <span className="progress-stat-label">{DR ? "a7san" : FR ? "meilleur" : "best"}</span>
             </div>
             <div className="progress-stat">
               <span className="progress-stat-count">{stats.totalCorrect}/{stats.totalQs}</span>
-              <span className="progress-stat-label">{FR ? "bonnes réponses" : "correct"}</span>
+              <span className="progress-stat-label">{DR ? "jawabat s7i7a" : FR ? "bonnes réponses" : "correct"}</span>
             </div>
           </div>
 
@@ -74,7 +76,7 @@ export const Progress = () => {
                     <div className="progress-bar-fill" style={{ width: `${s.best}%` }} />
                   </div>
                   <span className="progress-topic-scores">
-                    {FR ? `meilleur ${s.best}% · moy. ${avg}%` : `best ${s.best}% · avg ${avg}%`}
+                    {DR ? `a7san ${s.best}% · mo3adal ${avg}%` : FR ? `meilleur ${s.best}% · moy. ${avg}%` : `best ${s.best}% · avg ${avg}%`}
                   </span>
                 </div>
               );
@@ -86,13 +88,13 @@ export const Progress = () => {
             type="button"
             onClick={() => { clearHistory(); force((v) => v + 1); }}
           >
-            {FR ? "Effacer l'historique" : "Clear history"}
+            {DR ? "Msa7 lhistorique" : FR ? "Effacer l'historique" : "Clear history"}
           </button>
         </>
       )}
 
       <button className="intro-button" type="button" onClick={() => { setMode('quiz'); setMenuOpen(true); }}>
-        {FR ? "Retour" : "Back"}
+        {DR ? "Rje3" : FR ? "Retour" : "Back"}
       </button>
     </div>
   );

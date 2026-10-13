@@ -23,6 +23,7 @@ export const Profile = () => {
   const { langueTrans, profile, updateProfile, setMenuOpen, setMode } =
     useContext(LangueContext);
   const FR = langueTrans === 'FR';
+  const DR = langueTrans === 'DR';
 
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(profile.name);
@@ -45,18 +46,18 @@ export const Profile = () => {
   };
 
   const STATS = [
-    { value: stats.sessions, en: 'Sessions', fr: 'Sessions' },
-    { value: stats.answered, en: 'Questions', fr: 'Questions' },
-    { value: `${stats.avg}%`, en: 'Average', fr: 'Moyenne' },
-    { value: `${stats.best}%`, en: 'Best score', fr: 'Meilleur score' },
-    { value: `🔥 ${streak}`, en: 'Day streak', fr: 'Série (jours)' },
-    { value: `${xp} XP`, en: 'Experience', fr: 'Expérience' },
+    { value: stats.sessions, en: 'Sessions', fr: 'Sessions', dr: 'Sessions' },
+    { value: stats.answered, en: 'Questions', fr: 'Questions', dr: 'As2ila' },
+    { value: `${stats.avg}%`, en: 'Average', fr: 'Moyenne', dr: 'Lmo3adal' },
+    { value: `${stats.best}%`, en: 'Best score', fr: 'Meilleur score', dr: 'A7san score' },
+    { value: `🔥 ${streak}`, en: 'Day streak', fr: 'Série (jours)', dr: 'Streak dyal nhar' },
+    { value: `${xp} XP`, en: 'Experience', fr: 'Expérience', dr: 'Experience' },
   ];
 
   return (
     <div className="profile">
       <button type="button" className="profile-back" onClick={goMenu}>
-        ← {FR ? 'Menu' : 'Menu'}
+        ← Menu
       </button>
 
       <div className="profile-card">
@@ -70,7 +71,7 @@ export const Profile = () => {
         <div className="profile-identity">
           <h2 className="profile-name">{profile.name}</h2>
           <span className="profile-rank">
-            {FR ? rank.current.fr : rank.current.en}
+            {DR ? rank.current.dr : FR ? rank.current.fr : rank.current.en}
           </span>
         </div>
         <button
@@ -82,20 +83,20 @@ export const Profile = () => {
             setEditing((e) => !e);
           }}
         >
-          {editing ? (FR ? 'Annuler' : 'Cancel') : FR ? 'Modifier' : 'Edit'}
+          {editing ? (DR ? 'Lghi' : FR ? 'Annuler' : 'Cancel') : DR ? 'Beddel' : FR ? 'Modifier' : 'Edit'}
         </button>
       </div>
 
       {editing && (
         <div className="profile-editor">
           <label className="profile-field">
-            <span>{FR ? 'Nom' : 'Name'}</span>
+            <span>{DR ? 'Smiya' : FR ? 'Nom' : 'Name'}</span>
             <input
               type="text"
               value={name}
               maxLength={24}
               onChange={(e) => setName(e.target.value)}
-              placeholder={FR ? 'Votre nom' : 'Your name'}
+              placeholder={DR ? 'Smiytek' : FR ? 'Votre nom' : 'Your name'}
             />
           </label>
           <div className="profile-colors">
@@ -111,7 +112,7 @@ export const Profile = () => {
             ))}
           </div>
           <button type="button" className="profile-save-btn" onClick={save}>
-            {FR ? 'Enregistrer' : 'Save'}
+            {DR ? 'Sejjel' : FR ? 'Enregistrer' : 'Save'}
           </button>
         </div>
       )}
@@ -121,12 +122,12 @@ export const Profile = () => {
           <span className="profile-xp-label">{xp} XP</span>
           {rank.next ? (
             <span className="profile-xp-next">
-              {FR ? 'Prochain :' : 'Next:'} {FR ? rank.next.fr : rank.next.en} ·{' '}
+              {DR ? 'Li jay :' : FR ? 'Prochain :' : 'Next:'} {DR ? rank.next.dr : FR ? rank.next.fr : rank.next.en} ·{' '}
               {rank.next.min} XP
             </span>
           ) : (
             <span className="profile-xp-next">
-              {FR ? 'Rang maximum atteint' : 'Max rank reached'}
+              {DR ? 'Wselti l a3la mostawa' : FR ? 'Rang maximum atteint' : 'Max rank reached'}
             </span>
           )}
         </div>
@@ -139,23 +140,25 @@ export const Profile = () => {
       </div>
 
       <h3 className="profile-section-title">
-        {FR ? 'Statistiques' : 'Statistics'}
+        {DR ? 'L7sabat' : FR ? 'Statistiques' : 'Statistics'}
       </h3>
       <div className="profile-stats">
         {STATS.map((s) => (
           <div key={s.en} className="profile-stat">
             <span className="profile-stat-value">{s.value}</span>
-            <span className="profile-stat-label">{FR ? s.fr : s.en}</span>
+            <span className="profile-stat-label">{DR ? s.dr : FR ? s.fr : s.en}</span>
           </div>
         ))}
       </div>
 
       <h3 className="profile-section-title">
-        {FR ? 'Moyenne par stack' : 'Average per stack'}
+        {DR ? 'Lmo3adal 7sab stack' : FR ? 'Moyenne par stack' : 'Average per stack'}
       </h3>
       {stats.stacks.length === 0 ? (
         <p className="profile-empty">
-          {FR
+          {DR
+            ? 'Kmel chi quiz bach tchouf lmo3adal dyalk 7sab stack.'
+            : FR
             ? 'Terminez des quiz pour voir vos moyennes par stack.'
             : 'Finish some quizzes to see your per-stack averages.'}
         </p>

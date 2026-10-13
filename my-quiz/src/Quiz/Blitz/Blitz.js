@@ -9,12 +9,15 @@ import { ShareButton } from "../Share/ShareCard";
 export const Blitz = () => {
   const { langueTrans, setGameStarted, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
 
   const [runId, setRunId] = useState(0);
+  // Blitz statements only exist in EN/FR — DR UI reads EN content.
+  const contentLang = langueTrans === "DR" ? "EN" : langueTrans;
   const statements = useMemo(
-    () => getBlitzStatements(langueTrans),
+    () => getBlitzStatements(contentLang),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [langueTrans, runId]
+    [contentLang, runId]
   );
 
   const [idx, setIdx] = useState(0);
@@ -71,7 +74,7 @@ export const Blitz = () => {
         lang: langueTrans,
         level: e.statement.level || 2,
         text: e.statement.text,
-        answers: FR ? ["Vrai", "Faux"] : ["True", "False"],
+        answers: DR ? ["S7i7", "Ghalt"] : FR ? ["Vrai", "Faux"] : ["True", "False"],
         correct: e.statement.answer ? 0 : 1,
       }));
     if (missed.length) addMistakes(missed);
@@ -97,24 +100,26 @@ export const Blitz = () => {
     return (
       <div className="blitz blitz-end">
         <h2 className="blitz-end-title">
-          {FR ? "Temps écoulé !" : "Time's up!"}
+          {DR ? "Sali lwa9t !" : FR ? "Temps écoulé !" : "Time's up!"}
         </h2>
         <div className="blitz-end-score">{correctCount}</div>
         <p className="blitz-end-sub">
-          {FR
+          {DR
+            ? `${answered} jawabat · ${accuracy}% da9a`
+            : FR
             ? `${answered} affirmation${answered > 1 ? "s" : ""} · ${accuracy} % de précision`
             : `${answered} statement${answered > 1 ? "s" : ""} · ${accuracy}% accuracy`}
         </p>
         <div className="blitz-end-buttons">
           <button type="button" className="intro-button" onClick={restart}>
-            {FR ? "Rejouer" : "Play again"}
+            {DR ? "3awd l3eb" : FR ? "Rejouer" : "Play again"}
           </button>
           <button
             type="button"
             className="intro-button"
             onClick={() => { setGameStarted(false); setMenuOpen(true); }}
           >
-            {FR ? "Retour" : "Back"}
+            {DR ? "Rje3" : FR ? "Retour" : "Back"}
           </button>
           <ShareButton correct={correctCount} total={answered} />
         </div>
@@ -151,14 +156,14 @@ export const Blitz = () => {
               className="blitz-button blitz-true"
               onClick={() => answer(true)}
             >
-              {FR ? "VRAI" : "TRUE"}
+              {DR ? "S7I7" : FR ? "VRAI" : "TRUE"}
             </button>
             <button
               type="button"
               className="blitz-button blitz-false"
               onClick={() => answer(false)}
             >
-              {FR ? "FAUX" : "FALSE"}
+              {DR ? "GHALT" : FR ? "FAUX" : "FALSE"}
             </button>
           </div>
         </div>

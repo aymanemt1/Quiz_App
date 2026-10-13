@@ -6,13 +6,16 @@ import { interviewQuestions } from '../Data/InterviewData';
 export const Interview = () => {
   const { langue, langueTrans, setGameStarted, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
+  const DR = langueTrans === "DR";
 
+  // Interview content only exists in EN/FR — DR UI reads EN content.
+  const contentLang = langueTrans === "DR" ? "EN" : langueTrans;
   const items = useMemo(() => {
-    const block = interviewQuestions.find((b) => b.lang === langueTrans);
+    const block = interviewQuestions.find((b) => b.lang === contentLang);
     let qsts = block ? block.qsts : [];
     if (langue !== 'All') qsts = qsts.filter((q) => q.topic === langue);
     return qsts;
-  }, [langue, langueTrans]);
+  }, [langue, contentLang]);
 
   const [index, setIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -47,7 +50,7 @@ export const Interview = () => {
   if (!items.length) {
     return (
       <div className="interview">
-        <p className="interview-empty">{FR ? "Aucune question pour ce sujet." : "No questions for this topic."}</p>
+        <p className="interview-empty">{DR ? "Makaynach las2ila lhad lmawdo3." : FR ? "Aucune question pour ce sujet." : "No questions for this topic."}</p>
       </div>
     );
   }
@@ -56,23 +59,23 @@ export const Interview = () => {
     return (
       <div className="interview">
         <div className="interview-card interview-summary">
-          <h2 className="interview-title">{FR ? "Entretien terminé !" : "Interview complete!"}</h2>
+          <h2 className="interview-title">{DR ? "Linterview salat !" : FR ? "Entretien terminé !" : "Interview complete!"}</h2>
           <div className="interview-score">
             <div className="interview-score-item is-known">
               <span className="interview-score-count">{known}</span>
-              <span className="interview-score-label">{FR ? "connues" : "known"}</span>
+              <span className="interview-score-label">{DR ? "3arefhom" : FR ? "connues" : "known"}</span>
             </div>
             <div className="interview-score-item is-review">
               <span className="interview-score-count">{review}</span>
-              <span className="interview-score-label">{FR ? "à revoir" : "to review"}</span>
+              <span className="interview-score-label">{DR ? "khasni nraje3hom" : FR ? "à revoir" : "to review"}</span>
             </div>
           </div>
           <div className="interview-actions">
             <button className="interview-button" onClick={restart}>
-              {FR ? "Recommencer" : "Restart"}
+              {DR ? "3awd" : FR ? "Recommencer" : "Restart"}
             </button>
             <button className="interview-button interview-button-ghost" onClick={() => { setGameStarted(false); setMenuOpen(true); }}>
-              {FR ? "Retour au menu" : "Back to menu"}
+              {DR ? "Rje3 l menu" : FR ? "Retour au menu" : "Back to menu"}
             </button>
           </div>
         </div>
@@ -92,17 +95,17 @@ export const Interview = () => {
         <h2 className="interview-question">{current.q}</h2>
         {!showAnswer ? (
           <button className="interview-button" onClick={() => setShowAnswer(true)}>
-            {FR ? "Voir la réponse" : "Show answer"}
+            {DR ? "Werri ljawab" : FR ? "Voir la réponse" : "Show answer"}
           </button>
         ) : (
           <>
             <p className="interview-answer">{current.a}</p>
             <div className="interview-actions">
               <button className="interview-button is-known" onClick={() => assess(true)}>
-                {FR ? "Je savais" : "I knew it"}
+                {DR ? "Kont 3arfha" : FR ? "Je savais" : "I knew it"}
               </button>
               <button className="interview-button is-review" onClick={() => assess(false)}>
-                {FR ? "À revoir" : "To review"}
+                {DR ? "Khasni nraje3ha" : FR ? "À revoir" : "To review"}
               </button>
             </div>
           </>

@@ -5,25 +5,27 @@ export const gitQuestions = [
       {
         "id": 0,
         "level": 1,
-        "text": "What is Git?",
+        "text": "You edited the tracked file app.js but staged nothing. What does git status report for app.js?",
+        "code": "$ git status",
         "answers": [
-          "A distributed version control system",
-          "A code editor",
-          "A hosting website",
-          "A programming language"
+          "new file",
+          "staged for commit",
+          "modified, not staged for commit",
+          "deleted"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 1,
         "level": 1,
-        "text": "Which command stages files for commit?",
+        "text": "What does git status report now?",
+        "code": "$ git add app.js\n$ git status",
         "answers": [
-          "git add",
-          "git stage-it",
-          "git commit",
-          "git push"
+          "app.js is staged for commit",
+          "app.js is still unstaged",
+          "app.js was committed",
+          "nothing to commit, working tree clean"
         ],
         "correct": 0,
         "selection": null
@@ -31,157 +33,673 @@ export const gitQuestions = [
       {
         "id": 2,
         "level": 1,
-        "text": "Which command saves staged changes with a message?",
+        "text": "The changes were staged first. What happens?",
+        "code": "$ git commit -m \"Fix login bug\"",
         "answers": [
-          "git commit -m \"message\"",
-          "git save -m \"message\"",
-          "git store \"message\"",
-          "git write \"message\""
+          "The changes are pushed to GitHub",
+          "The staging area is cleared without a commit",
+          "A new branch is created",
+          "A new commit is created on the current branch"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 3,
-        "level": 2,
-        "text": "Which command shows the commit history?",
+        "level": 1,
+        "text": "You edited app.js but never ran git add. What happens?",
+        "code": "$ git commit -m \"update\"",
         "answers": [
-          "git log",
-          "git history",
-          "git commits",
-          "git show-all"
+          "The edits are committed",
+          "Nothing is committed — there is nothing staged",
+          "Git stages and commits automatically",
+          "The file is deleted"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 4,
-        "level": 2,
-        "text": "What is the difference between 'git pull' and 'git fetch'?",
+        "level": 1,
+        "text": "What does this show?",
+        "code": "$ git log --oneline\n3f2a1b0 Add cart page\n9c4d2e1 Fix login bug",
         "answers": [
-          "git pull fetches and merges; git fetch only downloads without merging",
-          "They are identical",
-          "git fetch deletes branches",
-          "git pull only works offline"
+          "The two most recent commits, newest first",
+          "All branches",
+          "Only the current diff",
+          "Staged files"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 5,
-        "level": 2,
-        "text": "How do you create a new branch and switch to it?",
+        "level": 1,
+        "text": "app.js was edited and staged. Which command shows the staged change?",
+        "code": "$ git diff\n$ git diff --staged",
         "answers": [
-          "git checkout -b feature",
-          "git branch feature (stays on current branch)",
-          "git create feature",
-          "git new-branch feature"
+          "git diff",
+          "git diff --staged",
+          "Both show it",
+          "Neither — use git show"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 6,
-        "level": 3,
-        "text": "What is a merge conflict?",
+        "level": 1,
+        "text": "Which branch is currently checked out?",
+        "code": "$ git branch\n  main\n* feature/login",
         "answers": [
-          "Competing changes to the same lines that Git cannot auto-resolve",
-          "A network error",
-          "A deleted repository",
-          "A wrong commit message"
+          "main",
+          "Both",
+          "Neither — detached HEAD",
+          "feature/login"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 7,
-        "level": 4,
-        "text": "What does 'git rebase' do?",
+        "level": 1,
+        "text": "You run this from main. Where does feature/cart start?",
+        "code": "$ git checkout -b feature/cart",
         "answers": [
-          "Reapplies commits on top of another base commit",
-          "Deletes the repository",
-          "Merges without history",
-          "It pushes to remote"
+          "At the first commit of the repo",
+          "As an empty branch",
+          "At the tip of main",
+          "At origin/main only"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 8,
-        "level": 4,
-        "text": "How do you undo the last commit but keep your changes?",
+        "level": 1,
+        "text": "What do you get?",
+        "code": "$ git clone https://github.com/user/repo.git",
         "answers": [
-          "git reset --soft HEAD~1",
-          "git revert --hard",
-          "git delete HEAD",
-          "git checkout -- ."
+          "The full repository: files, history and a remote named origin",
+          "Only the latest files, no history",
+          "A fork on GitHub",
+          "An empty folder"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 9,
-        "level": 5,
-        "text": "What does 'git stash' do?",
+        "level": 1,
+        "text": ".gitignore contains *.log, but debug.log was committed last week. After editing debug.log, what does git status show?",
+        "code": "$ git status",
         "answers": [
-          "Temporarily shelves changes so you can work on a clean tree",
-          "Deletes all branches",
-          "Pushes to GitHub",
-          "It creates a tag"
+          "ignored",
+          "untracked",
+          "modified — .gitignore does not apply to already-tracked files",
+          "deleted"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 10,
-        "level": 3,
-        "text": "What is the difference between git pull and git fetch?",
+        "level": 2,
+        "text": "Why was the push rejected?",
+        "code": "$ git push\n! [rejected] main -> main (non-fast-forward)",
         "answers": [
-          "They are identical",
-          "pull = fetch + merge; fetch only downloads without merging",
-          "fetch deletes branches",
-          "pull only works offline"
+          "Your password is wrong",
+          "The remote has commits you don't have — pull first",
+          "The branch name is wrong",
+          "GitHub is down"
         ],
         "correct": 1,
         "selection": null
       },
       {
         "id": 11,
-        "level": 4,
-        "text": "How do you undo the last commit but keep your changes?",
+        "level": 2,
+        "text": "What does git pull do?",
+        "code": "$ git pull",
         "answers": [
-          "git reset --soft HEAD~1",
-          "git revert --hard",
-          "git delete HEAD",
-          "rm -rf .git"
+          "Only downloads changes without merging",
+          "Pushes local commits",
+          "Deletes the local branch",
+          "Fetches remote changes and merges them into the current branch"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 12,
-        "level": 4,
-        "text": "What is a merge conflict?",
+        "level": 2,
+        "text": "Why is notes.txt missing from the commit?",
+        "code": "$ touch notes.txt\n$ git commit -am \"add notes\"",
         "answers": [
-          "When two branches change the same lines and Git can't auto-merge",
-          "A network error",
-          "A deleted repository",
-          "A wrong password"
+          "-a only stages tracked files; new files need git add",
+          "-a is not a valid flag",
+          "The message was too short",
+          "txt files are ignored by default"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 13,
-        "level": 5,
-        "text": "What is the difference between git merge and git rebase?",
+        "level": 2,
+        "text": "app.js has unwanted edits, not staged. What happens?",
+        "code": "$ git restore app.js",
         "answers": [
-          "They are identical",
-          "merge keeps history with a merge commit; rebase rewrites history linearly",
-          "rebase deletes code",
-          "merge is only local"
+          "The edits are staged",
+          "The file is deleted",
+          "The edits are discarded",
+          "A commit is created"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 14,
+        "level": 2,
+        "text": "a1b2c3 is a commit hash. What state is the repo in?",
+        "code": "$ git checkout a1b2c3",
+        "answers": [
+          "On a new branch named a1b2c3",
+          "The commit is deleted",
+          "Nothing changes",
+          "Detached HEAD — HEAD points directly at a commit, not a branch"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 15,
+        "level": 2,
+        "text": "What is the result?",
+        "code": "$ git stash\n$ git stash pop",
+        "answers": [
+          "Changes are committed",
+          "Changes are shelved, then restored to the working tree",
+          "Changes are pushed",
+          "The stash is deleted permanently with changes lost"
         ],
         "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 16,
+        "level": 2,
+        "text": "feature has 2 commits ahead of main, main is unchanged. What happens?",
+        "code": "$ git checkout main\n$ git merge feature",
+        "answers": [
+          "Fast-forward — main simply moves to feature's tip",
+          "A merge commit is always created",
+          "A conflict occurs",
+          "The feature branch is deleted"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 17,
+        "level": 2,
+        "text": "First push of the new branch feature fails asking to set upstream. What fixes it?",
+        "code": "$ git push",
+        "answers": [
+          "git push --force",
+          "git pull first",
+          "git push -u origin feature",
+          "git branch -u feature"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 18,
+        "level": 2,
+        "text": "What does this list?",
+        "code": "$ git log main..feature --oneline",
+        "answers": [
+          "Commits in main that are not in feature",
+          "Commits in feature that are not in main",
+          "All commits in both",
+          "The diff between the branches"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 19,
+        "level": 2,
+        "text": "feature was never merged. What happens?",
+        "code": "$ git branch -d feature",
+        "answers": [
+          "The branch is deleted",
+          "The commits are pushed",
+          "The branch is renamed",
+          "Git refuses — the branch contains unmerged commits (use -D to force)"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 20,
+        "level": 3,
+        "text": "You see this in app.js after a merge. What must you do?",
+        "code": "<<<<<<< HEAD\nconst role = \"admin\";\n=======\nconst role = \"user\";\n>>>>>>> feature",
+        "answers": [
+          "Run git push to resolve it",
+          "Delete the file",
+          "Edit the file to keep the wanted code, remove the markers, then add and commit",
+          "Run git merge again"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 21,
+        "level": 3,
+        "text": "feature has 3 commits on top of an old main. What does the rebase do?",
+        "code": "$ git checkout feature\n$ git rebase main",
+        "answers": [
+          "Merges main into feature with a merge commit",
+          "Replays the 3 commits on top of the latest main",
+          "Deletes the 3 commits",
+          "Pushes feature to main"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 22,
+        "level": 3,
+        "text": "You committed too early and need to add one more file. What is the result?",
+        "code": "$ git reset --soft HEAD~1",
+        "answers": [
+          "The commit is undone but its changes stay staged — add the file and commit again",
+          "All changes are lost",
+          "The commit is pushed",
+          "A new branch is created"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 23,
+        "level": 3,
+        "text": "A bad commit was already pushed and shared. What does this do?",
+        "code": "$ git revert a1b2c3",
+        "answers": [
+          "Deletes the bad commit from history",
+          "Resets the remote",
+          "Nothing — revert only works locally",
+          "Creates a new commit that undoes the bad commit's changes"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 24,
+        "level": 3,
+        "text": "Oops, that reset discarded the wrong commit. How can you find it?",
+        "code": "$ git reset --hard HEAD~1",
+        "answers": [
+          "It is gone forever",
+          "git log shows it",
+          "git reflog shows where HEAD was — copy the hash and reset to it",
+          "git stash list shows it"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 25,
+        "level": 3,
+        "text": "a1b2c3 is a commit from feature. What happens?",
+        "code": "$ git checkout main\n$ git cherry-pick a1b2c3",
+        "answers": [
+          "That single commit's changes are applied onto main as a new commit",
+          "The whole feature branch is merged",
+          "The commit is moved (removed from feature)",
+          "Nothing — cherry-pick only works on main"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 26,
+        "level": 3,
+        "text": "A new untracked file survived a plain git stash. Why, and what includes it?",
+        "code": "$ git stash       # new file remains\n$ git stash -u    # stashes it too",
+        "answers": [
+          "Stash never touches new files by design flaw",
+          "Plain git stash only shelves tracked changes; -u includes untracked files",
+          "The file was ignored",
+          "git stash only works on committed files"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 27,
+        "level": 3,
+        "text": "Why would you do this instead of git pull?",
+        "code": "$ git fetch origin\n$ git merge origin/main",
+        "answers": [
+          "It is faster",
+          "git pull is deprecated",
+          "It avoids all conflicts",
+          "To inspect the downloaded changes before merging them"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 28,
+        "level": 3,
+        "text": "During git rebase main you get a conflict in app.js, and you fixed the file. What is the next command?",
+        "code": "# CONFLICT in app.js (you fixed it)",
+        "answers": [
+          "git add app.js && git rebase --continue",
+          "git commit -m \"fix\"",
+          "git rebase --abort always",
+          "git push --force"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 29,
+        "level": 3,
+        "text": "What does this display?",
+        "code": "$ git show a1b2c3",
+        "answers": [
+          "Only the commit message",
+          "All files in the repo",
+          "The commit's metadata and its diff",
+          "The remote URL"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 30,
+        "level": 4,
+        "text": "You rebased feature and force-pushed. Your teammate says they can't pull anymore. What happened on their side?",
+        "code": "# teammate: \"I can't pull feature anymore\"",
+        "answers": [
+          "Their commits were deleted from the server",
+          "Force-push locked their account",
+          "Nothing — they just need to wait",
+          "Their local feature history diverged from the rewritten remote history"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 31,
+        "level": 4,
+        "text": "You want your local feature branch to exactly match the remote. What is the result?",
+        "code": "$ git checkout feature\n$ git reset --hard origin/feature",
+        "answers": [
+          "The local branch becomes an exact copy of the remote, discarding local commits",
+          "The remote is reset to match local",
+          "Only the working tree is cleaned",
+          "A backup branch is created"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 32,
+        "level": 4,
+        "text": "You deleted the branch by mistake. How can you recover it?",
+        "code": "$ git branch -D feature",
+        "answers": [
+          "git undo",
+          "It cannot be recovered",
+          "Find its tip commit in git reflog, then git branch feature <hash>",
+          "git pull restores it"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 33,
+        "level": 4,
+        "text": "Why was the push rejected, and what is the safe fix?",
+        "code": "$ git commit --amend\n$ git push   # rejected",
+        "answers": [
+          "Amend is forbidden on main",
+          "Amend rewrote the pushed commit; push with --force-with-lease after checking with teammates",
+          "The message was empty",
+          "You must delete the remote branch first"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 34,
+        "level": 4,
+        "text": "What does \"both added\" mean?",
+        "code": "$ git status\n# both added:      config.json",
+        "answers": [
+          "Both branches added the same new file with different content — pick the content, add, commit",
+          "The file was added twice by mistake",
+          "Git will choose automatically",
+          "The file is corrupted"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 35,
+        "level": 4,
+        "text": "What is git bisect used for here?",
+        "code": "$ git bisect start\n$ git bisect bad\n$ git bisect good v1.0",
+        "answers": [
+          "Splitting a commit in two",
+          "Deleting bad commits",
+          "Comparing two branches",
+          "Finding which commit introduced a bug by binary search"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 36,
+        "level": 4,
+        "text": "file.js was renamed to app.js, and git log -- app.js shows only recent commits. How do you see the history from before the rename?",
+        "code": "$ git log -- app.js",
+        "answers": [
+          "git log --all",
+          "The old history is lost",
+          "git log --follow -- app.js",
+          "git show --rename"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 37,
+        "level": 4,
+        "text": "What does this do?",
+        "code": "$ git clean -fd",
+        "answers": [
+          "Deletes the last commit",
+          "Permanently deletes untracked files and directories",
+          "Cleans the staging area only",
+          "Removes remote branches"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 38,
+        "level": 4,
+        "text": "Linear history: A <- B <- C (HEAD = C). What does HEAD~2 point to?",
+        "code": "$ git log --oneline\nc3d4e5f C\nb2c3d4e B\na1b2c3d A",
+        "answers": [
+          "B",
+          "C",
+          "The remote",
+          "A"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 39,
+        "level": 4,
+        "text": "What happened, and what now?",
+        "code": "$ git stash pop\n# CONFLICT in app.js",
+        "answers": [
+          "The stashed changes conflict with working-tree changes — resolve like a merge conflict, then add/commit",
+          "The stash was deleted",
+          "Pop always succeeds",
+          "The working tree was reset"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 40,
+        "level": 5,
+        "text": "feature has 5 messy commits and the PR needs 1 clean commit. What do you do in the interactive list?",
+        "code": "$ git rebase -i HEAD~5",
+        "answers": [
+          "Delete all lines",
+          "Keep 'pick' on the first, change the rest to 'squash'/'fixup'",
+          "Change all to 'drop'",
+          "Close the editor without saving"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 41,
+        "level": 5,
+        "text": "A .env with API keys was committed and pushed. What must you do?",
+        "code": "# .env with live API keys is on GitHub",
+        "answers": [
+          "Just delete the file in a new commit",
+          "Only rotate the keys",
+          "Remove it from history (rewrite/purge), force-push, and rotate the exposed keys",
+          "Only force-push"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 42,
+        "level": 5,
+        "text": "The tag is missing on GitHub. Why?",
+        "code": "$ git tag v1.0\n$ git push",
+        "answers": [
+          "git push doesn't push tags by default — use git push --tags or git push origin v1.0",
+          "Tags cannot be pushed",
+          "The tag name is invalid",
+          "You must tag on main only"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 43,
+        "level": 5,
+        "text": "When is this needed?",
+        "code": "$ git fetch --unshallow",
+        "answers": [
+          "To delete shallow files",
+          "To speed up future fetches",
+          "It is never needed",
+          "After a shallow clone (--depth 1) when you need the full history"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 44,
+        "level": 5,
+        "text": "Where are the 2 hotfix commits now?",
+        "code": "$ git checkout a1b2c3\n$ git commit -m \"hotfix\"   # twice\n$ git checkout main",
+        "answers": [
+          "On main",
+          "Deleted immediately",
+          "Orphaned — on no branch, recoverable via git reflog",
+          "On origin/main"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 45,
+        "level": 5,
+        "text": "During a merge, app.js is conflicted and you want YOUR branch's version. What does --ours mean here?",
+        "code": "$ git checkout --ours app.js\n$ git add app.js",
+        "answers": [
+          "Keep the current branch's version of the file",
+          "Keep the incoming branch's version",
+          "Keep both versions",
+          "Delete the file"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 46,
+        "level": 5,
+        "text": "What does this give you?",
+        "code": "$ git worktree add ../hotfix main",
+        "answers": [
+          "A backup of the repo",
+          "A new remote",
+          "A merged branch",
+          "A second working tree with main checked out, so two branches can be open at once"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 47,
+        "level": 5,
+        "text": "Which email will new commits in this repo use?",
+        "code": "# ~/.gitconfig:          email = personal@x.com\n# repo .git/config:     email = work@x.com",
+        "answers": [
+          "personal@x.com — global wins",
+          "work@x.com — local config overrides global",
+          "Both",
+          "Neither — commits fail"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 48,
+        "level": 5,
+        "text": "What does -X theirs do?",
+        "code": "$ git merge -X theirs feature",
+        "answers": [
+          "On conflicting hunks, automatically takes the incoming branch's version",
+          "Discards the feature branch entirely",
+          "Takes our version everywhere",
+          "It is the same as --squash"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 49,
+        "level": 5,
+        "text": "What does -S do?",
+        "code": "$ git commit -S -m \"release\"",
+        "answers": [
+          "Squashes the commit",
+          "Skips the hooks",
+          "GPG-signs the commit to prove authorship",
+          "Signs into GitHub"
+        ],
+        "correct": 2,
         "selection": null
       }
     ]
@@ -192,25 +710,27 @@ export const gitQuestions = [
       {
         "id": 0,
         "level": 1,
-        "text": "Qu'est-ce que Git ?",
+        "text": "Vous avez modifié le fichier suivi app.js sans rien indexer. Que rapporte git status pour app.js ?",
+        "code": "$ git status",
         "answers": [
-          "Un système de gestion de versions distribué",
-          "Un éditeur de code",
-          "Un site d'hébergement",
-          "Un langage de programmation"
+          "nouveau fichier",
+          "indexé pour le commit",
+          "modifié, non indexé pour le commit",
+          "supprimé"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 1,
         "level": 1,
-        "text": "Quelle commande prépare les fichiers pour le commit (staging) ?",
+        "text": "Que rapporte git status maintenant ?",
+        "code": "$ git add app.js\n$ git status",
         "answers": [
-          "git add",
-          "git stage-it",
-          "git commit",
-          "git push"
+          "app.js est indexé pour le commit",
+          "app.js est toujours non indexé",
+          "app.js a été commité",
+          "rien à commiter, arbre de travail propre"
         ],
         "correct": 0,
         "selection": null
@@ -218,157 +738,673 @@ export const gitQuestions = [
       {
         "id": 2,
         "level": 1,
-        "text": "Quelle commande enregistre les changements avec un message ?",
+        "text": "Les changements ont d'abord été indexés. Que se passe-t-il ?",
+        "code": "$ git commit -m \"Fix login bug\"",
         "answers": [
-          "git commit -m \"message\"",
-          "git save -m \"message\"",
-          "git store \"message\"",
-          "git write \"message\""
+          "Les changements sont poussés vers GitHub",
+          "La zone d'index est vidée sans commit",
+          "Une nouvelle branche est créée",
+          "Un nouveau commit est créé sur la branche actuelle"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 3,
-        "level": 2,
-        "text": "Quelle commande affiche l'historique des commits ?",
+        "level": 1,
+        "text": "Vous avez modifié app.js mais jamais lancé git add. Que se passe-t-il ?",
+        "code": "$ git commit -m \"update\"",
         "answers": [
-          "git log",
-          "git history",
-          "git commits",
-          "git show-all"
+          "Les modifications sont commitées",
+          "Rien n'est commité — rien n'est indexé",
+          "Git indexe et commite automatiquement",
+          "Le fichier est supprimé"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 4,
-        "level": 2,
-        "text": "Quelle est la différence entre 'git pull' et 'git fetch' ?",
+        "level": 1,
+        "text": "Qu'est-ce que cela affiche ?",
+        "code": "$ git log --oneline\n3f2a1b0 Add cart page\n9c4d2e1 Fix login bug",
         "answers": [
-          "git pull récupère et fusionne ; git fetch télécharge sans fusionner",
-          "Ils sont identiques",
-          "git fetch supprime les branches",
-          "git pull ne fonctionne que hors ligne"
+          "Les deux commits les plus récents, du plus récent au plus ancien",
+          "Toutes les branches",
+          "Seulement le diff actuel",
+          "Les fichiers indexés"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 5,
-        "level": 2,
-        "text": "Comment crée-t-on une nouvelle branche et bascule-t-on dessus ?",
+        "level": 1,
+        "text": "app.js a été modifié et indexé. Quelle commande montre le changement indexé ?",
+        "code": "$ git diff\n$ git diff --staged",
         "answers": [
-          "git checkout -b feature",
-          "git branch feature (reste sur la branche actuelle)",
-          "git create feature",
-          "git new-branch feature"
+          "git diff",
+          "git diff --staged",
+          "Les deux le montrent",
+          "Aucune — utilisez git show"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 6,
-        "level": 3,
-        "text": "Qu'est-ce qu'un conflit de fusion (merge conflict) ?",
+        "level": 1,
+        "text": "Quelle branche est actuellement extraite ?",
+        "code": "$ git branch\n  main\n* feature/login",
         "answers": [
-          "Des modifications concurrentes sur les mêmes lignes que Git ne peut pas résoudre seul",
-          "Une erreur réseau",
-          "Un dépôt supprimé",
-          "Un mauvais message de commit"
+          "main",
+          "Les deux",
+          "Ni l'une ni l'autre — HEAD détaché",
+          "feature/login"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 7,
-        "level": 4,
-        "text": "Que fait 'git rebase' ?",
+        "level": 1,
+        "text": "Vous lancez ceci depuis main. Où commence feature/cart ?",
+        "code": "$ git checkout -b feature/cart",
         "answers": [
-          "Réapplique les commits sur une autre base",
-          "Supprime le dépôt",
-          "Fusionne sans historique",
-          "Il pousse vers le distant"
+          "Au premier commit du dépôt",
+          "Comme une branche vide",
+          "À la pointe de main",
+          "À origin/main uniquement"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 8,
-        "level": 4,
-        "text": "Comment annuler le dernier commit tout en gardant ses modifications ?",
+        "level": 1,
+        "text": "Qu'obtenez-vous ?",
+        "code": "$ git clone https://github.com/user/repo.git",
         "answers": [
-          "git reset --soft HEAD~1",
-          "git revert --hard",
-          "git delete HEAD",
-          "git checkout -- ."
+          "Le dépôt complet : fichiers, historique et un distant nommé origin",
+          "Seulement les derniers fichiers, sans historique",
+          "Un fork sur GitHub",
+          "Un dossier vide"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 9,
-        "level": 5,
-        "text": "Que fait 'git stash' ?",
+        "level": 1,
+        "text": ".gitignore contient *.log, mais debug.log a été commité la semaine dernière. Après modification de debug.log, que montre git status ?",
+        "code": "$ git status",
         "answers": [
-          "Met temporairement les modifications de côté pour travailler sur un arbre propre",
-          "Supprime toutes les branches",
-          "Pousse vers GitHub",
-          "Crée un tag"
+          "ignoré",
+          "non suivi",
+          "modifié — .gitignore ne s'applique pas aux fichiers déjà suivis",
+          "supprimé"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 10,
-        "level": 3,
-        "text": "Quelle est la différence entre git pull et git fetch ?",
+        "level": 2,
+        "text": "Pourquoi le push a-t-il été rejeté ?",
+        "code": "$ git push\n! [rejected] main -> main (non-fast-forward)",
         "answers": [
-          "Ils sont identiques",
-          "pull = fetch + merge ; fetch télécharge sans fusionner",
-          "fetch supprime les branches",
-          "pull ne fonctionne qu'hors ligne"
+          "Votre mot de passe est faux",
+          "Le distant a des commits que vous n'avez pas — faites pull d'abord",
+          "Le nom de branche est faux",
+          "GitHub est en panne"
         ],
         "correct": 1,
         "selection": null
       },
       {
         "id": 11,
-        "level": 4,
-        "text": "Comment annuler le dernier commit en gardant les modifications ?",
+        "level": 2,
+        "text": "Que fait git pull ?",
+        "code": "$ git pull",
         "answers": [
-          "git reset --soft HEAD~1",
-          "git revert --hard",
-          "git delete HEAD",
-          "rm -rf .git"
+          "Télécharge seulement les changements sans fusionner",
+          "Pousse les commits locaux",
+          "Supprime la branche locale",
+          "Récupère les changements distants et les fusionne dans la branche actuelle"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 12,
-        "level": 4,
-        "text": "Qu'est-ce qu'un conflit de fusion ?",
+        "level": 2,
+        "text": "Pourquoi notes.txt manque-t-il dans le commit ?",
+        "code": "$ touch notes.txt\n$ git commit -am \"add notes\"",
         "answers": [
-          "Quand deux branches modifient les mêmes lignes et Git ne peut pas fusionner seul",
-          "Une erreur réseau",
-          "Un dépôt supprimé",
-          "Un mot de passe erroné"
+          "-a n'indexe que les fichiers suivis ; les nouveaux fichiers exigent git add",
+          "-a n'est pas un drapeau valide",
+          "Le message était trop court",
+          "Les fichiers txt sont ignorés par défaut"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 13,
-        "level": 5,
-        "text": "Quelle est la différence entre git merge et git rebase ?",
+        "level": 2,
+        "text": "app.js contient des modifications non désirées, non indexées. Que se passe-t-il ?",
+        "code": "$ git restore app.js",
         "answers": [
-          "Ils sont identiques",
-          "merge garde l'historique avec un commit de fusion ; rebase réécrit l'historique linéairement",
-          "rebase supprime du code",
-          "merge est uniquement local"
+          "Les modifications sont indexées",
+          "Le fichier est supprimé",
+          "Les modifications sont abandonnées",
+          "Un commit est créé"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 14,
+        "level": 2,
+        "text": "a1b2c3 est un hash de commit. Dans quel état est le dépôt ?",
+        "code": "$ git checkout a1b2c3",
+        "answers": [
+          "Sur une nouvelle branche nommée a1b2c3",
+          "Le commit est supprimé",
+          "Rien ne change",
+          "HEAD détaché — HEAD pointe directement sur un commit, pas une branche"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 15,
+        "level": 2,
+        "text": "Quel est le résultat ?",
+        "code": "$ git stash\n$ git stash pop",
+        "answers": [
+          "Les changements sont commités",
+          "Les changements sont mis de côté, puis restaurés dans l'arbre de travail",
+          "Les changements sont poussés",
+          "Le stash est supprimé définitivement avec les changements perdus"
         ],
         "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 16,
+        "level": 2,
+        "text": "feature a 2 commits d'avance sur main, main est inchangé. Que se passe-t-il ?",
+        "code": "$ git checkout main\n$ git merge feature",
+        "answers": [
+          "Fast-forward — main avance simplement jusqu'à la pointe de feature",
+          "Un commit de fusion est toujours créé",
+          "Un conflit survient",
+          "La branche feature est supprimée"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 17,
+        "level": 2,
+        "text": "Le premier push de la nouvelle branche feature échoue en demandant de définir upstream. Que faire ?",
+        "code": "$ git push",
+        "answers": [
+          "git push --force",
+          "git pull d'abord",
+          "git push -u origin feature",
+          "git branch -u feature"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 18,
+        "level": 2,
+        "text": "Qu'est-ce que cela liste ?",
+        "code": "$ git log main..feature --oneline",
+        "answers": [
+          "Les commits de main absents de feature",
+          "Les commits de feature absents de main",
+          "Tous les commits des deux",
+          "Le diff entre les branches"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 19,
+        "level": 2,
+        "text": "feature n'a jamais été fusionnée. Que se passe-t-il ?",
+        "code": "$ git branch -d feature",
+        "answers": [
+          "La branche est supprimée",
+          "Les commits sont poussés",
+          "La branche est renommée",
+          "Git refuse — la branche contient des commits non fusionnés (utilisez -D pour forcer)"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 20,
+        "level": 3,
+        "text": "Vous voyez ceci dans app.js après une fusion. Que devez-vous faire ?",
+        "code": "<<<<<<< HEAD\nconst role = \"admin\";\n=======\nconst role = \"user\";\n>>>>>>> feature",
+        "answers": [
+          "Lancer git push pour résoudre",
+          "Supprimer le fichier",
+          "Éditer le fichier pour garder le code voulu, retirer les marqueurs, puis add et commit",
+          "Relancer git merge"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 21,
+        "level": 3,
+        "text": "feature a 3 commits au-dessus d'un vieux main. Que fait le rebase ?",
+        "code": "$ git checkout feature\n$ git rebase main",
+        "answers": [
+          "Fusionne main dans feature avec un commit de fusion",
+          "Rejoue les 3 commits au-dessus du dernier main",
+          "Supprime les 3 commits",
+          "Pousse feature vers main"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 22,
+        "level": 3,
+        "text": "Vous avez commité trop tôt et devez ajouter un fichier. Quel est le résultat ?",
+        "code": "$ git reset --soft HEAD~1",
+        "answers": [
+          "Le commit est annulé mais ses changements restent indexés — ajoutez le fichier et recommitez",
+          "Tous les changements sont perdus",
+          "Le commit est poussé",
+          "Une nouvelle branche est créée"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 23,
+        "level": 3,
+        "text": "Un mauvais commit a déjà été poussé et partagé. Que fait ceci ?",
+        "code": "$ git revert a1b2c3",
+        "answers": [
+          "Supprime le mauvais commit de l'historique",
+          "Réinitialise le distant",
+          "Rien — revert ne fonctionne qu'en local",
+          "Crée un nouveau commit qui annule les changements du mauvais commit"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 24,
+        "level": 3,
+        "text": "Oups, ce reset a écarté le mauvais commit. Comment le retrouver ?",
+        "code": "$ git reset --hard HEAD~1",
+        "answers": [
+          "Il est perdu à jamais",
+          "git log le montre",
+          "git reflog montre où était HEAD — copiez le hash et revenez dessus",
+          "git stash list le montre"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 25,
+        "level": 3,
+        "text": "a1b2c3 est un commit de feature. Que se passe-t-il ?",
+        "code": "$ git checkout main\n$ git cherry-pick a1b2c3",
+        "answers": [
+          "Les changements de ce seul commit sont appliqués sur main comme un nouveau commit",
+          "Toute la branche feature est fusionnée",
+          "Le commit est déplacé (retiré de feature)",
+          "Rien — cherry-pick ne fonctionne que sur main"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 26,
+        "level": 3,
+        "text": "Un nouveau fichier non suivi a survécu à un git stash simple. Pourquoi, et qu'est-ce qui l'inclut ?",
+        "code": "$ git stash       # le nouveau fichier reste\n$ git stash -u    # l'inclut aussi",
+        "answers": [
+          "Stash ne touche jamais les nouveaux fichiers par défaut de conception",
+          "git stash simple ne met de côté que les changements suivis ; -u inclut les fichiers non suivis",
+          "Le fichier était ignoré",
+          "git stash ne fonctionne que sur les fichiers commités"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 27,
+        "level": 3,
+        "text": "Pourquoi feriez-vous ceci plutôt que git pull ?",
+        "code": "$ git fetch origin\n$ git merge origin/main",
+        "answers": [
+          "C'est plus rapide",
+          "git pull est déprécié",
+          "Cela évite tous les conflits",
+          "Pour inspecter les changements téléchargés avant de les fusionner"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 28,
+        "level": 3,
+        "text": "Pendant git rebase main vous avez un conflit dans app.js, et vous avez corrigé le fichier. Quelle est la prochaine commande ?",
+        "code": "# CONFLIT dans app.js (vous l'avez corrigé)",
+        "answers": [
+          "git add app.js && git rebase --continue",
+          "git commit -m \"fix\"",
+          "git rebase --abort toujours",
+          "git push --force"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 29,
+        "level": 3,
+        "text": "Qu'est-ce que cela affiche ?",
+        "code": "$ git show a1b2c3",
+        "answers": [
+          "Seulement le message de commit",
+          "Tous les fichiers du dépôt",
+          "Les métadonnées du commit et son diff",
+          "L'URL du distant"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 30,
+        "level": 4,
+        "text": "Vous avez rebasé feature et forcé le push. Votre collègue dit qu'il ne peut plus pull. Que s'est-il passé de son côté ?",
+        "code": "# collègue : « je ne peux plus pull feature »",
+        "answers": [
+          "Ses commits ont été supprimés du serveur",
+          "Le force-push a verrouillé son compte",
+          "Rien — il doit juste attendre",
+          "Son historique local de feature a divergé de l'historique distant réécrit"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 31,
+        "level": 4,
+        "text": "Vous voulez que votre branche locale feature corresponde exactement au distant. Quel est le résultat ?",
+        "code": "$ git checkout feature\n$ git reset --hard origin/feature",
+        "answers": [
+          "La branche locale devient une copie exacte du distant, écartant les commits locaux",
+          "Le distant est réinitialisé pour correspondre au local",
+          "Seul l'arbre de travail est nettoyé",
+          "Une branche de sauvegarde est créée"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 32,
+        "level": 4,
+        "text": "Vous avez supprimé la branche par erreur. Comment la récupérer ?",
+        "code": "$ git branch -D feature",
+        "answers": [
+          "git undo",
+          "Elle ne peut pas être récupérée",
+          "Trouvez son commit de pointe dans git reflog, puis git branch feature <hash>",
+          "git pull la restaure"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 33,
+        "level": 4,
+        "text": "Pourquoi le push a-t-il été rejeté, et quelle est la correction sûre ?",
+        "code": "$ git commit --amend\n$ git push   # rejeté",
+        "answers": [
+          "Amend est interdit sur main",
+          "Amend a réécrit le commit poussé ; poussez avec --force-with-lease après vérification avec l'équipe",
+          "Le message était vide",
+          "Vous devez d'abord supprimer la branche distante"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 34,
+        "level": 4,
+        "text": "Que signifie « both added » ?",
+        "code": "$ git status\n# both added:      config.json",
+        "answers": [
+          "Les deux branches ont ajouté le même nouveau fichier avec un contenu différent — choisissez le contenu, add, commit",
+          "Le fichier a été ajouté deux fois par erreur",
+          "Git choisira automatiquement",
+          "Le fichier est corrompu"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 35,
+        "level": 4,
+        "text": "À quoi sert git bisect ici ?",
+        "code": "$ git bisect start\n$ git bisect bad\n$ git bisect good v1.0",
+        "answers": [
+          "À diviser un commit en deux",
+          "À supprimer les mauvais commits",
+          "À comparer deux branches",
+          "À trouver quel commit a introduit un bug par recherche dichotomique"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 36,
+        "level": 4,
+        "text": "file.js a été renommé en app.js, et git log -- app.js ne montre que les commits récents. Comment voir l'historique d'avant le renommage ?",
+        "code": "$ git log -- app.js",
+        "answers": [
+          "git log --all",
+          "L'ancien historique est perdu",
+          "git log --follow -- app.js",
+          "git show --rename"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 37,
+        "level": 4,
+        "text": "Que fait ceci ?",
+        "code": "$ git clean -fd",
+        "answers": [
+          "Supprime le dernier commit",
+          "Supprime définitivement les fichiers et dossiers non suivis",
+          "Nettoie seulement la zone d'index",
+          "Supprime les branches distantes"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 38,
+        "level": 4,
+        "text": "Historique linéaire : A <- B <- C (HEAD = C). Sur quoi pointe HEAD~2 ?",
+        "code": "$ git log --oneline\nc3d4e5f C\nb2c3d4e B\na1b2c3d A",
+        "answers": [
+          "B",
+          "C",
+          "Le distant",
+          "A"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 39,
+        "level": 4,
+        "text": "Que s'est-il passé, et que faire ?",
+        "code": "$ git stash pop\n# CONFLIT dans app.js",
+        "answers": [
+          "Les changements du stash sont en conflit avec l'arbre de travail — résolvez comme un conflit de fusion, puis add/commit",
+          "Le stash a été supprimé",
+          "Pop réussit toujours",
+          "L'arbre de travail a été réinitialisé"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 40,
+        "level": 5,
+        "text": "feature a 5 commits brouillons et la PR exige 1 commit propre. Que faites-vous dans la liste interactive ?",
+        "code": "$ git rebase -i HEAD~5",
+        "answers": [
+          "Supprimer toutes les lignes",
+          "Garder 'pick' sur le premier, passer les autres en 'squash'/'fixup'",
+          "Tout passer en 'drop'",
+          "Fermer l'éditeur sans enregistrer"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 41,
+        "level": 5,
+        "text": "Un .env avec des clés API a été commité et poussé. Que devez-vous faire ?",
+        "code": "# .env avec des clés API réelles est sur GitHub",
+        "answers": [
+          "Juste supprimer le fichier dans un nouveau commit",
+          "Seulement changer les clés",
+          "Le retirer de l'historique (réécriture/purge), forcer le push, et changer les clés exposées",
+          "Seulement forcer le push"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 42,
+        "level": 5,
+        "text": "Le tag est absent sur GitHub. Pourquoi ?",
+        "code": "$ git tag v1.0\n$ git push",
+        "answers": [
+          "git push ne pousse pas les tags par défaut — utilisez git push --tags ou git push origin v1.0",
+          "Les tags ne peuvent pas être poussés",
+          "Le nom du tag est invalide",
+          "Vous devez taguer uniquement sur main"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 43,
+        "level": 5,
+        "text": "Quand est-ce nécessaire ?",
+        "code": "$ git fetch --unshallow",
+        "answers": [
+          "Pour supprimer les fichiers shallow",
+          "Pour accélérer les futurs fetch",
+          "Ce n'est jamais nécessaire",
+          "Après un clone shallow (--depth 1) quand il faut tout l'historique"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 44,
+        "level": 5,
+        "text": "Où sont maintenant les 2 commits hotfix ?",
+        "code": "$ git checkout a1b2c3\n$ git commit -m \"hotfix\"   # deux fois\n$ git checkout main",
+        "answers": [
+          "Sur main",
+          "Supprimés immédiatement",
+          "Orphelins — sur aucune branche, récupérables via git reflog",
+          "Sur origin/main"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 45,
+        "level": 5,
+        "text": "Pendant une fusion, app.js est en conflit et vous voulez la version de VOTRE branche. Que signifie --ours ici ?",
+        "code": "$ git checkout --ours app.js\n$ git add app.js",
+        "answers": [
+          "Garder la version du fichier de la branche actuelle",
+          "Garder la version de la branche entrante",
+          "Garder les deux versions",
+          "Supprimer le fichier"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 46,
+        "level": 5,
+        "text": "Qu'est-ce que cela vous donne ?",
+        "code": "$ git worktree add ../hotfix main",
+        "answers": [
+          "Une sauvegarde du dépôt",
+          "Un nouveau distant",
+          "Une branche fusionnée",
+          "Un deuxième arbre de travail avec main extrait, pour avoir deux branches ouvertes à la fois"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 47,
+        "level": 5,
+        "text": "Quel email utiliseront les nouveaux commits dans ce dépôt ?",
+        "code": "# ~/.gitconfig :         email = personal@x.com\n# .git/config du dépôt : email = work@x.com",
+        "answers": [
+          "personal@x.com — le global gagne",
+          "work@x.com — la config locale surcharge la globale",
+          "Les deux",
+          "Aucun — les commits échouent"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 48,
+        "level": 5,
+        "text": "Que fait -X theirs ?",
+        "code": "$ git merge -X theirs feature",
+        "answers": [
+          "Sur les blocs en conflit, prend automatiquement la version de la branche entrante",
+          "Écarte entièrement la branche feature",
+          "Prend notre version partout",
+          "C'est pareil que --squash"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 49,
+        "level": 5,
+        "text": "Que fait -S ?",
+        "code": "$ git commit -S -m \"release\"",
+        "answers": [
+          "Fusionne (squash) le commit",
+          "Saute les hooks",
+          "Signe le commit avec GPG pour prouver l'auteur",
+          "Se connecte à GitHub"
+        ],
+        "correct": 2,
         "selection": null
       }
     ]

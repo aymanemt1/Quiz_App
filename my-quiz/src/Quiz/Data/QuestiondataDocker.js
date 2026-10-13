@@ -5,25 +5,27 @@ export const dockerQuestions = [
       {
         "id": 0,
         "level": 1,
-        "text": "What is Docker?",
+        "text": "It's the first run on this machine. What happens?",
+        "code": "$ docker run nginx",
         "answers": [
-          "A platform for building and running containers",
-          "A JavaScript framework",
-          "A database engine",
-          "A text editor"
+          "An error — the image must be pulled first",
+          "Only the image is downloaded",
+          "Docker pulls the nginx image, then starts a container",
+          "A Dockerfile is created"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 1,
         "level": 1,
-        "text": "What is a Docker image?",
+        "text": "A container was stopped. Where does it appear?",
+        "code": "$ docker ps\n$ docker ps -a",
         "answers": [
-          "A read-only template used to create containers",
-          "A running process",
-          "A virtual machine",
-          "A network cable"
+          "Only in docker ps -a",
+          "In both",
+          "Only in docker ps",
+          "In docker images"
         ],
         "correct": 0,
         "selection": null
@@ -31,157 +33,672 @@ export const dockerQuestions = [
       {
         "id": 2,
         "level": 1,
-        "text": "What is a Docker container?",
+        "text": "What does this list?",
+        "code": "$ docker images",
         "answers": [
-          "A running instance of an image",
-          "A source code file",
-          "A backup archive",
-          "A CPU core"
+          "Running containers",
+          "Dockerfiles",
+          "Volumes",
+          "Images stored locally"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 3,
-        "level": 2,
-        "text": "Which command builds a Docker image?",
+        "level": 1,
+        "text": "Why does the second command fail?",
+        "code": "$ docker run --name web nginx\n$ docker run --name web nginx",
         "answers": [
-          "docker build",
-          "docker create-image",
-          "docker compile",
-          "docker make"
+          "nginx can run only once",
+          "The container name 'web' is already taken",
+          "The image was deleted",
+          "Port 80 is busy"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 4,
-        "level": 2,
-        "text": "Which file defines how a Docker image is built?",
+        "level": 1,
+        "text": "What does -d do?",
+        "code": "$ docker run -d nginx",
         "answers": [
-          "Dockerfile",
-          "docker.json",
-          "image.yaml",
-          "build.txt"
+          "Runs the container detached in the background",
+          "Deletes the container on exit",
+          "Runs in debug mode",
+          "Downloads the image only"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 5,
-        "level": 2,
-        "text": "What does 'docker ps' do?",
+        "level": 1,
+        "text": "The app inside crashed. What does this show?",
+        "code": "$ docker logs web",
         "answers": [
-          "Lists running containers",
-          "Lists images",
-          "Stops all containers",
-          "Shows disk usage"
+          "The Dockerfile",
+          "Running processes",
+          "The container's stdout/stderr output",
+          "The image layers"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 6,
-        "level": 3,
-        "text": "What is Docker Compose used for?",
+        "level": 1,
+        "text": "The web container is running. What does this do?",
+        "code": "$ docker exec -it web sh",
         "answers": [
-          "Defining and running multi-container apps with a YAML file",
-          "Editing images",
-          "Monitoring CPU only",
-          "It replaces Git"
+          "Starts a new container",
+          "Opens an interactive shell inside the running container",
+          "Stops the container",
+          "Rebuilds the image"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 7,
-        "level": 4,
-        "text": "What is the difference between CMD and ENTRYPOINT in a Dockerfile?",
+        "level": 1,
+        "text": "What does node:20 mean?",
+        "code": "$ docker pull node:20",
         "answers": [
-          "ENTRYPOINT sets the fixed executable; CMD provides default arguments",
-          "They are identical",
-          "CMD runs at build time only",
-          "ENTRYPOINT deletes layers"
+          "Node.js version 20 installed locally",
+          "20 containers",
+          "Port 20",
+          "The node image tagged version 20"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 8,
-        "level": 4,
-        "text": "How do you persist data generated by a container?",
+        "level": 1,
+        "text": "Where is the web container now?",
+        "code": "$ docker stop web\n$ docker ps",
         "answers": [
-          "Using volumes",
-          "Data persists automatically",
-          "With environment variables",
-          "You cannot persist data"
+          "Deleted",
+          "Still in docker ps",
+          "Still exists but stopped — visible in docker ps -a",
+          "Restarted automatically"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 9,
-        "level": 5,
-        "text": "What does CI/CD stand for?",
+        "level": 1,
+        "text": "web is running. What happens?",
+        "code": "$ docker rm web",
         "answers": [
-          "Continuous Integration / Continuous Delivery (or Deployment)",
-          "Central Internet / Central Data",
-          "Code Inspection / Code Debug",
-          "Container Images / Container Data"
+          "An error — stop it first or use -f",
+          "It is removed",
+          "It is restarted",
+          "It is paused"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 10,
-        "level": 3,
-        "text": "What is a Docker container?",
+        "level": 2,
+        "text": "The app listens on port 80 in the container. How do you reach it from the host?",
+        "code": "$ docker run -p 8080:80 nginx",
         "answers": [
-          "A virtual machine",
-          "A lightweight, isolated runtime environment for an app",
-          "A code editor",
-          "A database"
+          "http://localhost:80",
+          "http://localhost:8080",
+          "http://nginx:8080",
+          "It is unreachable — -p is wrong"
         ],
         "correct": 1,
         "selection": null
       },
       {
         "id": 11,
-        "level": 4,
-        "text": "What is the difference between a Docker image and a container?",
+        "level": 2,
+        "text": "Goal: host 8080 -> container 80. Why can't you reach the app on localhost:8080?",
+        "code": "$ docker run -p 80:8080 nginx",
         "answers": [
-          "An image is a template; a container is a running instance of it",
-          "They are the same",
-          "Images can't be shared",
-          "Containers are templates"
+          "nginx doesn't support -p",
+          "The container didn't start",
+          "localhost is wrong",
+          "The mapping is reversed — it maps host 80 to container 8080"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 12,
-        "level": 4,
-        "text": "What is a Dockerfile used for?",
+        "level": 2,
+        "text": "The container exits immediately. Why?",
+        "code": "$ docker run ubuntu",
         "answers": [
-          "Defining the steps to build a Docker image",
-          "Running containers",
-          "Writing documentation",
-          "Configuring networks only"
+          "ubuntu has no long-running foreground process by default",
+          "The image is broken",
+          "docker run needs -d",
+          "Ubuntu cannot run in Docker"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 13,
-        "level": 5,
-        "text": "What is docker-compose used for?",
+        "level": 2,
+        "text": "What does the final '.' mean?",
+        "code": "$ docker build -t myapp .",
         "answers": [
-          "Composing music",
-          "Defining and running multi-container applications",
-          "Merging images",
-          "Testing code"
+          "The image tag",
+          "The container name",
+          "The build context path — the Dockerfile is read from the current directory",
+          "The port"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 14,
+        "level": 2,
+        "text": "What does -e do?",
+        "code": "$ docker run -e NODE_ENV=production myapp",
+        "answers": [
+          "Edits the Dockerfile",
+          "Exposes a port",
+          "Enables debug logs",
+          "Sets the NODE_ENV environment variable inside the container"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 15,
+        "level": 2,
+        "text": "What does -v do here?",
+        "code": "$ docker run -v /host/data:/data postgres",
+        "answers": [
+          "Copies /data into the image",
+          "Mounts the host directory /host/data at /data in the container",
+          "Creates a backup",
+          "Sets a version"
         ],
         "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 16,
+        "level": 2,
+        "text": "Every tiny code change makes the build reinstall all dependencies. Why?",
+        "code": "FROM node:20\nWORKDIR /app\nCOPY . .\nRUN npm install\nCMD [\"node\", \"server.js\"]",
+        "answers": [
+          "COPY . . before RUN npm install invalidates the layer cache on any file change",
+          "npm install is slow by nature",
+          "WORKDIR is wrong",
+          "CMD should be RUN"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 17,
+        "level": 2,
+        "text": "Why doesn't the container stop instantly?",
+        "code": "$ docker stop web   # takes 10 seconds",
+        "answers": [
+          "The network is slow",
+          "docker stop always takes 10s",
+          "docker stop sends SIGTERM and waits a grace period before SIGKILL",
+          "The image is large"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 18,
+        "level": 2,
+        "text": "What does this remove?",
+        "code": "$ docker image prune",
+        "answers": [
+          "All images",
+          "Dangling (untagged) images",
+          "Running containers",
+          "Volumes"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 19,
+        "level": 2,
+        "text": "The project has a 2GB node_modules and no .dockerignore. Why is the build so slow to start?",
+        "code": "$ docker build -t myapp .",
+        "answers": [
+          "node:20 is a big image",
+          "The CPU is slow",
+          "docker build always copies node_modules",
+          "The whole 2GB context (including node_modules) is sent to the daemon"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 20,
+        "level": 3,
+        "text": "You change only server.js and rebuild. Which steps re-run?",
+        "code": "FROM node:20\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nCMD [\"node\", \"server.js\"]",
+        "answers": [
+          "Every step from FROM",
+          "Only CMD",
+          "From the second COPY onward — package install stays cached",
+          "No step — the image is reused entirely"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 21,
+        "level": 3,
+        "text": "Why does the build hang or fail?",
+        "code": "FROM node:20\nRUN npm start",
+        "answers": [
+          "npm start doesn't exist",
+          "RUN executes at build time — starting the server belongs in CMD",
+          "FROM must come last",
+          "node:20 has no npm"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 22,
+        "level": 3,
+        "text": "How do you start everything in the background?",
+        "code": "services:\n  web:\n    image: myapp\n    ports: [\"8080:80\"]\n  db:\n    image: postgres",
+        "answers": [
+          "docker compose up -d",
+          "docker compose start all",
+          "docker run compose",
+          "docker build compose"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 23,
+        "level": 3,
+        "text": "The web container calls http://localhost:5432 but the db service runs postgres. It gets 'connection refused'. Why?",
+        "code": "services:\n  web: ...\n  db:\n    image: postgres",
+        "answers": [
+          "Postgres isn't running",
+          "The port must be 5433",
+          "Compose doesn't provide networking",
+          "Each container has its own localhost — web must use host 'db'"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 24,
+        "level": 3,
+        "text": "The web app sometimes crashes on startup. Why doesn't depends_on prevent it?",
+        "code": "services:\n  web:\n    depends_on: [db]",
+        "answers": [
+          "depends_on is broken",
+          "The DB image is wrong",
+          "depends_on only orders startup — it doesn't wait for the DB to be ready",
+          "web starts too fast by design"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 25,
+        "level": 3,
+        "text": "The app isn't reachable from the host. Why?",
+        "code": "FROM node:20\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]\n\n$ docker run myapp",
+        "answers": [
+          "EXPOSE only documents the port — you still need -p 3000:3000",
+          "EXPOSE is invalid",
+          "The app crashed",
+          "Port 3000 is reserved"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 26,
+        "level": 3,
+        "text": "The db container is running. What does this do?",
+        "code": "$ docker exec -it db psql -U postgres",
+        "answers": [
+          "Creates a new db container",
+          "Runs psql inside the existing db container",
+          "Restarts the db container",
+          "Backs up the database"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 27,
+        "level": 3,
+        "text": "The host reboots overnight. What happens to web?",
+        "code": "services:\n  web:\n    restart: unless-stopped",
+        "answers": [
+          "It stays stopped",
+          "It is deleted",
+          "Compose must be re-run manually",
+          "Docker restarts it automatically"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 28,
+        "level": 3,
+        "text": "Two containers share a user-defined network. How can one reach the other?",
+        "code": "$ docker network ls",
+        "answers": [
+          "By container name as hostname",
+          "Only by IP address",
+          "They cannot communicate",
+          "Via localhost"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 29,
+        "level": 3,
+        "text": "Which command shows a container's mounts, IP and env?",
+        "answers": [
+          "docker ps web",
+          "docker logs web",
+          "docker inspect web",
+          "docker info web"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 30,
+        "level": 4,
+        "text": "What actually executes?",
+        "code": "ENTRYPOINT [\"node\", \"app.py\"]\nCMD [\"--help\"]\n\n$ docker run myapp --version",
+        "answers": [
+          "--version",
+          "node app.py --help",
+          "An error",
+          "node app.py --version"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 31,
+        "level": 4,
+        "text": "The db service uses a named volume. Is the database data still there?",
+        "code": "$ docker compose down\n$ docker compose up -d",
+        "answers": [
+          "Yes — named volumes survive down (only down -v removes them)",
+          "No — down deletes volumes",
+          "Only if it was a bind mount",
+          "No — containers are recreated"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 32,
+        "level": 4,
+        "text": "After this, the database is empty. Why?",
+        "code": "$ docker compose down -v",
+        "answers": [
+          "Postgres failed to start",
+          "The image was updated",
+          "down -v deletes named volumes, wiping the data",
+          "Compose never persists data"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 33,
+        "level": 4,
+        "text": "What is API_URL inside the container?",
+        "code": "ARG API_URL\nENV API_URL=$API_URL\n\n$ docker build --build-arg API_URL=a .\n$ docker run -e API_URL=b myapp",
+        "answers": [
+          "a — build args win",
+          "b — the runtime -e overrides the build-time value",
+          "Empty",
+          "An error"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 34,
+        "level": 4,
+        "text": "The container needs a service running on the host laptop. What is host.docker.internal for?",
+        "code": "# container -> host.docker.internal:3000",
+        "answers": [
+          "A special hostname to reach the host from inside a container",
+          "The container's own IP",
+          "A Docker Hub mirror",
+          "The default bridge gateway"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 35,
+        "level": 4,
+        "text": "What is this healthcheck for?",
+        "code": "services:\n  db:\n    image: postgres\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready\"]",
+        "answers": [
+          "Restarting postgres",
+          "Backing up the DB",
+          "It does nothing",
+          "Letting orchestrators (and depends_on conditions) know when the DB is really ready"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 36,
+        "level": 4,
+        "text": "CI broke after a rebuild, with no code changed. What likely happened, and what is the fix?",
+        "code": "$ docker run myapp:latest",
+        "answers": [
+          "Docker Hub was hacked",
+          "The cache was cleared",
+          "'latest' moved to a new build — pin a version tag or digest",
+          "latest never changes"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 37,
+        "level": 4,
+        "text": "The container takes 10s to stop on docker stop. Why?",
+        "code": "CMD npm start",
+        "answers": [
+          "npm is slow",
+          "Shell form makes sh PID 1, so SIGTERM isn't forwarded to node",
+          "10s is the minimum",
+          "The app ignores signals by default"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 38,
+        "level": 4,
+        "text": "What does this show?",
+        "code": "$ docker history myapp",
+        "answers": [
+          "Running containers",
+          "The git history",
+          "Past docker commands you typed",
+          "The image's layers and the commands that created them"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 39,
+        "level": 4,
+        "text": "Why is baking the key into the image dangerous?",
+        "code": "ARG API_KEY=sk-live-123\nRUN curl -H \"Key: $API_KEY\" https://api.example.com/setup",
+        "answers": [
+          "It stays visible in layers via docker history and in the registry",
+          "ARG values are printed at runtime",
+          "It slows the build",
+          "It breaks caching"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 40,
+        "level": 5,
+        "text": "What does this BuildKit mount do?",
+        "code": "RUN --mount=type=cache,target=/root/.npm npm ci",
+        "answers": [
+          "Installs npm globally",
+          "Caches npm downloads across builds to speed them up",
+          "Copies node_modules from the host",
+          "It is the same as a volume"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 41,
+        "level": 5,
+        "text": "When is a scratch base image a good choice?",
+        "code": "FROM scratch\nCOPY myapp /myapp\nCMD [\"/myapp\"]",
+        "answers": [
+          "For Node.js apps",
+          "For databases",
+          "For a statically compiled binary — minimal size and attack surface",
+          "Never — scratch is deprecated"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 42,
+        "level": 5,
+        "text": "The container keeps dying. What is the diagnosis and fix?",
+        "code": "# dmesg: Out of memory: Killed process (myapp)",
+        "answers": [
+          "Check usage with docker stats, then set --memory limits / fix the app's memory use",
+          "Increase the image size",
+          "Add more CPUs only",
+          "Restart Docker"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 43,
+        "level": 5,
+        "text": "/var/lib/docker fills up and the app logs a lot. Why does the disk fill, and how do you limit it?",
+        "code": "# /var/lib/docker is full",
+        "answers": [
+          "Images grow over time",
+          "Volumes grow automatically",
+          "Docker has no log limits",
+          "json-file logs grow unbounded — set --log-opt max-size/max-file"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 44,
+        "level": 5,
+        "text": "Why must the tag include the registry host?",
+        "code": "$ docker tag myapp registry.example.com/team/myapp:1.0\n$ docker push registry.example.com/team/myapp:1.0",
+        "answers": [
+          "It is just a label",
+          "Tags cannot contain dots",
+          "The host in the name tells Docker where to push (otherwise it defaults to Docker Hub)",
+          "Push requires latest"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 45,
+        "level": 5,
+        "text": "Why does the second command fail?",
+        "code": "$ docker run -p 80:80 nginx\n$ docker run -p 80:80 httpd",
+        "answers": [
+          "Host port 80 is already allocated by the first container",
+          "Two web servers cannot coexist",
+          "The image names conflict",
+          "httpd needs port 8080"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 46,
+        "level": 5,
+        "text": "The image was built with docker commit from a tweaked container. Why is docker commit a bad practice for production images?",
+        "code": "$ docker commit web myapp:manual",
+        "answers": [
+          "commit doesn't save changes",
+          "It is slower",
+          "commit is read-only",
+          "The image isn't reproducible — no record of how it was built"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 47,
+        "level": 5,
+        "text": "What does passing two -f files do?",
+        "code": "$ docker compose -f compose.yml -f compose.prod.yml up -d",
+        "answers": [
+          "Runs two separate projects",
+          "Merges them, with compose.prod.yml overriding values",
+          "It is an error",
+          "Only the first is used"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 48,
+        "level": 5,
+        "text": "Why use two stages here?",
+        "code": "FROM node:20 AS build\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\nFROM nginx:alpine\nCOPY --from=build /app/dist /usr/share/nginx/html",
+        "answers": [
+          "The final image contains only the built static files, not the Node toolchain",
+          "It builds twice as fast",
+          "nginx needs Node",
+          "Stages are required"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 49,
+        "level": 5,
+        "text": "What do these flags do?",
+        "code": "$ docker run --memory=512m --cpus=1 myapp",
+        "answers": [
+          "Reserve 512MB on the host",
+          "Speed up the container",
+          "Cap the container at 512MB RAM and 1 CPU",
+          "They are only documentation"
+        ],
+        "correct": 2,
         "selection": null
       }
     ]
@@ -192,25 +709,27 @@ export const dockerQuestions = [
       {
         "id": 0,
         "level": 1,
-        "text": "Qu'est-ce que Docker ?",
+        "text": "C'est la première exécution sur cette machine. Que se passe-t-il ?",
+        "code": "$ docker run nginx",
         "answers": [
-          "Une plateforme pour construire et exécuter des conteneurs",
-          "Un framework JavaScript",
-          "Un moteur de base de données",
-          "Un éditeur de texte"
+          "Une erreur — l'image doit d'abord être téléchargée",
+          "Seule l'image est téléchargée",
+          "Docker télécharge l'image nginx, puis démarre un conteneur",
+          "Un Dockerfile est créé"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 1,
         "level": 1,
-        "text": "Qu'est-ce qu'une image Docker ?",
+        "text": "Un conteneur a été arrêté. Où apparaît-il ?",
+        "code": "$ docker ps\n$ docker ps -a",
         "answers": [
-          "Un modèle en lecture seule utilisé pour créer des conteneurs",
-          "Un processus en cours d'exécution",
-          "Une machine virtuelle",
-          "Un câble réseau"
+          "Seulement dans docker ps -a",
+          "Dans les deux",
+          "Seulement dans docker ps",
+          "Dans docker images"
         ],
         "correct": 0,
         "selection": null
@@ -218,157 +737,672 @@ export const dockerQuestions = [
       {
         "id": 2,
         "level": 1,
-        "text": "Qu'est-ce qu'un conteneur Docker ?",
+        "text": "Qu'est-ce que cela liste ?",
+        "code": "$ docker images",
         "answers": [
-          "Une instance en cours d'exécution d'une image",
-          "Un fichier de code source",
-          "Une archive de sauvegarde",
-          "Un cœur de CPU"
+          "Les conteneurs en cours",
+          "Les Dockerfiles",
+          "Les volumes",
+          "Les images stockées localement"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 3,
-        "level": 2,
-        "text": "Quelle commande construit une image Docker ?",
+        "level": 1,
+        "text": "Pourquoi la deuxième commande échoue-t-elle ?",
+        "code": "$ docker run --name web nginx\n$ docker run --name web nginx",
         "answers": [
-          "docker build",
-          "docker create-image",
-          "docker compile",
-          "docker make"
+          "nginx ne peut tourner qu'une fois",
+          "Le nom de conteneur « web » est déjà pris",
+          "L'image a été supprimée",
+          "Le port 80 est occupé"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 4,
-        "level": 2,
-        "text": "Quel fichier définit comment une image Docker est construite ?",
+        "level": 1,
+        "text": "Que fait -d ?",
+        "code": "$ docker run -d nginx",
         "answers": [
-          "Dockerfile",
-          "docker.json",
-          "image.yaml",
-          "build.txt"
+          "Lance le conteneur détaché en arrière-plan",
+          "Supprime le conteneur à la sortie",
+          "Lance en mode debug",
+          "Télécharge seulement l'image"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 5,
-        "level": 2,
-        "text": "Que fait 'docker ps' ?",
+        "level": 1,
+        "text": "L'application à l'intérieur a planté. Qu'est-ce que cela affiche ?",
+        "code": "$ docker logs web",
         "answers": [
-          "Liste les conteneurs en cours d'exécution",
-          "Liste les images",
-          "Arrête tous les conteneurs",
-          "Affiche l'utilisation disque"
+          "Le Dockerfile",
+          "Les processus en cours",
+          "La sortie stdout/stderr du conteneur",
+          "Les couches de l'image"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 6,
-        "level": 3,
-        "text": "À quoi sert Docker Compose ?",
+        "level": 1,
+        "text": "Le conteneur web tourne. Que fait ceci ?",
+        "code": "$ docker exec -it web sh",
         "answers": [
-          "Définir et exécuter des apps multi-conteneurs avec un fichier YAML",
-          "Éditer des images",
-          "Surveiller uniquement le CPU",
-          "Il remplace Git"
+          "Démarre un nouveau conteneur",
+          "Ouvre un shell interactif dans le conteneur en cours",
+          "Arrête le conteneur",
+          "Reconstruit l'image"
         ],
-        "correct": 0,
+        "correct": 1,
         "selection": null
       },
       {
         "id": 7,
-        "level": 4,
-        "text": "Quelle est la différence entre CMD et ENTRYPOINT dans un Dockerfile ?",
+        "level": 1,
+        "text": "Que signifie node:20 ?",
+        "code": "$ docker pull node:20",
         "answers": [
-          "ENTRYPOINT définit l'exécutable fixe ; CMD fournit les arguments par défaut",
-          "Ils sont identiques",
-          "CMD s'exécute uniquement au build",
-          "ENTRYPOINT supprime les couches"
+          "Node.js version 20 installé localement",
+          "20 conteneurs",
+          "Le port 20",
+          "L'image node taguée version 20"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 8,
-        "level": 4,
-        "text": "Comment persister les données générées par un conteneur ?",
+        "level": 1,
+        "text": "Où est le conteneur web maintenant ?",
+        "code": "$ docker stop web\n$ docker ps",
         "answers": [
-          "En utilisant des volumes",
-          "Les données persistent automatiquement",
-          "Avec des variables d'environnement",
-          "On ne peut pas persister les données"
+          "Supprimé",
+          "Toujours dans docker ps",
+          "Existe toujours mais arrêté — visible dans docker ps -a",
+          "Redémarré automatiquement"
         ],
-        "correct": 0,
+        "correct": 2,
         "selection": null
       },
       {
         "id": 9,
-        "level": 5,
-        "text": "Que signifie CI/CD ?",
+        "level": 1,
+        "text": "web tourne. Que se passe-t-il ?",
+        "code": "$ docker rm web",
         "answers": [
-          "Intégration Continue / Livraison Continue (ou Déploiement)",
-          "Central Internet / Central Data",
-          "Code Inspection / Code Debug",
-          "Container Images / Container Data"
+          "Une erreur — arrêtez-le d'abord ou utilisez -f",
+          "Il est supprimé",
+          "Il est redémarré",
+          "Il est mis en pause"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 10,
-        "level": 3,
-        "text": "Qu'est-ce qu'un conteneur Docker ?",
+        "level": 2,
+        "text": "L'application écoute sur le port 80 dans le conteneur. Comment l'atteindre depuis l'hôte ?",
+        "code": "$ docker run -p 8080:80 nginx",
         "answers": [
-          "Une machine virtuelle",
-          "Un environnement d'exécution léger et isolé pour une application",
-          "Un éditeur de code",
-          "Une base de données"
+          "http://localhost:80",
+          "http://localhost:8080",
+          "http://nginx:8080",
+          "Inaccessible — -p est faux"
         ],
         "correct": 1,
         "selection": null
       },
       {
         "id": 11,
-        "level": 4,
-        "text": "Quelle est la différence entre une image Docker et un conteneur ?",
+        "level": 2,
+        "text": "Objectif : hôte 8080 -> conteneur 80. Pourquoi l'application est-elle injoignable sur localhost:8080 ?",
+        "code": "$ docker run -p 80:8080 nginx",
         "answers": [
-          "Une image est un modèle ; un conteneur est une instance en cours d'exécution",
-          "C'est la même chose",
-          "Les images ne peuvent pas être partagées",
-          "Les conteneurs sont des modèles"
+          "nginx ne supporte pas -p",
+          "Le conteneur n'a pas démarré",
+          "localhost est faux",
+          "Le mappage est inversé — il mappe l'hôte 80 vers le conteneur 8080"
         ],
-        "correct": 0,
+        "correct": 3,
         "selection": null
       },
       {
         "id": 12,
-        "level": 4,
-        "text": "À quoi sert un Dockerfile ?",
+        "level": 2,
+        "text": "Le conteneur se termine aussitôt. Pourquoi ?",
+        "code": "$ docker run ubuntu",
         "answers": [
-          "À définir les étapes de construction d'une image Docker",
-          "À exécuter des conteneurs",
-          "À écrire de la documentation",
-          "Uniquement à configurer les réseaux"
+          "ubuntu n'a pas de processus de premier plan durable par défaut",
+          "L'image est cassée",
+          "docker run exige -d",
+          "Ubuntu ne peut pas tourner dans Docker"
         ],
         "correct": 0,
         "selection": null
       },
       {
         "id": 13,
-        "level": 5,
-        "text": "À quoi sert docker-compose ?",
+        "level": 2,
+        "text": "Que signifie le « . » final ?",
+        "code": "$ docker build -t myapp .",
         "answers": [
-          "À composer de la musique",
-          "À définir et exécuter des applications multi-conteneurs",
-          "À fusionner des images",
-          "À tester du code"
+          "Le tag de l'image",
+          "Le nom du conteneur",
+          "Le chemin du contexte de build — le Dockerfile est lu depuis le dossier actuel",
+          "Le port"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 14,
+        "level": 2,
+        "text": "Que fait -e ?",
+        "code": "$ docker run -e NODE_ENV=production myapp",
+        "answers": [
+          "Modifie le Dockerfile",
+          "Expose un port",
+          "Active les logs de debug",
+          "Définit la variable d'environnement NODE_ENV dans le conteneur"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 15,
+        "level": 2,
+        "text": "Que fait -v ici ?",
+        "code": "$ docker run -v /host/data:/data postgres",
+        "answers": [
+          "Copie /data dans l'image",
+          "Monte le dossier hôte /host/data sur /data dans le conteneur",
+          "Crée une sauvegarde",
+          "Définit une version"
         ],
         "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 16,
+        "level": 2,
+        "text": "Chaque petit changement de code réinstalle toutes les dépendances. Pourquoi ?",
+        "code": "FROM node:20\nWORKDIR /app\nCOPY . .\nRUN npm install\nCMD [\"node\", \"server.js\"]",
+        "answers": [
+          "COPY . . avant RUN npm install invalide le cache des couches à chaque changement de fichier",
+          "npm install est lent par nature",
+          "WORKDIR est faux",
+          "CMD devrait être RUN"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 17,
+        "level": 2,
+        "text": "Pourquoi le conteneur ne s'arrête-t-il pas instantanément ?",
+        "code": "$ docker stop web   # prend 10 secondes",
+        "answers": [
+          "Le réseau est lent",
+          "docker stop prend toujours 10s",
+          "docker stop envoie SIGTERM et attend un délai de grâce avant SIGKILL",
+          "L'image est grosse"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 18,
+        "level": 2,
+        "text": "Qu'est-ce que cela supprime ?",
+        "code": "$ docker image prune",
+        "answers": [
+          "Toutes les images",
+          "Les images pendantes (sans tag)",
+          "Les conteneurs en cours",
+          "Les volumes"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 19,
+        "level": 2,
+        "text": "Le projet a un node_modules de 2 Go et pas de .dockerignore. Pourquoi le build est-il si lent à démarrer ?",
+        "code": "$ docker build -t myapp .",
+        "answers": [
+          "node:20 est une grosse image",
+          "Le CPU est lent",
+          "docker build copie toujours node_modules",
+          "Tout le contexte de 2 Go (dont node_modules) est envoyé au démon"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 20,
+        "level": 3,
+        "text": "Vous changez uniquement server.js et reconstruisez. Quelles étapes se ré-exécutent ?",
+        "code": "FROM node:20\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nCMD [\"node\", \"server.js\"]",
+        "answers": [
+          "Chaque étape depuis FROM",
+          "Seulement CMD",
+          "Depuis le deuxième COPY — l'installation des paquets reste en cache",
+          "Aucune étape — l'image est entièrement réutilisée"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 21,
+        "level": 3,
+        "text": "Pourquoi le build se bloque-t-il ou échoue-t-il ?",
+        "code": "FROM node:20\nRUN npm start",
+        "answers": [
+          "npm start n'existe pas",
+          "RUN s'exécute au build — démarrer le serveur relève de CMD",
+          "FROM doit venir en dernier",
+          "node:20 n'a pas npm"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 22,
+        "level": 3,
+        "text": "Comment tout démarrer en arrière-plan ?",
+        "code": "services:\n  web:\n    image: myapp\n    ports: [\"8080:80\"]\n  db:\n    image: postgres",
+        "answers": [
+          "docker compose up -d",
+          "docker compose start all",
+          "docker run compose",
+          "docker build compose"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 23,
+        "level": 3,
+        "text": "Le conteneur web appelle http://localhost:5432 mais le service db fait tourner postgres. Il reçoit « connection refused ». Pourquoi ?",
+        "code": "services:\n  web: ...\n  db:\n    image: postgres",
+        "answers": [
+          "Postgres ne tourne pas",
+          "Le port doit être 5433",
+          "Compose ne fournit pas de réseau",
+          "Chaque conteneur a son propre localhost — web doit utiliser l'hôte « db »"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 24,
+        "level": 3,
+        "text": "L'application web plante parfois au démarrage. Pourquoi depends_on ne l'empêche-t-il pas ?",
+        "code": "services:\n  web:\n    depends_on: [db]",
+        "answers": [
+          "depends_on est cassé",
+          "L'image de la DB est fausse",
+          "depends_on ordonne seulement le démarrage — il n'attend pas que la DB soit prête",
+          "web démarre trop vite par conception"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 25,
+        "level": 3,
+        "text": "L'application n'est pas joignable depuis l'hôte. Pourquoi ?",
+        "code": "FROM node:20\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]\n\n$ docker run myapp",
+        "answers": [
+          "EXPOSE documente seulement le port — il faut quand même -p 3000:3000",
+          "EXPOSE est invalide",
+          "L'application a planté",
+          "Le port 3000 est réservé"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 26,
+        "level": 3,
+        "text": "Le conteneur db tourne. Que fait ceci ?",
+        "code": "$ docker exec -it db psql -U postgres",
+        "answers": [
+          "Crée un nouveau conteneur db",
+          "Lance psql dans le conteneur db existant",
+          "Redémarre le conteneur db",
+          "Sauvegarde la base de données"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 27,
+        "level": 3,
+        "text": "L'hôte redémarre pendant la nuit. Qu'arrive-t-il à web ?",
+        "code": "services:\n  web:\n    restart: unless-stopped",
+        "answers": [
+          "Il reste arrêté",
+          "Il est supprimé",
+          "Compose doit être relancé manuellement",
+          "Docker le redémarre automatiquement"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 28,
+        "level": 3,
+        "text": "Deux conteneurs partagent un réseau défini par l'utilisateur. Comment l'un peut-il joindre l'autre ?",
+        "code": "$ docker network ls",
+        "answers": [
+          "Par le nom du conteneur comme nom d'hôte",
+          "Seulement par adresse IP",
+          "Ils ne peuvent pas communiquer",
+          "Via localhost"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 29,
+        "level": 3,
+        "text": "Quelle commande montre les montages, l'IP et l'environnement d'un conteneur ?",
+        "answers": [
+          "docker ps web",
+          "docker logs web",
+          "docker inspect web",
+          "docker info web"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 30,
+        "level": 4,
+        "text": "Qu'est-ce qui s'exécute vraiment ?",
+        "code": "ENTRYPOINT [\"node\", \"app.py\"]\nCMD [\"--help\"]\n\n$ docker run myapp --version",
+        "answers": [
+          "--version",
+          "node app.py --help",
+          "Une erreur",
+          "node app.py --version"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 31,
+        "level": 4,
+        "text": "Le service db utilise un volume nommé. Les données de la base sont-elles toujours là ?",
+        "code": "$ docker compose down\n$ docker compose up -d",
+        "answers": [
+          "Oui — les volumes nommés survivent à down (seul down -v les supprime)",
+          "Non — down supprime les volumes",
+          "Seulement si c'était un montage lié",
+          "Non — les conteneurs sont recréés"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 32,
+        "level": 4,
+        "text": "Après ceci, la base de données est vide. Pourquoi ?",
+        "code": "$ docker compose down -v",
+        "answers": [
+          "Postgres n'a pas démarré",
+          "L'image a été mise à jour",
+          "down -v supprime les volumes nommés, effaçant les données",
+          "Compose ne persiste jamais les données"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 33,
+        "level": 4,
+        "text": "Que vaut API_URL dans le conteneur ?",
+        "code": "ARG API_URL\nENV API_URL=$API_URL\n\n$ docker build --build-arg API_URL=a .\n$ docker run -e API_URL=b myapp",
+        "answers": [
+          "a — les args de build gagnent",
+          "b — le -e au runtime surcharge la valeur du build",
+          "Vide",
+          "Une erreur"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 34,
+        "level": 4,
+        "text": "Le conteneur a besoin d'un service tournant sur le portable hôte. À quoi sert host.docker.internal ?",
+        "code": "# conteneur -> host.docker.internal:3000",
+        "answers": [
+          "Un nom d'hôte spécial pour joindre l'hôte depuis un conteneur",
+          "La propre IP du conteneur",
+          "Un miroir de Docker Hub",
+          "La passerelle du pont par défaut"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 35,
+        "level": 4,
+        "text": "À quoi sert ce healthcheck ?",
+        "code": "services:\n  db:\n    image: postgres\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready\"]",
+        "answers": [
+          "À redémarrer postgres",
+          "À sauvegarder la DB",
+          "À ne rien faire",
+          "À signaler aux orchestrateurs (et aux conditions depends_on) quand la DB est vraiment prête"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 36,
+        "level": 4,
+        "text": "La CI casse après un rebuild, sans changement de code. Que s'est-il probablement passé, et quel est le correctif ?",
+        "code": "$ docker run myapp:latest",
+        "answers": [
+          "Docker Hub a été piraté",
+          "Le cache a été vidé",
+          "« latest » a bougé vers un nouveau build — épinglez un tag de version ou un digest",
+          "latest ne change jamais"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 37,
+        "level": 4,
+        "text": "Le conteneur met 10s à s'arrêter sur docker stop. Pourquoi ?",
+        "code": "CMD npm start",
+        "answers": [
+          "npm est lent",
+          "La forme shell fait de sh le PID 1, donc SIGTERM n'est pas transmis à node",
+          "10s est le minimum",
+          "L'application ignore les signaux par défaut"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 38,
+        "level": 4,
+        "text": "Qu'est-ce que cela montre ?",
+        "code": "$ docker history myapp",
+        "answers": [
+          "Les conteneurs en cours",
+          "L'historique git",
+          "Les commandes docker que vous avez tapées",
+          "Les couches de l'image et les commandes qui les ont créées"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 39,
+        "level": 4,
+        "text": "Pourquoi intégrer la clé dans l'image est-il dangereux ?",
+        "code": "ARG API_KEY=sk-live-123\nRUN curl -H \"Key: $API_KEY\" https://api.example.com/setup",
+        "answers": [
+          "Elle reste visible dans les couches via docker history et dans le registre",
+          "Les valeurs ARG sont affichées au runtime",
+          "Cela ralentit le build",
+          "Cela casse le cache"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 40,
+        "level": 5,
+        "text": "Que fait ce montage BuildKit ?",
+        "code": "RUN --mount=type=cache,target=/root/.npm npm ci",
+        "answers": [
+          "Installe npm globalement",
+          "Met en cache les téléchargements npm entre les builds pour les accélérer",
+          "Copie node_modules depuis l'hôte",
+          "C'est pareil qu'un volume"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 41,
+        "level": 5,
+        "text": "Quand une image de base scratch est-elle un bon choix ?",
+        "code": "FROM scratch\nCOPY myapp /myapp\nCMD [\"/myapp\"]",
+        "answers": [
+          "Pour les applications Node.js",
+          "Pour les bases de données",
+          "Pour un binaire compilé statiquement — taille minimale et surface d'attaque réduite",
+          "Jamais — scratch est déprécié"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 42,
+        "level": 5,
+        "text": "Le conteneur meurt sans arrêt. Quel est le diagnostic et le correctif ?",
+        "code": "# dmesg : Out of memory: Killed process (myapp)",
+        "answers": [
+          "Vérifier l'usage avec docker stats, puis fixer des limites --memory / corriger l'usage mémoire de l'app",
+          "Augmenter la taille de l'image",
+          "Ajouter seulement plus de CPU",
+          "Redémarrer Docker"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 43,
+        "level": 5,
+        "text": "/var/lib/docker se remplit et l'application loggue beaucoup. Pourquoi le disque se remplit-il, et comment limiter ?",
+        "code": "# /var/lib/docker est plein",
+        "answers": [
+          "Les images grossissent avec le temps",
+          "Les volumes grossissent automatiquement",
+          "Docker n'a pas de limites de logs",
+          "Les logs json-file croissent sans limite — fixez --log-opt max-size/max-file"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 44,
+        "level": 5,
+        "text": "Pourquoi le tag doit-il inclure l'hôte du registre ?",
+        "code": "$ docker tag myapp registry.example.com/team/myapp:1.0\n$ docker push registry.example.com/team/myapp:1.0",
+        "answers": [
+          "C'est juste une étiquette",
+          "Les tags ne peuvent pas contenir de points",
+          "L'hôte dans le nom indique à Docker où pousser (sinon Docker Hub par défaut)",
+          "Push exige latest"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 45,
+        "level": 5,
+        "text": "Pourquoi la deuxième commande échoue-t-elle ?",
+        "code": "$ docker run -p 80:80 nginx\n$ docker run -p 80:80 httpd",
+        "answers": [
+          "Le port hôte 80 est déjà alloué par le premier conteneur",
+          "Deux serveurs web ne peuvent pas coexister",
+          "Les noms d'images sont en conflit",
+          "httpd exige le port 8080"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 46,
+        "level": 5,
+        "text": "L'image a été construite avec docker commit depuis un conteneur modifié. Pourquoi docker commit est-il une mauvaise pratique pour les images de production ?",
+        "code": "$ docker commit web myapp:manual",
+        "answers": [
+          "commit ne sauvegarde pas les changements",
+          "C'est plus lent",
+          "commit est en lecture seule",
+          "L'image n'est pas reproductible — aucune trace de sa construction"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 47,
+        "level": 5,
+        "text": "Que fait le passage de deux fichiers -f ?",
+        "code": "$ docker compose -f compose.yml -f compose.prod.yml up -d",
+        "answers": [
+          "Lance deux projets séparés",
+          "Fusionne les deux, compose.prod.yml surchargeant les valeurs",
+          "C'est une erreur",
+          "Seul le premier est utilisé"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 48,
+        "level": 5,
+        "text": "Pourquoi utiliser deux étapes ici ?",
+        "code": "FROM node:20 AS build\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\nFROM nginx:alpine\nCOPY --from=build /app/dist /usr/share/nginx/html",
+        "answers": [
+          "L'image finale ne contient que les fichiers statiques construits, pas la toolchain Node",
+          "Cela build deux fois plus vite",
+          "nginx a besoin de Node",
+          "Les étapes sont obligatoires"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 49,
+        "level": 5,
+        "text": "Que font ces drapeaux ?",
+        "code": "$ docker run --memory=512m --cpus=1 myapp",
+        "answers": [
+          "Réservent 512 Mo sur l'hôte",
+          "Accélèrent le conteneur",
+          "Plafonnent le conteneur à 512 Mo de RAM et 1 CPU",
+          "Ce n'est que de la documentation"
+        ],
+        "correct": 2,
         "selection": null
       }
     ]
