@@ -12,7 +12,7 @@ const renderRich = (text) => {
 };
 
 export const Revision = () => {
-  const { langueTrans, langue, setlangue, setMode } = useContext(LangueContext);
+  const { langueTrans, langue, setlangue, setMode, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
 
   const [topic, setTopic] = useState(
@@ -107,7 +107,7 @@ export const Revision = () => {
       <button
         type="button"
         className="intro-button revision-back"
-        onClick={() => setMode("quiz")}
+        onClick={() => { setMode("quiz"); setMenuOpen(true); }}
       >
         ← {FR ? "Retour" : "Back"}
       </button>

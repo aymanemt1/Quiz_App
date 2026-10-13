@@ -7,7 +7,7 @@ import { ShareButton } from "../Share/ShareCard";
 
 // 60-second rapid-fire true/false. One tap per statement, no "next" button.
 export const Blitz = () => {
-  const { langueTrans, setGameStarted } = useContext(LangueContext);
+  const { langueTrans, setGameStarted, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
 
   const [runId, setRunId] = useState(0);
@@ -112,7 +112,7 @@ export const Blitz = () => {
           <button
             type="button"
             className="intro-button"
-            onClick={() => setGameStarted(false)}
+            onClick={() => { setGameStarted(false); setMenuOpen(true); }}
           >
             {FR ? "Retour" : "Back"}
           </button>

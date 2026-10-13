@@ -5,7 +5,7 @@ import { TOPIC_LABELS, TOPIC_KEYS } from '../Data/QuestionAllData';
 import { loadHistory, clearHistory } from '../Data/storage';
 
 export const Progress = () => {
-  const { langueTrans, setMode } = useContext(LangueContext);
+  const { langueTrans, setMode, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
   const [, force] = useState(0);
 
@@ -91,7 +91,7 @@ export const Progress = () => {
         </>
       )}
 
-      <button className="intro-button" type="button" onClick={() => setMode('quiz')}>
+      <button className="intro-button" type="button" onClick={() => { setMode('quiz'); setMenuOpen(true); }}>
         {FR ? "Retour" : "Back"}
       </button>
     </div>

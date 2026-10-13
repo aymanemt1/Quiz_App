@@ -1,10 +1,46 @@
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px 0;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 28px;
+}
+
+.topbar-streak {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffd43b;
+    letter-spacing: 0.5px;
+}
+
+.topbar-daily {
+    font-size: 16px;
+    opacity: 0.55;
+}
+
+.topbar-daily.daily-done {
+    opacity: 1;
+    color: #4ade80;
+    font-weight: 700;
+}
+
 .translate{
     display: flex;
     justify-content: flex-end;
- margin-right: 7rem;
+    margin: 0;
 }
 .translate span{
-    margin: 20px 8px;
+    margin: 6px 8px;
     cursor: pointer;
     font-size: 17px;
     letter-spacing: 2px;
@@ -21,20 +57,19 @@
 }
 
 @media (max-width: 1024px) {
-  .translate {
-    margin-right: 2rem;
+  .topbar {
+    padding: 12px 14px 0;
   }
 }
 
 @media (max-width: 640px) {
-  .translate {
-    justify-content: center;
-    margin: 0;
-    padding: 0.75rem 0 0;
-  }
   .translate span {
-    margin: 0 10px;
+    margin: 4px 10px;
     font-size: 16px;
     letter-spacing: 2px;
+  }
+  .topbar-streak,
+  .topbar-daily {
+    font-size: 15px;
   }
 }

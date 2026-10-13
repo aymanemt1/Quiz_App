@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import "./QuizStart.css"
+import "../Menu/Menu.css"
 import { LangueContext } from '../../Context/LangueContext';
 import { TOPIC_KEYS, TOPIC_LABELS } from '../Data/QuestionAllData';
 import { CODE_TOPICS } from '../Data/CodeChallenges';
 import { LEVELS, levelLabel } from '../Data/levels';
-import { getMistakeCount, getStreak, getTodayResult } from '../Data/storage';
+import { getMistakeCount, getTodayResult } from '../Data/storage';
 import { DAILY_COUNT } from '../Data/daily';
 import { Progress } from '../Progress/Progress';
-import { WeakSpot } from '../WeakSpot/WeakSpot';
+import { Menu } from '../Menu/Menu';
 
 const MODES = [
   { id: 'quiz', en: 'Quiz', fr: 'Quiz' },
@@ -143,21 +144,26 @@ const ExamBuilder = () => {
 export const QuizStart = ({questions}) => {
 const {langue,setlangue,langueTrans,gameStarted,setGameStarted,mode,setMode,level,setLevel,
   setGameFinished,setshowCorrectAnswer,setIsremoved,examTopics,timed,timePerQuestion,
-  codeTopic,setCodeTopic} =useContext(LangueContext)
+  codeTopic,setCodeTopic,menuOpen,setMenuOpen} =useContext(LangueContext)
 
 const FR = langueTrans === "FR";
 
-const changeMode = (m) => {
+const selectMode = (m) => {
   setMode(m);
   if ((m === 'quiz' || m === 'notes') && !TOPIC_KEYS.includes(langue)) setlangue('React');
+  setMenuOpen(false);
   setGameStarted(false);
   setGameFinished(false);
   setshowCorrectAnswer(false);
   setIsremoved(false);
 };
 
+const goToMenu = () => {
+  setGameStarted(false);
+  setMenuOpen(true);
+};
+
 const mistakeCount = mode === 'review' ? getMistakeCount(langueTrans) : 0;
-const streak = getStreak();
 const todayResult = mode === 'daily' ? getTodayResult() : null;
 
 const title = mode === 'exam'
@@ -235,105 +241,107 @@ const startLabel = dailyDone
    <>
     <h1 className="intro-title">{title}</h1>
 
-      <div className="mode-selector">
-        {MODES.map((m) => (
-          <button
-            key={m.id}
-            type="button"
-            className={`mode-button ${mode === m.id ? 'mode-active' : ''}`}
-            onClick={() => changeMode(m.id)}
-          >
-            {FR ? m.fr : m.en}
-          </button>
-        ))}
-      </div>
-
-      {streak > 0 && (
-        <p className="streak-badge">
-          {FR ? `Série : ${streak} jour${streak > 1 ? "s" : ""}` : `Streak: ${streak} day${streak > 1 ? "s" : ""}`}
-        </p>
-      )}
-
-      {!gameStarted && <WeakSpot />}
-
-      {mode === 'quiz' && (
-        <>
-          <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
-            {TOPIC_KEYS.map((t) => (
-              <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
-            ))}
-          </select>
-          <LevelSelector value={level} onChange={setLevel} FR={FR} />
-          <TimedToggle />
-        </>
-      )}
-
-      {mode === 'exam' && (
-        <>
-          <ExamBuilder />
-          <TimedToggle />
-        </>
-      )}
-
-      {mode === 'code' && (
-        <>
-          <select className='select_options' value={codeTopic} onChange={(e)=>setCodeTopic(e.target.value)}>
-            <option value='All'>{FR ? "Tous les stacks" : "All stacks"}</option>
-            {CODE_TOPICS.map((t) => (
-              <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
-            ))}
-          </select>
-          <LevelSelector value={level} onChange={setLevel} FR={FR} />
-          <TimedToggle />
-        </>
-      )}
-
-      {mode === 'daily' && !dailyDone && <TimedToggle />}
-
-      {mode === 'interview' && (
-        <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
-          <option value='All'>{FR ? "Tous les sujets" : "All topics"}</option>
-          {TOPIC_KEYS.map((t) => (
-            <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
+      {gameStarted ? (
+        <div className="mode-selector">
+          {MODES.map((m) => (
+            <button
+              key={m.id}
+              type="button"
+              className={`mode-button ${mode === m.id ? 'mode-active' : ''}`}
+              onClick={() => selectMode(m.id)}
+            >
+              {FR ? m.fr : m.en}
+            </button>
           ))}
-        </select>
-      )}
-
-      {mode === 'progress' ? (
-        <Progress />
+        </div>
+      ) : menuOpen ? (
+        <Menu onSelect={selectMode} />
       ) : (
-        !gameStarted && (
-          <>
-            {desc && <p className="intro-desc">{desc}</p>}
-            {mode === 'quiz' ? (
-              <div className="cours-exam-buttons">
+        <>
+          <div>
+            <button type="button" className="menu-back" onClick={goToMenu}>
+              ← {FR ? "Menu" : "Menu"}
+            </button>
+          </div>
+
+          {mode === 'quiz' && (
+            <>
+              <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
+                {TOPIC_KEYS.map((t) => (
+                  <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
+                ))}
+              </select>
+              <LevelSelector value={level} onChange={setLevel} FR={FR} />
+              <TimedToggle />
+            </>
+          )}
+
+          {mode === 'exam' && (
+            <>
+              <ExamBuilder />
+              <TimedToggle />
+            </>
+          )}
+
+          {mode === 'code' && (
+            <>
+              <select className='select_options' value={codeTopic} onChange={(e)=>setCodeTopic(e.target.value)}>
+                <option value='All'>{FR ? "Tous les stacks" : "All stacks"}</option>
+                {CODE_TOPICS.map((t) => (
+                  <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
+                ))}
+              </select>
+              <LevelSelector value={level} onChange={setLevel} FR={FR} />
+              <TimedToggle />
+            </>
+          )}
+
+          {mode === 'daily' && !dailyDone && <TimedToggle />}
+
+          {mode === 'interview' && (
+            <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
+              <option value='All'>{FR ? "Tous les sujets" : "All topics"}</option>
+              {TOPIC_KEYS.map((t) => (
+                <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
+              ))}
+            </select>
+          )}
+
+          {mode === 'progress' ? (
+            <Progress />
+          ) : (
+            <>
+              {desc && <p className="intro-desc">{desc}</p>}
+              {mode === 'quiz' ? (
+                <div className="cours-exam-buttons">
+                  <button
+                    type="button"
+                    className="intro-button cours-button"
+                    onClick={() => setMode('notes')}
+                  >
+                    {FR ? "Cours" : "Course"}
+                  </button>
+                  <button
+                    type="button"
+                    className="intro-button"
+                    onClick={() => setGameStarted(true)}
+                  >
+                    {FR ? "Examen" : "Exam"}
+                  </button>
+                </div>
+              ) : mode === 'notes' ? null : (
                 <button
-                  type="button"
-                  className="intro-button cours-button"
-                  onClick={() => setMode('notes')}
-                >
-                  {FR ? "Cours" : "Course"}
-                </button>
-                <button
-                  type="button"
                   className="intro-button"
                   onClick={() => setGameStarted(true)}
+                  disabled={startDisabled}
+                  style={startDisabled ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
                 >
-                  {FR ? "Examen" : "Exam"}
+                  {startLabel}
                 </button>
-              </div>
-            ) : mode === 'notes' ? null : (
-              <button
-                className="intro-button"
-                onClick={() => setGameStarted(true)}
-                disabled={startDisabled}
-                style={startDisabled ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
-              >
-                {startLabel}
-              </button>
-            )}
-          </>
-        )
+              )}
+            </>
+          )}
+        </>
       )}
    </>
   )

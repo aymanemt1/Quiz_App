@@ -23,6 +23,8 @@ export const LangueContext = createContext()
   // timed mode: per-question countdown
   const [timed, setTimed] = useState(false)
   const [timePerQuestion, setTimePerQuestion] = useState(30)
+  // home menu: true = show grouped menu, false = show selected mode's setup
+  const [menuOpen, setMenuOpen] = useState(true)
 
   return (
 
@@ -39,7 +41,8 @@ export const LangueContext = createContext()
       examTopics,setExamTopics,
       examCount,setExamCount,
       timed,setTimed,
-      timePerQuestion,setTimePerQuestion
+      timePerQuestion,setTimePerQuestion,
+      menuOpen,setMenuOpen
       }}>
 
      {children}

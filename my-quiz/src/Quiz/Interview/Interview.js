@@ -4,7 +4,7 @@ import { LangueContext } from '../../Context/LangueContext';
 import { interviewQuestions } from '../Data/InterviewData';
 
 export const Interview = () => {
-  const { langue, langueTrans, setGameStarted } = useContext(LangueContext);
+  const { langue, langueTrans, setGameStarted, setMenuOpen } = useContext(LangueContext);
   const FR = langueTrans === "FR";
 
   const items = useMemo(() => {
@@ -71,7 +71,7 @@ export const Interview = () => {
             <button className="interview-button" onClick={restart}>
               {FR ? "Recommencer" : "Restart"}
             </button>
-            <button className="interview-button interview-button-ghost" onClick={() => setGameStarted(false)}>
+            <button className="interview-button interview-button-ghost" onClick={() => { setGameStarted(false); setMenuOpen(true); }}>
               {FR ? "Retour au menu" : "Back to menu"}
             </button>
           </div>

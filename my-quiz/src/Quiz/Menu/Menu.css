@@ -1,0 +1,157 @@
+/* ---- Grouped home menu (mobile-first) ---- */
+.menu {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4px 6px 20px;
+  box-sizing: border-box;
+}
+
+.menu-section {
+  margin: 20px 0 4px;
+  text-align: left;
+}
+
+.menu-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.92;
+  margin: 0 4px 10px;
+}
+
+.menu-section-icon {
+  font-size: 18px;
+}
+
+.menu-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  min-height: 72px;
+}
+
+.menu-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.menu-card:active {
+  transform: scale(0.99);
+}
+
+.menu-card-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.menu-card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.menu-card-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.menu-card-desc {
+  font-size: 13px;
+  opacity: 0.72;
+  line-height: 1.4;
+}
+
+.menu-card-badge {
+  flex-shrink: 0;
+  background: #ffd43b;
+  color: #1e3145;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 999px;
+  min-width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+.menu-card-badge-done {
+  background: #4ade80;
+}
+
+.menu-card-arrow {
+  flex-shrink: 0;
+  font-size: 22px;
+  opacity: 0.45;
+  line-height: 1;
+}
+
+.menu-weakspot {
+  margin-top: 10px;
+}
+
+@media (min-width: 700px) {
+  .menu-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .menu-section:first-child .menu-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Back-to-menu button on setup steps ---- */
+.menu-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6px 0 10px;
+  transition: 0.2s;
+}
+
+.menu-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 640px) {
+  .menu-card {
+    padding: 16px;
+    min-height: 76px;
+  }
+  .menu-card-title {
+    font-size: 17px;
+  }
+}
