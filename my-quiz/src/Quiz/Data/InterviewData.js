@@ -33,6 +33,36 @@ export const interviewQuestions = [
       a: "Inside useEffect with an empty dependency array, call fetch or axios, then store the result in state with useState. Handle loading and error states, and clean up (e.g. abort the request) if the component unmounts."
     },
     {
+      id: 80,
+      topic: "React",
+      q: "What is 'lifting state up', and when does this pattern break down?",
+      a: "Lifting state up means moving shared state to the closest common parent and passing it down as props. It breaks down with deep nesting (prop drilling), at which point context or a state library is cleaner."
+    },
+    {
+      id: 81,
+      topic: "React",
+      q: "Explain React's reconciliation and why keys matter in lists.",
+      a: "Reconciliation is how React diffs the new virtual DOM against the old one to decide the minimal real DOM updates. Keys let React match list items across renders; unstable keys (like array indexes) cause stale state and UI bugs when items reorder."
+    },
+    {
+      id: 82,
+      topic: "React",
+      q: "What causes unnecessary re-renders, and how would you fix them?",
+      a: "Re-rendering a parent re-renders all its children by default, even if their props didn't change. Fix it by splitting components, memoizing with React.memo, and stabilizing callbacks and values with useCallback and useMemo."
+    },
+    {
+      id: 83,
+      topic: "React",
+      q: "useMemo vs useCallback — when is each worth it, and when is it overkill?",
+      a: "useMemo memoizes a computed value, useCallback memoizes a function reference — both mainly help when passed to memoized children. They're overkill for cheap computations; profile first, because unnecessary memoization adds complexity for no gain."
+    },
+    {
+      id: 84,
+      topic: "React",
+      q: "How would you update deeply nested state without mutating it?",
+      a: "Use the functional updater form and spread each level to create new objects, or use a library like Immer for complex shapes. Never mutate state directly, because React relies on reference changes to detect updates."
+    },
+    {
       id: 5,
       topic: "Javascript",
       q: "What is a closure? Give a use case.",
@@ -61,6 +91,36 @@ export const interviewQuestions = [
       topic: "Javascript",
       q: "How does async/await work?",
       a: "async functions always return a promise. await pauses execution until the promise settles, letting you write asynchronous code that reads like synchronous code. Use try/catch for errors."
+    },
+    {
+      id: 85,
+      topic: "Javascript",
+      q: "Explain hoisting. What gets hoisted, and in what order?",
+      a: "Function declarations are fully hoisted, var declarations are hoisted but initialized to undefined, while let and const stay in the temporal dead zone until their declaration. When a function and a var share a name, the function declaration wins."
+    },
+    {
+      id: 86,
+      topic: "Javascript",
+      q: "How is the value of `this` determined in JavaScript?",
+      a: "It's determined by how the function is called: a method call binds `this` to the object, a plain call gives undefined (strict mode) or the global object, arrow functions inherit the lexical `this`, and bind/call/apply set it explicitly."
+    },
+    {
+      id: 87,
+      topic: "Javascript",
+      q: "What problem do promises solve compared to callbacks?",
+      a: "They flatten callback hell into chainable .then() calls and centralize error handling — one .catch() handles failures anywhere in the chain. A promise is an object representing a future value, making async flow composable."
+    },
+    {
+      id: 88,
+      topic: "Javascript",
+      q: "Shallow copy vs deep copy — how would you clone an object, and what can break?",
+      a: "Spread and Object.assign only copy the top level, so nested objects stay shared. structuredClone() deep-copies but drops functions, prototypes and some special objects like DOM nodes."
+    },
+    {
+      id: 89,
+      topic: "Javascript",
+      q: "A fetch call inside a loop silently fails — how would you debug it?",
+      a: "Check the network tab for the actual request and status, then verify promise handling: forEach doesn't await async callbacks, so unhandled rejections get swallowed. Rewrite with for...of plus try/catch, and always check response.ok before parsing."
     },
     {
       id: 10,
@@ -93,6 +153,36 @@ export const interviewQuestions = [
       a: "With an interface or type, e.g. interface Props { title: string; onClick?: () => void }, then function Button({ title }: Props)."
     },
     {
+      id: 90,
+      topic: "Typescript",
+      q: "What are union and intersection types? Give an example of each.",
+      a: "A union (string | number) means a value can be one of several types — great for state machines. An intersection (A & B) combines multiple types into one that has all their members."
+    },
+    {
+      id: 91,
+      topic: "Typescript",
+      q: "What does `as const` do, and when is it useful?",
+      a: "It narrows a value to its literal type and makes it deeply readonly. It's useful for config objects and discriminated unions where you want exact string literals instead of widened string types."
+    },
+    {
+      id: 92,
+      topic: "Typescript",
+      q: "How would you type a function that only accepts valid keys of an object?",
+      a: "With keyof and a generic constraint: function get<T, K extends keyof T>(obj: T, key: K). The compiler then rejects any key that isn't on the object, and the return type is inferred correctly."
+    },
+    {
+      id: 93,
+      topic: "Typescript",
+      q: "A third-party API returns untyped JSON. How do you make it type-safe?",
+      a: "Define interfaces for the expected shape and validate the payload at runtime with a library like Zod, then infer the TypeScript type from the schema. Never blindly cast with `as`, which just silences the compiler."
+    },
+    {
+      id: 94,
+      topic: "Typescript",
+      q: "strict mode on vs off — when is strict worth the friction?",
+      a: "Strict mode (especially strictNullChecks) catches null/undefined bugs at compile time instead of production. It's worth it for any new project; for legacy codebases, enable flags incrementally to avoid a huge rewrite."
+    },
+    {
       id: 15,
       topic: "VueJs",
       q: "How does Vue's reactivity work?",
@@ -121,6 +211,36 @@ export const interviewQuestions = [
       topic: "VueJs",
       q: "How do parent and child components communicate?",
       a: "Parent to child via props; child to parent via emitted events ($emit). For shared state across many components, use Pinia (or Vuex)."
+    },
+    {
+      id: 95,
+      topic: "VueJs",
+      q: "How would you share state between unrelated components without a store?",
+      a: "Use provide/inject to pass data down the tree without prop drilling. It works for simple shared state, but for complex or frequently changing state, Pinia is the better choice."
+    },
+    {
+      id: 96,
+      topic: "VueJs",
+      q: "What are lifecycle hooks, and which would you use to fetch initial data?",
+      a: "Hooks like onMounted, onUpdated and onUnmounted run at specific moments of a component's life. Fetch initial data in onMounted (the DOM exists by then), and clean up listeners or timers in onUnmounted."
+    },
+    {
+      id: 97,
+      topic: "VueJs",
+      q: "Explain slots — default, named and scoped — and when you'd use a scoped slot.",
+      a: "Slots let a parent inject content into a child: default and named slots define insertion points. A scoped slot passes data back from child to parent, so the parent can customize rendering — e.g. a list component letting the parent decide each item's template."
+    },
+    {
+      id: 98,
+      topic: "VueJs",
+      q: "A list re-renders slowly on every keystroke — how would you debug it?",
+      a: "First check for missing or unstable keys and expensive computed properties running per render. Use the Vue devtools profiler, debounce the input, and consider v-show instead of v-if for elements toggled frequently."
+    },
+    {
+      id: 99,
+      topic: "VueJs",
+      q: "When would you choose Vue over React, or vice versa?",
+      a: "Vue has a gentler learning curve and opinionated single-file components, which suits small teams wanting conventions. React has the larger ecosystem and job market. In practice, team familiarity and existing codebase matter more than the frameworks' technical differences."
     },
     {
       id: 20,
@@ -153,6 +273,36 @@ export const interviewQuestions = [
       a: "Custom attributes to store extra data on elements, readable via element.dataset in JavaScript, without using non-standard attributes."
     },
     {
+      id: 100,
+      topic: "Html",
+      q: "What happens between typing a URL and the page rendering?",
+      a: "The browser resolves DNS, fetches the HTML, parses it into the DOM, builds the CSSOM, combines them into the render tree, then does layout and paint. Blocking scripts and large resources slow each of these steps."
+    },
+    {
+      id: 101,
+      topic: "Html",
+      q: "How do you optimize a page with many images?",
+      a: "Use loading='lazy' for below-the-fold images, srcset/sizes for responsive variants, modern formats like WebP or AVIF, and always set width/height attributes to prevent layout shift."
+    },
+    {
+      id: 102,
+      topic: "Html",
+      q: "What is the difference between <script>, <script async> and <script defer>?",
+      a: "A plain script blocks HTML parsing until it downloads and executes. async downloads in parallel and executes as soon as ready, in no guaranteed order. defer also downloads in parallel but executes after parsing, in document order."
+    },
+    {
+      id: 103,
+      topic: "Html",
+      q: "A form submits but the backend receives empty fields — how would you debug it?",
+      a: "Check that each input has a name attribute (without it nothing is sent), verify method and enctype in the network tab, and make sure no JavaScript preventDefault or validation is swallowing the data before submit."
+    },
+    {
+      id: 104,
+      topic: "Html",
+      q: "When would you use <button> vs <a> vs <div onclick>?",
+      a: "Use <button> for actions that stay on the page and <a> for navigation to a new URL. <div onclick> is an accessibility failure — it has no keyboard support, focus behavior or semantics for screen readers."
+    },
+    {
       id: 25,
       topic: "Css",
       q: "Explain the CSS box model.",
@@ -181,6 +331,36 @@ export const interviewQuestions = [
       topic: "Css",
       q: "What are CSS variables and why use them?",
       a: "Custom properties (--main-color) defined once and reused via var(). They make theming and maintenance easy and can be changed at runtime with JavaScript."
+    },
+    {
+      id: 105,
+      topic: "Css",
+      q: "Explain the difference between position: relative, absolute, fixed and sticky.",
+      a: "relative offsets an element from its normal place without leaving the flow; absolute positions it against the nearest positioned ancestor; fixed pins it to the viewport; sticky behaves like relative until a scroll threshold, then like fixed."
+    },
+    {
+      id: 106,
+      topic: "Css",
+      q: "How would you build a responsive layout without media queries?",
+      a: "Use fluid techniques: flex-wrap, grid with auto-fit and minmax(), clamp() for fluid typography, and relative units like % and vw. This handles intermediate sizes gracefully where fixed breakpoints would miss."
+    },
+    {
+      id: 107,
+      topic: "Css",
+      q: "What causes cumulative layout shift (CLS), and how do you prevent it?",
+      a: "CLS comes from content moving after load — unsized images, late-loading fonts or ads. Prevent it by reserving space (width/height or aspect-ratio), using font-display: swap, and avoiding inserting content above existing content."
+    },
+    {
+      id: 108,
+      topic: "Css",
+      q: "A style 'doesn't apply' — how would you debug a specificity conflict?",
+      a: "Open the browser devtools computed/Styles panel to see which rule wins and which are struck through. Check for higher-specificity selectors, inline styles, or source order issues — and fix the selector rather than reaching for !important."
+    },
+    {
+      id: 109,
+      topic: "Css",
+      q: "CSS-in-JS vs utility classes vs plain CSS — how do you choose?",
+      a: "Plain CSS (or Sass) with a naming convention suits small projects and full control. Utility classes like Tailwind speed up custom designs with consistency. CSS-in-JS fits component libraries needing dynamic, scoped styles, at the cost of runtime overhead."
     },
     {
       id: 30,
@@ -213,6 +393,36 @@ export const interviewQuestions = [
       a: "To extract repeated utility patterns into a reusable CSS class, e.g. .btn { @apply px-4 py-2 rounded; }. Use sparingly to keep the utility-first benefits."
     },
     {
+      id: 110,
+      topic: "Tailwind",
+      q: "How do you implement dark mode in Tailwind?",
+      a: "Use the dark: variant (e.g. dark:bg-gray-900) and set the strategy in config: 'media' follows the OS preference, 'class' lets you toggle it manually with JavaScript."
+    },
+    {
+      id: 111,
+      topic: "Tailwind",
+      q: "How would you build a brand design system with Tailwind?",
+      a: "Extend the theme in tailwind.config.js with brand colors, fonts and spacing, and expose runtime-switchable values (like themes) through CSS variables. Keep the config as the single source of truth for the design tokens."
+    },
+    {
+      id: 112,
+      topic: "Tailwind",
+      q: "Your class strings are getting long and unreadable — what do you do?",
+      a: "Extract a real component (in React/Vue) instead of repeating the string — that's the primary fix. @apply is a fallback for non-component contexts, but overusing it recreates the CSS maintenance problems utility-first was meant to avoid."
+    },
+    {
+      id: 113,
+      topic: "Tailwind",
+      q: "Tailwind vs a component library like Bootstrap — when is Tailwind the wrong choice?",
+      a: "Tailwind is wrong when you need prebuilt components fast, like an admin prototype — Bootstrap or a UI kit ships that out of the box. Tailwind wins for custom, branded designs where you want full visual control without fighting a library's defaults."
+    },
+    {
+      id: 114,
+      topic: "Tailwind",
+      q: "How does the `content` configuration affect the production build?",
+      a: "The JIT engine scans only the files listed in `content`; utilities used in missing paths are silently dropped from production CSS. Keep the globs accurate — too narrow loses styles, too broad slows the build."
+    },
+    {
       id: 35,
       topic: "NodeJs",
       q: "What is Node.js and why is it used for backends?",
@@ -241,6 +451,36 @@ export const interviewQuestions = [
       topic: "NodeJs",
       q: "What are environment variables and why use them?",
       a: "Configuration kept outside code (process.env): API keys, database URLs. Keeps secrets out of source control and lets the same code run in dev, staging and prod."
+    },
+    {
+      id: 115,
+      topic: "NodeJs",
+      q: "What happens when a CPU-heavy task runs on the event loop, and what would you do about it?",
+      a: "It blocks the single thread, so no other request is handled until it finishes — the server appears frozen. Offload it to worker threads, a child process, or a job queue, keeping the event loop free for I/O."
+    },
+    {
+      id: 116,
+      topic: "NodeJs",
+      q: "Your API's memory usage grows steadily over days — how would you debug it?",
+      a: "Take heap snapshots with --inspect and compare them to find what's accumulating — typical culprits are unbounded caches, forgotten event listeners, and timers. Also track RSS over time and review anything stored in module-level globals."
+    },
+    {
+      id: 117,
+      topic: "NodeJs",
+      q: "What is the difference between process.nextTick, setImmediate and setTimeout(0)?",
+      a: "process.nextTick callbacks run before the event loop continues to the next phase — they can starve I/O if overused. setImmediate runs in the check phase after I/O callbacks; setTimeout(0) runs in the timers phase, roughly after at least 1ms."
+    },
+    {
+      id: 118,
+      topic: "NodeJs",
+      q: "How would you structure a larger Express app to stay maintainable?",
+      a: "Separate concerns into layers: routes define endpoints, controllers handle request/response, services hold business logic, and middleware handles cross-cutting concerns like auth. Add centralized error middleware and load all config from environment variables."
+    },
+    {
+      id: 119,
+      topic: "NodeJs",
+      q: "Monolith vs microservices in Node — how do you decide?",
+      a: "Start with a modular monolith: it's simpler to develop, test and deploy, and Node handles it well. Split into microservices only when you hit real scaling bottlenecks or need independent team ownership — distribution adds operational cost from day one."
     },
     {
       id: 40,
@@ -273,6 +513,36 @@ export const interviewQuestions = [
       a: "With a validation library (Joi, Zod, express-validator): check types, required fields and formats before touching the database; return 400 with clear messages on failure."
     },
     {
+      id: 120,
+      topic: "RestApi",
+      q: "What is idempotency in a REST API, and which HTTP methods are idempotent?",
+      a: "An idempotent operation produces the same result when repeated. GET, PUT and DELETE are idempotent; POST generally is not. Idempotency matters for safe retries — a client can resend a PUT without creating duplicates."
+    },
+    {
+      id: 121,
+      topic: "RestApi",
+      q: "When would you choose REST over GraphQL or WebSockets?",
+      a: "REST for standard CRUD with cacheable, predictable resources and simple tooling. GraphQL when clients need flexible, nested queries in one round trip. WebSockets when you need real-time bidirectional updates like chat or live dashboards."
+    },
+    {
+      id: 122,
+      topic: "RestApi",
+      q: "How do you version an API, and how would you deprecate an old version without breaking clients?",
+      a: "Version in the URL (/api/v1) or via headers. To deprecate: announce a sunset date, add Deprecation/Sunset headers, publish a changelog, keep both versions running during an overlap window, and monitor old-version traffic before removing it."
+    },
+    {
+      id: 123,
+      topic: "RestApi",
+      q: "A client reports intermittent 500 errors on a POST endpoint. How would you debug it?",
+      a: "Reproduce with the exact payload, then check server logs with a request ID for correlation. Common causes: unhandled validation edge cases, database errors or deadlocks, race conditions under concurrent requests, and exhausted resources. Add monitoring and structured logging to catch the next occurrence."
+    },
+    {
+      id: 124,
+      topic: "RestApi",
+      q: "PUT vs PATCH — what is the practical difference, and when would you use each?",
+      a: "PUT replaces the entire resource, so the client must send the full representation; PATCH applies a partial update with only the changed fields. Use PUT for full replacements, PATCH for small updates to large resources — PATCH reduces payload size and avoids overwriting fields the client never read."
+    },
+    {
       id: 45,
       topic: "Laravel",
       q: "Explain MVC in Laravel.",
@@ -301,6 +571,36 @@ export const interviewQuestions = [
       topic: "Laravel",
       q: "What is middleware in Laravel? Give examples.",
       a: "Code that filters HTTP requests: auth, throttle (rate limiting), CORS, verified. Assigned to routes or controllers."
+    },
+    {
+      id: 125,
+      topic: "Laravel",
+      q: "What are service providers and the service container in Laravel?",
+      a: "The service container manages dependency injection: it resolves and injects class dependencies automatically. Service providers bootstrap the app — in register() you bind interfaces to implementations, in boot() you extend framework behavior after all providers are registered."
+    },
+    {
+      id: 126,
+      topic: "Laravel",
+      q: "What is the N+1 query problem in Eloquent, and how do you fix it?",
+      a: "It happens when you load models (1 query) then lazy-load a relationship inside a loop (N extra queries). Fix it with eager loading: User::with('posts')->get(). Use a debug bar or query log to spot the extra queries during development."
+    },
+    {
+      id: 127,
+      topic: "Laravel",
+      q: "How do you handle background jobs in Laravel?",
+      a: "Dispatch job classes to a queue driver (database, Redis); worker processes (queue:work) execute them asynchronously. Failed jobs go to the failed_jobs table for inspection and retry, and Laravel Horizon provides a dashboard to monitor Redis-backed queues."
+    },
+    {
+      id: 128,
+      topic: "Laravel",
+      q: "Form Requests vs inline validation in controllers — when and why use Form Requests?",
+      a: "Form Requests move validation into a dedicated class with rules() and authorize() methods. Use them when validation is complex, reused across endpoints, or needs authorization logic — controllers stay thin and validation becomes testable in isolation."
+    },
+    {
+      id: 129,
+      topic: "Laravel",
+      q: "How would you debug a slow Laravel page?",
+      a: "Start with the query log or Laravel Debugbar to find N+1 queries and missing indexes. Then check for uncached repeated work (use cache()->remember), enable route/config caching, and use Telescope or a profiler to find the actual bottleneck instead of guessing."
     },
     {
       id: 50,
@@ -333,6 +633,36 @@ export const interviewQuestions = [
       a: "Check MIME type and extension, limit size, rename files, store outside the web root, and never trust the original filename."
     },
     {
+      id: 130,
+      topic: "Php",
+      q: "What does declare(strict_types=1) do, and why does it matter?",
+      a: "It makes scalar type hints strict in that file: passing an int where a string is expected throws a TypeError instead of silently coercing the value. It catches type bugs early instead of letting wrong values flow through your code."
+    },
+    {
+      id: 131,
+      topic: "Php",
+      q: "Explain PHP's modern type system: scalar hints, nullable types and union types.",
+      a: "You can type-hint parameters and returns with scalars (int, string), mark them nullable (?string) or combine them (int|string) with union types. Combined with strict_types, wrong values throw TypeError immediately, which turns many runtime bugs into instant, obvious failures."
+    },
+    {
+      id: 132,
+      topic: "Php",
+      q: "How do you debug the classic \"headers already sent\" error?",
+      a: "It means output was sent before header() or session_start() was called. Check for stray whitespace or a BOM before the opening <?php tag, or echo/print calls earlier in the flow. As a safety net, output buffering (ob_start()) holds output until you flush it."
+    },
+    {
+      id: 133,
+      topic: "Php",
+      q: "Traits vs inheritance vs interfaces in PHP — when would you use each?",
+      a: "Inheritance for a true is-a relationship, but PHP allows only single inheritance. Traits share reusable method implementations horizontally across unrelated classes. Interfaces define contracts (method signatures) without implementation — use them to type-hint capabilities."
+    },
+    {
+      id: 134,
+      topic: "Php",
+      q: "How does OPcache improve PHP performance?",
+      a: "Normally PHP recompiles every script to bytecode on each request. OPcache caches that compiled bytecode in shared memory, so subsequent requests skip parsing and compilation entirely — a major speedup with zero code changes."
+    },
+    {
       id: 55,
       topic: "Python",
       q: "What are Python's main data structures?",
@@ -361,6 +691,36 @@ export const interviewQuestions = [
       topic: "Python",
       q: "What is pip?",
       a: "Python's package installer (like npm). pip install -r requirements.txt reproduces an environment."
+    },
+    {
+      id: 135,
+      topic: "Python",
+      q: "What is the GIL, and how does it affect multithreading in Python?",
+      a: "The Global Interpreter Lock lets only one thread execute Python bytecode at a time. Threads still help I/O-bound work (network, disk) because threads release the GIL while waiting; for CPU-bound work, use multiprocessing to run code on multiple cores in parallel."
+    },
+    {
+      id: 136,
+      topic: "Python",
+      q: "List comprehensions vs generators — when would you choose a generator?",
+      a: "A comprehension builds the whole list in memory at once; a generator yields items lazily one at a time. Choose a generator when processing large or unbounded data — memory stays flat regardless of input size, and you can stop iteration early without computing everything."
+    },
+    {
+      id: 137,
+      topic: "Python",
+      q: "How would you debug a slow Python script?",
+      a: "Profile first with cProfile or time the suspect sections — never optimize by guessing. Look for algorithmic issues (nested loops over growing data), accidental repeated work inside loops, and slow I/O done sequentially. Fix the measured hotspot, then re-profile to confirm."
+    },
+    {
+      id: 138,
+      topic: "Python",
+      q: "What are decorators, and when would you write one?",
+      a: "Decorators wrap a function to add behavior — logging, authentication checks, caching, retries — without modifying the function itself. Write one when the same cross-cutting concern applies to many functions and you want it defined once, declaratively, with @ syntax."
+    },
+    {
+      id: 139,
+      topic: "Python",
+      q: "Explain the mutable default argument pitfall in Python and how to avoid it.",
+      a: "Default arguments are evaluated once at function definition, so def f(items=[]) reuses the same list across calls — mutations leak between invocations. Avoid it with a None default: def f(items=None): items = items or []."
     },
     {
       id: 60,
@@ -393,6 +753,36 @@ export const interviewQuestions = [
       a: "Organizing data to reduce redundancy: 1NF atomic values, 2NF no partial dependencies, 3NF no transitive dependencies. Denormalize deliberately for read performance."
     },
     {
+      id: 140,
+      topic: "Sql",
+      q: "WHERE vs HAVING — what is the difference?",
+      a: "WHERE filters individual rows before grouping and aggregation; HAVING filters groups after aggregation. You cannot use aggregate functions like COUNT() in WHERE, but you can in HAVING."
+    },
+    {
+      id: 141,
+      topic: "Sql",
+      q: "What is a database transaction, and what does ACID mean?",
+      a: "A transaction groups statements into an all-or-nothing unit via BEGIN/COMMIT/ROLLBACK. ACID guarantees: Atomicity (all or nothing), Consistency (valid state to valid state), Isolation (concurrent transactions don't interfere), Durability (committed data survives crashes)."
+    },
+    {
+      id: 142,
+      topic: "Sql",
+      q: "How would you debug a slow SQL query?",
+      a: "Run EXPLAIN to see the execution plan: look for full table scans, missing indexes, and unexpectedly large row counts. Common fixes: add the right index, avoid SELECT *, filter early with WHERE, and rewrite correlated subqueries as joins."
+    },
+    {
+      id: 143,
+      topic: "Sql",
+      q: "Subquery vs JOIN — when would you choose one over the other?",
+      a: "Use JOINs when combining related data from multiple tables — the optimizer usually handles them well. Use subqueries for existence checks (WHERE EXISTS), scalar lookups, or when the logic reads more clearly as a nested filter. Measure with EXPLAIN when performance matters."
+    },
+    {
+      id: 144,
+      topic: "Sql",
+      q: "What are window functions? Give an example.",
+      a: "Window functions compute values across a set of rows related to the current row without collapsing them into one row. Example: ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) ranks employees within each department while keeping every row."
+    },
+    {
       id: 65,
       topic: "MongoDb",
       q: "SQL vs MongoDB — when to choose which?",
@@ -421,6 +811,36 @@ export const interviewQuestions = [
       topic: "MongoDb",
       q: "How do you handle relations in MongoDB?",
       a: "Embed for one-to-few data read together; reference via ObjectId plus $lookup for large or shared data."
+    },
+    {
+      id: 145,
+      topic: "MongoDb",
+      q: "What is the aggregation pipeline, and when is it better than find()?",
+      a: "The aggregation pipeline chains stages ($match, $group, $sort, $project) to transform data server-side. It's better than find() for analytics — counts, averages, groupings — because the heavy work happens in the database instead of in your application code."
+    },
+    {
+      id: 146,
+      topic: "MongoDb",
+      q: "How do you keep data consistent across documents without joins?",
+      a: "Design the schema around read patterns: embed data that is read together so a single document write is atomic. When multiple documents must change together, use multi-document transactions (available since MongoDB 4.0) for ACID guarantees."
+    },
+    {
+      id: 147,
+      topic: "MongoDb",
+      q: "Replica sets vs sharding — what problem does each solve?",
+      a: "Replica sets solve high availability: multiple copies of the data with automatic failover if the primary goes down. Sharding solves scale: it partitions data across servers so a dataset too large for one machine can keep growing."
+    },
+    {
+      id: 148,
+      topic: "MongoDb",
+      q: "How would you debug a slow MongoDB query?",
+      a: "Run explain('executionStats') and check whether the winning plan uses an index (IXSCAN) or scans the whole collection (COLLSCAN). A COLLSCAN usually means a missing or wrong index; also check the number of examined vs returned documents — a big gap signals an inefficient query shape."
+    },
+    {
+      id: 149,
+      topic: "MongoDb",
+      q: "What are TTL indexes and capped collections, and when are they useful?",
+      a: "TTL indexes auto-delete documents after a set time — ideal for sessions, tokens and temporary logs. Capped collections are fixed-size and keep insertion order, overwriting the oldest data — useful for high-throughput logs where you only care about recent entries."
     },
     {
       id: 70,
@@ -453,6 +873,36 @@ export const interviewQuestions = [
       a: "Imperative short summary ('Add login validation'), body explaining why, small focused diffs, PR description with context and testing notes."
     },
     {
+      id: 150,
+      topic: "Git",
+      q: "What is git stash, and when would you use it?",
+      a: "Stash temporarily shelves uncommitted changes so you can switch branches with a clean tree, then restores them with git stash pop. Use it when you need to jump to a hotfix or pull updates without committing half-finished work."
+    },
+    {
+      id: 151,
+      topic: "Git",
+      q: "How do you find which commit introduced a bug?",
+      a: "With git bisect: mark the current commit as bad and a known-good older commit as good, then Git binary-searches the range — you test each midpoint and mark it good or bad until it isolates the exact commit that introduced the bug."
+    },
+    {
+      id: 152,
+      topic: "Git",
+      q: "What are Git tags, and when would you use them?",
+      a: "Tags mark specific points in history, typically releases (v1.2.0). Annotated tags store a message, date and author and are meant for public releases; lightweight tags are just pointers. CI pipelines often trigger deployments off tags."
+    },
+    {
+      id: 153,
+      topic: "Git",
+      q: "When would you cherry-pick instead of merging?",
+      a: "Cherry-pick applies one specific commit onto another branch without merging everything. Use it to port a hotfix from main to a release branch, or to grab a single fix without pulling in unrelated changes from a full merge."
+    },
+    {
+      id: 154,
+      topic: "Git",
+      q: "How do you keep secrets out of a repo, and what do you do if one leaks?",
+      a: "Never commit secrets: keep them in environment variables or a secret manager, and list sensitive files in .gitignore. If one leaks, rotate it immediately — assume it's compromised — then purge it from history (git filter-repo) and revoke the old credential; deleting the file alone is not enough."
+    },
+    {
       id: 75,
       topic: "Docker",
       q: "Containers vs virtual machines?",
@@ -481,6 +931,36 @@ export const interviewQuestions = [
       topic: "Docker",
       q: "How would you Dockerize a Node.js app?",
       a: "Dockerfile: FROM node:alpine, WORKDIR, COPY package*.json, RUN npm ci --production, COPY ., EXPOSE 3000, CMD ['node','server.js']. Use a .dockerignore file."
+    },
+    {
+      id: 155,
+      topic: "Docker",
+      q: "What is a multi-stage build, and why would you use one?",
+      a: "A Dockerfile with multiple FROM stages: the first builds the app with compilers and dev tools, the final stage copies only the built artifacts into a slim runtime image. The result is a much smaller, more secure production image with no build tools inside."
+    },
+    {
+      id: 156,
+      topic: "Docker",
+      q: "How do containers talk to each other, and how does a container expose a port to the host?",
+      a: "Containers on the same user-defined network reach each other by container or service name as hostname — no hardcoded IPs needed. To expose a port to the host, publish it with -p host:container (e.g. -p 8080:3000); without publishing, the port is only reachable inside the network."
+    },
+    {
+      id: 157,
+      topic: "Docker",
+      q: "A container crashes immediately on startup. How do you debug it?",
+      a: "Read the output with docker logs — the error is usually there. If logs are empty, override the entrypoint to start a shell instead (docker run --entrypoint sh) and inspect the filesystem, env vars and the failing command manually. Also check the exit code, which often hints at the cause."
+    },
+    {
+      id: 158,
+      topic: "Docker",
+      q: "How do you pass configuration and secrets to containers safely?",
+      a: "Pass non-sensitive config via environment variables or mounted config files, and secrets via a proper secret mechanism (Docker Swarm secrets, or a vault injected at runtime). Never bake secrets into the image with ENV in the Dockerfile — anyone with the image can extract them."
+    },
+    {
+      id: 159,
+      topic: "Docker",
+      q: "What is the difference between CMD and ENTRYPOINT in a Dockerfile?",
+      a: "ENTRYPOINT defines the fixed executable that always runs when the container starts; CMD provides the default arguments, which can be overridden at docker run time. Together they form the full command — a common pattern is ENTRYPOINT ['node'] with CMD ['server.js']."
     }
     ]
   },
@@ -518,6 +998,36 @@ export const interviewQuestions = [
       a: "Dans un useEffect avec un tableau de dépendances vide, on appelle fetch ou axios, puis on stocke le résultat dans le state avec useState. On gère les états de chargement et d'erreur, et on nettoie (ex. annuler la requête) si le composant se démonte."
     },
     {
+      id: 80,
+      topic: "React",
+      q: "Qu'est-ce que le 'lifting state up' (remonter l'état), et quand ce modèle montre-t-il ses limites ?",
+      a: "Remonter l'état consiste à déplacer l'état partagé vers le parent commun le plus proche et à le transmettre via les props. Cela devient ingérable avec un imbriquement profond (prop drilling), auquel cas le contexte ou une bibliothèque d'état est plus adapté."
+    },
+    {
+      id: 81,
+      topic: "React",
+      q: "Expliquez la réconciliation de React et pourquoi les clés (keys) comptent dans les listes.",
+      a: "La réconciliation est la façon dont React compare le nouveau DOM virtuel à l'ancien pour décider des mises à jour minimales du vrai DOM. Les keys permettent à React d'identifier les éléments d'une liste entre les rendus ; des clés instables (comme les index de tableau) provoquent des états obsolètes et des bugs d'interface quand les éléments changent d'ordre."
+    },
+    {
+      id: 82,
+      topic: "React",
+      q: "Qu'est-ce qui provoque des re-rendus inutiles, et comment les corriger ?",
+      a: "Re-rendre un parent re-rend par défaut tous ses enfants, même si leurs props n'ont pas changé. On corrige cela en découpant les composants, en mémoïsant avec React.memo, et en stabilisant les callbacks et valeurs avec useCallback et useMemo."
+    },
+    {
+      id: 83,
+      topic: "React",
+      q: "useMemo vs useCallback — quand chacun vaut-il le coup, et quand est-ce excessif ?",
+      a: "useMemo mémoïse une valeur calculée, useCallback mémoïse une référence de fonction — les deux servent surtout quand ils sont passés à des enfants mémoïsés. Ils sont excessifs pour des calculs peu coûteux ; on profile d'abord, car une mémoïsation inutile ajoute de la complexité sans gain."
+    },
+    {
+      id: 84,
+      topic: "React",
+      q: "Comment mettriez-vous à jour un état profondément imbriqué sans le muter ?",
+      a: "On utilise la forme fonctionnelle du setter en copiant chaque niveau avec le spread pour créer de nouveaux objets, ou une bibliothèque comme Immer pour les structures complexes. On ne mute jamais l'état directement, car React se base sur les changements de référence pour détecter les mises à jour."
+    },
+    {
       id: 5,
       topic: "Javascript",
       q: "Qu'est-ce qu'une closure ? Donnez un cas d'usage.",
@@ -546,6 +1056,36 @@ export const interviewQuestions = [
       topic: "Javascript",
       q: "Comment fonctionne async/await ?",
       a: "Les fonctions async retournent toujours une promesse. await suspend l'exécution jusqu'à la résolution de la promesse, ce qui permet d'écrire du code asynchrone qui se lit comme du code synchrone. On utilise try/catch pour les erreurs."
+    },
+    {
+      id: 85,
+      topic: "Javascript",
+      q: "Expliquez le hoisting. Qu'est-ce qui est hoisted, et dans quel ordre ?",
+      a: "Les déclarations de fonctions sont entièrement remontées, les déclarations var sont remontées mais initialisées à undefined, tandis que let et const restent dans la 'temporal dead zone' jusqu'à leur déclaration. Quand une fonction et un var partagent un nom, la déclaration de fonction l'emporte."
+    },
+    {
+      id: 86,
+      topic: "Javascript",
+      q: "Comment la valeur de `this` est-elle déterminée en JavaScript ?",
+      a: "Elle est déterminée par la façon dont la fonction est appelée : un appel de méthode lie `this` à l'objet, un appel simple donne undefined (mode strict) ou l'objet global, les fonctions fléchées héritent du `this` lexical, et bind/call/apply le fixent explicitement."
+    },
+    {
+      id: 87,
+      topic: "Javascript",
+      q: "Quel problème les promesses résolvent-elles par rapport aux callbacks ?",
+      a: "Elles aplatissent le 'callback hell' en appels .then() chaînables et centralisent la gestion d'erreurs — un seul .catch() gère les échecs partout dans la chaîne. Une promesse est un objet représentant une valeur future, ce qui rend le flux asynchrone composable."
+    },
+    {
+      id: 88,
+      topic: "Javascript",
+      q: "Copie superficielle vs copie profonde — comment cloneriez-vous un objet, et qu'est-ce qui peut casser ?",
+      a: "Le spread et Object.assign ne copient que le premier niveau, donc les objets imbriqués restent partagés. structuredClone() fait une copie profonde mais perd les fonctions, les prototypes et certains objets spéciaux comme les nœuds DOM."
+    },
+    {
+      id: 89,
+      topic: "Javascript",
+      q: "Un appel fetch dans une boucle échoue silencieusement — comment le débogueriez-vous ?",
+      a: "On vérifie l'onglet réseau pour la vraie requête et son statut, puis la gestion des promesses : forEach n'attend pas les callbacks async, donc les rejets non gérés sont avalés. On réécrit avec for...of plus try/catch, et on vérifie toujours response.ok avant de parser."
     },
     {
       id: 10,
@@ -578,6 +1118,36 @@ export const interviewQuestions = [
       a: "Avec une interface ou un type, ex. interface Props { title: string; onClick?: () => void }, puis function Button({ title }: Props)."
     },
     {
+      id: 90,
+      topic: "Typescript",
+      q: "Que sont les types union et intersection ? Donnez un exemple de chacun.",
+      a: "Une union (string | number) signifie qu'une valeur peut être l'un de plusieurs types — idéal pour les machines à états. Une intersection (A & B) combine plusieurs types en un seul qui possède tous leurs membres."
+    },
+    {
+      id: 91,
+      topic: "Typescript",
+      q: "Que fait `as const`, et quand est-ce utile ?",
+      a: "Il restreint une valeur à son type littéral et la rend profondément readonly. C'est utile pour les objets de configuration et les unions discriminées où l'on veut des littéraux de chaîne exacts plutôt que des types string élargis."
+    },
+    {
+      id: 92,
+      topic: "Typescript",
+      q: "Comment typeriez-vous une fonction qui n'accepte que des clés valides d'un objet ?",
+      a: "Avec keyof et une contrainte générique : function get<T, K extends keyof T>(obj: T, key: K). Le compilateur rejette alors toute clé absente de l'objet, et le type de retour est inféré correctement."
+    },
+    {
+      id: 93,
+      topic: "Typescript",
+      q: "Une API tierce retourne du JSON non typé. Comment le rendre type-safe ?",
+      a: "On définit des interfaces pour la forme attendue et on valide la réponse à l'exécution avec une bibliothèque comme Zod, puis on infère le type TypeScript depuis le schéma. On ne fait jamais de cast aveugle avec `as`, qui ne fait que faire taire le compilateur."
+    },
+    {
+      id: 94,
+      topic: "Typescript",
+      q: "Mode strict activé ou non — quand le strict vaut-il la contrainte ?",
+      a: "Le mode strict (surtout strictNullChecks) détecte les bugs null/undefined à la compilation plutôt qu'en production. Il vaut le coup pour tout nouveau projet ; pour du code existant, on active les options progressivement pour éviter une réécriture massive."
+    },
+    {
       id: 15,
       topic: "VueJs",
       q: "Comment fonctionne la réactivité de Vue ?",
@@ -606,6 +1176,36 @@ export const interviewQuestions = [
       topic: "VueJs",
       q: "Comment les composants parent et enfant communiquent-ils ?",
       a: "Du parent vers l'enfant via les props ; de l'enfant vers le parent via les événements émis ($emit). Pour un état partagé entre beaucoup de composants, on utilise Pinia (ou Vuex)."
+    },
+    {
+      id: 95,
+      topic: "VueJs",
+      q: "Comment partageriez-vous l'état entre des composants non liés sans store ?",
+      a: "On utilise provide/inject pour transmettre des données dans l'arbre sans prop drilling. Cela convient pour un état partagé simple, mais pour un état complexe ou qui change souvent, Pinia est le meilleur choix."
+    },
+    {
+      id: 96,
+      topic: "VueJs",
+      q: "Que sont les hooks de cycle de vie, et lequel utiliseriez-vous pour charger les données initiales ?",
+      a: "Des hooks comme onMounted, onUpdated et onUnmounted s'exécutent à des moments précis de la vie d'un composant. On charge les données initiales dans onMounted (le DOM existe alors), et on nettoie les écouteurs ou timers dans onUnmounted."
+    },
+    {
+      id: 97,
+      topic: "VueJs",
+      q: "Expliquez les slots — par défaut, nommés et scopés — et quand utiliseriez-vous un slot scopé ?",
+      a: "Les slots permettent à un parent d'injecter du contenu dans un enfant : les slots par défaut et nommés définissent des points d'insertion. Un slot scopé renvoie des données de l'enfant vers le parent, pour que le parent personnalise le rendu — ex. un composant de liste laissant le parent décider du template de chaque élément."
+    },
+    {
+      id: 98,
+      topic: "VueJs",
+      q: "Une liste se re-rend lentement à chaque frappe — comment le débogueriez-vous ?",
+      a: "On vérifie d'abord les clés manquantes ou instables et les propriétés computed coûteuses exécutées à chaque rendu. On utilise le profiler des devtools Vue, on debounce la saisie, et on envisage v-show plutôt que v-if pour les éléments basculés fréquemment."
+    },
+    {
+      id: 99,
+      topic: "VueJs",
+      q: "Quand choisiriez-vous Vue plutôt que React, ou l'inverse ?",
+      a: "Vue a une courbe d'apprentissage plus douce et des composants monofichiers avec conventions, ce qui convient aux petites équipes. React a le plus grand écosystème et marché de l'emploi. En pratique, la familiarité de l'équipe et le code existant comptent plus que les différences techniques."
     },
     {
       id: 20,
@@ -638,6 +1238,36 @@ export const interviewQuestions = [
       a: "Des attributs personnalisés pour stocker des données supplémentaires sur les éléments, lisibles via element.dataset en JavaScript, sans utiliser d'attributs non standards."
     },
     {
+      id: 100,
+      topic: "Html",
+      q: "Que se passe-t-il entre la saisie d'une URL et l'affichage de la page ?",
+      a: "Le navigateur résout le DNS, récupère le HTML, le parse en DOM, construit le CSSOM, les combine en arbre de rendu, puis fait la mise en page et le paint. Les scripts bloquants et les grosses ressources ralentissent chacune de ces étapes."
+    },
+    {
+      id: 101,
+      topic: "Html",
+      q: "Comment optimise-t-on une page avec beaucoup d'images ?",
+      a: "On utilise loading='lazy' pour les images sous la ligne de flottaison, srcset/sizes pour les variantes responsives, des formats modernes comme WebP ou AVIF, et on définit toujours les attributs width/height pour éviter les décalages de mise en page."
+    },
+    {
+      id: 102,
+      topic: "Html",
+      q: "Quelle est la différence entre <script>, <script async> et <script defer> ?",
+      a: "Un script classique bloque le parsing HTML jusqu'à son téléchargement et son exécution. async télécharge en parallèle et s'exécute dès qu'il est prêt, sans ordre garanti. defer télécharge aussi en parallèle mais s'exécute après le parsing, dans l'ordre du document."
+    },
+    {
+      id: 103,
+      topic: "Html",
+      q: "Un formulaire est soumis mais le back-end reçoit des champs vides — comment le débogueriez-vous ?",
+      a: "On vérifie que chaque champ a un attribut name (sans lui rien n'est envoyé), on contrôle method et enctype dans l'onglet réseau, et on s'assure qu'aucun preventDefault ou validation JavaScript n'avale les données avant la soumission."
+    },
+    {
+      id: 104,
+      topic: "Html",
+      q: "Quand utiliser <button> vs <a> vs <div onclick> ?",
+      a: "On utilise <button> pour les actions qui restent sur la page et <a> pour naviguer vers une nouvelle URL. <div onclick> est un échec d'accessibilité — pas de support clavier, pas de comportement de focus, pas de sémantique pour les lecteurs d'écran."
+    },
+    {
       id: 25,
       topic: "Css",
       q: "Expliquez le modèle de boîte CSS.",
@@ -666,6 +1296,36 @@ export const interviewQuestions = [
       topic: "Css",
       q: "Que sont les variables CSS et pourquoi les utiliser ?",
       a: "Des propriétés personnalisées (--main-color) définies une fois et réutilisées via var(). Elles facilitent le thémage et la maintenance, et peuvent être modifiées à l'exécution avec JavaScript."
+    },
+    {
+      id: 105,
+      topic: "Css",
+      q: "Expliquez la différence entre position: relative, absolute, fixed et sticky.",
+      a: "relative décale un élément de sa place normale sans quitter le flux ; absolute le positionne par rapport à l'ancêtre positionné le plus proche ; fixed le fixe au viewport ; sticky se comporte comme relative jusqu'à un seuil de scroll, puis comme fixed."
+    },
+    {
+      id: 106,
+      topic: "Css",
+      q: "Comment construiriez-vous une mise en page responsive sans media queries ?",
+      a: "On utilise des techniques fluides : flex-wrap, grid avec auto-fit et minmax(), clamp() pour la typographie fluide, et des unités relatives comme % et vw. Cela gère élégamment les tailles intermédiaires que des breakpoints fixes manqueraient."
+    },
+    {
+      id: 107,
+      topic: "Css",
+      q: "Qu'est-ce qui cause le cumulative layout shift (CLS), et comment le prévenir ?",
+      a: "Le CLS vient du contenu qui bouge après le chargement — images sans dimensions, polices ou pubs chargées tardivement. On le prévient en réservant l'espace (width/height ou aspect-ratio), avec font-display: swap, et en évitant d'insérer du contenu au-dessus du contenu existant."
+    },
+    {
+      id: 108,
+      topic: "Css",
+      q: "Un style 'ne s'applique pas' — comment débogueriez-vous un conflit de spécificité ?",
+      a: "On ouvre le panneau Styles/calculé des devtools pour voir quelle règle gagne et lesquelles sont barrées. On cherche des sélecteurs plus spécifiques, des styles inline ou des problèmes d'ordre des sources — et on corrige le sélecteur plutôt que de recourir à !important."
+    },
+    {
+      id: 109,
+      topic: "Css",
+      q: "CSS-in-JS vs classes utilitaires vs CSS classique — comment choisir ?",
+      a: "Le CSS classique (ou Sass) avec une convention de nommage convient aux petits projets et au contrôle total. Les classes utilitaires comme Tailwind accélèrent les designs sur mesure avec cohérence. Le CSS-in-JS convient aux bibliothèques de composants nécessitant des styles dynamiques et scopés, au prix d'un coût d'exécution."
     },
     {
       id: 30,
@@ -698,6 +1358,36 @@ export const interviewQuestions = [
       a: "Pour extraire des motifs d'utilitaires répétés dans une classe CSS réutilisable, ex. .btn { @apply px-4 py-2 rounded; }. À utiliser avec modération pour garder les avantages de l'utility-first."
     },
     {
+      id: 110,
+      topic: "Tailwind",
+      q: "Comment implémente-t-on le dark mode dans Tailwind ?",
+      a: "On utilise la variante dark: (ex. dark:bg-gray-900) et on définit la stratégie dans la config : 'media' suit la préférence de l'OS, 'class' permet de le basculer manuellement avec JavaScript."
+    },
+    {
+      id: 111,
+      topic: "Tailwind",
+      q: "Comment construiriez-vous un design system de marque avec Tailwind ?",
+      a: "On étend le thème dans tailwind.config.js avec les couleurs de marque, les polices et les espacements, et on expose les valeurs modifiables à l'exécution (comme les thèmes) via des variables CSS. La config reste la source unique de vérité pour les design tokens."
+    },
+    {
+      id: 112,
+      topic: "Tailwind",
+      q: "Vos chaînes de classes deviennent longues et illisibles — que faites-vous ?",
+      a: "On extrait un vrai composant (en React/Vue) au lieu de répéter la chaîne — c'est la solution principale. @apply est un recours pour les contextes sans composants, mais en abuser recrée les problèmes de maintenance CSS que l'utility-first devait éviter."
+    },
+    {
+      id: 113,
+      topic: "Tailwind",
+      q: "Tailwind vs une bibliothèque de composants comme Bootstrap — quand Tailwind est-il le mauvais choix ?",
+      a: "Tailwind est le mauvais choix quand on a besoin de composants prêts à l'emploi rapidement, comme pour un prototype d'admin — Bootstrap ou un kit UI les fournit d'emblée. Tailwind gagne pour les designs sur mesure où l'on veut un contrôle visuel total sans lutter contre les styles par défaut d'une bibliothèque."
+    },
+    {
+      id: 114,
+      topic: "Tailwind",
+      q: "Comment la configuration `content` affecte-t-elle le build de production ?",
+      a: "Le moteur JIT n'analyse que les fichiers listés dans `content` ; les utilitaires utilisés dans des chemins manquants sont silencieusement absents du CSS de production. On garde les globs précis — trop étroits, on perd des styles ; trop larges, on ralentit le build."
+    },
+    {
       id: 35,
       topic: "NodeJs",
       q: "Qu'est-ce que Node.js et pourquoi l'utilise-t-on pour le back-end ?",
@@ -726,6 +1416,36 @@ export const interviewQuestions = [
       topic: "NodeJs",
       q: "Que sont les variables d'environnement et pourquoi les utiliser ?",
       a: "De la configuration hors du code (process.env) : clés API, URLs de bases de données. Cela garde les secrets hors du contrôle de version et permet au même code de tourner en dev, staging et prod."
+    },
+    {
+      id: 115,
+      topic: "NodeJs",
+      q: "Que se passe-t-il quand une tâche gourmande en CPU tourne sur l'event loop, et que feriez-vous ?",
+      a: "Elle bloque le thread unique, donc aucune autre requête n'est traitée jusqu'à sa fin — le serveur semble figé. On la délègue à des worker threads, un processus enfant ou une file de tâches, en gardant l'event loop libre pour l'I/O."
+    },
+    {
+      id: 116,
+      topic: "NodeJs",
+      q: "La mémoire de votre API augmente régulièrement sur plusieurs jours — comment le débogueriez-vous ?",
+      a: "On prend des snapshots du heap avec --inspect et on les compare pour trouver ce qui s'accumule — les coupables typiques sont les caches sans limite, les écouteurs d'événements oubliés et les timers. On suit aussi la RSS dans le temps et on revoit tout ce qui est stocké dans des globales de module."
+    },
+    {
+      id: 117,
+      topic: "NodeJs",
+      q: "Quelle est la différence entre process.nextTick, setImmediate et setTimeout(0) ?",
+      a: "Les callbacks process.nextTick s'exécutent avant que l'event loop passe à la phase suivante — ils peuvent affamer l'I/O si on en abuse. setImmediate s'exécute dans la phase check après les callbacks d'I/O ; setTimeout(0) s'exécute dans la phase timers, après environ 1ms minimum."
+    },
+    {
+      id: 118,
+      topic: "NodeJs",
+      q: "Comment structureriez-vous une app Express de taille conséquente pour la garder maintenable ?",
+      a: "On sépare les responsabilités en couches : les routes définissent les endpoints, les contrôleurs gèrent requête/réponse, les services portent la logique métier, et les middlewares les préoccupations transverses comme l'auth. On ajoute un middleware d'erreurs centralisé et on charge toute la config depuis les variables d'environnement."
+    },
+    {
+      id: 119,
+      topic: "NodeJs",
+      q: "Monolithe vs microservices en Node — comment décider ?",
+      a: "On commence avec un monolithe modulaire : plus simple à développer, tester et déployer, et Node le gère bien. On découpe en microservices seulement face à de vrais goulots d'étranglement ou un besoin d'autonomie des équipes — la distribution ajoute un coût opérationnel dès le premier jour."
     },
     {
       id: 40,
@@ -758,6 +1478,36 @@ export const interviewQuestions = [
       a: "Avec une bibliothèque de validation (Joi, Zod, express-validator) : on vérifie les types, les champs requis et les formats avant de toucher à la base de données ; on retourne 400 avec des messages clairs en cas d'échec."
     },
     {
+      id: 120,
+      topic: "RestApi",
+      q: "Qu'est-ce que l'idempotence dans une API REST, et quelles méthodes HTTP sont idempotentes ?",
+      a: "Une opération idempotente produit le même résultat quand on la répète. GET, PUT et DELETE sont idempotentes ; POST ne l'est généralement pas. L'idempotence compte pour les réessais sûrs — un client peut renvoyer un PUT sans créer de doublons."
+    },
+    {
+      id: 121,
+      topic: "RestApi",
+      q: "Quand choisiriez-vous REST plutôt que GraphQL ou les WebSockets ?",
+      a: "REST pour du CRUD standard avec des ressources cachables, prévisibles et un outillage simple. GraphQL quand les clients ont besoin de requêtes flexibles et imbriquées en un seul aller-retour. WebSockets pour des mises à jour bidirectionnelles en temps réel comme le chat ou les tableaux de bord live."
+    },
+    {
+      id: 122,
+      topic: "RestApi",
+      q: "Comment versionne-t-on une API, et comment déprécier une ancienne version sans casser les clients ?",
+      a: "On versionne dans l'URL (/api/v1) ou via les en-têtes. Pour déprécier : annoncer une date de fin, ajouter les en-têtes Deprecation/Sunset, publier un changelog, garder les deux versions en parallèle pendant une période de transition, et surveiller le trafic de l'ancienne version avant de la retirer."
+    },
+    {
+      id: 123,
+      topic: "RestApi",
+      q: "Un client signale des erreurs 500 intermittentes sur un endpoint POST. Comment débogueriez-vous cela ?",
+      a: "Reproduire avec la charge exacte, puis vérifier les logs serveur avec un identifiant de requête pour la corrélation. Causes fréquentes : cas limites de validation non gérés, erreurs ou deadlocks de base de données, conditions de concurrence sous requêtes simultanées, et ressources épuisées. Ajouter du monitoring et des logs structurés pour attraper la prochaine occurrence."
+    },
+    {
+      id: 124,
+      topic: "RestApi",
+      q: "PUT vs PATCH — quelle est la différence pratique, et quand utiliser chacun ?",
+      a: "PUT remplace la ressource entière, donc le client doit envoyer la représentation complète ; PATCH applique une mise à jour partielle avec uniquement les champs modifiés. On utilise PUT pour les remplacements complets, PATCH pour de petites mises à jour de grosses ressources — PATCH réduit la taille des requêtes et évite d'écraser des champs que le client n'a jamais lus."
+    },
+    {
       id: 45,
       topic: "Laravel",
       q: "Expliquez le MVC dans Laravel.",
@@ -786,6 +1536,36 @@ export const interviewQuestions = [
       topic: "Laravel",
       q: "Qu'est-ce qu'un middleware dans Laravel ? Donnez des exemples.",
       a: "Du code qui filtre les requêtes HTTP : auth, throttle (limitation de débit), CORS, verified. Assigné aux routes ou aux contrôleurs."
+    },
+    {
+      id: 125,
+      topic: "Laravel",
+      q: "Que sont les service providers et le conteneur de services dans Laravel ?",
+      a: "Le conteneur de services gère l'injection de dépendances : il résout et injecte automatiquement les dépendances des classes. Les service providers amorcent l'application — dans register() on lie les interfaces aux implémentations, dans boot() on étend le comportement du framework une fois tous les providers enregistrés."
+    },
+    {
+      id: 126,
+      topic: "Laravel",
+      q: "Qu'est-ce que le problème de requêtes N+1 dans Eloquent, et comment le corrige-t-on ?",
+      a: "Il survient quand on charge des modèles (1 requête) puis qu'on charge une relation paresseusement dans une boucle (N requêtes supplémentaires). On le corrige avec le chargement anticipé : User::with('posts')->get(). On utilise une barre de debug ou un journal de requêtes pour repérer les requêtes superflues en développement."
+    },
+    {
+      id: 127,
+      topic: "Laravel",
+      q: "Comment gère-t-on les tâches en arrière-plan dans Laravel ?",
+      a: "On envoie des classes de jobs vers un pilote de file (base de données, Redis) ; des workers (queue:work) les exécutent de façon asynchrone. Les jobs échoués vont dans la table failed_jobs pour inspection et réessai, et Laravel Horizon fournit un tableau de bord pour surveiller les files basées sur Redis."
+    },
+    {
+      id: 128,
+      topic: "Laravel",
+      q: "Form Requests vs validation inline dans les contrôleurs — quand et pourquoi utiliser les Form Requests ?",
+      a: "Les Form Requests déplacent la validation dans une classe dédiée avec les méthodes rules() et authorize(). On les utilise quand la validation est complexe, réutilisée entre endpoints, ou nécessite une logique d'autorisation — les contrôleurs restent minces et la validation devient testable isolément."
+    },
+    {
+      id: 129,
+      topic: "Laravel",
+      q: "Comment débogueriez-vous une page Laravel lente ?",
+      a: "On commence par le journal de requêtes ou Laravel Debugbar pour trouver les requêtes N+1 et les index manquants. Puis on vérifie le travail répété non caché (utiliser cache()->remember), on active le cache des routes/config, et on utilise Telescope ou un profiler pour trouver le vrai goulot au lieu de deviner."
     },
     {
       id: 50,
@@ -818,6 +1598,36 @@ export const interviewQuestions = [
       a: "On vérifie le type MIME et l'extension, on limite la taille, on renomme les fichiers, on les stocke hors de la racine web, et on ne fait jamais confiance au nom de fichier d'origine."
     },
     {
+      id: 130,
+      topic: "Php",
+      q: "Que fait declare(strict_types=1), et pourquoi est-ce important ?",
+      a: "Cela rend les types scalaires stricts dans ce fichier : passer un int là où une string est attendue lève une TypeError au lieu de convertir silencieusement la valeur. Cela détecte les erreurs de type tôt au lieu de laisser de mauvaises valeurs circuler dans le code."
+    },
+    {
+      id: 131,
+      topic: "Php",
+      q: "Expliquez le système de types moderne de PHP : types scalaires, types nullables et types union.",
+      a: "On peut typer les paramètres et retours avec des scalaires (int, string), les marquer nullables (?string) ou les combiner (int|string) avec les types union. Combiné à strict_types, les mauvaises valeurs lèvent immédiatement une TypeError, ce qui transforme beaucoup de bugs d'exécution en échecs instantanés et évidents."
+    },
+    {
+      id: 132,
+      topic: "Php",
+      q: "Comment débogue-t-on la classique erreur « headers already sent » ?",
+      a: "Cela signifie qu'une sortie a été envoyée avant l'appel à header() ou session_start(). On vérifie les espaces parasites ou un BOM avant la balise ouvrante <?php, ou des appels echo/print plus tôt dans le flux. En filet de sécurité, la temporisation de sortie (ob_start()) retient la sortie jusqu'à ce qu'on la vide."
+    },
+    {
+      id: 133,
+      topic: "Php",
+      q: "Traits vs héritage vs interfaces en PHP — quand utiliser chacun ?",
+      a: "L'héritage pour une vraie relation est-un, mais PHP n'autorise que l'héritage simple. Les traits partagent des implémentations de méthodes réutilisables horizontalement entre classes sans lien. Les interfaces définissent des contrats (signatures de méthodes) sans implémentation — on les utilise pour typer des capacités."
+    },
+    {
+      id: 134,
+      topic: "Php",
+      q: "Comment OPcache améliore-t-il les performances de PHP ?",
+      a: "Normalement PHP recompile chaque script en bytecode à chaque requête. OPcache met en cache ce bytecode compilé en mémoire partagée, donc les requêtes suivantes sautent entièrement l'analyse et la compilation — un gain de vitesse majeur sans changer une ligne de code."
+    },
+    {
       id: 55,
       topic: "Python",
       q: "Quelles sont les principales structures de données de Python ?",
@@ -846,6 +1656,36 @@ export const interviewQuestions = [
       topic: "Python",
       q: "Qu'est-ce que pip ?",
       a: "L'installateur de paquets de Python (comme npm). pip install -r requirements.txt reproduit un environnement."
+    },
+    {
+      id: 135,
+      topic: "Python",
+      q: "Qu'est-ce que le GIL, et comment affecte-t-il le multithreading en Python ?",
+      a: "Le Global Interpreter Lock ne laisse qu'un seul thread exécuter du bytecode Python à la fois. Les threads restent utiles pour le travail lié aux I/O (réseau, disque) car ils libèrent le GIL en attendant ; pour le travail lié au CPU, on utilise multiprocessing pour exécuter du code en parallèle sur plusieurs cœurs."
+    },
+    {
+      id: 136,
+      topic: "Python",
+      q: "Compréhensions de listes vs générateurs — quand choisir un générateur ?",
+      a: "Une compréhension construit toute la liste en mémoire d'un coup ; un générateur produit les éléments paresseusement un par un. On choisit un générateur pour traiter des données volumineuses ou illimitées — la mémoire reste stable quelle que soit la taille d'entrée, et on peut arrêter l'itération tôt sans tout calculer."
+    },
+    {
+      id: 137,
+      topic: "Python",
+      q: "Comment débogueriez-vous un script Python lent ?",
+      a: "On profile d'abord avec cProfile ou on chronomètre les sections suspectes — jamais d'optimisation au hasard. On cherche les problèmes algorithmiques (boucles imbriquées sur des données croissantes), le travail répété par accident dans les boucles, et les I/O lentes faites séquentiellement. On corrige le point chaud mesuré, puis on re-profile pour confirmer."
+    },
+    {
+      id: 138,
+      topic: "Python",
+      q: "Que sont les décorateurs, et quand en écririez-vous un ?",
+      a: "Les décorateurs enveloppent une fonction pour ajouter un comportement — journalisation, vérifications d'authentification, cache, réessais — sans modifier la fonction elle-même. On en écrit un quand la même préoccupation transversale s'applique à beaucoup de fonctions et qu'on veut la définir une seule fois, déclarativement, avec la syntaxe @."
+    },
+    {
+      id: 139,
+      topic: "Python",
+      q: "Expliquez le piège des arguments par défaut mutables en Python et comment l'éviter.",
+      a: "Les arguments par défaut sont évalués une seule fois à la définition de la fonction, donc def f(items=[]) réutilise la même liste entre les appels — les mutations fuient d'un appel à l'autre. On l'évite avec un défaut None : def f(items=None): items = items or []."
     },
     {
       id: 60,
@@ -878,6 +1718,36 @@ export const interviewQuestions = [
       a: "Organiser les données pour réduire la redondance : 1NF valeurs atomiques, 2NF pas de dépendances partielles, 3NF pas de dépendances transitives. Dénormaliser délibérément pour les performances en lecture."
     },
     {
+      id: 140,
+      topic: "Sql",
+      q: "WHERE vs HAVING — quelle est la différence ?",
+      a: "WHERE filtre les lignes individuelles avant le regroupement et l'agrégation ; HAVING filtre les groupes après l'agrégation. On ne peut pas utiliser de fonctions d'agrégation comme COUNT() dans WHERE, mais on le peut dans HAVING."
+    },
+    {
+      id: 141,
+      topic: "Sql",
+      q: "Qu'est-ce qu'une transaction de base de données, et que signifie ACID ?",
+      a: "Une transaction regroupe des instructions en une unité tout-ou-rien via BEGIN/COMMIT/ROLLBACK. ACID garantit : Atomicité (tout ou rien), Cohérence (d'un état valide à un état valide), Isolation (les transactions concurrentes n'interfèrent pas), Durabilité (les données validées survivent aux pannes)."
+    },
+    {
+      id: 142,
+      topic: "Sql",
+      q: "Comment débogueriez-vous une requête SQL lente ?",
+      a: "On exécute EXPLAIN pour voir le plan d'exécution : on cherche les scans complets de table, les index manquants et les nombres de lignes anormalement élevés. Corrections fréquentes : ajouter le bon index, éviter SELECT *, filtrer tôt avec WHERE, et réécrire les sous-requêtes corrélées en jointures."
+    },
+    {
+      id: 143,
+      topic: "Sql",
+      q: "Sous-requête vs JOIN — quand choisir l'un plutôt que l'autre ?",
+      a: "On utilise les JOINs pour combiner des données liées de plusieurs tables — l'optimiseur les gère généralement bien. On utilise les sous-requêtes pour les tests d'existence (WHERE EXISTS), les recherches scalaires, ou quand la logique se lit plus clairement comme un filtre imbriqué. On mesure avec EXPLAIN quand la performance compte."
+    },
+    {
+      id: 144,
+      topic: "Sql",
+      q: "Que sont les fonctions de fenêtrage ? Donnez un exemple.",
+      a: "Les fonctions de fenêtrage calculent des valeurs sur un ensemble de lignes liées à la ligne courante sans les fusionner en une seule ligne. Exemple : ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) classe les employés au sein de chaque département tout en gardant chaque ligne."
+    },
+    {
       id: 65,
       topic: "MongoDb",
       q: "SQL vs MongoDB — quand choisir lequel ?",
@@ -906,6 +1776,36 @@ export const interviewQuestions = [
       topic: "MongoDb",
       q: "Comment gère-t-on les relations dans MongoDB ?",
       a: "On embarque pour les données one-to-few lues ensemble ; on référence via ObjectId plus $lookup pour les données volumineuses ou partagées."
+    },
+    {
+      id: 145,
+      topic: "MongoDb",
+      q: "Qu'est-ce que le pipeline d'agrégation, et quand est-il meilleur que find() ?",
+      a: "Le pipeline d'agrégation enchaîne des étapes ($match, $group, $sort, $project) pour transformer les données côté serveur. Il est meilleur que find() pour l'analytique — comptages, moyennes, regroupements — car le gros du travail se fait dans la base plutôt que dans le code applicatif."
+    },
+    {
+      id: 146,
+      topic: "MongoDb",
+      q: "Comment garde-t-on la cohérence des données entre documents sans jointures ?",
+      a: "On conçoit le schéma autour des patterns de lecture : on embarque les données lues ensemble pour qu'une seule écriture de document soit atomique. Quand plusieurs documents doivent changer ensemble, on utilise les transactions multi-documents (disponibles depuis MongoDB 4.0) pour des garanties ACID."
+    },
+    {
+      id: 147,
+      topic: "MongoDb",
+      q: "Replica sets vs sharding — quel problème chacun résout-il ?",
+      a: "Les replica sets résolvent la haute disponibilité : plusieurs copies des données avec bascule automatique si le primaire tombe. Le sharding résout la scalabilité : il partitionne les données sur plusieurs serveurs pour qu'un jeu de données trop gros pour une machine puisse continuer à croître."
+    },
+    {
+      id: 148,
+      topic: "MongoDb",
+      q: "Comment débogueriez-vous une requête MongoDB lente ?",
+      a: "On exécute explain('executionStats') et on vérifie si le plan gagnant utilise un index (IXSCAN) ou scanne toute la collection (COLLSCAN). Un COLLSCAN signifie généralement un index manquant ou inadapté ; on vérifie aussi le nombre de documents examinés vs retournés — un gros écart signale une requête inefficace."
+    },
+    {
+      id: 149,
+      topic: "MongoDb",
+      q: "Que sont les index TTL et les collections capped, et quand sont-ils utiles ?",
+      a: "Les index TTL suppriment automatiquement les documents après un délai — idéals pour les sessions, tokens et logs temporaires. Les collections capped ont une taille fixe et conservent l'ordre d'insertion en écrasant les données les plus anciennes — utiles pour des logs à fort débit où seules les entrées récentes comptent."
     },
     {
       id: 70,
@@ -938,6 +1838,36 @@ export const interviewQuestions = [
       a: "Résumé court à l'impératif ('Add login validation'), corps expliquant le pourquoi, diffs petits et ciblés, description de PR avec contexte et notes de test."
     },
     {
+      id: 150,
+      topic: "Git",
+      q: "Qu'est-ce que git stash, et quand l'utiliserait-on ?",
+      a: "Stash met temporairement de côté les changements non committés pour changer de branche avec un arbre propre, puis les restaure avec git stash pop. On l'utilise quand on doit passer à un correctif urgent ou récupérer des mises à jour sans committer un travail à moitié fini."
+    },
+    {
+      id: 151,
+      topic: "Git",
+      q: "Comment trouve-t-on quel commit a introduit un bug ?",
+      a: "Avec git bisect : on marque le commit actuel comme mauvais et un commit plus ancien connu comme bon, puis Git fait une recherche dichotomique sur l'intervalle — on teste chaque point médian et on le marque bon ou mauvais jusqu'à isoler le commit exact qui a introduit le bug."
+    },
+    {
+      id: 152,
+      topic: "Git",
+      q: "Que sont les tags Git, et quand les utiliserait-on ?",
+      a: "Les tags marquent des points précis de l'historique, typiquement les releases (v1.2.0). Les tags annotés stockent un message, une date et un auteur et sont destinés aux releases publiques ; les tags légers sont de simples pointeurs. Les pipelines CI déclenchent souvent les déploiements à partir des tags."
+    },
+    {
+      id: 153,
+      topic: "Git",
+      q: "Quand ferait-on un cherry-pick plutôt qu'un merge ?",
+      a: "Le cherry-pick applique un commit précis sur une autre branche sans tout fusionner. On l'utilise pour porter un correctif urgent de main vers une branche de release, ou pour récupérer un seul correctif sans ramener les changements non liés d'un merge complet."
+    },
+    {
+      id: 154,
+      topic: "Git",
+      q: "Comment garde-t-on les secrets hors d'un dépôt, et que faire si l'un fuite ?",
+      a: "Ne jamais committer de secrets : les garder dans des variables d'environnement ou un gestionnaire de secrets, et lister les fichiers sensibles dans .gitignore. En cas de fuite, le renouveler immédiatement — le considérer comme compromis — puis le purger de l'historique (git filter-repo) et révoquer l'ancien identifiant ; supprimer le fichier seul ne suffit pas."
+    },
+    {
       id: 75,
       topic: "Docker",
       q: "Conteneurs vs machines virtuelles ?",
@@ -966,6 +1896,36 @@ export const interviewQuestions = [
       topic: "Docker",
       q: "Comment Dockeriseriez-vous une app Node.js ?",
       a: "Dockerfile : FROM node:alpine, WORKDIR, COPY package*.json, RUN npm ci --production, COPY ., EXPOSE 3000, CMD ['node','server.js']. Utiliser un fichier .dockerignore."
+    },
+    {
+      id: 155,
+      topic: "Docker",
+      q: "Qu'est-ce qu'un build multi-stage, et pourquoi en utiliser un ?",
+      a: "Un Dockerfile avec plusieurs étapes FROM : la première construit l'app avec compilateurs et outils de dev, l'étape finale ne copie que les artefacts construits dans une image d'exécution allégée. Le résultat est une image de production bien plus petite et plus sûre, sans outils de build à l'intérieur."
+    },
+    {
+      id: 156,
+      topic: "Docker",
+      q: "Comment les conteneurs communiquent-ils entre eux, et comment un conteneur expose-t-il un port à l'hôte ?",
+      a: "Les conteneurs sur le même réseau défini par l'utilisateur se joignent par nom de conteneur ou de service comme nom d'hôte — pas besoin d'IPs codées en dur. Pour exposer un port à l'hôte, on le publie avec -p hôte:conteneur (ex. -p 8080:3000) ; sans publication, le port n'est joignable que depuis le réseau."
+    },
+    {
+      id: 157,
+      topic: "Docker",
+      q: "Un conteneur plante immédiatement au démarrage. Comment le débogue-t-on ?",
+      a: "On lit la sortie avec docker logs — l'erreur s'y trouve généralement. Si les logs sont vides, on remplace l'entrypoint pour démarrer un shell à la place (docker run --entrypoint sh) et on inspecte manuellement le système de fichiers, les variables d'environnement et la commande défaillante. On vérifie aussi le code de sortie, qui indique souvent la cause."
+    },
+    {
+      id: 158,
+      topic: "Docker",
+      q: "Comment passe-t-on la configuration et les secrets aux conteneurs en sécurité ?",
+      a: "On passe la config non sensible via variables d'environnement ou fichiers de config montés, et les secrets via un vrai mécanisme de secrets (secrets Docker Swarm, ou un coffre injecté à l'exécution). Ne jamais intégrer de secrets dans l'image avec ENV dans le Dockerfile — quiconque a l'image peut les extraire."
+    },
+    {
+      id: 159,
+      topic: "Docker",
+      q: "Quelle est la différence entre CMD et ENTRYPOINT dans un Dockerfile ?",
+      a: "ENTRYPOINT définit l'exécutable fixe qui tourne toujours au démarrage du conteneur ; CMD fournit les arguments par défaut, qu'on peut surcharger au docker run. Ensemble ils forment la commande complète — un pattern courant est ENTRYPOINT ['node'] avec CMD ['server.js']."
     }
     ]
   }
