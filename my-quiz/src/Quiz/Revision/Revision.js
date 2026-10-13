@@ -25,6 +25,11 @@ export const Revision = () => {
   const explainLabel = langueTrans === "FR" ? "💡 Explique-moi" : DR ? "💡 Chreh liya" : "💡 Explain";
   const [showExample, setShowExample] = useState(false);
   const exampleLabel = DR ? "</> Mithal" : FR ? "</> Exemple" : "</> Example";
+  const [showSelfQ, setShowSelfQ] = useState(false);
+  const [showSelfA, setShowSelfA] = useState(false);
+  const selfQLabel = DR ? "❓ Soal" : "❓ Question";
+  const revealALabel = DR ? "Click bach tchouf ljawab" : FR ? "Touchez pour voir la réponse" : "Tap to reveal the answer";
+  const answerLabel = DR ? "Ljawaab" : FR ? "Réponse" : "Answer";
   // One thing per page: the stack grid is only shown to pick/change the
   // stack; the reading view shows ONLY the step card (no grid above it).
   const [showGrid, setShowGrid] = useState(false);
@@ -38,6 +43,8 @@ export const Revision = () => {
     setStep(0);
     setShowExplain(false);
     setShowExample(false);
+    setShowSelfQ(false);
+    setShowSelfA(false);
   }, [topic, langueTrans]);
 
   // When the user picks a stack on the start screen then hits "Cours",
@@ -53,6 +60,8 @@ export const Revision = () => {
   const go = (delta) => {
     setShowExplain(false);
     setShowExample(false);
+    setShowSelfQ(false);
+    setShowSelfA(false);
     setStep((s) => Math.min(Math.max(s + delta, 0), total - 1));
   };
 
@@ -157,6 +166,37 @@ export const Revision = () => {
               <div className="explain-panel example-panel">
                 <span className="explain-panel-label">{exampleLabel}</span>
                 <pre className="example-code">{notes[step].example}</pre>
+                {notes[step].q && notes[step].a && (
+                  <div className="selftest">
+                    <button
+                      type="button"
+                      className={`selftest-toggle${showSelfQ ? " is-open" : ""}`}
+                      onClick={() => { setShowSelfQ((v) => !v); setShowSelfA(false); }}
+                      aria-expanded={showSelfQ}
+                    >
+                      {selfQLabel}
+                    </button>
+                    {showSelfQ && (
+                      <div className="selftest-body">
+                        <p className="selftest-q">{notes[step].q}</p>
+                        {!showSelfA ? (
+                          <button
+                            type="button"
+                            className="selftest-reveal"
+                            onClick={() => setShowSelfA(true)}
+                          >
+                            {revealALabel}
+                          </button>
+                        ) : (
+                          <div className="selftest-a-wrap">
+                            <span className="selftest-a-label">{answerLabel}</span>
+                            <p className="selftest-a">{notes[step].a}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
