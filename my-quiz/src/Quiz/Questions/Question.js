@@ -110,7 +110,13 @@ function Question({
                   className={
                     index === data.correct && showCorrectAnswer ? "is-true" : ""
                   }
-                  data-selected={markSelection === index ? true : null}
+                  data-selected={
+                    (showCorrectAnswer === false
+                      ? answer === value
+                      : markSelection === index)
+                      ? true
+                      : null
+                  }
                 >
                   <input
                     type="radio"
