@@ -616,7 +616,7 @@ export const supabaseQuestions = [
           "Node.js",
           "Deno",
           "Bun",
-          "Python"
+          "Go"
         ],
         "correct": 1,
         "selection": null
@@ -1358,7 +1358,7 @@ export const supabaseQuestions = [
           "Node.js",
           "Deno",
           "Bun",
-          "Python"
+          "Go"
         ],
         "correct": 1,
         "selection": null

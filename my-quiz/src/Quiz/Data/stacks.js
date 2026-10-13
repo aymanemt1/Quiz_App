@@ -11,7 +11,6 @@ export const STACK_ICONS = {
   RestApi: "🔌",
   Laravel: "🔺",
   Php: "🐘",
-  Python: "🐍",
   Sql: "🗄️",
   MongoDb: "🍃",
   Git: "🌿",

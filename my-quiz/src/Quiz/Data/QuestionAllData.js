@@ -5,7 +5,6 @@ import { laravelQuestions } from "./QuestiondataLaravel";
 import { mongodbQuestions } from "./QuestiondataMongoDb";
 import { nodejsQuestions } from "./QuestiondataNode";
 import { phpQuestions } from "./QuestiondataPhp";
-import { pythonQuestions } from "./QuestiondataPython";
 import {reactQuestions} from './QuestiondataReact'
 import { sqlQuestions } from "./QuestiondataSql";
 import { typescriptQuestions } from "./QuestiondataTypescript";
@@ -37,7 +36,6 @@ export const TOPIC_KEYS = [
   "RestApi",
   "Laravel",
   "Php",
-  "Python",
   "Sql",
   "MongoDb",
   "Git",
@@ -66,7 +64,6 @@ export const TOPIC_LABELS = {
   RestApi: "REST API",
   Laravel: "Laravel",
   Php: "Php",
-  Python: "Python",
   Sql: "Sql",
   MongoDb: "MongoDb",
   Git: "Git",
@@ -86,7 +83,6 @@ export const TOPIC_LABELS = {
 export const questionsData = {
   type: {
     Javascript: [...javascriptQuestions],
-    Python: [...pythonQuestions],
     Css: [...questionsCss],
     Html: [...questionsHtml],
     React: [...reactQuestions],

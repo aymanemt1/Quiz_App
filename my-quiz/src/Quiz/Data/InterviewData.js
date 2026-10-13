@@ -663,66 +663,6 @@ export const interviewQuestions = [
       a: "Normally PHP recompiles every script to bytecode on each request. OPcache caches that compiled bytecode in shared memory, so subsequent requests skip parsing and compilation entirely — a major speedup with zero code changes."
     },
     {
-      id: 55,
-      topic: "Python",
-      q: "What are Python's main data structures?",
-      a: "list (ordered, mutable), tuple (ordered, immutable), dict (key-value), set (unique values). Choose by mutability and lookup needs."
-    },
-    {
-      id: 56,
-      topic: "Python",
-      q: "List vs tuple vs dict — when to use each?",
-      a: "List for ordered collections you modify; tuple for fixed records; dict for labeled lookups."
-    },
-    {
-      id: 57,
-      topic: "Python",
-      q: "What is a virtualenv and why use it?",
-      a: "An isolated Python environment per project so dependencies don't clash. Created with venv and activated per shell."
-    },
-    {
-      id: 58,
-      topic: "Python",
-      q: "How do you handle errors in Python?",
-      a: "try/except/else/finally blocks; raise custom exceptions; catch specific exception types, not bare except."
-    },
-    {
-      id: 59,
-      topic: "Python",
-      q: "What is pip?",
-      a: "Python's package installer (like npm). pip install -r requirements.txt reproduces an environment."
-    },
-    {
-      id: 135,
-      topic: "Python",
-      q: "What is the GIL, and how does it affect multithreading in Python?",
-      a: "The Global Interpreter Lock lets only one thread execute Python bytecode at a time. Threads still help I/O-bound work (network, disk) because threads release the GIL while waiting; for CPU-bound work, use multiprocessing to run code on multiple cores in parallel."
-    },
-    {
-      id: 136,
-      topic: "Python",
-      q: "List comprehensions vs generators — when would you choose a generator?",
-      a: "A comprehension builds the whole list in memory at once; a generator yields items lazily one at a time. Choose a generator when processing large or unbounded data — memory stays flat regardless of input size, and you can stop iteration early without computing everything."
-    },
-    {
-      id: 137,
-      topic: "Python",
-      q: "How would you debug a slow Python script?",
-      a: "Profile first with cProfile or time the suspect sections — never optimize by guessing. Look for algorithmic issues (nested loops over growing data), accidental repeated work inside loops, and slow I/O done sequentially. Fix the measured hotspot, then re-profile to confirm."
-    },
-    {
-      id: 138,
-      topic: "Python",
-      q: "What are decorators, and when would you write one?",
-      a: "Decorators wrap a function to add behavior — logging, authentication checks, caching, retries — without modifying the function itself. Write one when the same cross-cutting concern applies to many functions and you want it defined once, declaratively, with @ syntax."
-    },
-    {
-      id: 139,
-      topic: "Python",
-      q: "Explain the mutable default argument pitfall in Python and how to avoid it.",
-      a: "Default arguments are evaluated once at function definition, so def f(items=[]) reuses the same list across calls — mutations leak between invocations. Avoid it with a None default: def f(items=None): items = items or []."
-    },
-    {
       id: 60,
       topic: "Sql",
       q: "Write a query to get all users older than 18, sorted by name.",
@@ -1876,66 +1816,6 @@ export const interviewQuestions = [
       topic: "Php",
       q: "Comment OPcache améliore-t-il les performances de PHP ?",
       a: "Normalement PHP recompile chaque script en bytecode à chaque requête. OPcache met en cache ce bytecode compilé en mémoire partagée, donc les requêtes suivantes sautent entièrement l'analyse et la compilation — un gain de vitesse majeur sans changer une ligne de code."
-    },
-    {
-      id: 55,
-      topic: "Python",
-      q: "Quelles sont les principales structures de données de Python ?",
-      a: "list (ordonnée, modifiable), tuple (ordonnée, immuable), dict (clé-valeur), set (valeurs uniques). On choisit selon la mutabilité et les besoins de recherche."
-    },
-    {
-      id: 56,
-      topic: "Python",
-      q: "List vs tuple vs dict — quand utiliser chacun ?",
-      a: "List pour des collections ordonnées qu'on modifie ; tuple pour des enregistrements fixes ; dict pour des recherches par étiquettes."
-    },
-    {
-      id: 57,
-      topic: "Python",
-      q: "Qu'est-ce qu'un virtualenv et pourquoi l'utiliser ?",
-      a: "Un environnement Python isolé par projet pour éviter les conflits de dépendances. Créé avec venv et activé par shell."
-    },
-    {
-      id: 58,
-      topic: "Python",
-      q: "Comment gère-t-on les erreurs en Python ?",
-      a: "Blocs try/except/else/finally ; lever des exceptions personnalisées ; capturer des types d'exceptions précis, pas de except nu."
-    },
-    {
-      id: 59,
-      topic: "Python",
-      q: "Qu'est-ce que pip ?",
-      a: "L'installateur de paquets de Python (comme npm). pip install -r requirements.txt reproduit un environnement."
-    },
-    {
-      id: 135,
-      topic: "Python",
-      q: "Qu'est-ce que le GIL, et comment affecte-t-il le multithreading en Python ?",
-      a: "Le Global Interpreter Lock ne laisse qu'un seul thread exécuter du bytecode Python à la fois. Les threads restent utiles pour le travail lié aux I/O (réseau, disque) car ils libèrent le GIL en attendant ; pour le travail lié au CPU, on utilise multiprocessing pour exécuter du code en parallèle sur plusieurs cœurs."
-    },
-    {
-      id: 136,
-      topic: "Python",
-      q: "Compréhensions de listes vs générateurs — quand choisir un générateur ?",
-      a: "Une compréhension construit toute la liste en mémoire d'un coup ; un générateur produit les éléments paresseusement un par un. On choisit un générateur pour traiter des données volumineuses ou illimitées — la mémoire reste stable quelle que soit la taille d'entrée, et on peut arrêter l'itération tôt sans tout calculer."
-    },
-    {
-      id: 137,
-      topic: "Python",
-      q: "Comment débogueriez-vous un script Python lent ?",
-      a: "On profile d'abord avec cProfile ou on chronomètre les sections suspectes — jamais d'optimisation au hasard. On cherche les problèmes algorithmiques (boucles imbriquées sur des données croissantes), le travail répété par accident dans les boucles, et les I/O lentes faites séquentiellement. On corrige le point chaud mesuré, puis on re-profile pour confirmer."
-    },
-    {
-      id: 138,
-      topic: "Python",
-      q: "Que sont les décorateurs, et quand en écririez-vous un ?",
-      a: "Les décorateurs enveloppent une fonction pour ajouter un comportement — journalisation, vérifications d'authentification, cache, réessais — sans modifier la fonction elle-même. On en écrit un quand la même préoccupation transversale s'applique à beaucoup de fonctions et qu'on veut la définir une seule fois, déclarativement, avec la syntaxe @."
-    },
-    {
-      id: 139,
-      topic: "Python",
-      q: "Expliquez le piège des arguments par défaut mutables en Python et comment l'éviter.",
-      a: "Les arguments par défaut sont évalués une seule fois à la définition de la fonction, donc def f(items=[]) réutilise la même liste entre les appels — les mutations fuient d'un appel à l'autre. On l'évite avec un défaut None : def f(items=None): items = items or []."
     },
     {
       id: 60,
