@@ -4,6 +4,7 @@ export const reactQuestions = [
         qsts: [
     {
       id: 0,
+      level: 1,
       text: "What is React?",
       answers: [
         "A back-end framework",
@@ -16,6 +17,7 @@ export const reactQuestions = [
     },
     {
       id: 1,
+      level: 2,
       text: "Which function is used to change the state in React?",
       answers: ["setState()", "modifyState()", "changeState()", "updateState()"],
       correct: 0,
@@ -23,6 +25,7 @@ export const reactQuestions = [
     },
     {
       id: 2,
+      level: 1,
       text: "What is JSX in React?",
       answers: [
         "JavaScript XML - A syntax extension for JavaScript",
@@ -35,6 +38,7 @@ export const reactQuestions = [
     },
     {
       id: 3,
+      level: 3,
       text: "What lifecycle method is called after the component is rendered for the first time?",
       answers: [
         "componentWillUnmount()",
@@ -47,6 +51,7 @@ export const reactQuestions = [
     },
     {
       id: 4,
+      level: 1,
       text: "How can you pass data to a component in React?",
       answers: [
         "Using refs",
@@ -59,6 +64,7 @@ export const reactQuestions = [
     },
     {
       id: 5,
+      level: 2,
       text: "What is a React fragment?",
       answers: [
         "A reusable component",
@@ -71,6 +77,7 @@ export const reactQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "What is the purpose of ReactDOM in React?",
       answers: [
         "To provide methods for rendering React elements",
@@ -83,6 +90,7 @@ export const reactQuestions = [
     },
     {
       id: 7,
+      level: 1,
       text: "What is the entry point for a React application?",
       answers: [
         "index.js",
@@ -95,6 +103,7 @@ export const reactQuestions = [
     },
     {
       id: 8,
+      level: 3,
       text: "Which method is used to handle the event in React?",
       answers: [
         "handleEvent()",
@@ -107,6 +116,7 @@ export const reactQuestions = [
     },
     {
       id: 9,
+      level: 2,
       text: "What does React.useState() do?",
       answers: [
         "It allows you to use state in a functional component",
@@ -125,6 +135,7 @@ export const reactQuestions = [
         qsts: [
           {
             id: 0,
+            level: 1,
             text: "Qu'est-ce que React ?",
             answers: [
               "Un framework côté serveur",
@@ -137,6 +148,7 @@ export const reactQuestions = [
           },
           {
             id: 1,
+            level: 2,
             text: "Quelle fonction est utilisée pour changer l'état dans React ?",
             answers: ["setState()", "modifyState()", "changeState()", "updateState()"],
             correct: 0,
@@ -144,6 +156,7 @@ export const reactQuestions = [
           },
           {
             id: 2,
+            level: 1,
             text: "Qu'est-ce que JSX dans React ?",
             answers: [
               "JavaScript XML - Une extension de syntaxe pour JavaScript",
@@ -156,6 +169,7 @@ export const reactQuestions = [
           },
           {
             id: 3,
+            level: 3,
             text: "Quelle méthode de cycle de vie est appelée après que le composant est rendu pour la première fois ?",
             answers: [
               "componentWillUnmount()",
@@ -168,6 +182,7 @@ export const reactQuestions = [
           },
           {
             id: 4,
+            level: 1,
             text: "Comment pouvez-vous transmettre des données à un composant dans React ?",
             answers: [
               "En utilisant des refs",
@@ -180,6 +195,7 @@ export const reactQuestions = [
           },
           {
             id: 5,
+            level: 2,
             text: "Qu'est-ce qu'un fragment React ?",
             answers: [
               "Un composant réutilisable",
@@ -192,6 +208,7 @@ export const reactQuestions = [
           },
           {
             id: 6,
+            level: 2,
             text: "Quel est le but de ReactDOM dans React ?",
             answers: [
               "Fournir des méthodes pour rendre des éléments React",
@@ -204,6 +221,7 @@ export const reactQuestions = [
           },
           {
             id: 7,
+            level: 1,
             text: "Quel est le point d'entrée d'une application React ?",
             answers: [
               "index.js",
@@ -216,6 +234,7 @@ export const reactQuestions = [
           },
           {
             id: 8,
+            level: 3,
             text: "Quelle méthode est utilisée pour gérer l'événement dans React ?",
             answers: [
               "handleEvent()",
@@ -228,6 +247,7 @@ export const reactQuestions = [
           },
           {
             id: 9,
+            level: 2,
             text: "Que fait React.useState() ?",
             answers: [
               "Cela vous permet d'utiliser l'état dans un composant fonctionnel",

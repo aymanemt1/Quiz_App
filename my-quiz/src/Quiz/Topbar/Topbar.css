@@ -20,21 +20,21 @@
     opacity: 0.8;
 }
 
-
-
-@media (max-width: 576px) {
-.translate{
-   justify-content: center;
-   margin-left: 33rem;
-  width: 20%;  
-  display: none; 
+@media (max-width: 1024px) {
+  .translate {
+    margin-right: 2rem;
+  }
 }
-.translate span{
-    margin: 5rem 1.2rem 0 1rem;
-    
-    font-size: 30px;
+
+@media (max-width: 640px) {
+  .translate {
+    justify-content: center;
+    margin: 0;
+    padding: 0.75rem 0 0;
+  }
+  .translate span {
+    margin: 0 10px;
+    font-size: 16px;
     letter-spacing: 2px;
+  }
 }
-
-}
-

@@ -4,6 +4,7 @@ export const javascriptQuestions = [
         qsts: [
     {
       id: 0,
+      level: 1,
       text: "What is JavaScript?",
       answers: [
         "A markup language",
@@ -16,6 +17,7 @@ export const javascriptQuestions = [
     },
     {
       id: 1,
+      level: 1,
       text: "Which keyword is used to declare variables in JavaScript?",
       answers: ["var", "let", "const", "All of the above"],
       correct: 3,
@@ -23,6 +25,7 @@ export const javascriptQuestions = [
     },
     {
       id: 2,
+      level: 3,
       text: "What is the output of the following code: console.log(2 + '2' + 2)?",
       answers: ["6", "222", "4", "TypeError"],
       correct: 1,
@@ -30,6 +33,7 @@ export const javascriptQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "Which function is used to parse a string to an integer in JavaScript?",
       answers: ["int()", "parseInteger()", "Number()", "parseInt()"],
       correct: 3,
@@ -37,6 +41,7 @@ export const javascriptQuestions = [
     },
     {
       id: 4,
+      level: 2,
       text: "What does the '=== operator' do in JavaScript?",
       answers: [
         "Checks for equality, including type",
@@ -49,6 +54,7 @@ export const javascriptQuestions = [
     },
     {
       id: 5,
+      level: 1,
       text: "What is the JavaScript function that adds an element to the end of an array?",
       answers: ["addToEnd()", "push()", "append()", "insert()"],
       correct: 1,
@@ -56,6 +62,7 @@ export const javascriptQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "Which loop is used for iterating over an array in JavaScript?",
       answers: ["while loop", "for loop", "foreach loop", "do-while loop"],
       correct: 1,
@@ -63,6 +70,7 @@ export const javascriptQuestions = [
     },
     {
       id: 7,
+      level: 3,
       text: "Which built-in method reverses the order of elements in an array in JavaScript?",
       answers: ["changeOrder()", "reverse()", "sort()", "flip()"],
       correct: 1,
@@ -70,6 +78,7 @@ export const javascriptQuestions = [
     },
     {
       id: 8,
+      level: 1,
       text: "What is the JavaScript operator used for combining two or more strings?",
       answers: ["& operator", "+ operator", "* operator", "- operator"],
       correct: 1,
@@ -77,6 +86,7 @@ export const javascriptQuestions = [
     },
     {
       id: 9,
+      level: 2,
       text: "What is the 'typeof' operator used for in JavaScript?",
       answers: [
         "To check if a variable has been defined",
@@ -95,6 +105,7 @@ export const javascriptQuestions = [
       qsts: [
         {
           id: 0,
+          level: 1,
           text: "Qu'est-ce que JavaScript ?",
           answers: [
             "Un langage de balisage",
@@ -107,6 +118,7 @@ export const javascriptQuestions = [
         },
         {
           id: 1,
+          level: 1,
           text: "Quel mot-clé est utilisé pour déclarer des variables en JavaScript ?",
           answers: ["var", "let", "const", "Tous les éléments ci-dessus"],
           correct: 3,
@@ -114,6 +126,7 @@ export const javascriptQuestions = [
         },
         {
           id: 2,
+          level: 3,
           text: "Quel est le résultat du code suivant : console.log(2 + '2' + 2) ?",
           answers: ["6", "222", "4", "TypeError"],
           correct: 1,
@@ -121,6 +134,7 @@ export const javascriptQuestions = [
         },
         {
           id: 3,
+          level: 2,
           text: "Quelle fonction est utilisée pour convertir une chaîne en entier en JavaScript ?",
           answers: ["int()", "parseInteger()", "Number()", "parseInt()"],
           correct: 3,
@@ -128,6 +142,7 @@ export const javascriptQuestions = [
         },
         {
           id: 4,
+          level: 2,
           text: "Que fait l'opérateur '===' en JavaScript ?",
           answers: [
             "Vérifie l'égalité, y compris le type",
@@ -140,6 +155,7 @@ export const javascriptQuestions = [
         },
         {
           id: 5,
+          level: 1,
           text: "Quelle est la fonction JavaScript qui ajoute un élément à la fin d'un tableau ?",
           answers: ["addToEnd()", "push()", "append()", "insert()"],
           correct: 1,
@@ -147,6 +163,7 @@ export const javascriptQuestions = [
         },
         {
           id: 6,
+          level: 2,
           text: "Quelle boucle est utilisée pour itérer sur un tableau en JavaScript ?",
           answers: ["boucle while", "boucle for", "boucle foreach", "boucle do-while"],
           correct: 1,
@@ -154,6 +171,7 @@ export const javascriptQuestions = [
         },
         {
           id: 7,
+          level: 3,
           text: "Quelle méthode intégrée inverse l'ordre des éléments dans un tableau en JavaScript ?",
           answers: ["changeOrder()", "reverse()", "sort()", "flip()"],
           correct: 1,
@@ -161,6 +179,7 @@ export const javascriptQuestions = [
         },
         {
           id: 8,
+          level: 1,
           text: "Quel est l'opérateur JavaScript utilisé pour concaténer deux chaînes ou plus ?",
           answers: ["& opérateur", "+ opérateur", "* opérateur", "- opérateur"],
           correct: 1,
@@ -168,6 +187,7 @@ export const javascriptQuestions = [
         },
         {
           id: 9,
+          level: 2,
           text: "À quoi sert l'opérateur 'typeof' en JavaScript ?",
           answers: [
             "Vérifier si une variable a été définie",

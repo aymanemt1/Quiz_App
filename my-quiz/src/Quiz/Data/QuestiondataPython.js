@@ -4,6 +4,7 @@ export const pythonQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What type of language is Python?",
       answers: [
         "Compiled language",
@@ -16,6 +17,7 @@ export const pythonQuestions = [
     },
     {
       id: 1,
+      level: 1,
       text: "Which symbol is used for comments in Python?",
       answers: ["//", "/*...*/", "#", "%%"],
       correct: 2,
@@ -23,6 +25,7 @@ export const pythonQuestions = [
     },
     {
       id: 2,
+      level: 1,
       text: "Which function is used to get the length of a list in Python?",
       answers: ["size()", "len()", "count()", "length()"],
       correct: 1,
@@ -30,6 +33,7 @@ export const pythonQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "How is an 'if' statement terminated in Python?",
       answers: ["By a semicolon (;)", "By a period (.)", "By a colon (:)", "By a comma (,)"],
       correct: 2,
@@ -37,6 +41,7 @@ export const pythonQuestions = [
     },
     {
       id: 4,
+      level: 1,
       text: "What is the correct way to create a function in Python?",
       answers: [
         "function myFunction():",
@@ -49,6 +54,7 @@ export const pythonQuestions = [
     },
     {
       id: 5,
+      level: 3,
       text: "What is the result of 10 / 3 in Python?",
       answers: ["3.333", "3", "3.0", "3.3333..."],
       correct: 2,
@@ -56,6 +62,7 @@ export const pythonQuestions = [
     },
     {
       id: 6,
+      level: 3,
       text: "Which data type is mutable in Python?",
       answers: ["Tuple", "String", "List", "Dictionary"],
       correct: 2,
@@ -63,6 +70,7 @@ export const pythonQuestions = [
     },
     {
       id: 7,
+      level: 2,
       text: "How do you start a 'while' loop in Python?",
       answers: ["while: ", "while():", "while loop:", "while True:"],
       correct: 3,
@@ -70,6 +78,7 @@ export const pythonQuestions = [
     },
     {
       id: 8,
+      level: 2,
       text: "Which method is used to remove an element from a list in Python?",
       answers: ["remove()", "discard()", "pop()", "erase()"],
       correct: 2,
@@ -77,6 +86,7 @@ export const pythonQuestions = [
     },
     {
       id: 9,
+      level: 3,
       text: "What is the output of print(list(range(5))) in Python?",
       answers: ["[0, 1, 2, 3, 4]", "[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4, 5]", "(0, 1, 2, 3, 4)"],
       correct: 0,
@@ -89,6 +99,7 @@ export const pythonQuestions = [
             qsts: [
                 {
                     id: 0,
+                    level: 1,
                     text: "Quel type de langage est Python ?",
                     answers: [
                         "Langage compilé",
@@ -101,6 +112,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 1,
+                    level: 1,
                     text: "Quel symbole est utilisé pour les commentaires en Python ?",
                     answers: ["//", "/*...*/", "#", "%%"],
                     correct: 2,
@@ -108,6 +120,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 2,
+                    level: 1,
                     text: "Quelle fonction est utilisée pour obtenir la longueur d'une liste en Python ?",
                     answers: ["size()", "len()", "count()", "length()"],
                     correct: 1,
@@ -115,6 +128,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 3,
+                    level: 2,
                     text: "Comment se termine une instruction 'if' en Python ?",
                     answers: ["Par un point-virgule (;)", "Par un point (.)", "Par deux-points (:)", "Par une virgule (,)"],
                     correct: 2,
@@ -122,6 +136,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 4,
+                    level: 1,
                     text: "Quelle est la manière correcte de créer une fonction en Python ?",
                     answers: [
                         "function myFunction():",
@@ -134,6 +149,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 5,
+                    level: 3,
                     text: "Quel est le résultat de 10 / 3 en Python ?",
                     answers: ["3,333", "3", "3,0", "3,3333..."],
                     correct: 2,
@@ -141,6 +157,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 6,
+                    level: 3,
                     text: "Quel type de données est mutable en Python ?",
                     answers: ["Tuple", "Chaîne de caractères", "Liste", "Dictionnaire"],
                     correct: 2,
@@ -148,6 +165,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 7,
+                    level: 2,
                     text: "Comment démarrez-vous une boucle 'while' en Python ?",
                     answers: ["while: ", "while():", "while loop:", "while True:"],
                     correct: 3,
@@ -155,6 +173,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 8,
+                    level: 2,
                     text: "Quelle méthode est utilisée pour supprimer un élément d'une liste en Python ?",
                     answers: ["remove()", "discard()", "pop()", "erase()"],
                     correct: 2,
@@ -162,6 +181,7 @@ export const pythonQuestions = [
                 },
                 {
                     id: 9,
+                    level: 3,
                     text: "Quel est le résultat de print(list(range(5))) en Python ?",
                     answers: ["[0, 1, 2, 3, 4]", "[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4, 5]", "(0, 1, 2, 3, 4)"],
                     correct: 0,

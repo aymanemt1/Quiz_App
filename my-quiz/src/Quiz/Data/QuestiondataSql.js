@@ -4,6 +4,7 @@ export const sqlQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What does SQL stand for?",
       answers: [
         "Structured Query Language",
@@ -16,6 +17,7 @@ export const sqlQuestions = [
     },
     {
       id: 1,
+      level: 1,
       text: "Which SQL statement is used to extract data from a database?",
       answers: ["SELECT", "EXTRACT", "OPEN", "READ"],
       correct: 0,
@@ -23,6 +25,7 @@ export const sqlQuestions = [
     },
     {
       id: 2,
+      level: 1,
       text: "Which SQL clause is used to filter records?",
       answers: ["FILTER BY", "SELECT", "WHERE", "GROUP BY"],
       correct: 2,
@@ -30,6 +33,7 @@ export const sqlQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "Which SQL command is used to retrieve only unique values?",
       answers: ["UNIQUE", "SELECT UNIQUE", "DISTINCT", "SELECT DISTINCT"],
       correct: 3,
@@ -37,6 +41,7 @@ export const sqlQuestions = [
     },
     {
       id: 4,
+      level: 3,
       text: "What does the SQL acronym 'DDL' stand for?",
       answers: [
         "Data Definition Language",
@@ -49,6 +54,7 @@ export const sqlQuestions = [
     },
     {
       id: 5,
+      level: 3,
       text: "Which SQL command is used to make changes to an existing table structure?",
       answers: ["UPDATE TABLE", "ALTER TABLE", "CHANGE TABLE", "MODIFY TABLE"],
       correct: 1,
@@ -56,6 +62,7 @@ export const sqlQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "What SQL keyword is used to sort the result-set in ascending order?",
       answers: ["ASC", "ORDER BY", "SORT", "ASCENDING"],
       correct: 0,
@@ -63,6 +70,7 @@ export const sqlQuestions = [
     },
     {
       id: 7,
+      level: 1,
       text: "Which SQL function is used to count the number of rows in a table?",
       answers: ["COUNT(*)", "SUM()", "COUNTROWS()", "TOTAL()"],
       correct: 0,
@@ -70,6 +78,7 @@ export const sqlQuestions = [
     },
     {
       id: 8,
+      level: 3,
       text: "What SQL clause is used to combine rows from different tables?",
       answers: ["MERGE", "COMBINE", "JOIN", "UNION"],
       correct: 2,
@@ -77,6 +86,7 @@ export const sqlQuestions = [
     },
     {
       id: 9,
+      level: 2,
       text: "Which SQL command is used to delete data from a database?",
       answers: ["REMOVE", "DELETE", "ERASE", "DROP"],
       correct: 1,
@@ -89,6 +99,7 @@ export const sqlQuestions = [
             qsts: [
                 {
                     id: 0,
+                    level: 1,
                     text: "Que signifie SQL ?",
                     answers: [
                         "Structured Query Language",
@@ -101,6 +112,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 1,
+                    level: 1,
                     text: "Quelle instruction SQL est utilisée pour extraire des données d'une base de données ?",
                     answers: ["SELECT", "EXTRACT", "OPEN", "READ"],
                     correct: 0,
@@ -108,6 +120,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 2,
+                    level: 1,
                     text: "Quelle clause SQL est utilisée pour filtrer les enregistrements ?",
                     answers: ["FILTER BY", "SELECT", "WHERE", "GROUP BY"],
                     correct: 2,
@@ -115,6 +128,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 3,
+                    level: 2,
                     text: "Quelle commande SQL est utilisée pour récupérer uniquement des valeurs uniques ?",
                     answers: ["UNIQUE", "SELECT UNIQUE", "DISTINCT", "SELECT DISTINCT"],
                     correct: 3,
@@ -122,6 +136,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 4,
+                    level: 3,
                     text: "Que signifie l'acronyme SQL 'DDL' ?",
                     answers: [
                         "Data Definition Language",
@@ -134,6 +149,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 5,
+                    level: 3,
                     text: "Quelle commande SQL est utilisée pour apporter des modifications à la structure d'une table existante ?",
                     answers: ["UPDATE TABLE", "ALTER TABLE", "CHANGE TABLE", "MODIFY TABLE"],
                     correct: 1,
@@ -141,6 +157,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 6,
+                    level: 2,
                     text: "Quel mot-clé SQL est utilisé pour trier le résultat dans l'ordre croissant ?",
                     answers: ["ASC", "ORDER BY", "SORT", "ASCENDING"],
                     correct: 0,
@@ -148,6 +165,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 7,
+                    level: 1,
                     text: "Quelle fonction SQL est utilisée pour compter le nombre de lignes dans une table ?",
                     answers: ["COUNT(*)", "SUM()", "COUNTROWS()", "TOTAL()"],
                     correct: 0,
@@ -155,6 +173,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 8,
+                    level: 3,
                     text: "Quelle clause SQL est utilisée pour combiner des lignes de différentes tables ?",
                     answers: ["MERGE", "COMBINE", "JOIN", "UNION"],
                     correct: 2,
@@ -162,6 +181,7 @@ export const sqlQuestions = [
                 },
                 {
                     id: 9,
+                    level: 2,
                     text: "Quelle commande SQL est utilisée pour supprimer des données d'une base de données ?",
                     answers: ["REMOVE", "DELETE", "ERASE", "DROP"],
                     correct: 1,

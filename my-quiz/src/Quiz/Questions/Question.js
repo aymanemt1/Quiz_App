@@ -14,7 +14,7 @@ function Question({
     markSelection = null
   }) {
     
-    const {setGameFinished,setshowCorrectAnswer,showCorrectAnswer,isremoved,setIsremoved} =useContext(LangueContext)
+    const {setGameFinished,setshowCorrectAnswer,showCorrectAnswer,isremoved,setIsremoved,langueTrans} =useContext(LangueContext)
   
     const [answer, setAnswer] = useState(null);
     const parseValue = (value) => (value ? parseInt(value.split("-")[1]) : null);
@@ -61,9 +61,18 @@ function Question({
     console.log(showCorrectAnswer)
    
    const styleshowCorrectAnswer = showCorrectAnswer ? 'showCorrectAnswer' : '';
+   const levelLabels = langueTrans === "FR"
+     ? { 1: "Facile", 2: "Moyen", 3: "Difficile" }
+     : { 1: "Easy", 2: "Medium", 3: "Hard" };
     return (
       <div className="question" ref={questionRef}>
         <div className="question-inner">
+          {(data.topic || data.level) && (
+            <div className="question-badges">
+              {data.topic && <span className="question-topic">{data.topic}</span>}
+              {data.level && <span className={`question-level level-${data.level}`}>{levelLabels[data.level]}</span>}
+            </div>
+          )}
           <h2 className="question-text">{data.text}</h2>
           <ul className="question-answers">
             {data.answers.map((text, index) => {

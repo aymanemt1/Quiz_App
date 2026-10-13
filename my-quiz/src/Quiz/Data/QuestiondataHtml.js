@@ -5,6 +5,7 @@ export const questionsHtml = [
     qsts: [
       {
     id: 0,
+    level: 1,
     text: "What does HTML stand for?",
     answers: [
       "Hyperlinks and Text Markup Language",
@@ -17,6 +18,7 @@ export const questionsHtml = [
   },
   {
     id: 1,
+    level: 1,
     text: "Which HTML tag is used to define an unordered list?",
     answers: ["<ol>", "<li>", "<ul>", "<list>"],
     correct: 2,
@@ -24,6 +26,7 @@ export const questionsHtml = [
   },
   {
     id: 2,
+    level: 2,
     text: "What is the correct HTML for creating a hyperlink?",
     answers: [
       "<a href='http://www.example.com'>Link text</a>",
@@ -36,6 +39,7 @@ export const questionsHtml = [
   },
   {
     id: 3,
+    level: 2,
     text: "Which doctype declaration is correct for HTML5?",
     answers: [
       "<!DOCTYPE html5>",
@@ -48,6 +52,7 @@ export const questionsHtml = [
   },
   {
     id: 4,
+    level: 2,
     text: "Which HTML attribute is used to define inline styles?",
     answers: ["class", "styles", "font", "style"],
     correct: 3,
@@ -55,6 +60,7 @@ export const questionsHtml = [
   },
   {
     id: 5,
+    level: 1,
     text: "In HTML, which tag is used for creating a table?",
     answers: ["<table>", "<tb>", "<tr>", "<tab>"],
     correct: 0,
@@ -62,6 +68,7 @@ export const questionsHtml = [
   },
   {
     id: 6,
+    level: 2,
     text: "Which HTML element is used to define important text?",
     answers: ["<important>", "<strong>", "<bold>", "<emphasize>"],
     correct: 1,
@@ -69,6 +76,7 @@ export const questionsHtml = [
   },
   {
     id: 7,
+    level: 3,
     text: "What is the purpose of the HTML 'meta' tag?",
     answers: [
       "To display images on the web page",
@@ -81,6 +89,7 @@ export const questionsHtml = [
   },
   {
     id: 8,
+    level: 1,
     text: "Which HTML tag is used to define a paragraph?",
     answers: ["<paragraph>", "<p>", "<para>", "<pg>"],
     correct: 1,
@@ -88,6 +97,7 @@ export const questionsHtml = [
   },
   {
     id: 9,
+    level: 3,
     text: "What does the 'alt' attribute in an image tag specify?",
     answers: [
       "The alignment of the image",
@@ -105,6 +115,7 @@ export const questionsHtml = [
     qsts: [
       {
         id: 0,
+        level: 1,
         text: "Que signifie HTML ?",
         answers: [
           "Hyperliens et Langage de balisage de texte",
@@ -117,6 +128,7 @@ export const questionsHtml = [
       },
       {
         id: 1,
+        level: 1,
         text: "Quelle balise HTML est utilisée pour définir une liste non ordonnée ?",
         answers: ["<ol>", "<li>", "<ul>", "<list>"],
         correct: 2,
@@ -124,6 +136,7 @@ export const questionsHtml = [
       },
       {
         id: 2,
+        level: 2,
         text: "Quel est le code HTML correct pour créer un lien hypertexte ?",
         answers: [
           "<a href='http://www.example.com'>Texte du lien</a>",
@@ -136,6 +149,7 @@ export const questionsHtml = [
       },
       {
         id: 3,
+        level: 2,
         text: "Quelle déclaration doctype est correcte pour HTML5 ?",
         answers: [
           "<!DOCTYPE html5>",
@@ -148,6 +162,7 @@ export const questionsHtml = [
       },
       {
         id: 4,
+        level: 2,
         text: "Quel attribut HTML est utilisé pour définir des styles inline ?",
         answers: ["class", "styles", "font", "style"],
         correct: 3,
@@ -155,6 +170,7 @@ export const questionsHtml = [
       },
       {
         id: 5,
+        level: 1,
         text: "En HTML, quelle balise est utilisée pour créer un tableau ?",
         answers: ["<table>", "<tb>", "<tr>", "<tab>"],
         correct: 0,
@@ -162,6 +178,7 @@ export const questionsHtml = [
       },
       {
         id: 6,
+        level: 2,
         text: "Quel élément HTML est utilisé pour définir du texte important ?",
         answers: ["<important>", "<strong>", "<bold>", "<emphasize>"],
         correct: 1,
@@ -169,6 +186,7 @@ export const questionsHtml = [
       },
       {
         id: 7,
+        level: 3,
         text: "Quel est le but de la balise HTML 'meta' ?",
         answers: [
           "Afficher des images sur la page web",
@@ -181,6 +199,7 @@ export const questionsHtml = [
       },
       {
         id: 8,
+        level: 1,
         text: "Quelle balise HTML est utilisée pour définir un paragraphe ?",
         answers: ["<paragraph>", "<p>", "<para>", "<pg>"],
         correct: 1,
@@ -188,6 +207,7 @@ export const questionsHtml = [
       },
       {
         id: 9,
+        level: 3,
         text: "Que spécifie l'attribut 'alt' dans une balise d'image ?",
         answers: [
           "L'alignement de l'image",

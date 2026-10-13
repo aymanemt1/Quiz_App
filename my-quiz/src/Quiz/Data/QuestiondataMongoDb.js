@@ -4,6 +4,7 @@ export const mongodbQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What is MongoDB?",
       answers: [
         "A relational database management system",
@@ -16,6 +17,7 @@ export const mongodbQuestions = [
     },
     {
       id: 1,
+      level: 2,
       text: "Which data model does MongoDB use?",
       answers: ["Relational model", "Document model", "Tabular model", "Hierarchical model"],
       correct: 1,
@@ -23,6 +25,7 @@ export const mongodbQuestions = [
     },
     {
       id: 2,
+      level: 1,
       text: "In MongoDB, what is a document?",
       answers: [
         "A record in a table",
@@ -35,6 +38,7 @@ export const mongodbQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "Which command is used to create a new database in MongoDB?",
       answers: ["USE DATABASE", "CREATE DATABASE", "USE", "CREATE"],
       correct: 2,
@@ -42,6 +46,7 @@ export const mongodbQuestions = [
     },
     {
       id: 4,
+      level: 3,
       text: "What does BSON stand for in MongoDB?",
       answers: [
         "Binary Serialized Object Notation",
@@ -54,6 +59,7 @@ export const mongodbQuestions = [
     },
     {
       id: 5,
+      level: 2,
       text: "What is the primary key in MongoDB called?",
       answers: ["Primary key", "_id", "ObjectId", "Key"],
       correct: 1,
@@ -61,6 +67,7 @@ export const mongodbQuestions = [
     },
     {
       id: 6,
+      level: 1,
       text: "Which query is used to find documents in a collection?",
       answers: ["SEARCH", "GET", "FIND", "SELECT"],
       correct: 2,
@@ -68,6 +75,7 @@ export const mongodbQuestions = [
     },
     {
       id: 7,
+      level: 1,
       text: "What does the 'db.collection.insertOne()' method do in MongoDB?",
       answers: [
         "Updates documents in a collection",
@@ -80,6 +88,7 @@ export const mongodbQuestions = [
     },
     {
       id: 8,
+      level: 2,
       text: "What is the purpose of the 'db.collection.updateOne()' method in MongoDB?",
       answers: [
         "Deletes a document from a collection",
@@ -92,6 +101,7 @@ export const mongodbQuestions = [
     },
     {
       id: 9,
+      level: 3,
       text: "Which operator is used for matching patterns in MongoDB queries?",
       answers: ["$like", "$match", "$regex", "$pattern"],
       correct: 2,
@@ -104,6 +114,7 @@ export const mongodbQuestions = [
           qsts: [
             {
               id: 0,
+              level: 1,
               text: "Qu'est-ce que MongoDB ?",
               answers: [
                 "Un système de gestion de base de données relationnelle",
@@ -116,6 +127,7 @@ export const mongodbQuestions = [
             },
             {
               id: 1,
+              level: 2,
               text: "Quel modèle de données utilise MongoDB ?",
               answers: ["Modèle relationnel", "Modèle de document", "Modèle tabulaire", "Modèle hiérarchique"],
               correct: 1,
@@ -123,6 +135,7 @@ export const mongodbQuestions = [
             },
             {
               id: 2,
+              level: 1,
               text: "Dans MongoDB, qu'est-ce qu'un document ?",
               answers: [
                 "Un enregistrement dans une table",
@@ -135,6 +148,7 @@ export const mongodbQuestions = [
             },
             {
               id: 3,
+              level: 2,
               text: "Quelle commande est utilisée pour créer une nouvelle base de données dans MongoDB ?",
               answers: ["USE DATABASE", "CREATE DATABASE", "USE", "CREATE"],
               correct: 2,
@@ -142,6 +156,7 @@ export const mongodbQuestions = [
             },
             {
               id: 4,
+              level: 3,
               text: "Que signifie BSON dans MongoDB ?",
               answers: [
                 "Binary Serialized Object Notation",
@@ -154,6 +169,7 @@ export const mongodbQuestions = [
             },
             {
               id: 5,
+              level: 2,
               text: "Comment est appelée la clé primaire dans MongoDB ?",
               answers: ["Clé primaire", "_id", "ObjectId", "Clé"],
               correct: 1,
@@ -161,6 +177,7 @@ export const mongodbQuestions = [
             },
             {
               id: 6,
+              level: 1,
               text: "Quelle requête est utilisée pour trouver des documents dans une collection ?",
               answers: ["SEARCH", "GET", "FIND", "SELECT"],
               correct: 2,
@@ -168,6 +185,7 @@ export const mongodbQuestions = [
             },
             {
               id: 7,
+              level: 1,
               text: "Que fait la méthode 'db.collection.insertOne()' dans MongoDB ?",
               answers: [
                 "Met à jour des documents dans une collection",
@@ -180,6 +198,7 @@ export const mongodbQuestions = [
             },
             {
               id: 8,
+              level: 2,
               text: "Quel est le but de la méthode 'db.collection.updateOne()' dans MongoDB ?",
               answers: [
                 "Supprime un document d'une collection",
@@ -192,6 +211,7 @@ export const mongodbQuestions = [
             },
             {
               id: 9,
+              level: 3,
               text: "Quel opérateur est utilisé pour faire correspondre des motifs dans les requêtes MongoDB ?",
               answers: ["$like", "$match", "$regex", "$pattern"],
               correct: 2,

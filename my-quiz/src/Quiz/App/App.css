@@ -129,79 +129,101 @@ background:linear-gradient(335deg, rgb(30, 49, 69), rgb(45, 109, 109));
   transition: all  0.7s ease-out  ;
 }
 
-
-
-@media (max-width: 576px) {
-body{
-overflow: auto;
-width: auto;
+.game-interview {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1rem;
+  overflow-y: auto;
 }
 
-.intro{
-  width: 78%;
-
-  margin: 0;
-}
-.intro-inner{
-  padding: 1rem 2rem; 
-
+.game[data-game-started] .mode-selector {
+  display: none;
 }
 
-.game-area {
- display: none;
-}
-.game {
-  margin-left: 4.4rem;
-  width: 37rem;
-  height: 50%;
-   display: block;
-   line-height: 4rem;
- 
-   position: relative;
- 
-  &[data-game-started] {
-  width: 47rem;   
-    margin-left:3rem;
-    padding-right: 24px;
-    height: 120vh !important;
-
-    .intro {
-      background: rgba(27, 5, 107, 0.12);
-      width: auto;
-      padding: 1.8rem 0;
-      display: block;
-      height: 30vh !important;
-      margin-top:5rem;
-    }
-
-    .game-area {
-      width: 100%;
-      height: 110vh !important;
-      overflow-y: scroll;
-      padding: 20px;
-      margin-top: 15px;
-     display: block;
-     
-    }
+@media (max-width: 1024px) {
+  .game {
+    width: calc(100vw - 4rem);
+    margin: 4rem 2rem;
+    height: auto;
+    min-height: 16rem;
   }
-
-}
-
-#timer{
-  margin-top: 4.4rem;
-  font-size: 33px;
-}
-
-[data-game-finished] {
- 
-  .game-area {
-  overflow-y: scroll;
-   
+  .game[data-game-started] {
+    width: calc(100vw - 2rem);
+    margin: 1rem;
+    height: auto;
+    min-height: calc(100vh - 2rem);
   }
-
-
+  .game[data-game-started] .intro {
+    width: 40%;
+  }
+  .game[data-game-started] .game-area {
+    width: 60%;
+  }
+  .intro-inner {
+    padding: 0 2rem;
+  }
 }
+
+@media (max-width: 640px) {
+  body {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  .game,
+  .game[data-game-started] {
+    position: relative;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    margin: 0.75rem;
+    display: block;
+    overflow: visible;
+  }
+  .game .intro,
+  .game[data-game-started] .intro {
+    width: 100%;
+    padding: 1.5rem 0;
+    border-radius: 12px;
+  }
+  .intro-inner {
+    padding: 0 1.25rem;
+  }
+  .game .game-area {
+    display: none;
+  }
+  .game[data-game-started] .game-area {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.75rem;
+    border-radius: 12px;
+    max-height: none;
+    overflow: visible;
+  }
+  .game[data-game-started] .buttons_qsts {
+    width: auto;
+    margin: 1rem 0 0;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .showAnswer-button,
+  .removeAnswers-button {
+    margin: 0;
+    padding: 12px 18px;
+    height: auto;
+    font-size: 15px;
+  }
+  #timer {
+    position: static;
+    margin: 0 0 0.5rem;
+    font-size: 15px;
+    text-align: center;
+  }
+  .game-interview {
+    padding: 1.5rem 0.5rem;
+  }
 }
-
-
-

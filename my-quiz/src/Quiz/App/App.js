@@ -1,6 +1,7 @@
 import React, {
   useState,
   useEffect,
+  useMemo,
   useContext
 } from "react";
 
@@ -10,7 +11,8 @@ import Question from '../Questions/Question'
 import QuestionCorrection from "../QuestionCorrection/QuestionCorrection"
 import { Indicator } from "../Indicator/Indicator";
 import { QuizStart } from "../QuizStart/QuizStart";
-import { questionsData } from "../Data/QuestionAllData";
+import { Interview } from "../Interview/Interview";
+import { getTopicQuestions, getExamQuestions, TOPIC_KEYS } from "../Data/QuestionAllData";
 import Timer from "../Timer/Timer";
 import { Topbar } from "../Topbar/Topbar";
 import { LangueContext } from "../../Context/LangueContext";
@@ -28,20 +30,19 @@ function useCounter(initialState) {
 export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
-    langueTrans,setGameStarted,gameStarted} =useContext(LangueContext)
+    langueTrans,setGameStarted,gameStarted,mode} =useContext(LangueContext)
 
-  const getQuestionsByLanguage = (selectedLangue) => {
-    return questionsData.type[selectedLangue] || [];
-  };
-
-const selectedLanguageQuestions = getQuestionsByLanguage(langue);
-  const questions = selectedLanguageQuestions
-  
-const GettranslateLang = questions.find((lan)=>(
-  lan.lang === langueTrans
- ))
- 
- const questionsOntranslate = GettranslateLang.qsts
+  // Build the active question set for the current mode (ids normalized to array index)
+  const questionsOntranslate = useMemo(() => {
+    let set = [];
+    if (mode === 'exam') {
+      set = getExamQuestions(langueTrans);
+    } else if (mode === 'quiz') {
+      const topic = TOPIC_KEYS.includes(langue) ? langue : 'React';
+      set = getTopicQuestions(topic, langueTrans).map((q, i) => ({ ...q, id: i, selection: null }));
+    }
+    return set;
+  }, [mode, langue, langueTrans]);
 
   const totalQuestion = questionsOntranslate.length - 1;
 
@@ -50,11 +51,23 @@ const GettranslateLang = questions.find((lan)=>(
   const wrong = useCounter(0);
   const empty = useCounter(0);
 
+  // Reset progress whenever the question set changes (mode / topic / language)
+  useEffect(() => {
+    question.reset();
+    correct.reset();
+    wrong.reset();
+    empty.reset();
+    setGameFinished(false);
+    setshowCorrectAnswer(false);
+    setIsremoved(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questionsOntranslate]);
+
   const handleNewQuestionClick = (selectedValue, currQuestion) => {
-  
+
       if (selectedValue === currQuestion.correct) {
         correct.add();
-      
+
       } else if (
         selectedValue !== null &&
         selectedValue !== currQuestion.correct
@@ -82,7 +95,7 @@ const GettranslateLang = questions.find((lan)=>(
     wrong.reset();
     empty.reset();
   };
-  
+
   const handleTryagain = () => {
     setGameFinished(false);
     setGameStarted(true);
@@ -112,24 +125,31 @@ const GettranslateLang = questions.find((lan)=>(
 
   }
 
+  const showInterview = mode === 'interview' && gameStarted;
+
   return (
 <>
 <Topbar />
+{showInterview ? (
+    <div className="game-interview">
+      <Interview />
+    </div>
+) : (
     <div
       className="game"
       data-game-started={gameStarted ? true : null}
-      data-game-finished={question.value > totalQuestion ? true : null}
+      data-game-finished={questionsOntranslate.length > 0 && question.value > totalQuestion ? true : null}
     >
 
       <div className="intro">
         <div className="intro-inner">
-         {gameStarted && <Timer gameFinished={gameFinished} />}
+         {gameStarted && mode !== 'interview' && <Timer gameFinished={gameFinished} />}
            <QuizStart questions={questionsOntranslate}/>
-           <Indicator questions={questionsOntranslate} question={question} />
-         
+           {mode !== 'interview' && <Indicator questions={questionsOntranslate} question={question} />}
+
          {/* HELPERS */}
 
-       {!gameFinished ? (
+       {!gameFinished && mode !== 'interview' ? (
           <div className='buttons_qsts'>
           <button
              className="showAnswer-button"
@@ -164,7 +184,7 @@ const GettranslateLang = questions.find((lan)=>(
             onClick={() => handleTryagain()}
             >
             {langueTrans === "EN" ? ' Try Again' : 'Réessayer'}
-            
+
           </button>
          </div>
         </div>
@@ -180,7 +200,7 @@ const GettranslateLang = questions.find((lan)=>(
               (langueTrans === "FR") ? "Terminer Quiz" :
               "Finish Quiz"
             }
-            
+
             onQuestionButtonClick={handleNewQuestionClick}
           />
         )}
@@ -192,7 +212,7 @@ const GettranslateLang = questions.find((lan)=>(
         )}
       </div>
     </div>
+)}
 </>
   );
 }
-

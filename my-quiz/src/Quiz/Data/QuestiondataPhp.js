@@ -4,6 +4,7 @@ export const phpQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What is PHP?",
       answers: [
         "Personal Hypertext Processor",
@@ -16,6 +17,7 @@ export const phpQuestions = [
     },
     {
       id: 1,
+      level: 1,
       text: "Which symbol is used to start a PHP code block?",
       answers: ["<%", "<?php", "{%", "<?"],
       correct: 1,
@@ -23,6 +25,7 @@ export const phpQuestions = [
     },
     {
       id: 2,
+      level: 2,
       text: "Which function is used to check whether a variable is an array or not in PHP?",
       answers: ["isarray()", "verifyArray()", "checkArray()", "isArray()"],
       correct: 0,
@@ -30,6 +33,7 @@ export const phpQuestions = [
     },
     {
       id: 3,
+      level: 1,
       text: "What is the correct way to start a PHP variable name?",
       answers: ["$123variable", "$_variable", "$variable123", "$variable!"],
       correct: 2,
@@ -37,6 +41,7 @@ export const phpQuestions = [
     },
     {
       id: 4,
+      level: 1,
       text: "What does PHP's 'echo' function do?",
       answers: [
         "Outputs text to the console",
@@ -49,6 +54,7 @@ export const phpQuestions = [
     },
     {
       id: 5,
+      level: 2,
       text: "How do you start a session in PHP?",
       answers: ["start_session()", "sessionStart()", "session_start()", "init_session()"],
       correct: 2,
@@ -56,6 +62,7 @@ export const phpQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "Which PHP function is used to establish a connection with MySQL?",
       answers: ["connect()", "openMySQL()", "mysqli_connect()", "mysql_open()"],
       correct: 2,
@@ -63,6 +70,7 @@ export const phpQuestions = [
     },
     {
       id: 7,
+      level: 3,
       text: "Which PHP directive is used to increase the maximum execution time of a script?",
       answers: ["max_execution_time", "increase_time_limit", "exec_time_limit", "set_max_time"],
       correct: 0,
@@ -70,6 +78,7 @@ export const phpQuestions = [
     },
     {
       id: 8,
+      level: 3,
       text: "Which PHP superglobal variable is used to retrieve information from forms?",
       answers: ["$_REQUEST", "$_GET", "$_POST", "$_GLOBALS"],
       correct: 2,
@@ -77,6 +86,7 @@ export const phpQuestions = [
     },
     {
       id: 9,
+      level: 2,
       text: "What is the purpose of PHP's 'include' function?",
       answers: [
         "To insert external content into a PHP script",
@@ -95,6 +105,7 @@ export const phpQuestions = [
           qsts: [
             {
               id: 0,
+              level: 1,
               text: "Qu'est-ce que PHP ?",
               answers: [
                 "Processeur Hypertexte Personnel",
@@ -107,6 +118,7 @@ export const phpQuestions = [
             },
             {
               id: 1,
+              level: 1,
               text: "Quel symbole est utilisé pour commencer un bloc de code PHP ?",
               answers: ["<%", "<?php", "{%", "<?"],
               correct: 1,
@@ -114,6 +126,7 @@ export const phpQuestions = [
             },
             {
               id: 2,
+              level: 2,
               text: "Quelle fonction est utilisée pour vérifier si une variable est un tableau ou non en PHP ?",
               answers: ["isarray()", "verifyArray()", "checkArray()", "isArray()"],
               correct: 0,
@@ -121,6 +134,7 @@ export const phpQuestions = [
             },
             {
               id: 3,
+              level: 1,
               text: "Quelle est la bonne façon de commencer le nom d'une variable en PHP ?",
               answers: ["$123variable", "$_variable", "$variable123", "$variable!"],
               correct: 2,
@@ -128,6 +142,7 @@ export const phpQuestions = [
             },
             {
               id: 4,
+              level: 1,
               text: "Que fait la fonction 'echo' de PHP ?",
               answers: [
                 "Affiche du texte dans la console",
@@ -140,6 +155,7 @@ export const phpQuestions = [
             },
             {
               id: 5,
+              level: 2,
               text: "Comment démarrez-vous une session en PHP ?",
               answers: ["start_session()", "sessionStart()", "session_start()", "init_session()"],
               correct: 2,
@@ -147,6 +163,7 @@ export const phpQuestions = [
             },
             {
               id: 6,
+              level: 2,
               text: "Quelle fonction PHP est utilisée pour établir une connexion avec MySQL ?",
               answers: ["connect()", "openMySQL()", "mysqli_connect()", "mysql_open()"],
               correct: 2,
@@ -154,6 +171,7 @@ export const phpQuestions = [
             },
             {
               id: 7,
+              level: 3,
               text: "Quelle directive PHP est utilisée pour augmenter le temps d'exécution maximum d'un script ?",
               answers: ["max_execution_time", "increase_time_limit", "exec_time_limit", "set_max_time"],
               correct: 0,
@@ -161,6 +179,7 @@ export const phpQuestions = [
             },
             {
               id: 8,
+              level: 3,
               text: "Quelle variable superglobale PHP est utilisée pour récupérer des informations depuis des formulaires ?",
               answers: ["$_REQUEST", "$_GET", "$_POST", "$_GLOBALS"],
               correct: 2,
@@ -168,6 +187,7 @@ export const phpQuestions = [
             },
             {
               id: 9,
+              level: 2,
               text: "Quel est le but de la fonction 'include' de PHP ?",
               answers: [
                 "Insérer du contenu externe dans un script PHP",

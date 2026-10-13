@@ -5,6 +5,7 @@ export const laravelQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What is Laravel?",
       answers: [
         "A JavaScript framework",
@@ -17,6 +18,7 @@ export const laravelQuestions = [
     },
     {
       id: 1,
+      level: 1,
       text: "Which command is used to create a new Laravel project?",
       answers: ["new laravel-project", "create-project laravel/laravel", "start laravel", "init laravel"],
       correct: 1,
@@ -24,6 +26,7 @@ export const laravelQuestions = [
     },
     {
       id: 2,
+      level: 2,
       text: "What is the purpose of Composer in Laravel?",
       answers: [
         "To manage dependencies and packages in PHP",
@@ -36,6 +39,7 @@ export const laravelQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "Which folder contains the configuration files in a Laravel project?",
       answers: [
         "app",
@@ -48,6 +52,7 @@ export const laravelQuestions = [
     },
     {
       id: 4,
+      level: 3,
       text: "What is Eloquent in Laravel?",
       answers: [
         "A template engine",
@@ -60,6 +65,7 @@ export const laravelQuestions = [
     },
     {
       id: 5,
+      level: 1,
       text: "What does MVC stand for in the context of Laravel?",
       answers: [
         "Model-View-Controller",
@@ -72,6 +78,7 @@ export const laravelQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "What command is used to create a new controller in Laravel?",
       answers: [
         "make:controller",
@@ -84,6 +91,7 @@ export const laravelQuestions = [
     },
     {
       id: 7,
+      level: 1,
       text: "Which file is used to define the routes in a Laravel application?",
       answers: [
         "web.php",
@@ -96,6 +104,7 @@ export const laravelQuestions = [
     },
     {
       id: 8,
+      level: 2,
       text: "What is the purpose of the migration in Laravel?",
       answers: [
         "To handle HTTP requests",
@@ -108,6 +117,7 @@ export const laravelQuestions = [
     },
     {
       id: 9,
+      level: 3,
       text: "Which artisan command is used to clear the application cache in Laravel?",
       answers: [
         "cache:clear",
@@ -126,6 +136,7 @@ export const laravelQuestions = [
       qsts: [
         {
           id: 0,
+          level: 1,
           text: "Qu'est-ce que Laravel ?",
           answers: [
             "Un framework JavaScript",
@@ -138,6 +149,7 @@ export const laravelQuestions = [
         },
         {
           id: 1,
+          level: 1,
           text: "Quelle commande est utilisée pour créer un nouveau projet Laravel ?",
           answers: ["new laravel-project", "create-project laravel/laravel", "start laravel", "init laravel"],
           correct: 1,
@@ -145,6 +157,7 @@ export const laravelQuestions = [
         },
         {
           id: 2,
+          level: 2,
           text: "Quel est le rôle de Composer dans Laravel ?",
           answers: [
             "Gérer les dépendances et les paquets en PHP",
@@ -157,6 +170,7 @@ export const laravelQuestions = [
         },
         {
           id: 3,
+          level: 2,
           text: "Dans quel dossier se trouvent les fichiers de configuration dans un projet Laravel ?",
           answers: [
             "app",
@@ -169,6 +183,7 @@ export const laravelQuestions = [
         },
         {
           id: 4,
+          level: 3,
           text: "Qu'est-ce qu'Eloquent dans Laravel ?",
           answers: [
             "Un moteur de template",
@@ -181,6 +196,7 @@ export const laravelQuestions = [
         },
         {
           id: 5,
+          level: 1,
           text: "Que signifie MVC dans le contexte de Laravel ?",
           answers: [
             "Modèle-Vue-Contrôleur",
@@ -193,6 +209,7 @@ export const laravelQuestions = [
         },
         {
           id: 6,
+          level: 2,
           text: "Quelle commande est utilisée pour créer un nouveau contrôleur dans Laravel ?",
           answers: [
             "make:controller",
@@ -205,6 +222,7 @@ export const laravelQuestions = [
         },
         {
           id: 7,
+          level: 1,
           text: "Quel fichier est utilisé pour définir les routes dans une application Laravel ?",
           answers: [
             "web.php",
@@ -217,6 +235,7 @@ export const laravelQuestions = [
         },
         {
           id: 8,
+          level: 2,
           text: "Quel est le rôle de la migration dans Laravel ?",
           answers: [
             "Gérer les requêtes HTTP",
@@ -229,6 +248,7 @@ export const laravelQuestions = [
         },
         {
           id: 9,
+          level: 3,
           text: "Quelle commande artisan est utilisée pour vider le cache de l'application dans Laravel ?",
           answers: [
             "cache:clear",

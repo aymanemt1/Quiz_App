@@ -4,6 +4,7 @@ export const questionsCss = [
       qsts: [
     {
       id: 0,
+      level: 1,
       text: "What does CSS stand for?",
       answers: [
         "Computer Style Sheets",
@@ -16,6 +17,7 @@ export const questionsCss = [
     },
     {
       id: 1,
+      level: 1,
       text:
         "The property in CSS used to change the background color of an element is?",
       answers: ["bgcolor", "color", "background-color", "All of the above"],
@@ -24,6 +26,7 @@ export const questionsCss = [
     },
     {
       id: 2,
+      level: 1,
       text: "The property in CSS used to change the text color of an element is?",
       answers: ["bgcolor", "color", "background-color", "All of the above"],
       correct: 1,
@@ -31,6 +34,7 @@ export const questionsCss = [
     },
     {
       id: 3,
+      level: 1,
       text: "The CSS property used to control the element's font size is?",
       answers: ["text-style", "font-style", "text-size", "font-size"],
       correct: 3,
@@ -38,6 +42,7 @@ export const questionsCss = [
     },
     {
       id: 4,
+      level: 2,
       text: "The HTML attribute used to define the inline styles is?",
       answers: ["style", "inline", "class", "None of the above"],
       correct: 0,
@@ -45,6 +50,7 @@ export const questionsCss = [
     },
     {
       id: 5,
+      level: 3,
       text: "Are the negative values allowed in padding property?",
       answers: ["Yes", "No", "It depends on HTML", "None of the above"],
       correct: 1,
@@ -52,6 +58,7 @@ export const questionsCss = [
     },
     {
       id: 6,
+      level: 3,
       text:
         "The CSS property used to specify whether the text is written in the horizontal or vertical direction?",
       answers: ["word-break", "text-transform", "writing-mode", "text-direction"],
@@ -60,6 +67,7 @@ export const questionsCss = [
     },
     {
       id: 7,
+      level: 2,
       text: "Which selector is used to specify a style for one unique element?",
       answers: ["class", "attribute", "text", "id"],
       correct: 3,
@@ -67,6 +75,7 @@ export const questionsCss = [
     },
     {
       id: 8,
+      level: 3,
       text:
         "Which of the following is the correct syntax to select the p siblings of a div element?",
       answers: ["p", "div + p", "div p", "div ~ p"],
@@ -75,6 +84,7 @@ export const questionsCss = [
     },
     {
       id: 9,
+      level: 2,
       text: "How can you add a comment in a CSS file?",
       answers: [
         "/* this is a comment */",
@@ -92,6 +102,7 @@ export const questionsCss = [
   qsts: [
     {
       id: 0,
+      level: 1,
       text: "Que signifie CSS ?",
       answers: [
         "Feuilles de style informatique",
@@ -104,6 +115,7 @@ export const questionsCss = [
     },
     {
       id: 1,
+      level: 1,
       text:
         "La propriété en CSS utilisée pour changer la couleur de fond d'un élément est ?",
       answers: ["bgcolor", "couleur", "background-color", "Toutes les réponses ci-dessus"],
@@ -112,6 +124,7 @@ export const questionsCss = [
     },
     {
       id: 2,
+      level: 1,
       text: "La propriété en CSS utilisée pour changer la couleur du texte d'un élément est ?",
       answers: ["bgcolor", "couleur", "background-color", "Toutes les réponses ci-dessus"],
       correct: 1,
@@ -119,6 +132,7 @@ export const questionsCss = [
     },
     {
       id: 3,
+      level: 1,
       text: "La propriété CSS utilisée pour contrôler la taille de police de l'élément est ?",
       answers: ["texte-style", "style-de-police", "taille-texte", "taille-de-police"],
       correct: 3,
@@ -126,6 +140,7 @@ export const questionsCss = [
     },
     {
       id: 4,
+      level: 2,
       text: "L'attribut HTML utilisé pour définir les styles en ligne est ?",
       answers: ["style", "inline", "classe", "Aucune des réponses ci-dessus"],
       correct: 0,
@@ -133,6 +148,7 @@ export const questionsCss = [
     },
     {
       id: 5,
+      level: 3,
       text: "Les valeurs négatives sont-elles autorisées dans la propriété de marge intérieure (padding) ?",
       answers: ["Oui", "Non", "Cela dépend de HTML", "Aucune des réponses ci-dessus"],
       correct: 1,
@@ -140,6 +156,7 @@ export const questionsCss = [
     },
     {
       id: 6,
+      level: 3,
       text:
         "La propriété CSS utilisée pour spécifier si le texte est écrit dans la direction horizontale ou verticale est ?",
       answers: ["cassage-de-mot", "transformer-texte", "mode-écriture", "direction-texte"],
@@ -148,6 +165,7 @@ export const questionsCss = [
     },
     {
       id: 7,
+      level: 2,
       text: "Quel sélecteur est utilisé pour spécifier un style pour un élément unique ?",
       answers: ["classe", "attribut", "texte", "id"],
       correct: 3,
@@ -155,6 +173,7 @@ export const questionsCss = [
     },
     {
       id: 8,
+      level: 3,
       text:
         "Quelle est la syntaxe correcte pour sélectionner les éléments p enfants d'un élément div ?",
       answers: ["p", "div + p", "div p", "div ~ p"],
@@ -163,6 +182,7 @@ export const questionsCss = [
     },
     {
       id: 9,
+      level: 2,
       text: "Comment pouvez-vous ajouter un commentaire dans un fichier CSS ?",
       answers: [
         "/* ceci est un commentaire */",

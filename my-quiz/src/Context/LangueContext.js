@@ -10,6 +10,8 @@ export const LangueContext = createContext()
   const [gameStarted, setGameStarted] = useState(false);
   const [showCorrectAnswer, setshowCorrectAnswer] = useState(null);
   const [isremoved,setIsremoved]=useState(false)
+  // 'quiz' | 'exam' | 'interview'
+  const [mode, setMode] = useState('quiz')
 
   return (
 
@@ -19,10 +21,11 @@ export const LangueContext = createContext()
       langue,setlangue,
       gameStarted,setGameStarted,
       showCorrectAnswer,setshowCorrectAnswer,
-      isremoved,setIsremoved
+      isremoved,setIsremoved,
+      mode,setMode
       }}>
      {children}
     </LangueContext.Provider>
-    
+
   )
 }

@@ -4,6 +4,7 @@ export const nodejsQuestions = [
         qsts: [
             {
       id: 0,
+      level: 1,
       text: "What is Node.js?",
       answers: [
         "A front-end JavaScript framework",
@@ -16,6 +17,7 @@ export const nodejsQuestions = [
     },
     {
       id: 1,
+      level: 2,
       text: "Which engine does Node.js use to execute JavaScript code?",
       answers: ["V8 Engine", "SpiderMonkey", "Chakra", "JavaScript Engine"],
       correct: 0,
@@ -23,6 +25,7 @@ export const nodejsQuestions = [
     },
     {
       id: 2,
+      level: 1,
       text: "What is the package manager used in Node.js?",
       answers: ["NPM (Node Package Manager)", "Yarn", "Node Manager", "Node Package Control"],
       correct: 0,
@@ -30,6 +33,7 @@ export const nodejsQuestions = [
     },
     {
       id: 3,
+      level: 2,
       text: "Which command is used to initialize a Node.js project with a package.json file?",
       answers: ["npm init", "node init", "npm start", "node start"],
       correct: 0,
@@ -37,6 +41,7 @@ export const nodejsQuestions = [
     },
     {
       id: 4,
+      level: 2,
       text: "Which module is used to create an HTTP server in Node.js?",
       answers: ["http", "url", "querystring", "fs"],
       correct: 0,
@@ -44,6 +49,7 @@ export const nodejsQuestions = [
     },
     {
       id: 5,
+      level: 1,
       text: "What is the purpose of 'require' in Node.js?",
       answers: [
         "To include external libraries/modules",
@@ -56,6 +62,7 @@ export const nodejsQuestions = [
     },
     {
       id: 6,
+      level: 2,
       text: "Which keyword is used to handle asynchronous operations in Node.js?",
       answers: ["async", "await", "sync", "callback"],
       correct: 3,
@@ -63,6 +70,7 @@ export const nodejsQuestions = [
     },
     {
       id: 7,
+      level: 3,
       text: "What does 'EventEmitter' in Node.js do?",
       answers: [
         "It emits events asynchronously",
@@ -75,6 +83,7 @@ export const nodejsQuestions = [
     },
     {
       id: 8,
+      level: 2,
       text: "Which module is used for file I/O operations in Node.js?",
       answers: ["fs (File System)", "io", "file", "node.fs"],
       correct: 0,
@@ -82,6 +91,7 @@ export const nodejsQuestions = [
     },
     {
       id: 9,
+      level: 2,
       text: "What is the purpose of 'process' in Node.js?",
       answers: [
         "To manage CPU processes",
@@ -99,6 +109,7 @@ export const nodejsQuestions = [
           qsts: [
             {
               id: 0,
+              level: 1,
               text: "Qu'est-ce que Node.js ?",
               answers: [
                 "Un framework JavaScript côté client",
@@ -111,6 +122,7 @@ export const nodejsQuestions = [
             },
             {
               id: 1,
+              level: 2,
               text: "Quel moteur utilise Node.js pour exécuter du code JavaScript ?",
               answers: ["Moteur V8", "SpiderMonkey", "Chakra", "Moteur JavaScript"],
               correct: 0,
@@ -118,6 +130,7 @@ export const nodejsQuestions = [
             },
             {
               id: 2,
+              level: 1,
               text: "Quel gestionnaire de paquets est utilisé dans Node.js ?",
               answers: ["NPM (Node Package Manager)", "Yarn", "Node Manager", "Node Package Control"],
               correct: 0,
@@ -125,6 +138,7 @@ export const nodejsQuestions = [
             },
             {
               id: 3,
+              level: 2,
               text: "Quelle commande est utilisée pour initialiser un projet Node.js avec un fichier package.json ?",
               answers: ["npm init", "node init", "npm start", "node start"],
               correct: 0,
@@ -132,6 +146,7 @@ export const nodejsQuestions = [
             },
             {
               id: 4,
+              level: 2,
               text: "Quel module est utilisé pour créer un serveur HTTP en Node.js ?",
               answers: ["http", "url", "querystring", "fs"],
               correct: 0,
@@ -139,6 +154,7 @@ export const nodejsQuestions = [
             },
             {
               id: 5,
+              level: 1,
               text: "Quel est le but de 'require' dans Node.js ?",
               answers: [
                 "Inclure des bibliothèques/modules externes",
@@ -151,6 +167,7 @@ export const nodejsQuestions = [
             },
             {
               id: 6,
+              level: 2,
               text: "Quel mot-clé est utilisé pour gérer les opérations asynchrones en Node.js ?",
               answers: ["async", "await", "sync", "callback"],
               correct: 3,
@@ -158,6 +175,7 @@ export const nodejsQuestions = [
             },
             {
               id: 7,
+              level: 3,
               text: "Que fait 'EventEmitter' dans Node.js ?",
               answers: [
                 "Il émet des événements de manière asynchrone",
@@ -170,6 +188,7 @@ export const nodejsQuestions = [
             },
             {
               id: 8,
+              level: 2,
               text: "Quel module est utilisé pour les opérations d'E/S de fichier en Node.js ?",
               answers: ["fs (Système de fichiers)", "io", "file", "node.fs"],
               correct: 0,
@@ -177,6 +196,7 @@ export const nodejsQuestions = [
             },
             {
               id: 9,
+              level: 2,
               text: "Quel est le rôle de 'process' dans Node.js ?",
               answers: [
                 "Gérer les processus CPU",

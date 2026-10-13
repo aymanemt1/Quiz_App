@@ -117,39 +117,28 @@
   }
 }
 
-
-@media (max-width: 576px) {
-
-  [data-game-finished] {
- 
-  
-
-  .result{
+@media (max-width: 640px) {
+  [data-game-finished] .result {
     overflow: visible;
-    margin-top: 6rem;
+    margin-top: 2rem;
   }
-
-  .btnsResult{
-    margin-top:10rem;
+  [data-game-finished] .btnsResult {
+    margin: 1.5rem 0 0;
+    margin-left: 0;
     justify-content: center;
+    flex-wrap: wrap;
   }
-
-  .restart-button,.tryagain-button{
-   font-size: 26px;
-   width: 16rem;
-   padding-top: 25px;
-   padding-bottom: 52px;
+  .restart-button,
+  .tryagain-button {
+    font-size: 16px;
+    width: auto;
+    height: auto;
+    padding: 12px 22px;
   }
-
   .result-text {
-    font-size: 26px;
-    letter-spacing: 3px;
-    font-weight: 600;
-    line-height: 2;
-  
+    font-size: 13px;
   }
-
-}
-
-
+  .result-count {
+    font-size: 28px;
+  }
 }
