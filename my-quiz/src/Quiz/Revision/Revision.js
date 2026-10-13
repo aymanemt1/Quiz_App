@@ -23,6 +23,8 @@ export const Revision = () => {
   const [step, setStep] = useState(0);
   const [showExplain, setShowExplain] = useState(false);
   const explainLabel = langueTrans === "FR" ? "💡 Explique-moi" : DR ? "💡 Chreh liya" : "💡 Explain";
+  const [showExample, setShowExample] = useState(false);
+  const exampleLabel = DR ? "</> Mithal" : FR ? "</> Exemple" : "</> Example";
   // One thing per page: the stack grid is only shown to pick/change the
   // stack; the reading view shows ONLY the step card (no grid above it).
   const [showGrid, setShowGrid] = useState(false);
@@ -35,6 +37,7 @@ export const Revision = () => {
   useEffect(() => {
     setStep(0);
     setShowExplain(false);
+    setShowExample(false);
   }, [topic, langueTrans]);
 
   // When the user picks a stack on the start screen then hits "Cours",
@@ -49,6 +52,7 @@ export const Revision = () => {
 
   const go = (delta) => {
     setShowExplain(false);
+    setShowExample(false);
     setStep((s) => Math.min(Math.max(s + delta, 0), total - 1));
   };
 
@@ -130,11 +134,29 @@ export const Revision = () => {
                   💡
                 </button>
               )}
+              {notes[step].example && (
+                <button
+                  type="button"
+                  className={`explain-btn${showExample ? " is-open" : ""}`}
+                  onClick={() => setShowExample((v) => !v)}
+                  title={exampleLabel}
+                  aria-label={exampleLabel}
+                  aria-expanded={showExample}
+                >
+                  {"</>"}
+                </button>
+              )}
             </div>
             {showExplain && notes[step].explain_dr && (
               <div className="explain-panel">
                 <span className="explain-panel-label">{explainLabel}</span>
                 <p>{notes[step].explain_dr}</p>
+              </div>
+            )}
+            {showExample && notes[step].example && (
+              <div className="explain-panel example-panel">
+                <span className="explain-panel-label">{exampleLabel}</span>
+                <pre className="example-code">{notes[step].example}</pre>
               </div>
             )}
           </div>

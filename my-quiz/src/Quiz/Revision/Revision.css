@@ -178,6 +178,21 @@
 .explain-panel p {
   margin: 0;
 }
+.example-panel .example-code {
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius-sm);
+  color: #c6ff3d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  text-align: left;
+}
 @keyframes explain-in {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
