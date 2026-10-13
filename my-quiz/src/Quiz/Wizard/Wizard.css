@@ -1,0 +1,163 @@
+/* ---- Setup wizard (one choice per screen) ---- */
+
+.wizard {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 4px 2px 8px;
+}
+
+.wizard-top {
+  margin-bottom: 14px;
+}
+
+.wizard-progress {
+  margin: 0 2px 18px;
+}
+
+.wizard-step-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--pq-faint);
+  margin-bottom: 8px;
+}
+
+.wizard-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(198, 255, 61, 0.12);
+  border: 1px solid var(--pq-border-soft);
+  overflow: hidden;
+}
+
+.wizard-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--pq-grad);
+  box-shadow: var(--pq-glow-sm);
+  transition: width 0.3s ease;
+}
+
+.wizard-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--pq-text);
+  margin: 0 2px 16px;
+  letter-spacing: 0.2px;
+}
+
+.wizard-body {
+  margin-bottom: 8px;
+}
+
+.wizard-body .level-selector {
+  margin-top: 4px;
+}
+
+.wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.wizard-back {
+  min-height: 54px;
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--pq-dim);
+  background: rgba(198, 255, 61, 0.07);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.wizard-back:hover {
+  border-color: var(--pq-accent);
+  color: var(--pq-text);
+}
+
+.wizard-back:active {
+  transform: scale(0.96);
+}
+
+.wizard-next {
+  flex: 1;
+  max-width: 320px;
+  margin-left: auto;
+}
+
+.wizard-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Summary card shown on a wizard's final step */
+.wizard-summary {
+  background: var(--pq-card);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius);
+  padding: 18px 20px;
+  margin: 4px 2px 6px;
+  text-align: left;
+}
+
+.wizard-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--pq-dim);
+}
+
+.wizard-summary-row + .wizard-summary-row {
+  border-top: 1px solid rgba(198, 255, 61, 0.08);
+}
+
+.wizard-summary-row strong {
+  color: var(--pq-text);
+  font-weight: 700;
+}
+
+.wizard-info {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--pq-dim);
+  background: var(--pq-card);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius);
+  padding: 18px 20px;
+  margin: 4px 2px 6px;
+}
+
+.wizard-info strong {
+  color: var(--pq-accent-light);
+}
+
+@media (max-width: 640px) {
+  .wizard-nav {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .wizard-next {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .wizard-back {
+    width: 100%;
+  }
+}

@@ -176,6 +176,12 @@ export const loadMistakes = () => read(MISTAKES_KEY);
 export const getMistakeCount = (langTrans) =>
   read(MISTAKES_KEY).filter((m) => m.lang === langTrans).length;
 
+// Filtered mistake list for the review wizard (language + optional topic)
+export const getMistakes = (langTrans, topic = "All") =>
+  read(MISTAKES_KEY).filter(
+    (m) => m.lang === langTrans && (topic === "All" || m.topic === topic)
+  );
+
 export const addMistakes = (list) => {
   const cur = read(MISTAKES_KEY);
   const ids = new Set(cur.map((m) => m.id));

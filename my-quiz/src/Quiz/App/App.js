@@ -41,7 +41,7 @@ export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
     langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount,
-    timed,timePerQuestion,codeTopic,setMenuOpen} =useContext(LangueContext)
+    timed,timePerQuestion,codeTopic,setMenuOpen,notesOpen,reviewTopic} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
   const questionsOntranslate = useMemo(() => {
@@ -56,7 +56,9 @@ export default function App() {
     } else if (mode === 'daily') {
       set = getDailyQuestions(langueTrans, todayStr());
     } else if (mode === 'review') {
-      const mistakes = loadMistakes().filter((m) => m.lang === langueTrans);
+      const mistakes = loadMistakes().filter(
+        (m) => m.lang === langueTrans && (reviewTopic === 'All' || m.topic === reviewTopic)
+      );
       set = mistakes.map((m, i) => ({
         id: i,
         mistakeId: m.id,
@@ -70,7 +72,7 @@ export default function App() {
       }));
     }
     return set;
-  }, [mode, langue, langueTrans, level, examTopics, examCount, codeTopic]);
+  }, [mode, langue, langueTrans, level, examTopics, examCount, codeTopic, reviewTopic]);
 
   const totalQuestion = questionsOntranslate.length - 1;
 
@@ -237,7 +239,7 @@ export default function App() {
   const showInterview = mode === 'interview' && gameStarted;
   const showBlitz = mode === 'blitz' && gameStarted;
   const showProgress = mode === 'progress';
-  const showNotes = mode === 'notes';
+  const showNotes = mode === 'notes' && notesOpen;
   const showProfile = mode === 'profile';
   const timedActive = timed && gameStarted &&
     (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');

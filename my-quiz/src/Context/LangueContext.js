@@ -31,6 +31,10 @@ export const LangueContext = createContext()
   // user profile: { name, color }
   const [profile, setProfileState] = useState(() => loadProfile())
   const updateProfile = (p) => setProfileState(saveProfile(p))
+  // cours (revision notes) wizard gate: true once the user opens a course
+  const [notesOpen, setNotesOpen] = useState(false)
+  // mistakes review topic filter: 'All' or a topic key
+  const [reviewTopic, setReviewTopic] = useState('All')
 
   return (
 
@@ -50,7 +54,9 @@ export const LangueContext = createContext()
       timePerQuestion,setTimePerQuestion,
       menuOpen,setMenuOpen,
       drawerOpen,setDrawerOpen,
-      profile,updateProfile
+      profile,updateProfile,
+      notesOpen,setNotesOpen,
+      reviewTopic,setReviewTopic
       }}>
 
      {children}
