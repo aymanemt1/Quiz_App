@@ -106,3 +106,107 @@ select{
     font-size: 13px;
   }
 }
+
+/* ---- Level selector ---- */
+.level-selector {
+  margin: 12px 0 4px;
+}
+
+.level-selector-label {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.level-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.level-button {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: #fff;
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  min-height: 36px;
+}
+
+.level-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.level-button.level-active {
+  background: #fff;
+  color: #1e3145;
+  font-weight: 700;
+}
+
+/* ---- Exam builder ---- */
+.exam-builder {
+  width: 100%;
+  max-width: 520px;
+  margin: 6px auto 4px;
+  text-align: left;
+}
+
+.exam-row {
+  margin-bottom: 8px;
+}
+
+.exam-topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.exam-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  min-height: 40px;
+}
+
+.exam-check:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.exam-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4ade80;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.exam-check-all {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  justify-content: center;
+}
+
+.exam-warning {
+  color: #ffb4b4;
+  font-size: 13px;
+  text-align: center;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 640px) {
+  .exam-topics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

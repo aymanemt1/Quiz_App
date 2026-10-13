@@ -2,6 +2,7 @@ import React, {
   useState,
   useEffect,
   useMemo,
+  useRef,
   useContext
 } from "react";
 
@@ -12,7 +13,9 @@ import QuestionCorrection from "../QuestionCorrection/QuestionCorrection"
 import { Indicator } from "../Indicator/Indicator";
 import { QuizStart } from "../QuizStart/QuizStart";
 import { Interview } from "../Interview/Interview";
+import { Progress } from "../Progress/Progress";
 import { getTopicQuestions, getExamQuestions, TOPIC_KEYS } from "../Data/QuestionAllData";
+import { loadMistakes, addMistakes, removeMistakes, saveHistoryEntry } from "../Data/storage";
 import Timer from "../Timer/Timer";
 import { Topbar } from "../Topbar/Topbar";
 import { LangueContext } from "../../Context/LangueContext";
@@ -30,19 +33,31 @@ function useCounter(initialState) {
 export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
-    langueTrans,setGameStarted,gameStarted,mode} =useContext(LangueContext)
+    langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
   const questionsOntranslate = useMemo(() => {
     let set = [];
     if (mode === 'exam') {
-      set = getExamQuestions(langueTrans);
+      set = getExamQuestions(langueTrans, examTopics, level, examCount);
     } else if (mode === 'quiz') {
       const topic = TOPIC_KEYS.includes(langue) ? langue : 'React';
-      set = getTopicQuestions(topic, langueTrans).map((q, i) => ({ ...q, id: i, selection: null }));
+      set = getTopicQuestions(topic, langueTrans, level).map((q, i) => ({ ...q, id: i, selection: null, topic }));
+    } else if (mode === 'review') {
+      const mistakes = loadMistakes().filter((m) => m.lang === langueTrans);
+      set = mistakes.map((m, i) => ({
+        id: i,
+        mistakeId: m.id,
+        topic: m.topic,
+        level: m.level,
+        text: m.text,
+        answers: m.answers,
+        correct: m.correct,
+        selection: null,
+      }));
     }
     return set;
-  }, [mode, langue, langueTrans]);
+  }, [mode, langue, langueTrans, level, examTopics, examCount]);
 
   const totalQuestion = questionsOntranslate.length - 1;
 
@@ -114,6 +129,57 @@ export default function App() {
     }
   }, [gameStarted]);
 
+  // Persist score history + mistakes once per finished run
+  const savedRef = useRef(false);
+  useEffect(() => {
+    if (!gameStarted) savedRef.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameStarted]);
+
+  useEffect(() => {
+    if (!gameStarted || savedRef.current || questionsOntranslate.length === 0) return;
+    if (question.value <= totalQuestion) return;
+    savedRef.current = true;
+    const total = questionsOntranslate.length;
+    const topics = mode === 'quiz'
+      ? [langue]
+      : mode === 'exam'
+        ? [...examTopics]
+        : mode === 'review'
+          ? ['Review']
+          : [mode];
+    saveHistoryEntry({
+      date: new Date().toISOString(),
+      mode,
+      topics,
+      level,
+      correct: correct.value,
+      total,
+    });
+    if (mode === 'quiz' || mode === 'exam') {
+      const missed = questionsOntranslate
+        .filter((q) => q.selection !== null && q.selection !== q.correct)
+        .map((q) => ({
+          id: `${q.topic || langue}|${langueTrans}|${q.text}`,
+          topic: q.topic || langue,
+          lang: langueTrans,
+          level: q.level || 1,
+          text: q.text,
+          answers: q.answers,
+          correct: q.correct,
+        }));
+      if (missed.length) addMistakes(missed);
+    }
+    if (mode === 'review') {
+      const fixed = questionsOntranslate
+        .filter((q) => q.selection === q.correct)
+        .map((q) => q.mistakeId)
+        .filter(Boolean);
+      if (fixed.length) removeMistakes(fixed);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameStarted, question.value, totalQuestion]);
+
 
   const ShowCorrectAnswer = ()=>{
   setshowCorrectAnswer(true)
@@ -126,11 +192,16 @@ export default function App() {
   }
 
   const showInterview = mode === 'interview' && gameStarted;
+  const showProgress = mode === 'progress';
 
   return (
 <>
 <Topbar />
-{showInterview ? (
+{showProgress ? (
+    <div className="game-progress">
+      <Progress />
+    </div>
+) : showInterview ? (
     <div className="game-interview">
       <Interview />
     </div>

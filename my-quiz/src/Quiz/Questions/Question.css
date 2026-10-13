@@ -187,3 +187,15 @@ li,
     margin-top: 4px;
   }
 }
+
+.question-level.level-4 {
+  background: #ffefe0;
+  border-color: #ff9f43;
+  color: #b25a00;
+}
+
+.question-level.level-5 {
+  background: #f1e8ff;
+  border-color: #a06bff;
+  color: #5b21b6;
+}

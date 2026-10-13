@@ -1,265 +1,376 @@
 export const laravelQuestions = [
-    
-    {
-        lang: "EN",
-        qsts: [
-            {
-      id: 0,
-      level: 1,
-      text: "What is Laravel?",
-      answers: [
-        "A JavaScript framework",
-        "A PHP framework for web development",
-        "A database management system",
-        "A programming language"
-      ],
-      correct: 1,
-      selection: null
-    },
-    {
-      id: 1,
-      level: 1,
-      text: "Which command is used to create a new Laravel project?",
-      answers: ["new laravel-project", "create-project laravel/laravel", "start laravel", "init laravel"],
-      correct: 1,
-      selection: null
-    },
-    {
-      id: 2,
-      level: 2,
-      text: "What is the purpose of Composer in Laravel?",
-      answers: [
-        "To manage dependencies and packages in PHP",
-        "To create user interfaces",
-        "To run JavaScript code",
-        "To manage databases"
-      ],
-      correct: 0,
-      selection: null
-    },
-    {
-      id: 3,
-      level: 2,
-      text: "Which folder contains the configuration files in a Laravel project?",
-      answers: [
-        "app",
-        "config",
-        "public",
-        "resources"
-      ],
-      correct: 1,
-      selection: null
-    },
-    {
-      id: 4,
-      level: 3,
-      text: "What is Eloquent in Laravel?",
-      answers: [
-        "A template engine",
-        "A database management system",
-        "An ORM (Object-Relational Mapping) included with Laravel",
-        "A front-end framework"
-      ],
-      correct: 2,
-      selection: null
-    },
-    {
-      id: 5,
-      level: 1,
-      text: "What does MVC stand for in the context of Laravel?",
-      answers: [
-        "Model-View-Controller",
-        "Most Valuable Code",
-        "Master View Creation",
-        "Make Various Commands"
-      ],
-      correct: 0,
-      selection: null
-    },
-    {
-      id: 6,
-      level: 2,
-      text: "What command is used to create a new controller in Laravel?",
-      answers: [
-        "make:controller",
-        "create:controller",
-        "new:controller",
-        "generate:controller"
-      ],
-      correct: 0,
-      selection: null
-    },
-    {
-      id: 7,
-      level: 1,
-      text: "Which file is used to define the routes in a Laravel application?",
-      answers: [
-        "web.php",
-        "routes.php",
-        "app.php",
-        "routes/web.php"
-      ],
-      correct: 3,
-      selection: null
-    },
-    {
-      id: 8,
-      level: 2,
-      text: "What is the purpose of the migration in Laravel?",
-      answers: [
-        "To handle HTTP requests",
-        "To manage databases and their changes over time",
-        "To create user interfaces",
-        "To deploy the application"
-      ],
-      correct: 1,
-      selection: null
-    },
-    {
-      id: 9,
-      level: 3,
-      text: "Which artisan command is used to clear the application cache in Laravel?",
-      answers: [
-        "cache:clear",
-        "clear:cache",
-        "artisan clear",
-        "php artisan cache:clear"
-      ],
-      correct: 3,
-      selection: null
-    }
-]
-},
-
-{
-      lang: "FR",
-      qsts: [
-        {
-          id: 0,
-          level: 1,
-          text: "Qu'est-ce que Laravel ?",
-          answers: [
-            "Un framework JavaScript",
-            "Un framework PHP pour le développement web",
-            "Un système de gestion de base de données",
-            "Un langage de programmation"
-          ],
-          correct: 1,
-          selection: null
-        },
-        {
-          id: 1,
-          level: 1,
-          text: "Quelle commande est utilisée pour créer un nouveau projet Laravel ?",
-          answers: ["new laravel-project", "create-project laravel/laravel", "start laravel", "init laravel"],
-          correct: 1,
-          selection: null
-        },
-        {
-          id: 2,
-          level: 2,
-          text: "Quel est le rôle de Composer dans Laravel ?",
-          answers: [
-            "Gérer les dépendances et les paquets en PHP",
-            "Créer des interfaces utilisateur",
-            "Exécuter du code JavaScript",
-            "Gérer les bases de données"
-          ],
-          correct: 0,
-          selection: null
-        },
-        {
-          id: 3,
-          level: 2,
-          text: "Dans quel dossier se trouvent les fichiers de configuration dans un projet Laravel ?",
-          answers: [
-            "app",
-            "config",
-            "public",
-            "resources"
-          ],
-          correct: 1,
-          selection: null
-        },
-        {
-          id: 4,
-          level: 3,
-          text: "Qu'est-ce qu'Eloquent dans Laravel ?",
-          answers: [
-            "Un moteur de template",
-            "Un système de gestion de base de données",
-            "Un ORM (Object-Relational Mapping) inclus avec Laravel",
-            "Un framework front-end"
-          ],
-          correct: 2,
-          selection: null
-        },
-        {
-          id: 5,
-          level: 1,
-          text: "Que signifie MVC dans le contexte de Laravel ?",
-          answers: [
-            "Modèle-Vue-Contrôleur",
-            "Code le plus précieux",
-            "Création de vue principale",
-            "Créer diverses commandes"
-          ],
-          correct: 0,
-          selection: null
-        },
-        {
-          id: 6,
-          level: 2,
-          text: "Quelle commande est utilisée pour créer un nouveau contrôleur dans Laravel ?",
-          answers: [
-            "make:controller",
-            "create:controller",
-            "new:controller",
-            "generate:controller"
-          ],
-          correct: 0,
-          selection: null
-        },
-        {
-          id: 7,
-          level: 1,
-          text: "Quel fichier est utilisé pour définir les routes dans une application Laravel ?",
-          answers: [
-            "web.php",
-            "routes.php",
-            "app.php",
-            "routes/web.php"
-          ],
-          correct: 3,
-          selection: null
-        },
-        {
-          id: 8,
-          level: 2,
-          text: "Quel est le rôle de la migration dans Laravel ?",
-          answers: [
-            "Gérer les requêtes HTTP",
-            "Gérer les bases de données et leurs modifications au fil du temps",
-            "Créer des interfaces utilisateur",
-            "Déployer l'application"
-          ],
-          correct: 1,
-          selection: null
-        },
-        {
-          id: 9,
-          level: 3,
-          text: "Quelle commande artisan est utilisée pour vider le cache de l'application dans Laravel ?",
-          answers: [
-            "cache:clear",
-            "clear:cache",
-            "artisan clear",
-            "php artisan cache:clear"
-          ],
-          correct: 3,
-          selection: null
-        }
-      ]
-    }
-  
-  ];
+  {
+    "lang": "EN",
+    "qsts": [
+      {
+        "id": 0,
+        "level": 1,
+        "text": "What is Laravel?",
+        "answers": [
+          "A JavaScript framework",
+          "A PHP framework for web development",
+          "A database management system",
+          "A programming language"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 1,
+        "level": 1,
+        "text": "Which command is used to create a new Laravel project?",
+        "answers": [
+          "new laravel-project",
+          "create-project laravel/laravel",
+          "start laravel",
+          "init laravel"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 2,
+        "level": 2,
+        "text": "What is the purpose of Composer in Laravel?",
+        "answers": [
+          "To manage dependencies and packages in PHP",
+          "To create user interfaces",
+          "To run JavaScript code",
+          "To manage databases"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 3,
+        "level": 2,
+        "text": "Which folder contains the configuration files in a Laravel project?",
+        "answers": [
+          "app",
+          "config",
+          "public",
+          "resources"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 4,
+        "level": 4,
+        "text": "What is Eloquent in Laravel?",
+        "answers": [
+          "A template engine",
+          "A database management system",
+          "An ORM (Object-Relational Mapping) included with Laravel",
+          "A front-end framework"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 5,
+        "level": 1,
+        "text": "What does MVC stand for in the context of Laravel?",
+        "answers": [
+          "Model-View-Controller",
+          "Most Valuable Code",
+          "Master View Creation",
+          "Make Various Commands"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 6,
+        "level": 3,
+        "text": "What command is used to create a new controller in Laravel?",
+        "answers": [
+          "make:controller",
+          "create:controller",
+          "new:controller",
+          "generate:controller"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 7,
+        "level": 2,
+        "text": "Which file is used to define the routes in a Laravel application?",
+        "answers": [
+          "web.php",
+          "routes.php",
+          "app.php",
+          "routes/web.php"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 8,
+        "level": 3,
+        "text": "What is the purpose of the migration in Laravel?",
+        "answers": [
+          "To handle HTTP requests",
+          "To manage databases and their changes over time",
+          "To create user interfaces",
+          "To deploy the application"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 9,
+        "level": 5,
+        "text": "Which artisan command is used to clear the application cache in Laravel?",
+        "answers": [
+          "cache:clear",
+          "clear:cache",
+          "artisan clear",
+          "php artisan cache:clear"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 10,
+        "level": 3,
+        "text": "What is Eloquent in Laravel?",
+        "answers": [
+          "A templating engine",
+          "The ORM for working with databases",
+          "A testing library",
+          "A queue driver"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 11,
+        "level": 4,
+        "text": "What is middleware used for in Laravel?",
+        "answers": [
+          "Filtering HTTP requests (auth, logging, CORS...).",
+          "Database migrations",
+          "Sending emails",
+          "Compiling assets"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 12,
+        "level": 4,
+        "text": "What is the difference between a migration and a seeder?",
+        "answers": [
+          "Migrations change the schema; seeders fill tables with data",
+          "They are the same",
+          "Seeders change the schema",
+          "Migrations run tests"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 13,
+        "level": 5,
+        "text": "In the Laravel request lifecycle, what happens after routing?",
+        "answers": [
+          "It goes directly to the view",
+          "The request passes through middleware, then reaches the controller",
+          "The database is seeded",
+          "The app reboots"
+        ],
+        "correct": 1,
+        "selection": null
+      }
+    ]
+  },
+  {
+    "lang": "FR",
+    "qsts": [
+      {
+        "id": 0,
+        "level": 1,
+        "text": "Qu'est-ce que Laravel ?",
+        "answers": [
+          "Un framework JavaScript",
+          "Un framework PHP pour le développement web",
+          "Un système de gestion de base de données",
+          "Un langage de programmation"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 1,
+        "level": 1,
+        "text": "Quelle commande est utilisée pour créer un nouveau projet Laravel ?",
+        "answers": [
+          "new laravel-project",
+          "create-project laravel/laravel",
+          "start laravel",
+          "init laravel"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 2,
+        "level": 2,
+        "text": "Quel est le rôle de Composer dans Laravel ?",
+        "answers": [
+          "Gérer les dépendances et les paquets en PHP",
+          "Créer des interfaces utilisateur",
+          "Exécuter du code JavaScript",
+          "Gérer les bases de données"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 3,
+        "level": 2,
+        "text": "Dans quel dossier se trouvent les fichiers de configuration dans un projet Laravel ?",
+        "answers": [
+          "app",
+          "config",
+          "public",
+          "resources"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 4,
+        "level": 4,
+        "text": "Qu'est-ce qu'Eloquent dans Laravel ?",
+        "answers": [
+          "Un moteur de template",
+          "Un système de gestion de base de données",
+          "Un ORM (Object-Relational Mapping) inclus avec Laravel",
+          "Un framework front-end"
+        ],
+        "correct": 2,
+        "selection": null
+      },
+      {
+        "id": 5,
+        "level": 1,
+        "text": "Que signifie MVC dans le contexte de Laravel ?",
+        "answers": [
+          "Modèle-Vue-Contrôleur",
+          "Code le plus précieux",
+          "Création de vue principale",
+          "Créer diverses commandes"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 6,
+        "level": 3,
+        "text": "Quelle commande est utilisée pour créer un nouveau contrôleur dans Laravel ?",
+        "answers": [
+          "make:controller",
+          "create:controller",
+          "new:controller",
+          "generate:controller"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 7,
+        "level": 2,
+        "text": "Quel fichier est utilisé pour définir les routes dans une application Laravel ?",
+        "answers": [
+          "web.php",
+          "routes.php",
+          "app.php",
+          "routes/web.php"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 8,
+        "level": 3,
+        "text": "Quel est le rôle de la migration dans Laravel ?",
+        "answers": [
+          "Gérer les requêtes HTTP",
+          "Gérer les bases de données et leurs modifications au fil du temps",
+          "Créer des interfaces utilisateur",
+          "Déployer l'application"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 9,
+        "level": 5,
+        "text": "Quelle commande artisan est utilisée pour vider le cache de l'application dans Laravel ?",
+        "answers": [
+          "cache:clear",
+          "clear:cache",
+          "artisan clear",
+          "php artisan cache:clear"
+        ],
+        "correct": 3,
+        "selection": null
+      },
+      {
+        "id": 10,
+        "level": 3,
+        "text": "Qu'est-ce qu'Eloquent dans Laravel ?",
+        "answers": [
+          "Un moteur de templates",
+          "L'ORM pour travailler avec les bases de données",
+          "Une librairie de tests",
+          "Un driver de file d'attente"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 11,
+        "level": 4,
+        "text": "À quoi sert un middleware dans Laravel ?",
+        "answers": [
+          "À filtrer les requêtes HTTP (auth, logs, CORS...).",
+          "Aux migrations de base de données",
+          "À l'envoi d'emails",
+          "À la compilation des assets"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 12,
+        "level": 4,
+        "text": "Quelle est la différence entre une migration et un seeder ?",
+        "answers": [
+          "Les migrations modifient le schéma ; les seeders remplissent les tables",
+          "C'est la même chose",
+          "Les seeders modifient le schéma",
+          "Les migrations lancent les tests"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 13,
+        "level": 5,
+        "text": "Dans le cycle de vie d'une requête Laravel, que se passe-t-il après le routage ?",
+        "answers": [
+          "Elle va directement à la vue",
+          "La requête traverse les middlewares puis atteint le contrôleur",
+          "La base est peuplée",
+          "L'application redémarre"
+        ],
+        "correct": 1,
+        "selection": null
+      }
+    ]
+  }
+];

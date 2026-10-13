@@ -34,6 +34,25 @@ export const TOPIC_KEYS = [
   "Docker",
 ];
 
+export const TOPIC_LABELS = {
+  React: "React",
+  Javascript: "Javascript",
+  Typescript: "Typescript",
+  VueJs: "VueJs",
+  Html: "Html",
+  Css: "Css",
+  Tailwind: "Tailwind",
+  NodeJs: "NodeJs",
+  RestApi: "REST API",
+  Laravel: "Laravel",
+  Php: "Php",
+  Python: "Python",
+  Sql: "Sql",
+  MongoDb: "MongoDb",
+  Git: "Git",
+  Docker: "Docker",
+};
+
 export const questionsData = {
   type: {
     Javascript: [...javascriptQuestions],
@@ -55,29 +74,42 @@ export const questionsData = {
   }
 };
 
-// Questions of one topic in a given UI language, sorted easy -> hard
-export const getTopicQuestions = (topic, langTrans) => {
+// Questions of one topic in a given UI language, optionally filtered by level, sorted easy -> hard
+export const getTopicQuestions = (topic, langTrans, level = "all") => {
   const blocks = questionsData.type[topic] || [];
   const block = blocks.find((b) => b.lang === langTrans);
   if (!block) return [];
-  return [...block.qsts].sort((a, b) => (a.level || 1) - (b.level || 1));
+  let qs = [...block.qsts];
+  if (level !== "all") qs = qs.filter((q) => q.level === Number(level));
+  return qs.sort((a, b) => (a.level || 1) - (b.level || 1));
 };
 
-// Final exam: 24 questions across all topics (>=1 per topic), easy -> hard
-export const getExamQuestions = (langTrans) => {
+// Custom exam: balanced round-robin across selected topics, easy -> hard
+// topics: array of topic keys, level: 'all' | 1..5, count: number
+export const getExamQuestions = (langTrans, topics, level = "all", count = 20) => {
+  const pools = (topics && topics.length ? topics : TOPIC_KEYS)
+    .filter((t) => TOPIC_KEYS.includes(t))
+    .map((t) => ({ topic: t, qs: getTopicQuestions(t, langTrans, level) }))
+    .filter((p) => p.qs.length > 0);
+  if (!pools.length || count <= 0) return [];
   const picked = [];
-  const perTopic = {};
-  TOPIC_KEYS.forEach((topic) => {
-    const sorted = getTopicQuestions(topic, langTrans);
-    perTopic[topic] = sorted;
-    if (sorted[0]) picked.push({ ...sorted[0], topic });
-  });
-  // 8 more to reach 24: a harder (level 2+) question from the first 8 topics
-  TOPIC_KEYS.slice(0, 8).forEach((topic) => {
-    const harder = perTopic[topic].find((q) => (q.level || 1) >= 2 && !picked.some((p) => p.topic === topic && p.text === q.text));
-    if (harder) picked.push({ ...harder, topic });
-  });
+  let i = 0;
+  let guard = 0;
+  while (picked.length < count && guard < count * pools.length + pools.length) {
+    guard += 1;
+    let added = false;
+    for (const p of pools) {
+      if (picked.length >= count) break;
+      const q = p.qs[i];
+      if (q) {
+        picked.push({ ...q, topic: p.topic });
+        added = true;
+      }
+    }
+    i += 1;
+    if (!added) break;
+  }
   return picked
     .sort((a, b) => (a.level || 1) - (b.level || 1))
-    .map((q, i) => ({ ...q, id: i, selection: null }));
+    .map((q, idx) => ({ ...q, id: idx, selection: null }));
 };
