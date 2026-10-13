@@ -1,0 +1,84 @@
+/* ---- Stack button grid (replaces the old dropdown) ---- */
+.stack-picker {
+  margin: 18px 0 6px;
+}
+
+.stack-picker-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--pq-faint);
+  margin: 0 2px 12px;
+  text-align: left;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.stack-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--pq-dim);
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.stack-btn:hover {
+  border-color: var(--pq-purple);
+  color: var(--pq-text);
+  transform: translateY(-2px);
+}
+
+.stack-btn:active {
+  transform: scale(0.97);
+}
+
+.stack-btn.stack-active {
+  background: var(--pq-grad-soft);
+  border-color: var(--pq-purple);
+  color: #fff;
+  box-shadow: var(--pq-glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.stack-btn-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: saturate(1.1);
+}
+
+.stack-btn-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .stack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

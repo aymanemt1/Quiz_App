@@ -1,37 +1,53 @@
+/* ---- Premium correction review ---- */
 .correction {
-    width: 100%;
-  }
-  
-  .correction [data-selected="true"].is-true label {
-    border-color: #1bcf1b;
-    background-color: #98eba1;
-  
-    &:before {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%230ca50c' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-      opacity: 1;
-      transform: translatex(-24px) translatey(-50%);
-    }
-  }
-  
-  .correction [data-selected="true"]:not(.is-true) label {
-    background-color: #fab8c4;
-    border-color:#f76e6e;
-  
-    &:before {
-      opacity: 1;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23ff6161' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
-    }
-  }
-  
-  .correction input {
-    pointer-events: none;
-  }
+  width: 100%;
+  display: grid;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.correction .question-inner {
+  padding: clamp(18px, 4vw, 26px);
+}
+
+.correction .question-answer {
+  cursor: default;
+}
+
+.correction .question-answer:hover {
+  transform: none;
+}
+
+.correction [data-selected="true"].is-true .question-answer {
+  border-color: var(--pq-success);
+  background: rgba(52, 211, 153, 0.14);
+  color: #d1fae5;
+}
+
+.correction [data-selected="true"].is-true .question-answer::before {
+  border-color: var(--pq-success);
+  background: var(--pq-success);
+  box-shadow: inset 0 0 0 4px #0d2b22;
+}
+
+.correction [data-selected="true"]:not(.is-true) .question-answer {
+  border-color: var(--pq-danger);
+  background: rgba(248, 113, 113, 0.12);
+  color: #fecaca;
+}
+
+.correction [data-selected="true"]:not(.is-true) .question-answer::before {
+  border-color: var(--pq-danger);
+  background: var(--pq-danger);
+  box-shadow: inset 0 0 0 4px #3b1010;
+}
+
+.correction input {
+  pointer-events: none;
+}
 
 @media (max-width: 640px) {
   .correction {
-    padding: 0 0.25rem;
-  }
-  .correction .question-text {
-    font-size: 18px;
+    gap: 14px;
   }
 }

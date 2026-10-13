@@ -1,58 +1,72 @@
+/* ---- Premium weak-spot card ---- */
 .weak-spot {
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin: 12px 0;
-  font-size: 14px;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  color: #fff;
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--pq-radius);
+  border: 1px solid var(--pq-border-soft);
+  background: linear-gradient(165deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.04));
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .weak-spot-alert {
-  border: 1px solid #f59e0b;
-  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.4);
+  background: linear-gradient(165deg, rgba(251, 191, 36, 0.1), rgba(168, 85, 247, 0.05));
+}
+
+.weak-spot-idle {
+  border-style: dashed;
+}
+
+.weak-spot-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.weak-spot-idle .weak-spot-icon {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: var(--pq-border-soft);
 }
 
 .weak-spot-text {
-  margin: 0;
   flex: 1;
-  text-align: left;
-  line-height: 1.45;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--pq-text);
+}
+
+.weak-spot-text strong {
+  color: var(--pq-purple-light);
 }
 
 .weak-spot-hint {
-  opacity: 0.65;
+  color: var(--pq-dim);
   text-align: center;
   width: 100%;
 }
 
-.weak-spot-icon {
-  font-size: 20px;
-}
-
 .weak-spot-button {
-  border: 1px solid #f59e0b;
-  background: transparent;
-  color: #fff;
-  border-radius: 20px;
-  padding: 7px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: 0.2s;
-}
-
-.weak-spot-button:hover {
-  background: #f59e0b;
-  color: #000;
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-size: 14px;
 }
 
 @media (max-width: 640px) {
   .weak-spot {
     flex-wrap: wrap;
-    font-size: 13px;
+  }
+  .weak-spot-button {
+    width: 100%;
   }
 }

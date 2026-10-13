@@ -1,116 +1,138 @@
+/* ---- Premium progress screen ---- */
 .progress {
   width: 100%;
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
-  padding: 12px 4px;
-  color: #fff;
 }
 
 .progress-title {
-  font-size: 26px;
-  margin: 6px 0 14px;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.4px;
   text-align: center;
-}
-
-.progress-empty {
-  opacity: 0.8;
-  text-align: center;
-  line-height: 1.6;
+  margin: 6px 0 18px;
+  background: linear-gradient(120deg, #fff 30%, var(--pq-purple-light) 70%, var(--pq-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .progress-overall {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
 .progress-stat {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-  padding: 10px 16px;
+  background: linear-gradient(165deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius-sm);
+  padding: 18px 12px;
   text-align: center;
-  min-width: 96px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .progress-stat-count {
   display: block;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
 }
 
 .progress-stat-label {
+  display: block;
+  margin-top: 6px;
   font-size: 12px;
-  opacity: 0.75;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--pq-faint);
 }
 
 .progress-topics {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 10px;
-  margin-bottom: 18px;
 }
 
 .progress-topic {
-  display: grid;
-  grid-template-columns: 110px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 8px 12px;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius-sm);
+  padding: 14px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.progress-topic:hover {
+  border-color: var(--pq-purple);
 }
 
 .progress-topic-name {
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-topic-scores {
+  display: flex;
+  gap: 14px;
+  font-size: 12.5px;
+  color: var(--pq-dim);
+  margin-bottom: 10px;
 }
 
 .progress-bar {
   height: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 99px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.12);
   overflow: hidden;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #22c55e, #4ade80);
-  border-radius: 99px;
-  transition: width 0.4s;
+  border-radius: 999px;
+  background: var(--pq-grad);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.55);
+  transition: width 0.4s ease;
 }
 
-.progress-topic-scores {
-  font-size: 12px;
-  opacity: 0.8;
-  white-space: nowrap;
+.progress-empty {
+  text-align: center;
+  color: var(--pq-dim);
+  padding: 44px 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  background: rgba(168, 85, 247, 0.05);
+  border: 1px dashed var(--pq-border);
+  border-radius: var(--pq-radius);
 }
 
 .progress-clear {
   display: block;
-  margin: 0 auto 14px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fff;
-  border-radius: 6px;
-  padding: 8px 18px;
-  cursor: pointer;
+  margin: 24px auto 0;
+  min-height: 44px;
+  padding: 10px 24px;
+  font-family: inherit;
   font-size: 13px;
-  opacity: 0.85;
+  font-weight: 600;
+  color: var(--pq-danger);
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .progress-clear:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(248, 113, 113, 0.16);
 }
 
-@media (max-width: 640px) {
-  .progress-topic {
-    grid-template-columns: 84px 1fr;
-  }
-  .progress-topic-scores {
-    grid-column: 2;
+@media (min-width: 640px) {
+  .progress-overall {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

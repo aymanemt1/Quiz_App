@@ -7,12 +7,11 @@ export const Indicator = ({questions,question}) => {
     const indicatorBg = (index) => {
 
         if (question.value > index) {
-          
-          return "#fff";
+          return "#a855f7";
         } else if (question.value === index) {
-          return "#29b5d5";
+          return "#f0abfc";
         } else {
-          return "rgba(255,255,255,.2)";
+          return "rgba(168,85,247,.18)";
         }
 
       };

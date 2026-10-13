@@ -3,6 +3,53 @@ import "./ShareCard.css";
 import { LangueContext } from "../../Context/LangueContext";
 import { TOPIC_LABELS } from "../Data/QuestionAllData";
 
+// Draws the Quiz App "Q" logo mark on the canvas.
+const drawLogo = (ctx, cx, topY, size) => {
+  const r = size * 0.24;
+  const x = cx - size / 2;
+  const y = topY;
+  // rounded-square gradient badge
+  const bg = ctx.createLinearGradient(x, y, x + size, y + size);
+  bg.addColorStop(0, "#6d28d9");
+  bg.addColorStop(0.55, "#a855f7");
+  bg.addColorStop(1, "#d946ef");
+  ctx.fillStyle = bg;
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(x, y, size, size, r);
+  } else {
+    ctx.rect(x, y, size, size);
+  }
+  ctx.fill();
+  // Q ring
+  const qcx = cx - size * 0.03;
+  const qcy = y + size * 0.44;
+  const qr = size * 0.21;
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = size * 0.1;
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  ctx.arc(qcx, qcy, qr, 0, Math.PI * 2);
+  ctx.stroke();
+  // Q tail
+  ctx.beginPath();
+  ctx.moveTo(qcx + qr * 0.72, qcy + qr * 0.72);
+  ctx.lineTo(qcx + qr * 1.5, qcy + qr * 1.5);
+  ctx.stroke();
+  // spark
+  const sx = x + size * 0.76;
+  const sy = y + size * 0.18;
+  const s = size * 0.055;
+  ctx.fillStyle = "#ffffff";
+  ctx.beginPath();
+  ctx.moveTo(sx, sy - s);
+  ctx.quadraticCurveTo(sx, sy, sx + s, sy);
+  ctx.quadraticCurveTo(sx, sy, sx, sy + s);
+  ctx.quadraticCurveTo(sx, sy, sx - s, sy);
+  ctx.quadraticCurveTo(sx, sy, sx, sy - s);
+  ctx.fill();
+};
+
 // Renders a 1080x1080 score card on a <canvas> and shares it via
 // navigator.share (file) when available, falling back to PNG download.
 const drawScoreCard = ({ pct, correct, total, modeText, topicText, dateText }) =>
@@ -14,10 +61,11 @@ const drawScoreCard = ({ pct, correct, total, modeText, topicText, dateText }) =
       canvas.height = S;
       const ctx = canvas.getContext("2d");
 
-      // Background
+      // Background — premium deep purple
       const g = ctx.createLinearGradient(0, 0, S, S);
-      g.addColorStop(0, "#0b1220");
-      g.addColorStop(1, "#1e1b4b");
+      g.addColorStop(0, "#0d0a1f");
+      g.addColorStop(0.6, "#150f2e");
+      g.addColorStop(1, "#1e1240");
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, S, S);
 
@@ -29,27 +77,30 @@ const drawScoreCard = ({ pct, correct, total, modeText, topicText, dateText }) =
         ctx.fillStyle = rg;
         ctx.fillRect(x - r, y - r, r * 2, r * 2);
       };
-      glow(200, 180, 320, "rgba(129,140,248,0.25)");
-      glow(900, 920, 380, "rgba(52,211,153,0.16)");
+      glow(200, 180, 340, "rgba(168,85,247,0.28)");
+      glow(900, 920, 400, "rgba(217,70,239,0.16)");
 
       // Frame
-      ctx.strokeStyle = "rgba(129,140,248,0.5)";
+      ctx.strokeStyle = "rgba(168,85,247,0.45)";
       ctx.lineWidth = 6;
       ctx.strokeRect(40, 40, S - 80, S - 80);
 
       ctx.textAlign = "center";
       ctx.textBaseline = "alphabetic";
 
+      // Logo
+      drawLogo(ctx, S / 2, 92, 150);
+
       // App name
-      ctx.fillStyle = "#818cf8";
-      ctx.font = "600 46px system-ui, -apple-system, sans-serif";
-      ctx.fillText("Q U I Z   A P P", S / 2, 170);
+      ctx.fillStyle = "#c084fc";
+      ctx.font = "600 40px system-ui, -apple-system, sans-serif";
+      ctx.fillText("Q U I Z   A P P", S / 2, 300);
 
       // Score ring
       const cx = S / 2;
-      const cy = 500;
-      const r = 215;
-      ctx.lineWidth = 38;
+      const cy = 570;
+      const r = 200;
+      ctx.lineWidth = 36;
       ctx.lineCap = "round";
       ctx.strokeStyle = "rgba(255,255,255,0.12)";
       ctx.beginPath();
@@ -62,26 +113,26 @@ const drawScoreCard = ({ pct, correct, total, modeText, topicText, dateText }) =
       ctx.stroke();
 
       ctx.fillStyle = "#ffffff";
-      ctx.font = "800 150px system-ui, -apple-system, sans-serif";
-      ctx.fillText(`${pct}%`, cx, cy + 55);
+      ctx.font = "800 140px system-ui, -apple-system, sans-serif";
+      ctx.fillText(`${pct}%`, cx, cy + 50);
 
       // correct / total
       ctx.fillStyle = "rgba(255,255,255,0.85)";
-      ctx.font = "500 54px system-ui, -apple-system, sans-serif";
-      ctx.fillText(`${correct}/${total}`, cx, cy + 165);
+      ctx.font = "500 50px system-ui, -apple-system, sans-serif";
+      ctx.fillText(`${correct}/${total}`, cx, cy + 155);
 
       // mode + topic
-      ctx.fillStyle = "#c7d2fe";
-      ctx.font = "600 44px system-ui, -apple-system, sans-serif";
-      ctx.fillText(modeText, cx, 830);
+      ctx.fillStyle = "#d8b4fe";
+      ctx.font = "600 42px system-ui, -apple-system, sans-serif";
+      ctx.fillText(modeText, cx, 895);
       ctx.fillStyle = "rgba(255,255,255,0.65)";
-      ctx.font = "400 36px system-ui, -apple-system, sans-serif";
-      ctx.fillText(topicText, cx, 885);
+      ctx.font = "400 34px system-ui, -apple-system, sans-serif";
+      ctx.fillText(topicText, cx, 945);
 
       // date
       ctx.fillStyle = "rgba(255,255,255,0.45)";
-      ctx.font = "400 30px system-ui, -apple-system, sans-serif";
-      ctx.fillText(dateText, cx, 985);
+      ctx.font = "400 28px system-ui, -apple-system, sans-serif";
+      ctx.fillText(dateText, cx, 1010);
 
       canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("toBlob failed"))), "image/png");
     } catch (e) {

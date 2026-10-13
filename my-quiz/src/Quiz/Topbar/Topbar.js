@@ -39,6 +39,12 @@ export const Topbar = () => {
   return (
     <div className='topbar'>
       <div className='topbar-left'>
+        <img
+          src={`${process.env.PUBLIC_URL}/logo.svg`}
+          alt="Quiz App"
+          className='topbar-logo'
+          onClick={() => { setMenuOpen(true); setGameStarted(false); }}
+        />
         {streak > 0 && (
           <span className='topbar-streak' title={FR ? `${streak} jours de suite` : `${streak} days in a row`}>
             🔥 {streak}

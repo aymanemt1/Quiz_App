@@ -1,273 +1,123 @@
-.intro-title {
-  margin: 0;
-  display: none;
-  font-size: 42px;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.35);
-}
+/* ---- Premium setup screens (QuizStart) ---- */
 
-select{
-  padding: 7px;
-  width: 160px;
-  border-radius: 5px;
-  option{
-    padding: 7px;
-    width: 160px;
-    border-radius: 5px;
-  
-  }
-}
-
-.intro-desc {
-  opacity: 0.8;
-  font-weight: 300;
-}
-
-.intro-button {
-  height: 40px;
-  border: 1px solid #fff;
-  margin: 11px 7px;
-  background-color: transparent;
-  color: #fff;
-  border-radius: 4px;
-  padding: 3px 30px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 15px;
-  &:hover {
-    background-color: #fdfbfb;
-    color: black;
-}
-}
-
-.mode-selector {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin: 14px 0;
-  flex-wrap: wrap;
-}
-
-.mode-button {
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  color: #fff;
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.mode-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.mode-button.mode-active {
-  background: #fff;
-  color: #10163a;
-  font-weight: 600;
-}
-
-@media (max-width: 1024px) {
-  .intro-title {
-    font-size: 34px;
-  }
-}
-
-@media (max-width: 640px) {
-  .intro-title {
-    font-size: 28px;
-  }
-  .intro-desc {
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .select_options,
-  select {
-    width: 100%;
-    max-width: 280px;
-    font-size: 16px;
-    padding: 12px;
-  }
-  .intro-button {
-    width: 100%;
-    max-width: 280px;
-    padding: 14px;
-    font-size: 16px;
-    height: auto;
-  }
-  .mode-selector {
-    gap: 6px;
-  }
-  .mode-button {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-}
-
-/* ---- Level selector ---- */
+/* Level selector */
 .level-selector {
-  margin: 12px 0 4px;
+  margin: 18px 0 6px;
 }
 
 .level-selector-label {
   display: block;
   font-size: 13px;
-  opacity: 0.85;
-  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--pq-faint);
+  margin: 0 2px 12px;
+  text-align: left;
 }
 
 .level-buttons {
   display: flex;
-  gap: 8px;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .level-button {
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  color: #fff;
-  border-radius: 20px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: 500;
+  min-height: 48px;
+  min-width: 52px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pq-dim);
+  background: rgba(168, 85, 247, 0.07);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: 999px;
   cursor: pointer;
-  transition: 0.2s;
-  min-height: 36px;
+  transition: all 0.18s ease;
 }
 
 .level-button:hover {
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--pq-purple);
+  color: var(--pq-text);
+  transform: translateY(-1px);
+}
+
+.level-button:active {
+  transform: scale(0.96);
 }
 
 .level-button.level-active {
-  background: #fff;
-  color: #10163a;
-  font-weight: 700;
+  background: var(--pq-grad);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--pq-glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-/* ---- Exam builder ---- */
-.exam-builder {
-  width: 100%;
-  max-width: 520px;
-  margin: 6px auto 4px;
+/* Timed mode toggle */
+.timed-toggle {
+  margin: 18px 0 6px;
+  padding: 16px;
+  background: linear-gradient(165deg, rgba(168, 85, 247, 0.1), rgba(168, 85, 247, 0.04));
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius-sm);
   text-align: left;
 }
 
-.exam-row {
-  margin-bottom: 8px;
-}
-
-.exam-topics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px 10px;
-  margin-bottom: 10px;
-}
-
-.exam-check {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  min-height: 40px;
-}
-
-.exam-check:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.exam-check input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #4ade80;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.exam-check-all {
-  background: rgba(255, 255, 255, 0.1);
-  font-weight: 600;
-  justify-content: center;
-}
-
-.exam-warning {
-  color: #ffb4b4;
-  font-size: 13px;
-  text-align: center;
-  margin: 8px 0 0;
-}
-
-@media (max-width: 640px) {
-  .exam-topics {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ---- Timed mode toggle ---- */
-.timed-toggle {
-  margin: 12px 0 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+.timed-toggle .exam-check {
+  font-size: 15px;
 }
 
 .timed-durations {
-  margin-top: 2px;
+  margin-top: 12px;
 }
 
-/* ---- Cours / Examen choice ---- */
-.cours-exam-buttons {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 14px;
-  flex-wrap: wrap;
+/* Exam builder */
+.exam-builder {
+  margin: 6px 0;
 }
 
-.cours-exam-buttons .intro-button {
-  min-width: 150px;
-}
-
-.cours-button {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-}
-
-/* ---- Streak badge ---- */
-.streak-badge {
-  margin: 2px 0 8px;
+.exam-warning {
+  color: var(--pq-warning);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  color: #ffd43b;
-  text-align: center;
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--pq-radius-sm);
 }
 
-/* ---- Notes full-screen ---- */
-.game-notes {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 90px 12px 40px;
+/* legacy checkbox rows (kept as fallback, no longer rendered) */
+.exam-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pq-dim);
+  cursor: pointer;
+  user-select: none;
+}
+
+.exam-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--pq-purple);
+  cursor: pointer;
+}
+
+/* old dropdown — replaced by the stack grid, kept hidden-safe */
+.select_options {
+  display: none;
 }
 
 @media (max-width: 640px) {
-  .cours-exam-buttons {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  .level-buttons {
+    gap: 8px;
   }
-  .cours-exam-buttons .intro-button {
-    width: 100%;
-    max-width: 280px;
+  .level-button {
+    min-width: 48px;
+    padding: 10px 14px;
   }
 }

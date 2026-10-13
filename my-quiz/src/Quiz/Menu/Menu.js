@@ -115,6 +115,19 @@ export const Menu = ({ onSelect }) => {
 
   return (
     <div className="menu">
+      <div className="menu-hero">
+        <img
+          src={`${process.env.PUBLIC_URL}/logo.svg`}
+          alt="Quiz App logo"
+          className="menu-logo"
+        />
+        <h1 className="menu-app-name">Quiz App</h1>
+        <p className="menu-tagline">
+          {FR
+            ? "Maîtrisez vos stacks, un quiz à la fois"
+            : "Master your dev stacks, one quiz at a time"}
+        </p>
+      </div>
       {SECTIONS.map((s) => (
         <section key={s.id} className="menu-section">
           <h2 className="menu-section-title">

@@ -1,144 +1,106 @@
-
+/* ---- Premium results screen ---- */
 .result {
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 80%;
-  margin: auto;
-  height: 0;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 8px 0 26px;
+  animation: result-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes result-pop {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .result-item {
-  display: inline-flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 100%;
-  padding: 2px;
-
+  background: linear-gradient(165deg, rgba(168, 85, 247, 0.13), rgba(168, 85, 247, 0.045));
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius);
+  padding: 22px 10px 18px;
+  text-align: center;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
 }
+
+.result-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.result-item.is-correct::before { background: linear-gradient(90deg, #059669, var(--pq-success)); }
+.result-item.is-wrong::before { background: linear-gradient(90deg, #dc2626, var(--pq-danger)); }
+.result-item.is-empty::before { background: linear-gradient(90deg, #b45309, var(--pq-warning)); }
 
 .result-count {
-  font-size: 32px;
-  font-weight: 600;
+  display: block;
+  font-size: clamp(34px, 9vw, 46px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
 }
+
+.is-correct .result-count { color: var(--pq-success); text-shadow: 0 0 24px rgba(52, 211, 153, 0.4); }
+.is-wrong .result-count { color: var(--pq-danger); text-shadow: 0 0 24px rgba(248, 113, 113, 0.4); }
+.is-empty .result-count { color: var(--pq-warning); text-shadow: 0 0 24px rgba(251, 191, 36, 0.4); }
 
 .result-text {
-  font-size: 12px;
-  letter-spacing: 2px;
-  opacity: 0.8;
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--pq-dim);
+  line-height: 1.5;
+}
+
+.btnsResult {
   display: flex;
-  font-weight: 500;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 4px 0 26px;
+}
+
+.btnsResult .restart-button,
+.btnsResult .tryagain-button {
+  flex: 1 1 40%;
+  min-width: 150px;
+}
+
+.share-wrap {
+  display: inline-flex;
   align-items: center;
-  line-height: 1;
-
-}
-.result-text svg{
-
-    margin-right: 8px;
-    position: relative;
-    top: -1px;
+  gap: 10px;
+  flex: 1 1 100%;
+  justify-content: center;
 }
 
-.result-item.is-correct {
-  color: #42ff73;
-}
-.result-item.is-wrong {
-  color: #ffa2a2;
-}
-[data-game-finished] {
-  .result {
-    opacity: 1;
-    margin-top: 40px;
-    padding-top: 20px;
-    display: flex;
-    animation: result 0.6s 0.5s both;
-
-    .result-item {
-      animation: result-item 0.6s 1.3s both;
-      &.is-correct {
-        animation-delay: 1s;
-      }
-      &.is-wrong {
-        animation-delay: 1.15s;
-      }
-    }
-   
-  }
-
-  .restart-button,.tryagain-button{
-    display: block;
-  }
+.share-button {
+  flex: 1;
+  min-width: 150px;
 }
 
-.correction .question + .question {
-  margin-top: 0px;
-}
-
-@keyframes result {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: 150px;
-  }
-}
-
-@keyframes result-item {
-  0% {
-    opacity: 0;
-    transform: translateY(10ox);
-  }
-}
-.btnsResult{
-  display: flex;
-  margin-left: 18px;
-}
-.restart-button,.tryagain-button{
-  height: 40px;
-  border: 1px solid #fff;
-  margin: 11px 7px;
-  background-color: transparent;
-  color: #fff;
-  border-radius: 4px;
-  padding: 0 16px;
-  font-weight: 500;
-  transition: 0.3s;
-  cursor: pointer;
-  display: none;
-  animation: result-item 0.4s 1.45s both;
-  transition: all  0.7s ease-out  ;
-
-  &:hover {
-    background-color: #fdfbfb;
-    color: black;
-  }
+.share-done {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pq-success);
 }
 
 @media (max-width: 640px) {
-  [data-game-finished] .result {
-    overflow: visible;
-    margin-top: 2rem;
+  .result {
+    gap: 10px;
   }
-  [data-game-finished] .btnsResult {
-    margin: 1.5rem 0 0;
-    margin-left: 0;
-    justify-content: center;
-    flex-wrap: wrap;
+  .result-item {
+    padding: 18px 6px 14px;
   }
-  .restart-button,
-  .tryagain-button {
-    font-size: 16px;
-    width: auto;
-    height: auto;
-    padding: 12px 22px;
-  }
-  .result-text {
-    font-size: 13px;
-  }
-  .result-count {
-    font-size: 28px;
+  .btnsResult .restart-button,
+  .btnsResult .tryagain-button,
+  .share-button {
+    flex: 1 1 100%;
   }
 }

@@ -1,102 +1,132 @@
+/* ---- Premium topbar ---- */
 .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 18px 0;
-    max-width: 720px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(13, 10, 31, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--pq-border-soft);
 }
 
-.topbar-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-height: 28px;
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: transform 0.16s ease;
+}
+
+.topbar-logo:hover {
+  transform: scale(1.06);
+}
+
+.topbar-logo:active {
+  transform: scale(0.95);
+}
+
+.topbar-streak,
+.topbar-daily {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--pq-border-soft);
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--pq-dim);
 }
 
 .topbar-streak {
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffd43b;
-    letter-spacing: 0.5px;
-}
-
-.topbar-daily {
-    font-size: 16px;
-    opacity: 0.55;
+  color: #fcd34d;
+  border-color: rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.08);
 }
 
 .topbar-daily.daily-done {
-    opacity: 1;
-    color: #4ade80;
-    font-weight: 700;
+  color: var(--pq-success);
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
 }
 
-.topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.translate {
+  display: flex;
+  gap: 4px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid var(--pq-border-soft);
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.translate span {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--pq-faint);
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.translate span.active {
+  background: var(--pq-grad);
+  color: #fff;
+  box-shadow: var(--pq-glow-sm);
+}
+
+.translate span.not-active:hover {
+  color: var(--pq-text);
 }
 
 .topbar-avatar {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    font-family: inherit;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(168, 85, 247, 0.55);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.16s ease, box-shadow 0.2s ease;
 }
 
 .topbar-avatar:hover {
-    border-color: #fff;
-    transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: var(--pq-glow-sm);
 }
 
-.translate{
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-}
-.translate span{
-    margin: 6px 8px;
-    cursor: pointer;
-    font-size: 17px;
-    letter-spacing: 2px;
-}
-.translate span:hover{
-    opacity: 100%;
-}
-.active{
-    color: white;
-    font-weight: bold;
-}
-.not-active{
-    opacity: 0.8;
-}
-
-@media (max-width: 1024px) {
-  .topbar {
-    padding: 12px 14px 0;
-  }
+.topbar-avatar:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 640px) {
-  .translate span {
-    margin: 4px 10px;
-    font-size: 16px;
-    letter-spacing: 2px;
+  .topbar {
+    padding: 8px 12px;
   }
-  .topbar-streak,
-  .topbar-daily {
-    font-size: 15px;
+  .topbar-left,
+  .topbar-right {
+    gap: 8px;
   }
 }

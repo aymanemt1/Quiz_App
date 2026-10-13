@@ -1,69 +1,63 @@
+/* ---- Premium per-question timer ---- */
 .question-timer {
   width: 100%;
-  max-width: 520px;
-  margin: 0 auto 14px;
-  padding: 10px 16px 12px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  max-width: 560px;
+  margin: 0 auto 16px;
+  padding: 12px 18px 14px;
+  border-radius: var(--pq-radius-sm);
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid var(--pq-border-soft);
 }
 
 .timer-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .timer-label {
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.8;
-  color: #fff;
+  letter-spacing: 1.2px;
+  color: var(--pq-dim);
 }
 
 .timer-value {
   font-size: 26px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 800;
+  color: var(--pq-purple-light);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 .question-timer.timer-danger .timer-value {
-  color: #ff6b6b;
+  color: var(--pq-danger);
   animation: timer-pulse 0.8s ease-in-out infinite;
 }
 
 @keyframes timer-pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  50% { transform: scale(1.16); }
 }
 
 .timer-bar {
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.15);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.14);
   overflow: hidden;
 }
 
 .timer-bar-fill {
   height: 100%;
-  border-radius: 3px;
-  background: #818cf8;
+  border-radius: 999px;
+  background: var(--pq-grad);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
   transition: width 1s linear;
 }
 
 .question-timer.timer-danger .timer-bar-fill {
-  background: #ff6b6b;
-}
-
-@media (max-width: 640px) {
-  .question-timer {
-    padding: 8px 12px 10px;
-    margin-bottom: 10px;
-  }
-  .timer-value {
-    font-size: 22px;
-  }
+  background: linear-gradient(90deg, #dc2626, var(--pq-danger));
+  box-shadow: 0 0 12px rgba(248, 113, 113, 0.6);
 }

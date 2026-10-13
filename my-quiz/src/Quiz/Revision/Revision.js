@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./Revision.css";
-import { LangueContext } from "../../Context/LangueContext";import { TOPIC_KEYS, TOPIC_LABELS } from "../Data/QuestionAllData";
+import { LangueContext } from "../../Context/LangueContext";import { TOPIC_KEYS } from "../Data/QuestionAllData";
 import { getRevisionNotes } from "../Data/RevisionNotes";
+import { StackGrid, stackOptions } from "../StackGrid/StackGrid";
 
 // Renders `code` spans from backtick-marked text
 const renderRich = (text) => {
@@ -46,20 +47,15 @@ export const Revision = () => {
         {FR ? "Fiches de révision" : "Revision notes"}
       </h1>
 
-      <select
-        className="select_options"
+      <StackGrid
+        options={stackOptions(TOPIC_KEYS)}
         value={topic}
-        onChange={(e) => {
-          setTopic(e.target.value);
-          setlangue(e.target.value);
+        onSelect={(t) => {
+          setTopic(t);
+          setlangue(t);
         }}
-      >
-        {TOPIC_KEYS.map((t) => (
-          <option key={t} value={t}>
-            {TOPIC_LABELS[t]}
-          </option>
-        ))}
-      </select>
+        label={FR ? "Stack :" : "Stack:"}
+      />
 
       {total > 0 ? (
         <div className="revision-card-wrap">

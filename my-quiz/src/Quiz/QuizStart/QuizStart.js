@@ -5,6 +5,7 @@ import { LangueContext } from '../../Context/LangueContext';
 import { TOPIC_KEYS, TOPIC_LABELS } from '../Data/QuestionAllData';
 import { CODE_TOPICS } from '../Data/CodeChallenges';
 import { LEVELS, levelLabel } from '../Data/levels';
+import { stackOptions, allStacksOption, StackGrid } from '../StackGrid/StackGrid';
 import { getMistakeCount, getTodayResult } from '../Data/storage';
 import { DAILY_COUNT } from '../Data/daily';
 import { Progress } from '../Progress/Progress';
@@ -96,26 +97,24 @@ const ExamBuilder = () => {
   };
   const allChecked = examTopics.length === TOPIC_KEYS.length;
 
+  const allOption = { key: '__all__', label: FR ? "Tous les stacks" : "All stacks", icon: "🧩" };
+  const handleExamSelect = (key) => {
+    if (key === '__all__') { toggleAll(); return; }
+    toggleTopic(key);
+  };
+  const examOptions = [allOption, ...stackOptions(TOPIC_KEYS)];
+  const examValue = allChecked ? ['__all__', ...examTopics] : examTopics;
+
   return (
     <div className="exam-builder">
-      <div className="exam-row">
-        <label className="exam-check exam-check-all">
-          <input type="checkbox" checked={allChecked} onChange={toggleAll} />
-          <span>{FR ? "Tous les stacks" : "All stacks"}</span>
-        </label>
-      </div>
-      <div className="exam-topics">
-        {TOPIC_KEYS.map((t) => (
-          <label key={t} className="exam-check">
-            <input
-              type="checkbox"
-              checked={examTopics.includes(t)}
-              onChange={() => toggleTopic(t)}
-            />
-            <span>{TOPIC_LABELS[t]}</span>
-          </label>
-        ))}
-      </div>
+      <StackGrid
+        options={examOptions}
+        value={examValue}
+        onSelect={handleExamSelect}
+        multi
+        label={FR ? "Stacks :" : "Stacks:"}
+        FR={FR}
+      />
       <LevelSelector value={level} onChange={setLevel} FR={FR} />
       <div className="level-selector">
         <span className="level-selector-label">{FR ? "Questions :" : "Questions:"}</span>
@@ -266,11 +265,13 @@ const startLabel = dailyDone
 
           {mode === 'quiz' && (
             <>
-              <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
-                {TOPIC_KEYS.map((t) => (
-                  <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
-                ))}
-              </select>
+              <StackGrid
+                options={stackOptions(TOPIC_KEYS)}
+                value={langue}
+                onSelect={setlangue}
+                label={FR ? "Stack :" : "Stack:"}
+                FR={FR}
+              />
               <LevelSelector value={level} onChange={setLevel} FR={FR} />
               <TimedToggle />
             </>
@@ -285,12 +286,13 @@ const startLabel = dailyDone
 
           {mode === 'code' && (
             <>
-              <select className='select_options' value={codeTopic} onChange={(e)=>setCodeTopic(e.target.value)}>
-                <option value='All'>{FR ? "Tous les stacks" : "All stacks"}</option>
-                {CODE_TOPICS.map((t) => (
-                  <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
-                ))}
-              </select>
+              <StackGrid
+                options={[allStacksOption(FR ? "Tous les stacks" : "All stacks"), ...stackOptions(CODE_TOPICS)]}
+                value={codeTopic}
+                onSelect={setCodeTopic}
+                label={FR ? "Stack :" : "Stack:"}
+                FR={FR}
+              />
               <LevelSelector value={level} onChange={setLevel} FR={FR} />
               <TimedToggle />
             </>
@@ -299,12 +301,13 @@ const startLabel = dailyDone
           {mode === 'daily' && !dailyDone && <TimedToggle />}
 
           {mode === 'interview' && (
-            <select className='select_options' value={langue} onChange={(e)=>setlangue(e.target.value)}>
-              <option value='All'>{FR ? "Tous les sujets" : "All topics"}</option>
-              {TOPIC_KEYS.map((t) => (
-                <option key={t} value={t}>{TOPIC_LABELS[t]}</option>
-              ))}
-            </select>
+            <StackGrid
+              options={[allStacksOption(FR ? "Tous les sujets" : "All topics"), ...stackOptions(TOPIC_KEYS)]}
+              value={langue}
+              onSelect={setlangue}
+              label={FR ? "Sujet :" : "Topic:"}
+              FR={FR}
+            />
           )}
 
           {mode === 'progress' ? (
