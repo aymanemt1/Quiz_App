@@ -8,6 +8,7 @@ import {
   getRank,
   getProfileStats,
   getStreak,
+  getCompletedCourses,
 } from '../Data/storage';
 
 const initials = (name) =>
@@ -34,6 +35,10 @@ export const Profile = () => {
   const rank = getRank(xp);
   const stats = getProfileStats();
   const streak = getStreak();
+  const completedCourses = Object.entries(getCompletedCourses()).sort(
+    (a, b) => new Date(b[1]) - new Date(a[1])
+  );
+  const dateLocale = DR ? 'fr-MA' : FR ? 'fr-FR' : 'en-US';
 
   const save = () => {
     updateProfile({ name, color });
@@ -178,6 +183,37 @@ export const Profile = () => {
                   style={{ width: `${Math.min(100, s.avg)}%` }}
                 />
               </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <h3 className="profile-section-title">
+        {DR ? 'Doros li kmlti' : FR ? 'Cours terminés' : 'Completed courses'}
+      </h3>
+      {completedCourses.length === 0 ? (
+        <p className="profile-empty">
+          {DR
+            ? 'Kmel l course dyal chi stack bach tban hna.'
+            : FR
+            ? 'Terminez le cours d’un stack pour le voir ici.'
+            : 'Finish a stack’s course to see it here.'}
+        </p>
+      ) : (
+        <div className="profile-courses">
+          {completedCourses.map(([topic, date]) => (
+            <div key={topic} className="profile-course">
+              <span className="profile-course-check" aria-hidden="true">✓</span>
+              <span className="profile-course-name">
+                {TOPIC_LABELS[topic] || topic}
+              </span>
+              <span className="profile-course-date">
+                {new Date(date).toLocaleDateString(dateLocale, {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
+                })}
+              </span>
             </div>
           ))}
         </div>

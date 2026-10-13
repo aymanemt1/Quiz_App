@@ -285,3 +285,42 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ---- Completed courses ---- */
+.profile-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile-course {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--pq-border-soft);
+  border-radius: var(--pq-radius-sm);
+  background: rgba(198, 255, 61, 0.05);
+}
+.profile-course-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  background: var(--pq-accent);
+  color: #0a0f0a;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.profile-course-name {
+  flex: 1;
+  font-weight: 700;
+  color: var(--pq-text);
+}
+.profile-course-date {
+  font-size: 0.82rem;
+  color: var(--pq-accent-light);
+  white-space: nowrap;
+}

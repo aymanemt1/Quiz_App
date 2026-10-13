@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./Revision.css";
-import { LangueContext } from "../../Context/LangueContext";import { TOPIC_KEYS } from "../Data/QuestionAllData";
+import { LangueContext } from "../../Context/LangueContext";import { TOPIC_KEYS, TOPIC_LABELS } from "../Data/QuestionAllData";
 import { getRevisionNotes } from "../Data/RevisionNotes";
+import { markCourseCompleted } from "../Data/storage";
 import { StackGrid, stackOptions } from "../StackGrid/StackGrid";
 
 // Renders `code` spans from backtick-marked text
@@ -33,6 +34,8 @@ export const Revision = () => {
   // One thing per page: the stack grid is only shown to pick/change the
   // stack; the reading view shows ONLY the step card (no grid above it).
   const [showGrid, setShowGrid] = useState(false);
+  // Congratulations overlay after finishing a course
+  const [congrats, setCongrats] = useState(null); // { topic, isNew } | null
 
   // Revision notes only exist in EN/FR — DR UI reads EN content.
   const notes = getRevisionNotes(topic, langueTrans === "DR" ? "EN" : langueTrans);
@@ -69,6 +72,16 @@ export const Revision = () => {
     setTopic(t);
     setlangue(t);
     setShowGrid(false);
+  };
+
+  const finishCourse = () => {
+    const isNew = markCourseCompleted(topic);
+    setCongrats({ topic, isNew });
+  };
+
+  const goProfile = () => {
+    setCongrats(null);
+    setMode("profile");
   };
 
   const backToMenu = () => {
@@ -211,15 +224,23 @@ export const Revision = () => {
             >
               ← {DR ? "Qbel" : FR ? "Précédent" : "Previous"}
             </button>
-            <button
-              type="button"
-              className="intro-button revision-nav-btn"
-              onClick={() => go(1)}
-              disabled={step === total - 1}
-              style={step === total - 1 ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
-            >
-              {DR ? "Doz" : FR ? "Suivant" : "Next"} →
-            </button>
+            {step === total - 1 ? (
+              <button
+                type="button"
+                className="intro-button revision-nav-btn revision-finish-btn"
+                onClick={finishCourse}
+              >
+                ✓ {DR ? "Kmel l course" : FR ? "Terminer le cours" : "Finish course"}
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="intro-button revision-nav-btn"
+                onClick={() => go(1)}
+              >
+                {DR ? "Doz" : FR ? "Suivant" : "Next"} →
+              </button>
+            )}
           </div>
         </div>
       ) : (
@@ -235,6 +256,47 @@ export const Revision = () => {
       >
         ← {DR ? "Rje3" : FR ? "Retour" : "Back"}
       </button>
+
+      {congrats && (
+        <div className="congrats-overlay" role="dialog" aria-modal="true">
+          <div className="congrats-card">
+            <div className="congrats-emoji" aria-hidden="true">🎉</div>
+            <h2 className="congrats-title">
+              {DR ? "Mabrouk!" : FR ? "Félicitations !" : "Congratulations!"}
+            </h2>
+            <p className="congrats-text">
+              {DR
+                ? `Kmlti l course dyal ${TOPIC_LABELS[congrats.topic] || congrats.topic}!`
+                : FR
+                ? `Vous avez terminé le cours ${TOPIC_LABELS[congrats.topic] || congrats.topic} !`
+                : `You completed the ${TOPIC_LABELS[congrats.topic] || congrats.topic} course!`}
+            </p>
+            {congrats.isNew ? (
+              <span className="congrats-xp">+50 XP</span>
+            ) : (
+              <span className="congrats-done">
+                {DR ? "Had l course kmltiha 9bel" : FR ? "Cours déjà terminé" : "Already completed"}
+              </span>
+            )}
+            <div className="congrats-actions">
+              <button
+                type="button"
+                className="intro-button"
+                onClick={goProfile}
+              >
+                {DR ? "Chouf profile" : FR ? "Voir le profil" : "View profile"}
+              </button>
+              <button
+                type="button"
+                className="intro-button congrats-close"
+                onClick={() => setCongrats(null)}
+              >
+                {DR ? "Rje3" : FR ? "Retour" : "Back"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

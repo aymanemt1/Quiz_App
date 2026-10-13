@@ -63,13 +63,25 @@ export const saveProfile = (profile) => {
   return next;
 };
 
-// ---- XP + ranks: 10 XP per correct answer, +50 bonus per completed exam/daily ----
+// ---- Completed courses: { topic: ISO date } ----
+const COURSES_KEY = "quizapp_courses_v1";
+export const getCompletedCourses = () => readObj(COURSES_KEY);
+export const markCourseCompleted = (topic) => {
+  const c = getCompletedCourses();
+  if (c[topic]) return false; // already completed
+  c[topic] = new Date().toISOString();
+  write(COURSES_KEY, c);
+  return true;
+};
+
+// ---- XP + ranks: 10 XP per correct answer, +50 bonus per completed exam/daily/course ----
 export const getXP = () => {
   let xp = 0;
   loadHistory().forEach((e) => {
     xp += (e.correct || 0) * 10;
     if ((e.mode === "exam" || e.mode === "daily") && e.total > 0) xp += 50;
   });
+  xp += Object.keys(getCompletedCourses()).length * 50;
   return xp;
 };
 

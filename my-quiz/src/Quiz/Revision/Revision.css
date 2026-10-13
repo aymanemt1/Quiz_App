@@ -263,3 +263,79 @@
   font-size: 0.92rem;
   line-height: 1.6;
 }
+
+/* ---- Course completion ---- */
+.revision-finish-btn {
+  background: linear-gradient(120deg, #c6ff3d, #a3e635);
+  color: #0a0f0a;
+  font-weight: 800;
+  border: none;
+}
+.congrats-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(4, 8, 4, 0.82);
+  backdrop-filter: blur(4px);
+  animation: explain-in 0.25s ease;
+}
+.congrats-card {
+  width: min(420px, 100%);
+  text-align: center;
+  background: #0d130d;
+  border: 1px solid var(--pq-accent);
+  border-radius: var(--pq-radius);
+  padding: 34px 26px 28px;
+  box-shadow: 0 24px 80px rgba(198, 255, 61, 0.12);
+}
+.congrats-emoji {
+  font-size: 3.2rem;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.congrats-title {
+  margin: 0 0 10px;
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+  color: var(--pq-accent-light);
+}
+.congrats-text {
+  margin: 0 0 16px;
+  color: var(--pq-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.congrats-xp {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: var(--pq-accent);
+  color: #0a0f0a;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.congrats-done {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1px dashed var(--pq-accent);
+  color: var(--pq-accent-light);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.congrats-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.congrats-close {
+  background: transparent;
+  border: 1px solid var(--pq-border-soft);
+  color: var(--pq-text);
+}
