@@ -19,23 +19,28 @@ export const Topbar = () => {
   const initial = (profile.name || 'A').trim().charAt(0).toUpperCase()
 
   const Langs = [
-    { id: 'EN', text: 'EN' },
-    { id: 'FR', text: 'FR' },
-    { id: 'DR', text: 'DR' },
+    { id: 'EN', text: 'EN', label: 'English' },
+    { id: 'FR', text: 'FR', label: 'Français' },
+    { id: 'DR', text: 'DR', label: 'Darija' },
   ]
 
   const hanldTranslate = (id) => {
     setlangueTrans(id)
   }
 
+  const langGroupLabel = DR ? 'Logha' : FR ? 'Langue' : 'Language'
+
   const LangsTranslate = Langs.map((lang) => (
-    <span
+    <button
       key={lang.id}
+      type="button"
       className={langueTrans === lang.id ? 'active' : 'not-active'}
       onClick={() => hanldTranslate(lang.id)}
+      aria-pressed={langueTrans === lang.id}
+      aria-label={lang.label}
     >
       {lang.text}
-    </span>
+    </button>
   ))
 
   return (
@@ -70,7 +75,7 @@ export const Topbar = () => {
         >
           {initial}
         </button>
-        <div className='translate'>
+        <div className='translate' role="group" aria-label={langGroupLabel}>
           {LangsTranslate}
         </div>
       </div>
