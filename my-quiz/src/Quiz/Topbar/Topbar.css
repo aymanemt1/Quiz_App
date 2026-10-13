@@ -106,10 +106,14 @@
   padding: 3px;
 }
 
-.translate span {
+.translate button {
+  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
+  line-height: 1;
   padding: 7px 13px;
+  border: none;
+  background: transparent;
   border-radius: 999px;
   cursor: pointer;
   color: var(--pq-faint);
@@ -117,15 +121,20 @@
   user-select: none;
 }
 
-.translate span.active {
+.translate button.active {
   background: var(--pq-grad);
   color: #0b0d10;
   font-weight: 700;
   box-shadow: var(--pq-glow-sm);
 }
 
-.translate span.not-active:hover {
+.translate button.not-active:hover {
   color: var(--pq-text);
+}
+
+.translate button:focus-visible {
+  outline: 2px solid var(--pq-accent);
+  outline-offset: 2px;
 }
 
 .topbar-avatar {
