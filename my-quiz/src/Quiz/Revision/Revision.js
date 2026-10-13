@@ -21,6 +21,8 @@ export const Revision = () => {
     TOPIC_KEYS.includes(langue) ? langue : "React"
   );
   const [step, setStep] = useState(0);
+  const [showExplain, setShowExplain] = useState(false);
+  const explainLabel = langueTrans === "FR" ? "💡 Explique-moi" : DR ? "💡 Chreh liya" : "💡 Explain";
   // One thing per page: the stack grid is only shown to pick/change the
   // stack; the reading view shows ONLY the step card (no grid above it).
   const [showGrid, setShowGrid] = useState(false);
@@ -32,6 +34,7 @@ export const Revision = () => {
   // Reset to first card when topic or language changes
   useEffect(() => {
     setStep(0);
+    setShowExplain(false);
   }, [topic, langueTrans]);
 
   // When the user picks a stack on the start screen then hits "Cours",
@@ -44,8 +47,10 @@ export const Revision = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langue]);
 
-  const go = (delta) =>
+  const go = (delta) => {
+    setShowExplain(false);
     setStep((s) => Math.min(Math.max(s + delta, 0), total - 1));
+  };
 
   const pickStack = (t) => {
     setTopic(t);
@@ -111,7 +116,27 @@ export const Revision = () => {
           </p>
 
           <div className="revision-card" key={`${topic}-${step}`}>
-            <p className="revision-point">{renderRich(notes[step])}</p>
+            <div className="revision-point-row">
+              <p className="revision-point">{renderRich(notes[step].text)}</p>
+              {notes[step].explain_dr && (
+                <button
+                  type="button"
+                  className={`explain-btn${showExplain ? " is-open" : ""}`}
+                  onClick={() => setShowExplain((v) => !v)}
+                  title={explainLabel}
+                  aria-label={explainLabel}
+                  aria-expanded={showExplain}
+                >
+                  💡
+                </button>
+              )}
+            </div>
+            {showExplain && notes[step].explain_dr && (
+              <div className="explain-panel">
+                <span className="explain-panel-label">{explainLabel}</span>
+                <p>{notes[step].explain_dr}</p>
+              </div>
+            )}
           </div>
 
           <div className="revision-nav">

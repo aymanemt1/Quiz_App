@@ -165,3 +165,66 @@
     flex: 1 1 100%;
   }
 }
+
+/* Darija explanation (same pattern as question cards) */
+.blitz-statement-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.blitz-statement-row .blitz-statement {
+  flex: 1 1 auto;
+  margin: 0;
+}
+.explain-btn {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--pq-border-soft);
+  background: var(--pq-grad-soft);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.explain-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--pq-accent);
+  box-shadow: var(--pq-glow-sm);
+}
+.explain-btn:active {
+  transform: scale(0.95);
+}
+.explain-btn.is-open {
+  border-color: var(--pq-accent);
+  box-shadow: var(--pq-glow-sm);
+}
+.explain-panel {
+  margin: 14px 0 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--pq-border-soft);
+  border-left: 4px solid var(--pq-accent);
+  border-radius: var(--pq-radius-sm);
+  background: var(--pq-grad-soft);
+  box-shadow: var(--pq-glow-sm);
+  color: var(--pq-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  animation: explain-in 0.25s ease;
+  text-align: left;
+}
+.explain-panel-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--pq-accent-light);
+  margin-bottom: 6px;
+}
+.explain-panel p {
+  margin: 0;
+}
+@keyframes explain-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

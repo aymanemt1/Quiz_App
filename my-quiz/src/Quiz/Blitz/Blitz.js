@@ -26,6 +26,8 @@ export const Blitz = () => {
   const [timeLeft, setTimeLeft] = useState(BLITZ_DURATION);
   const [finished, setFinished] = useState(false);
   const [log, setLog] = useState([]);
+  const [showExplain, setShowExplain] = useState(false);
+  const explainLabel = langueTrans === "FR" ? "💡 Explique-moi" : DR ? "💡 Chreh liya" : "💡 Explain";
   const savedRef = useRef(false);
 
   // Global 60s countdown
@@ -46,6 +48,7 @@ export const Blitz = () => {
       setFinished(true);
       return;
     }
+    setShowExplain(false);
     const ok = picked === st.answer;
     setLog((l) => [...l, { statement: st, picked, ok }]);
     if (ok) setCorrectCount((c) => c + 1);
@@ -74,6 +77,7 @@ export const Blitz = () => {
         lang: langueTrans,
         level: e.statement.level || 2,
         text: e.statement.text,
+        explain_dr: e.statement.explain_dr,
         answers: DR ? ["S7i7", "Ghalt"] : FR ? ["Vrai", "Faux"] : ["True", "False"],
         correct: e.statement.answer ? 0 : 1,
       }));
@@ -84,6 +88,7 @@ export const Blitz = () => {
   const restart = () => {
     savedRef.current = false;
     setIdx(0);
+    setShowExplain(false);
     setCorrectCount(0);
     setAnswered(0);
     setTimeLeft(BLITZ_DURATION);
@@ -149,7 +154,27 @@ export const Blitz = () => {
       {current && (
         <div className="blitz-card" key={`${runId}-${idx}`}>
           <span className="question-topic">{current.topic}</span>
-          <p className="blitz-statement">{current.text}</p>
+          <div className="blitz-statement-row">
+            <p className="blitz-statement">{current.text}</p>
+            {current.explain_dr && (
+              <button
+                type="button"
+                className={`explain-btn${showExplain ? " is-open" : ""}`}
+                onClick={() => setShowExplain((v) => !v)}
+                title={explainLabel}
+                aria-label={explainLabel}
+                aria-expanded={showExplain}
+              >
+                💡
+              </button>
+            )}
+          </div>
+          {showExplain && current.explain_dr && (
+            <div className="explain-panel">
+              <span className="explain-panel-label">{explainLabel}</span>
+              <p>{current.explain_dr}</p>
+            </div>
+          )}
           <div className="blitz-buttons">
             <button
               type="button"
