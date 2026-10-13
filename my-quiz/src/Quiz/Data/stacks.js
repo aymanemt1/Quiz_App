@@ -24,6 +24,8 @@ export const STACK_ICONS = {
   Convex: "🔶",
   Clerk: "🔐",
   Postman: "📮",
+  NextJs: "▲",
+  Bootstrap: "🟪",
 };
 
 export const stackIcon = (key) => STACK_ICONS[key] || "🧩";

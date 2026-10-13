@@ -124,6 +124,16 @@ const STATEMENTS = [
   S(93,"Postman",2,"A pre-request script runs after the response is received.","Un script de pré-requête s'exécute après la réception de la réponse.",false,"Pre-request smito katgol kolchi — tfekkar imta kaykhdem: 9bel ma ttsifat request wla mor ma twsal response?"),
   S(94,"Postman",3,"A mock server can simulate API responses before the backend is ready.","Un serveur mock peut simuler des réponses d'API avant que le backend soit prêt.",true,"Mock server katsta3mlo melli backend mazal ma wajed — tfekkar chnu kaydir: wach kaysimuli responses wla kaydeployi API?"),
   S(95,"Postman",2,"Newman runs Postman collections from the command line and in CI pipelines.","Newman exécute les collections Postman en ligne de commande et dans les pipelines CI.",true,"Newman smiya katban f CI/CD — tfekkar chnu howa: wach tool dyal command line l collections, wla 7aja khra?"),
+  // NextJs
+  S(96,"NextJs",1,"In the App Router, every component is a Client Component by default.","Dans l'App Router, chaque composant est un Client Component par défaut.",false,"F App Router bla \"use client\", tfekkar: fin kayt-renda l component — f server wla f browser?"),
+  S(97,"NextJs",2,"A file named app/blog/[slug]/page.js handles URLs like /blog/hello-world.","Un fichier nommé app/blog/[slug]/page.js gère les URLs comme /blog/hello-world.",true,"[slug] kat-wakkel placeholder f URL — tfekkar chno kat-matchi m3a /blog/hello-world."),
+  S(98,"NextJs",2,"Server Actions run in the browser.","Les Server Actions s'exécutent dans le navigateur.",false,"\"use server\" — smiya kat-gol kolchi. Fker fin kat-khdem l function b dabt."),
+  S(99,"NextJs",3,"Setting export const revalidate = 60 makes a page regenerate at most once per minute.","Mettre export const revalidate = 60 fait régénérer une page au plus une fois par minute.",true,"revalidate = 60 seconds = d9i9a. Fker chno kat-dir ISR b had l 9ima."),
+  // Bootstrap
+  S(100,"Bootstrap",1,"Bootstrap 5 requires jQuery to function.","Bootstrap 5 nécessite jQuery pour fonctionner.",false,"F v5 7aydo jQuery w wlaw plugins b JavaScript 3adi — tfekkar wach ba9i khaso jQuery."),
+  S(101,"Bootstrap",2,"Adding d-none d-md-block hides an element on phones but shows it on tablets and larger.","Ajouter d-none d-md-block masque un élément sur téléphone mais l'affiche sur tablette et plus.",true,"d-none kat-khebbi kolchi, w d-md-block kat-rj3o mn md lfo9 — tfekkar chno l resultat."),
+  S(102,"Bootstrap",1,"The Bootstrap grid divides each row into 12 columns.","La grille Bootstrap divise chaque ligne en 12 colonnes.",true,"Grid m9assma l 3adad tabet dyal columns — tfekkar ch7al."),
+  S(103,"Bootstrap",3,"In Bootstrap 5, tooltips work with data-bs-toggle='tooltip' alone and need no JavaScript.","Dans Bootstrap 5, les infobulles fonctionnent avec le seul data-bs-toggle='tooltip', sans JavaScript.",false,"Tooltip w popover 3ndhom 9a3ida khasa f v5 — tfekkar wach data attribute bo7do kafi."),
 ];
 
 export const trueFalseStatements = [

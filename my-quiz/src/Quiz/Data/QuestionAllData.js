@@ -22,6 +22,8 @@ import { gsapQuestions } from "./QuestiondataGsap";
 import { convexQuestions } from "./QuestiondataConvex";
 import { clerkQuestions } from "./QuestiondataClerk";
 import { postmanQuestions } from "./QuestiondataPostman";
+import { nextjsQuestions } from "./QuestiondataNextJs";
+import { bootstrapQuestions } from "./QuestiondataBootstrap";
 
 export const TOPIC_KEYS = [
   "React",
@@ -48,6 +50,8 @@ export const TOPIC_KEYS = [
   "Convex",
   "Clerk",
   "Postman",
+  "NextJs",
+  "Bootstrap",
 ];
 
 export const TOPIC_LABELS = {
@@ -75,6 +79,8 @@ export const TOPIC_LABELS = {
   Convex: "Convex",
   Clerk: "Clerk",
   Postman: "Postman",
+  NextJs: "Next.js",
+  Bootstrap: "Bootstrap",
 };
 
 export const questionsData = {
@@ -103,6 +109,8 @@ export const questionsData = {
     Convex: [...convexQuestions],
     Clerk: [...clerkQuestions],
     Postman: [...postmanQuestions],
+    NextJs: [...nextjsQuestions],
+    Bootstrap: [...bootstrapQuestions],
   }
 };
 

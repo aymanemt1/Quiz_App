@@ -3502,6 +3502,360 @@ export const revisionNotesData = [
 { "text": "\"Inherit auth from parent\" makes a request reuse the authorization set on its collection or folder.", "explain_dr": "\"Inherit auth from parent\" kat-khali request t-sta3mel auth dyal collection/folder.", "example": "// Collection auth: Bearer {{token}}\n// Request auth: Inherit auth from parent", "q": "If the token changes, how many places must you update in the example setup?", "a": "One — the collection level; every inheriting request picks it up automatically." },
 { "text": "Keep secrets in a variable's CURRENT value (local-only), never in the initial value that syncs with the team.", "explain_dr": "Secrets 7ethom f CURRENT value (local ghir 3ndek), machi f initial li kat-partaga m3a team.", "example": "{{apiKey}}  // current value: secret, initial value: empty", "q": "In the example, what would a teammate see for apiKey?", "a": "An empty initial value — the secret in your current value never syncs to them." }
   ],
+  "NextJs": [
+  {
+    "text": "Next.js is a React framework for full-stack web apps: file-based routing, server rendering (SSR/SSG/ISR), API route handlers, and image/font optimization out of the box.",
+    "explain_dr": "Next.js kat-zid 3la React: routing, server rendering, API... tfekkar chno kat-rba7 bla ma t-configuri walo.",
+    "example": "npx create-next-app@latest my-app\ncd my-app\nnpm run dev",
+    "q": "What full-stack pieces does Next.js give you on top of plain React?",
+    "a": "File-based routing, server-side rendering options (SSR/SSG/ISR), API route handlers, middleware, and built-in image and font optimization."
+  },
+  {
+    "text": "The App Router lives in the app/ directory: every folder is a route segment and special files (page.js, layout.js, loading.js) define the UI of each segment.",
+    "explain_dr": "F App Router, l dossier = route, w smiyat l files mo3ayana kat-7added chno kayt-renda. Fker chno smiyat had l files.",
+    "example": "app/\n  page.js          // /\n  about/page.js    // /about\n  blog/[slug]/page.js",
+    "q": "How does a folder inside app/ become a URL?",
+    "a": "Each folder is a route segment; a page.js inside it renders that URL, e.g. app/about/page.js renders /about."
+  },
+  {
+    "text": "A page.js file exports the React component rendered for its route segment — it is the only file name that creates a publicly reachable page.",
+    "explain_dr": "Ghir page.js kat-sayb page public. Files khrin b smiyat khrin ma kay-banouch. Fker chno smit l file l wa7id li kay-rendi route.",
+    "example": "// app/about/page.js\nexport default function About() {\n  return <h1>About us</h1>;\n}",
+    "q": "Which file name makes a route publicly reachable in the App Router?",
+    "a": "page.js — only page.js creates a public page; other file names (like helpers) are never routed."
+  },
+  {
+    "text": "Components in the App Router are Server Components by default: they render on the server, can be async, and keep secrets and heavy dependencies off the client bundle.",
+    "explain_dr": "Bla ma tzid walo, l component kayt-renda f server. Fker chno kat-rba7: async, secrets, bundle sghir.",
+    "example": "export default async function Page() {\n  const posts = await db.query('SELECT * FROM posts');\n  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>;\n}",
+    "q": "What can a default App Router component do that a Client Component cannot?",
+    "a": "Be async and run server-only code (like direct database queries), since it renders on the server and never ships that code to the browser."
+  },
+  {
+    "text": "The \"use client\" directive at the top of a file marks a Client Component: it renders in the browser and unlocks hooks, event handlers, and browser APIs.",
+    "explain_dr": "\"use client\" kat-gol: hadchi khaso browser. Fker imta kat-7tajha: useState, onClick...",
+    "example": "\"use client\";\nimport { useState } from 'react';\nexport default function Counter() {\n  const [n, setN] = useState(0);\n  return <button onClick={() => setN(n + 1)}>{n}</button>;\n}",
+    "q": "When must you add \"use client\" to a component?",
+    "a": "When it needs interactivity: hooks like useState/useEffect, event handlers, or browser-only APIs — all of which run in the browser."
+  },
+  {
+    "text": "Server Actions are async functions marked with \"use server\" that run on the server but can be called directly from client code or wired to a <form> action.",
+    "explain_dr": "\"use server\" = function kat-khdem f server wakha t-3ayet liha mn client. Fker kifach kat-tsaybha w fin kat-sta3melha.",
+    "example": "\"use server\";\nexport async function createPost(formData) {\n  const title = formData.get('title');\n  await db.insert({ title });\n}",
+    "q": "How does a Server Action reach the server without an API route?",
+    "a": "Next.js serializes the call: the \"use server\" function executes on the server while the client invokes it like a normal async function or form action."
+  },
+  {
+    "text": "next/link enables client-side navigation: clicking a <Link> swaps the page without a full reload and prefetches the target route for instant transitions.",
+    "explain_dr": "Link kat-bedel l page bla reload w kat-prefetchi l route. Fker l far9 m3a <a> 3adiya.",
+    "example": "import Link from 'next/link';\n<Link href=\"/blog\">Blog</Link>",
+    "q": "What two performance wins does <Link> give over a plain <a>?",
+    "a": "No full page reload (client-side navigation) and automatic prefetching of the linked route so it loads instantly."
+  },
+  {
+    "text": "next/image automatically optimizes images: responsive resizing, lazy loading, modern formats (WebP/AVIF), and blur placeholders — you must set width/height or use fill.",
+    "explain_dr": "next/image kat-sghar w kat-optimiw tsawer bo7dha. Fker chno khaso tzid: width/height wla fill.",
+    "example": "import Image from 'next/image';\n<Image src=\"/hero.jpg\" alt=\"Hero\" width={1200} height={600} />",
+    "q": "What must you always provide to next/image besides src and alt?",
+    "a": "Dimensions: width and height, or the fill prop — Next.js needs them to reserve space and avoid layout shift."
+  },
+  {
+    "text": "Exporting a metadata object (or generateMetadata for dynamic values) sets the page <head>: title, description, openGraph — no manual <head> tags needed.",
+    "explain_dr": "metadata kat-bedel <head>: title, description... bla ma tkteb <head>. Fker l far9 bin metadata w generateMetadata.",
+    "example": "export const metadata = {\n  title: 'Pricing',\n  description: 'Our plans',\n};",
+    "q": "When do you use generateMetadata instead of a static metadata object?",
+    "a": "When head values depend on data — e.g. fetching a post by slug to set a dynamic title — since generateMetadata can be async and receive params."
+  },
+  {
+    "text": "A folder named [slug] creates a dynamic route: /blog/hello-world renders app/blog/[slug]/page.js with params.slug equal to \"hello-world\".",
+    "explain_dr": "[slug] = placeholder f URL. Fker kifach kat-wsal l value l page: params.",
+    "example": "// app/blog/[slug]/page.js\nexport default function Post({ params }) {\n  return <h1>{params.slug}</h1>;\n}",
+    "q": "How does the page component read the dynamic part of the URL?",
+    "a": "Through the params prop: the [slug] segment arrives as params.slug."
+  },
+  {
+    "text": "layout.js defines shared UI (navbar, footer) that wraps all pages in its segment; it preserves state across navigation and does not re-render when only the child page changes.",
+    "explain_dr": "layout.js UI mochtaraka ma kat-t3awdch t-renda melli kat-navigi. Fker 3lach: state kat-b9a.",
+    "example": "// app/layout.js\nexport default function RootLayout({ children }) {\n  return (\n    <html><body>\n      <nav>...</nav>\n      {children}\n    </body></html>\n  );\n}",
+    "q": "Why does a navbar inside layout.js not lose its state when you navigate?",
+    "a": "Layouts are preserved across navigation — only the page segment re-renders, so layout state (like an open menu) survives."
+  },
+  {
+    "text": "A loading.js file next to page.js renders instantly inside a Suspense boundary while the page streams in, giving an automatic skeleton/loading UI per route.",
+    "explain_dr": "loading.js = UI li kat-ban melli l page mazal kat-ji. Fker chno kat-warri l user f had l wa9t.",
+    "example": "// app/blog/loading.js\nexport default function Loading() {\n  return <p>Loading posts...</p>;\n}",
+    "q": "What triggers the loading.js UI to appear?",
+    "a": "Next.js wraps the page in a Suspense boundary, so loading.js shows automatically while the page's async data is still streaming in."
+  },
+  {
+    "text": "error.js is a Client Component error boundary for its segment: it receives { error, reset } so the user can retry without losing the whole app.",
+    "explain_dr": "error.js kat-ched l errors dyal segment dyalha w kat-3ti reset(). Fker 3lach khaso \"use client\".",
+    "example": "\"use client\";\nexport default function Error({ error, reset }) {\n  return (\n    <div>\n      <p>Something broke</p>\n      <button onClick={() => reset()}>Try again</button>\n    </div>\n  );\n}",
+    "q": "What does the reset() prop of error.js do?",
+    "a": "It re-renders the failed segment, giving the user a 'try again' that retries just that part of the page instead of a full reload."
+  },
+  {
+    "text": "A route.js file creates a Route Handler: an API endpoint where exported HTTP method functions (GET, POST...) return Response objects for that URL.",
+    "explain_dr": "route.js = API endpoint f App Router. Fker chno kat-exporti: GET, POST...",
+    "example": "// app/api/users/route.js\nexport async function GET() {\n  const users = await db.getUsers();\n  return Response.json(users);\n}\nexport async function POST(req) {\n  const body = await req.json();\n  return Response.json({ created: true }, { status: 201 });\n}",
+    "q": "How do you handle two HTTP methods in one Route Handler file?",
+    "a": "Export one async function per method — GET(), POST(), etc. — each returning a Response; Next.js routes the request to the matching export."
+  },
+  {
+    "text": "middleware.js runs at the project root before a request completes: it can redirect, rewrite, or add headers — e.g. protecting /dashboard when no session cookie exists.",
+    "explain_dr": "middleware.js kay-khdem 9bel l page: redirect, auth check... Fker fin kayn w chno y9dar ydir.",
+    "example": "// middleware.js\nimport { NextResponse } from 'next/server';\nexport function middleware(req) {\n  if (!req.cookies.get('session')) {\n    return NextResponse.redirect(new URL('/login', req.url));\n  }\n}\nexport const config = { matcher: '/dashboard/:path*' };",
+    "q": "How do you limit middleware to only run on certain URLs?",
+    "a": "With the exported config.matcher — a path pattern like '/dashboard/:path*' — so the middleware only executes for matching requests."
+  },
+  {
+    "text": "fetch() in Server Components is cached by default (force-cache); pass { cache: 'no-store' } for always-fresh data or { next: { revalidate: N } } for time-based revalidation.",
+    "explain_dr": "fetch f server kat-t-cacha by default. Fker kifach kat-t7akem f cache: no-store, revalidate.",
+    "example": "const fresh = await fetch(url, { cache: 'no-store' });\nconst hourly = await fetch(url, { next: { revalidate: 3600 } });",
+    "q": "What is the difference between cache: 'no-store' and next: { revalidate: 3600 }?",
+    "a": "no-store never caches (always dynamic and fresh); revalidate: 3600 caches the result but refreshes it at most once per hour."
+  },
+  {
+    "text": "ISR (Incremental Static Regeneration): export const revalidate = N makes a statically generated page rebuild in the background at most every N seconds after the first request.",
+    "explain_dr": "ISR = static + refresh kol N seconds. Fker l far9 binha w bin SSR.",
+    "example": "// app/blog/page.js\nexport const revalidate = 60;\nexport default async function Blog() {\n  const posts = await getPosts();\n  return <List posts={posts} />;\n}",
+    "q": "When is ISR a better choice than rendering on every request (SSR)?",
+    "a": "When the data changes infrequently: you get static speed for most visitors and only rebuild in the background every N seconds."
+  },
+  {
+    "text": "generateStaticParams() returns the list of dynamic route params to pre-render at build time — e.g. all blog slugs — so those pages are static HTML from the start.",
+    "explain_dr": "generateStaticParams kat-gol l Next.js: pre-rendi had l slugs f build. Fker chno kat-rja3.",
+    "example": "export async function generateStaticParams() {\n  const posts = await getPosts();\n  return posts.map(p => ({ slug: p.slug }));\n}",
+    "q": "What shape must each item returned by generateStaticParams() have?",
+    "a": "An object whose keys match the dynamic segment names — e.g. { slug: 'hello' } for a [slug] route."
+  },
+  {
+    "text": "After a mutation, call revalidatePath('/blog') or revalidateTag('posts') in a Server Action to purge the cache on demand so the next visit gets fresh data.",
+    "explain_dr": "Badelti data — l cache 9dim khaso ytm7a daba. Fker b chno: path wla tag.",
+    "example": "\"use server\";\nimport { revalidatePath } from 'next/cache';\nexport async function createPost(formData) {\n  await db.insert({ title: formData.get('title') });\n  revalidatePath('/blog');\n}",
+    "q": "When would you use revalidateTag instead of revalidatePath?",
+    "a": "When the same data appears on many pages: tag all related fetches with next: { tags: ['posts'] }, then one revalidateTag('posts') purges them all."
+  },
+  {
+    "text": "Environment variables without a prefix are server-only; only variables starting with NEXT_PUBLIC_ are inlined into browser JavaScript.",
+    "explain_dr": "Bla NEXT_PUBLIC_ l variable ghir f server — secret. Fker chno kat-dir l prefix.",
+    "example": "DATABASE_URL=postgres://...        # server only\nNEXT_PUBLIC_API_URL=https://...  # visible in browser",
+    "q": "Where should you put a secret API key so the browser never sees it?",
+    "a": "In a plain (non-NEXT_PUBLIC_) variable like API_SECRET: it stays server-only and is never bundled into client JavaScript."
+  },
+  {
+    "text": "not-found.js renders a custom 404 UI for its segment; call notFound() from next/navigation inside a page when the data does not exist (e.g. unknown slug).",
+    "explain_dr": "notFound() kat-warri not-found.js b 404. Fker imta kat-3ayet liha: slug ma kaynach.",
+    "example": "import { notFound } from 'next/navigation';\nexport default async function Post({ params }) {\n  const post = await getPost(params.slug);\n  if (!post) notFound();\n  return <h1>{post.title}</h1>;\n}",
+    "q": "What HTTP status does the notFound() UI return?",
+    "a": "404 — the closest not-found.js renders with a proper 404 status, which is also what search engines expect for missing pages."
+  },
+  {
+    "text": "Streaming with <Suspense>: wrap a slow Server Component in Suspense with a fallback so the rest of the page renders instantly and the slow part streams in when ready.",
+    "explain_dr": "Suspense kat-khali l page t-ban w l slow part kat-ji mn ba3d. Fker chno kat-warri l fallback.",
+    "example": "import { Suspense } from 'react';\n<Suspense fallback={<p>Loading comments...</p>}>\n  <Comments postId={id} />\n</Suspense>",
+    "q": "How does streaming improve perceived performance versus waiting for all data?",
+    "a": "The shell of the page reaches the browser immediately; each Suspense boundary fills in as its data resolves instead of blocking the whole page."
+  },
+  {
+    "text": "next/font self-hosts Google (or local) fonts at build time: no external request, automatic subsetting, and zero layout shift via size-adjust fallbacks.",
+    "explain_dr": "next/font kat-host l font m3a site dyalk f build. Fker chno kat-rba7: privacy, speed, CLS.",
+    "example": "import { Inter } from 'next/font/google';\nconst inter = Inter({ subsets: ['latin'] });\nexport default function RootLayout({ children }) {\n  return <html className={inter.className}><body>{children}</body></html>;\n}",
+    "q": "How do you apply a next/font font to the whole app?",
+    "a": "Call the font loader (e.g. Inter({ subsets: ['latin'] })) and put its className on the <html> or <body> element in the root layout."
+  },
+  {
+    "text": "In a Server Component, start independent fetches together with Promise.all instead of sequential awaits — sequential awaits create a request waterfall that adds up latencies.",
+    "explain_dr": "await mor await = waterfall bati2. Promise.all bjojhom m3a b3d. Fker l far9 f wa9t.",
+    "example": "const [user, posts] = await Promise.all([getUser(id), getPosts(id)]);",
+    "q": "Two requests take 300ms each. How long do sequential awaits take versus Promise.all?",
+    "a": "Sequential: ~600ms (one waits for the other); Promise.all: ~300ms (both run at once) — the waterfall doubles the latency."
+  },
+  {
+    "text": "Deploying to Vercel is the zero-config path: push to Git and every commit gets a preview URL; alternatively next build + next start runs the production server anywhere Node.js runs.",
+    "explain_dr": "Vercel = push w deploy bo7do. Wla next build + next start f ay server. Fker chno kat-rba7 m3a Vercel.",
+    "example": "npm run build   # next build\nnpm start       # next start (production server)",
+    "q": "What do you get on Vercel for every pull request automatically?",
+    "a": "A unique preview deployment URL, so reviewers can test the exact changes before merging."
+  },
+  ],
+  "Bootstrap": [
+  {
+    "text": "Bootstrap is a mobile-first CSS framework: it ships a responsive 12-column grid, pre-styled components, and utility classes so you build layouts without writing much custom CSS.",
+    "explain_dr": "Bootstrap framework dyal CSS: grid responsive, components jahzin, w utilities — kat-bni dghya bla CSS bzaf.",
+    "example": "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>",
+    "q": "What three things does Bootstrap give you out of the box?",
+    "a": "A responsive 12-column grid, pre-styled components (navbar, cards, modals...), and utility classes for spacing, layout, and typography."
+  },
+  {
+    "text": "The fastest way to try Bootstrap is the CDN: add the compiled CSS <link> in <head> and the JS bundle just before </body>.",
+    "explain_dr": "Bach t-jareb Bootstrap dghya, zid link dyal CSS f head w script dyal JS 9bel ma ytssed body.",
+    "example": "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'></script>",
+    "q": "Where do the Bootstrap CSS link and JS script go in an HTML page?",
+    "a": "The CSS <link> goes in <head>; the JS bundle goes at the end of <body>, just before </body>."
+  },
+  {
+    "text": "bootstrap.bundle.min.js already includes Popper.js, which dropdowns, tooltips, and popovers need to position themselves.",
+    "explain_dr": "Bundle = Bootstrap + Popper mjmo3in; Popper howa li kay-positioni dropdowns w tooltips.",
+    "example": "<!-- bundle = bootstrap + popper in one file -->\n<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'></script>",
+    "q": "Why should you prefer the bundle file over bootstrap.min.js?",
+    "a": "Because the bundle includes Popper.js, required for positioning dropdowns, tooltips, and popovers — with bootstrap.min.js alone you would have to add Popper separately."
+  },
+  {
+    "text": "The grid always has 12 columns per row: column widths are fractions of 12, e.g. col-4 is one third of the row.",
+    "explain_dr": "Grid fih 12 columns — col-4 = 4/12 ya3ni 1/3 dyal row.",
+    "example": "<div class='row'>\n  <div class='col-4'>A</div>\n  <div class='col-4'>B</div>\n  <div class='col-4'>C</div>\n</div>",
+    "q": "Three equal columns in one row — which class does each get?",
+    "a": "col-4: 4 + 4 + 4 = 12, so each takes one third of the row."
+  },
+  {
+    "text": ".container centers content with responsive fixed max-widths; .container-fluid always spans 100% of the viewport width.",
+    "explain_dr": "container kay-markazi w 3ndo max-width, container-fluid dayman 100% width.",
+    "example": "<div class='container'><!-- centered, max-width --></div>\n<div class='container-fluid'><!-- full width --></div>",
+    "q": "You want a full-width hero banner. Which wrapper do you use?",
+    "a": "container-fluid, because it always spans the full viewport width, unlike container which caps the width and centers the content."
+  },
+  {
+    "text": "Breakpoints are mobile-first min-widths: sm 576px, md 768px, lg 992px, xl 1200px, xxl 1400px — an md class applies at md and everything larger.",
+    "explain_dr": "Breakpoints mobile-first: sm 576, md 768, lg 992, xl 1200, xxl 1400 — class dyal md kat-khdem mn md lfo9.",
+    "example": "<div class='col-12 col-lg-6'><!-- stacked until lg --></div>",
+    "q": "What does col-lg-6 do on an 800px-wide screen?",
+    "a": "Nothing yet — 800px is below lg (992px), so col-12 applies and the column stays full-width; col-lg-6 kicks in at 992px and up."
+  },
+  {
+    "text": "Combine a base column class with a breakpoint one (col-12 col-md-6) to stack on phones and split 50/50 on tablets and up.",
+    "explain_dr": "col-12 col-md-6 = full-width f tele, nss-nss mn md lfo9.",
+    "example": "<div class='row'>\n  <div class='col-12 col-md-6'>A</div>\n  <div class='col-12 col-md-6'>B</div>\n</div>",
+    "q": "How do two columns stack on mobile but sit side-by-side on desktop?",
+    "a": "Give each col-12 col-md-6: full-width by default (mobile), half-width from the md breakpoint upward."
+  },
+  {
+    "text": "Gutters are the gaps between columns: set them on the row with g-* (g-3), or gx-* / gy-* for horizontal/vertical only.",
+    "explain_dr": "Gutters = l-faragh bin columns, kat-tzad b g-* 3la row.",
+    "example": "<div class='row g-4'>\n  <div class='col-6'>...</div>\n  <div class='col-6'>...</div>\n</div>",
+    "q": "Why add g-4 to the row instead of m-4 to each column?",
+    "a": "Because margins on columns break the 12-column math and alignment; g-* sets gutters cleanly through the row."
+  },
+  {
+    "text": "Spacing utilities follow {m|p}-{side}-{size}: m = margin, p = padding, sides t/b/s/e/x/y, size 0-5 (3 = 1rem), plus auto.",
+    "explain_dr": "m w p, sides t/b/s/e/x/y, sizes 0-5 (3 = 1rem). Hfed had l pattern.",
+    "example": "<div class='mt-3 px-4 mx-auto'>...</div>",
+    "q": "What does px-4 do?",
+    "a": "It adds horizontal padding (left + right) of size 4, i.e. 1.5rem on each side."
+  },
+  {
+    "text": "Display utilities (d-none, d-block, d-flex...) can be breakpoint-scoped: d-none d-md-block hides on phones, shows from md up.",
+    "explain_dr": "d-none d-md-block = mkhebbi f tele, bayen mn md lfo9.",
+    "example": "<aside class='d-none d-lg-block'><!-- desktop only --></aside>",
+    "q": "How do you show a sidebar only on large screens?",
+    "a": "With d-none d-lg-block: hidden everywhere by default, displayed as block from the lg breakpoint upward."
+  },
+  {
+    "text": "Flex utilities turn any element into a flex container: d-flex with justify-content-* (main axis) and align-items-* (cross axis).",
+    "explain_dr": "d-flex + justify-content-* w align-items-* bach t-centreri w t-rteb l children.",
+    "example": "<div class='d-flex justify-content-between align-items-center'>...</div>",
+    "q": "How do you push two children to opposite ends of a flex row and center them vertically?",
+    "a": "d-flex justify-content-between align-items-center: between spreads them to the ends, align-items-center centers them on the cross axis."
+  },
+  {
+    "text": "Text utilities handle alignment, weight, and size: text-center, fw-bold, fst-italic, fs-4, text-muted, text-decoration-none.",
+    "explain_dr": "text-* l alignment w colors, fw-bold l weight, fs-* l size.",
+    "example": "<p class='text-center fw-bold fs-5 text-muted'>Hello</p>",
+    "q": "Which classes make a paragraph centered, bold, and gray?",
+    "a": "text-center fw-bold text-muted (add fs-5 for a larger size)."
+  },
+  {
+    "text": "Theme colors apply via bg-* and text-* (bg-primary, text-white, bg-danger...), and borders via border / border-primary.",
+    "explain_dr": "Colors: bg-* l background, text-* l text, border-* l borders.",
+    "example": "<div class='bg-primary text-white border border-light p-3'>...</div>",
+    "q": "How do you make a blue box with white text and a light border?",
+    "a": "bg-primary text-white border border-light — bg-* sets the background, text-* the text color, border adds the border."
+  },
+  {
+    "text": "Buttons need the base .btn class plus a style: btn-primary, btn-outline-secondary, btn-lg / btn-sm for sizes.",
+    "explain_dr": "Button khaso .btn + style bhal btn-primary wla btn-outline-danger.",
+    "example": "<button class='btn btn-outline-danger btn-sm'>Delete</button>",
+    "q": "How do you make a small outlined red button?",
+    "a": "btn btn-outline-danger btn-sm: btn is required, btn-outline-danger gives the red outline style, btn-sm shrinks it."
+  },
+  {
+    "text": "A card is .card containing .card-body, with optional .card-title, .card-text, .card-img-top, and .card-footer.",
+    "explain_dr": "Card = .card w ldakhel .card-body, w ymkn t-zid title, image, footer.",
+    "example": "<div class='card' style='width: 18rem;'>\n  <img class='card-img-top' src='a.jpg'>\n  <div class='card-body'>\n    <h5 class='card-title'>Title</h5>\n  </div>\n</div>",
+    "q": "Where does the card title go inside a card?",
+    "a": "Inside .card-body (which is inside .card), using the .card-title class on a heading."
+  },
+  {
+    "text": "A responsive navbar uses navbar + navbar-expand-lg; below lg the links hide behind the navbar-toggler button targeting the collapse div.",
+    "explain_dr": "Navbar: navbar-expand-lg bach t-t replia lte7t mn lg, w toggler kay-che3el l collapse.",
+    "example": "<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>\n  <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#nav'>...</button>\n  <div class='collapse navbar-collapse' id='nav'>...</div>\n</nav>",
+    "q": "The hamburger shows but clicking does nothing — what do you check first?",
+    "a": "That the toggler's data-bs-target exactly matches the collapse div's id (including the #), and that the Bootstrap JS bundle is loaded."
+  },
+  {
+    "text": "Modals need the nesting .modal > .modal-dialog > .modal-content, and open via data-bs-toggle='modal' data-bs-target='#id' — no custom JS required.",
+    "explain_dr": "Modal = .modal > .modal-dialog > .modal-content, w kat-t7al b data-bs-toggle='modal'.",
+    "example": "<div class='modal' id='demo' tabindex='-1'>\n  <div class='modal-dialog'>\n    <div class='modal-content'><!-- header / body / footer --></div>\n  </div>\n</div>",
+    "q": "Your modal opens but looks broken (no dialog box styling). What's the likely cause?",
+    "a": "The .modal-dialog and/or .modal-content wrappers are missing — the required three-level nesting must be exact."
+  },
+  {
+    "text": "Bootstrap 5 dropped jQuery: all interactive components are vanilla JS, triggered with data-bs-* attributes (not data-*).",
+    "explain_dr": "v5 bla jQuery — components b data-bs-* (data-bs-toggle...).",
+    "example": "<button data-bs-toggle='collapse' data-bs-target='#more'>More</button>",
+    "q": "You copied a Bootstrap 4 snippet with data-toggle='modal' and it doesn't work in v5. Why?",
+    "a": "Bootstrap 5 renamed all data attributes to the data-bs-* namespace, so it must be data-bs-toggle='modal'."
+  },
+  {
+    "text": "An accordion is a stack of .accordion-item blocks; data-bs-parent on each collapse keeps only one item open at a time.",
+    "explain_dr": "Accordion: items, w data-bs-parent bach wa7ed bo7do yt7al.",
+    "example": "<div class='accordion' id='faq'>\n  <div class='accordion-item'>\n    <div id='c1' class='accordion-collapse collapse' data-bs-parent='#faq'>...</div>\n  </div>\n</div>",
+    "q": "Two accordion items stay open at once — what attribute is missing?",
+    "a": "data-bs-parent='#faq' on each .accordion-collapse: without it, items open and close independently."
+  },
+  {
+    "text": "A carousel needs .carousel.slide on the wrapper, .carousel-inner > .carousel-item children (first one .active), and data-bs-ride='carousel' to auto-cycle.",
+    "explain_dr": "Carousel: .carousel.slide + .carousel-item (lwel active) + data-bs-ride.",
+    "example": "<div id='hero' class='carousel slide' data-bs-ride='carousel'>\n  <div class='carousel-inner'>\n    <div class='carousel-item active'>...</div>\n  </div>\n</div>",
+    "q": "Your carousel shows only the first slide statically. What makes it cycle?",
+    "a": "data-bs-ride='carousel' on the wrapper starts auto-cycling; add prev/next controls or indicators for manual navigation."
+  },
+  {
+    "text": "A dropdown is .dropdown wrapping a button with data-bs-toggle='dropdown' and a sibling .dropdown-menu list.",
+    "explain_dr": "Dropdown: button b data-bs-toggle='dropdown' + .dropdown-menu.",
+    "example": "<div class='dropdown'>\n  <button class='btn' data-bs-toggle='dropdown'>Menu</button>\n  <ul class='dropdown-menu'><li><a class='dropdown-item' href='#'>One</a></li></ul>\n</div>",
+    "q": "The dropdown button does nothing when clicked. What's the first thing to verify?",
+    "a": "That the button has data-bs-toggle='dropdown' and the Bootstrap bundle JS (with Popper) is loaded — dropdowns need JavaScript."
+  },
+  {
+    "text": "Tooltips and popovers need JavaScript initialization in Bootstrap 5 — data-bs-toggle='tooltip' alone is not enough.",
+    "explain_dr": "Tooltip khaso JS init, data attribute bo7do ma kafich.",
+    "example": "<button id='tip' data-bs-toggle='tooltip' title='Hi'>?</button>\n<script>new bootstrap.Tooltip(document.getElementById('tip'));</script>",
+    "q": "Why doesn't your tooltip appear even though the attribute is correct?",
+    "a": "Because Bootstrap 5 requires explicit JS initialization — e.g. new bootstrap.Tooltip(element) — for tooltips and popovers."
+  },
+  {
+    "text": "Form controls use .form-control (inputs), .form-label, .form-select (dropdowns), and .form-check for checkboxes/radios.",
+    "explain_dr": "Forms: form-control l inputs, form-select l selects, form-check l checkboxes.",
+    "example": "<label class='form-label'>Email</label>\n<input type='email' class='form-control' placeholder='you@mail.com'>\n<select class='form-select'>...</select>",
+    "q": "Your <select> looks like a plain browser dropdown. Which class styles it?",
+    "a": "form-select — the Bootstrap class that styles native <select> elements (form-control is only for text-like inputs)."
+  },
+  {
+    "text": "Custom validation: add novalidate + .needs-validation to the form, then add .was-validated on submit via JS to show valid/invalid feedback.",
+    "explain_dr": "Validation: novalidate + needs-validation, w melli t-submiti zid was-validated b JS.",
+    "example": "<form class='needs-validation' novalidate>\n  <input class='form-control' required>\n  <div class='invalid-feedback'>Required.</div>\n</form>",
+    "q": "When do the green/red validation styles actually appear?",
+    "a": "Only after .was-validated is added to the form (typically on submit via JavaScript) — .needs-validation alone just prepares the form."
+  },
+  {
+    "text": "Dark mode is a color mode: add data-bs-theme='dark' to <html>; components adapt automatically via CSS variables.",
+    "explain_dr": "Dark mode: data-bs-theme='dark' 3la <html> w kolchi kaytbedel.",
+    "example": "<html data-bs-theme='dark'><!-- whole page goes dark --></html>",
+    "q": "How do you scope dark mode to just one card instead of the whole page?",
+    "a": "Put data-bs-theme='dark' on the card's wrapper div instead of <html> — color modes cascade to descendants."
+  },
+  ],
 },
   },
   {
@@ -7004,6 +7358,360 @@ export const revisionNotesData = [
 { "text": "OAuth 2.0 dans Postman : cliquez sur « Get New Access Token » et Postman gère le flux d'autorisation.", "explain_dr": "L OAuth 2.0, cliqui 3la \"Get New Access Token\" w Postman kay-dir l flow kamel.", "example": "// Authorization tab → OAuth 2.0 → Get New Access Token", "q": "Que fait Postman pour vous après le clic sur le bouton dans l'exemple ?", "a": "Il ouvre la page de connexion du fournisseur, capture le code, l'échange contre des jetons et stocke le jeton d'accès pour la requête." },
 { "text": "« Inherit auth from parent » fait réutiliser à une requête l'autorisation définie sur sa collection ou son dossier.", "explain_dr": "\"Inherit auth from parent\" kat-khali request t-sta3mel auth dyal collection/folder.", "example": "// Collection auth: Bearer {{token}}\n// Request auth: Inherit auth from parent", "q": "Si le jeton change, à combien d'endroits faut-il le mettre à jour dans cette configuration ?", "a": "Un seul — au niveau de la collection ; chaque requête héritière le récupère automatiquement." },
 { "text": "Conservez les secrets dans la valeur COURANTE (current) d'une variable (locale uniquement), jamais dans la valeur initiale synchronisée avec l'équipe.", "explain_dr": "Secrets 7ethom f CURRENT value (local ghir 3ndek), machi f initial li kat-partaga m3a team.", "example": "{{apiKey}}  // current value: secret, initial value: empty", "q": "Dans l'exemple, que verrait un coéquipier pour apiKey ?", "a": "Une valeur initiale vide — le secret de votre valeur courante ne lui est jamais synchronisé." }
+  ],
+  "NextJs": [
+  {
+    "text": "Next.js est un framework React pour des apps web full-stack : routage basé sur les fichiers, rendu serveur (SSR/SSG/ISR), route handlers API, et optimisation images/polices intégrée.",
+    "explain_dr": "Next.js kat-zid 3la React: routing, server rendering, API... tfekkar chno kat-rba7 bla ma t-configuri walo.",
+    "example": "npx create-next-app@latest my-app\ncd my-app\nnpm run dev",
+    "q": "Quelles briques full-stack Next.js vous donne-t-il en plus de React seul ?",
+    "a": "Le routage basé sur les fichiers, les options de rendu serveur (SSR/SSG/ISR), les route handlers API, le middleware, et l'optimisation intégrée des images et des polices."
+  },
+  {
+    "text": "L'App Router vit dans le dossier app/ : chaque dossier est un segment de route et des fichiers spéciaux (page.js, layout.js, loading.js) définissent l'UI de chaque segment.",
+    "explain_dr": "F App Router, l dossier = route, w smiyat l files mo3ayana kat-7added chno kayt-renda. Fker chno smiyat had l files.",
+    "example": "app/\n  page.js          // /\n  about/page.js    // /about\n  blog/[slug]/page.js",
+    "q": "Comment un dossier dans app/ devient-il une URL ?",
+    "a": "Chaque dossier est un segment de route ; un page.js à l'intérieur affiche cette URL, e.g. app/about/page.js affiche /about."
+  },
+  {
+    "text": "Un fichier page.js exporte le composant React affiché pour son segment de route — c'est le seul nom de fichier qui crée une page publiquement accessible.",
+    "explain_dr": "Ghir page.js kat-sayb page public. Files khrin b smiyat khrin ma kay-banouch. Fker chno smit l file l wa7id li kay-rendi route.",
+    "example": "// app/about/page.js\nexport default function About() {\n  return <h1>About us</h1>;\n}",
+    "q": "Quel nom de fichier rend une route publiquement accessible dans l'App Router ?",
+    "a": "page.js — seul page.js crée une page publique ; les autres noms de fichiers (comme les helpers) ne sont jamais routés."
+  },
+  {
+    "text": "Les composants de l'App Router sont des Server Components par défaut : ils s'affichent sur le serveur, peuvent être async, et gardent les secrets et les dépendances lourdes hors du bundle client.",
+    "explain_dr": "Bla ma tzid walo, l component kayt-renda f server. Fker chno kat-rba7: async, secrets, bundle sghir.",
+    "example": "export default async function Page() {\n  const posts = await db.query('SELECT * FROM posts');\n  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>;\n}",
+    "q": "Que peut faire un composant App Router par défaut qu'un Client Component ne peut pas ?",
+    "a": "Être async et exécuter du code réservé au serveur (comme des requêtes DB directes), car il est rendu sur le serveur et ce code n'est jamais envoyé au navigateur."
+  },
+  {
+    "text": "La directive \"use client\" en haut d'un fichier marque un Client Component : il s'affiche dans le navigateur et débloque les hooks, les gestionnaires d'événements et les APIs du navigateur.",
+    "explain_dr": "\"use client\" kat-gol: hadchi khaso browser. Fker imta kat-7tajha: useState, onClick...",
+    "example": "\"use client\";\nimport { useState } from 'react';\nexport default function Counter() {\n  const [n, setN] = useState(0);\n  return <button onClick={() => setN(n + 1)}>{n}</button>;\n}",
+    "q": "Quand devez-vous ajouter \"use client\" à un composant ?",
+    "a": "Quand il a besoin d'interactivité : des hooks comme useState/useEffect, des gestionnaires d'événements, ou des APIs réservées au navigateur."
+  },
+  {
+    "text": "Les Server Actions sont des fonctions async marquées avec \"use server\" qui s'exécutent sur le serveur mais peuvent être appelées directement depuis le code client ou branchées à l'action d'un <form>.",
+    "explain_dr": "\"use server\" = function kat-khdem f server wakha t-3ayet liha mn client. Fker kifach kat-tsaybha w fin kat-sta3melha.",
+    "example": "\"use server\";\nexport async function createPost(formData) {\n  const title = formData.get('title');\n  await db.insert({ title });\n}",
+    "q": "Comment une Server Action atteint-elle le serveur sans route API ?",
+    "a": "Next.js sérialise l'appel : la fonction \"use server\" s'exécute sur le serveur pendant que le client l'invoque comme une fonction async normale ou une action de formulaire."
+  },
+  {
+    "text": "next/link permet la navigation côté client : cliquer sur un <Link> change de page sans rechargement complet et précharge la route cible pour des transitions instantanées.",
+    "explain_dr": "Link kat-bedel l page bla reload w kat-prefetchi l route. Fker l far9 m3a <a> 3adiya.",
+    "example": "import Link from 'next/link';\n<Link href=\"/blog\">Blog</Link>",
+    "q": "Quels deux gains de performance <Link> apporte-t-il par rapport à un <a> classique ?",
+    "a": "Pas de rechargement complet de la page (navigation côté client) et préchargement automatique de la route liée pour un chargement instantané."
+  },
+  {
+    "text": "next/image optimise automatiquement les images : redimensionnement responsive, lazy loading, formats modernes (WebP/AVIF), et placeholders flous — vous devez définir width/height ou utiliser fill.",
+    "explain_dr": "next/image kat-sghar w kat-optimiw tsawer bo7dha. Fker chno khaso tzid: width/height wla fill.",
+    "example": "import Image from 'next/image';\n<Image src=\"/hero.jpg\" alt=\"Hero\" width={1200} height={600} />",
+    "q": "Que devez-vous toujours fournir à next/image en plus de src et alt ?",
+    "a": "Les dimensions : width et height, ou la prop fill — Next.js en a besoin pour réserver l'espace et éviter le décalage de mise en page."
+  },
+  {
+    "text": "Exporter un objet metadata (ou generateMetadata pour des valeurs dynamiques) définit le <head> de la page : title, description, openGraph — sans balises <head> manuelles.",
+    "explain_dr": "metadata kat-bedel <head>: title, description... bla ma tkteb <head>. Fker l far9 bin metadata w generateMetadata.",
+    "example": "export const metadata = {\n  title: 'Pricing',\n  description: 'Our plans',\n};",
+    "q": "Quand utilise-t-on generateMetadata plutôt qu'un objet metadata statique ?",
+    "a": "Quand les valeurs du head dépendent de données — e.g. récupérer un article par slug pour définir un titre dynamique — car generateMetadata peut être async et recevoir params."
+  },
+  {
+    "text": "Un dossier nommé [slug] crée une route dynamique : /blog/hello-world affiche app/blog/[slug]/page.js avec params.slug égal à \"hello-world\".",
+    "explain_dr": "[slug] = placeholder f URL. Fker kifach kat-wsal l value l page: params.",
+    "example": "// app/blog/[slug]/page.js\nexport default function Post({ params }) {\n  return <h1>{params.slug}</h1>;\n}",
+    "q": "Comment le composant de page lit-il la partie dynamique de l'URL ?",
+    "a": "Via la prop params : le segment [slug] arrive comme params.slug."
+  },
+  {
+    "text": "layout.js définit l'UI partagée (navbar, footer) qui englobe toutes les pages de son segment ; il préserve l'état pendant la navigation et ne se ré-affiche pas quand seule la page enfant change.",
+    "explain_dr": "layout.js UI mochtaraka ma kat-t3awdch t-renda melli kat-navigi. Fker 3lach: state kat-b9a.",
+    "example": "// app/layout.js\nexport default function RootLayout({ children }) {\n  return (\n    <html><body>\n      <nav>...</nav>\n      {children}\n    </body></html>\n  );\n}",
+    "q": "Pourquoi une navbar dans layout.js ne perd-elle pas son état quand vous naviguez ?",
+    "a": "Les layouts sont préservés pendant la navigation — seul le segment de page se ré-affiche, donc l'état du layout (comme un menu ouvert) survit."
+  },
+  {
+    "text": "Un fichier loading.js à côté de page.js s'affiche instantanément dans une limite Suspense pendant que la page arrive en streaming, donnant une UI de chargement automatique par route.",
+    "explain_dr": "loading.js = UI li kat-ban melli l page mazal kat-ji. Fker chno kat-warri l user f had l wa9t.",
+    "example": "// app/blog/loading.js\nexport default function Loading() {\n  return <p>Loading posts...</p>;\n}",
+    "q": "Qu'est-ce qui déclenche l'apparition de l'UI loading.js ?",
+    "a": "Next.js enveloppe la page dans une limite Suspense, donc loading.js s'affiche automatiquement pendant que les données async de la page arrivent en streaming."
+  },
+  {
+    "text": "error.js est une limite d'erreur Client Component pour son segment : il reçoit { error, reset } pour que l'utilisateur puisse réessayer sans perdre toute l'app.",
+    "explain_dr": "error.js kat-ched l errors dyal segment dyalha w kat-3ti reset(). Fker 3lach khaso \"use client\".",
+    "example": "\"use client\";\nexport default function Error({ error, reset }) {\n  return (\n    <div>\n      <p>Something broke</p>\n      <button onClick={() => reset()}>Try again</button>\n    </div>\n  );\n}",
+    "q": "Que fait la prop reset() de error.js ?",
+    "a": "Elle ré-affiche le segment en échec, offrant un « réessayer » qui ne relance que cette partie de la page au lieu d'un rechargement complet."
+  },
+  {
+    "text": "Un fichier route.js crée un Route Handler : un endpoint API où les fonctions de méthodes HTTP exportées (GET, POST...) retournent des objets Response pour cette URL.",
+    "explain_dr": "route.js = API endpoint f App Router. Fker chno kat-exporti: GET, POST...",
+    "example": "// app/api/users/route.js\nexport async function GET() {\n  const users = await db.getUsers();\n  return Response.json(users);\n}\nexport async function POST(req) {\n  const body = await req.json();\n  return Response.json({ created: true }, { status: 201 });\n}",
+    "q": "Comment gérer deux méthodes HTTP dans un seul fichier Route Handler ?",
+    "a": "Exportez une fonction async par méthode — GET(), POST(), etc. — chacune retournant une Response ; Next.js route la requête vers l'export correspondant."
+  },
+  {
+    "text": "middleware.js s'exécute à la racine du projet avant que la requête ne se termine : il peut rediriger, réécrire ou ajouter des headers — e.g. protéger /dashboard quand il n'y a pas de cookie de session.",
+    "explain_dr": "middleware.js kay-khdem 9bel l page: redirect, auth check... Fker fin kayn w chno y9dar ydir.",
+    "example": "// middleware.js\nimport { NextResponse } from 'next/server';\nexport function middleware(req) {\n  if (!req.cookies.get('session')) {\n    return NextResponse.redirect(new URL('/login', req.url));\n  }\n}\nexport const config = { matcher: '/dashboard/:path*' };",
+    "q": "Comment limiter le middleware pour qu'il ne s'exécute que sur certaines URLs ?",
+    "a": "Avec le config.matcher exporté — un motif de chemin comme '/dashboard/:path*' — pour que le middleware ne s'exécute que pour les requêtes correspondantes."
+  },
+  {
+    "text": "fetch() dans les Server Components est mis en cache par défaut (force-cache) ; passez { cache: 'no-store' } pour des données toujours fraîches ou { next: { revalidate: N } } pour une revalidation temporelle.",
+    "explain_dr": "fetch f server kat-t-cacha by default. Fker kifach kat-t7akem f cache: no-store, revalidate.",
+    "example": "const fresh = await fetch(url, { cache: 'no-store' });\nconst hourly = await fetch(url, { next: { revalidate: 3600 } });",
+    "q": "Quelle est la différence entre cache: 'no-store' et next: { revalidate: 3600 } ?",
+    "a": "no-store ne met jamais en cache (toujours dynamique et frais) ; revalidate: 3600 met le résultat en cache mais le rafraîchit au plus une fois par heure."
+  },
+  {
+    "text": "ISR (Incremental Static Regeneration) : export const revalidate = N fait qu'une page générée statiquement se reconstruit en arrière-plan au plus toutes les N secondes après la première requête.",
+    "explain_dr": "ISR = static + refresh kol N seconds. Fker l far9 binha w bin SSR.",
+    "example": "// app/blog/page.js\nexport const revalidate = 60;\nexport default async function Blog() {\n  const posts = await getPosts();\n  return <List posts={posts} />;\n}",
+    "q": "Quand l'ISR est-il un meilleur choix que le rendu à chaque requête (SSR) ?",
+    "a": "Quand les données changent peu souvent : vous avez la vitesse du statique pour la plupart des visiteurs et une reconstruction en arrière-plan toutes les N secondes."
+  },
+  {
+    "text": "generateStaticParams() retourne la liste des params de routes dynamiques à pré-rendre au build — e.g. tous les slugs du blog — pour que ces pages soient du HTML statique dès le départ.",
+    "explain_dr": "generateStaticParams kat-gol l Next.js: pre-rendi had l slugs f build. Fker chno kat-rja3.",
+    "example": "export async function generateStaticParams() {\n  const posts = await getPosts();\n  return posts.map(p => ({ slug: p.slug }));\n}",
+    "q": "Quelle forme chaque élément retourné par generateStaticParams() doit-il avoir ?",
+    "a": "Un objet dont les clés correspondent aux noms des segments dynamiques — e.g. { slug: 'hello' } pour une route [slug]."
+  },
+  {
+    "text": "Après une mutation, appelez revalidatePath('/blog') ou revalidateTag('posts') dans une Server Action pour purger le cache à la demande afin que la prochaine visite ait des données fraîches.",
+    "explain_dr": "Badelti data — l cache 9dim khaso ytm7a daba. Fker b chno: path wla tag.",
+    "example": "\"use server\";\nimport { revalidatePath } from 'next/cache';\nexport async function createPost(formData) {\n  await db.insert({ title: formData.get('title') });\n  revalidatePath('/blog');\n}",
+    "q": "Quand utiliseriez-vous revalidateTag plutôt que revalidatePath ?",
+    "a": "Quand les mêmes données apparaissent sur plusieurs pages : taguez tous les fetch liés avec next: { tags: ['posts'] }, puis un seul revalidateTag('posts') les purge tous."
+  },
+  {
+    "text": "Les variables d'environnement sans préfixe sont réservées au serveur ; seules les variables commençant par NEXT_PUBLIC_ sont injectées dans le JavaScript du navigateur.",
+    "explain_dr": "Bla NEXT_PUBLIC_ l variable ghir f server — secret. Fker chno kat-dir l prefix.",
+    "example": "DATABASE_URL=postgres://...        # server only\nNEXT_PUBLIC_API_URL=https://...  # visible in browser",
+    "q": "Où mettre une clé API secrète pour que le navigateur ne la voie jamais ?",
+    "a": "Dans une variable simple (sans NEXT_PUBLIC_) comme API_SECRET : elle reste réservée au serveur et n'est jamais incluse dans le JavaScript client."
+  },
+  {
+    "text": "not-found.js affiche une UI 404 personnalisée pour son segment ; appelez notFound() de next/navigation dans une page quand les données n'existent pas (e.g. slug inconnu).",
+    "explain_dr": "notFound() kat-warri not-found.js b 404. Fker imta kat-3ayet liha: slug ma kaynach.",
+    "example": "import { notFound } from 'next/navigation';\nexport default async function Post({ params }) {\n  const post = await getPost(params.slug);\n  if (!post) notFound();\n  return <h1>{post.title}</h1>;\n}",
+    "q": "Quel statut HTTP l'UI notFound() retourne-t-elle ?",
+    "a": "404 — le not-found.js le plus proche s'affiche avec un vrai statut 404, ce que les moteurs de recherche attendent aussi pour les pages manquantes."
+  },
+  {
+    "text": "Le streaming avec <Suspense> : enveloppez un Server Component lent dans Suspense avec un fallback pour que le reste de la page s'affiche instantanément et que la partie lente arrive en streaming quand elle est prête.",
+    "explain_dr": "Suspense kat-khali l page t-ban w l slow part kat-ji mn ba3d. Fker chno kat-warri l fallback.",
+    "example": "import { Suspense } from 'react';\n<Suspense fallback={<p>Loading comments...</p>}>\n  <Comments postId={id} />\n</Suspense>",
+    "q": "Comment le streaming améliore-t-il la performance perçue par rapport à l'attente de toutes les données ?",
+    "a": "La coquille de la page atteint le navigateur immédiatement ; chaque limite Suspense se remplit dès que ses données sont résolues au lieu de bloquer toute la page."
+  },
+  {
+    "text": "next/font auto-héberge les polices Google (ou locales) au build : pas de requête externe, subsetting automatique, et zéro décalage de mise en page via des fallbacks size-adjust.",
+    "explain_dr": "next/font kat-host l font m3a site dyalk f build. Fker chno kat-rba7: privacy, speed, CLS.",
+    "example": "import { Inter } from 'next/font/google';\nconst inter = Inter({ subsets: ['latin'] });\nexport default function RootLayout({ children }) {\n  return <html className={inter.className}><body>{children}</body></html>;\n}",
+    "q": "Comment appliquer une police next/font à toute l'app ?",
+    "a": "Appelez le chargeur de police (e.g. Inter({ subsets: ['latin'] })) et mettez son className sur l'élément <html> ou <body> dans le layout racine."
+  },
+  {
+    "text": "Dans un Server Component, lancez les fetch indépendants ensemble avec Promise.all plutôt que des await séquentiels — les await séquentiels créent une cascade de requêtes qui additionne les latences.",
+    "explain_dr": "await mor await = waterfall bati2. Promise.all bjojhom m3a b3d. Fker l far9 f wa9t.",
+    "example": "const [user, posts] = await Promise.all([getUser(id), getPosts(id)]);",
+    "q": "Deux requêtes prennent 300ms chacune. Combien de temps prennent des await séquentiels versus Promise.all ?",
+    "a": "Séquentiel : ~600ms (l'une attend l'autre) ; Promise.all : ~300ms (les deux tournent en même temps) — la cascade double la latence."
+  },
+  {
+    "text": "Déployer sur Vercel est la voie zéro-config : pushez sur Git et chaque commit reçoit une URL de prévisualisation ; sinon next build + next start lance le serveur de production partout où Node.js tourne.",
+    "explain_dr": "Vercel = push w deploy bo7do. Wla next build + next start f ay server. Fker chno kat-rba7 m3a Vercel.",
+    "example": "npm run build   # next build\nnpm start       # next start (production server)",
+    "q": "Que recevez-vous automatiquement sur Vercel pour chaque pull request ?",
+    "a": "Une URL de déploiement de prévisualisation unique, pour que les reviewers testent les changements exacts avant le merge."
+  },
+  ],
+  "Bootstrap": [
+  {
+    "text": "Bootstrap est un framework CSS mobile-first : il fournit une grille responsive de 12 colonnes, des composants pré-stylés et des classes utilitaires pour construire des mises en page sans écrire beaucoup de CSS personnalisé.",
+    "explain_dr": "Bootstrap framework dyal CSS: grid responsive, components jahzin, w utilities — kat-bni dghya bla CSS bzaf.",
+    "example": "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>",
+    "q": "Que vous apporte Bootstrap dès le départ ?",
+    "a": "Une grille responsive de 12 colonnes, des composants pré-stylés (navbar, cartes, modales...) et des classes utilitaires pour l'espacement, la mise en page et la typographie."
+  },
+  {
+    "text": "Le moyen le plus rapide d'essayer Bootstrap est le CDN : ajoutez le <link> du CSS compilé dans <head> et le bundle JS juste avant </body>.",
+    "explain_dr": "Bach t-jareb Bootstrap dghya, zid link dyal CSS f head w script dyal JS 9bel ma ytssed body.",
+    "example": "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'></script>",
+    "q": "Où placent-on le lien CSS et le script JS de Bootstrap dans une page HTML ?",
+    "a": "Le <link> CSS va dans <head> ; le bundle JS va à la fin du <body>, juste avant </body>."
+  },
+  {
+    "text": "bootstrap.bundle.min.js inclut déjà Popper.js, dont les dropdowns, infobulles et popovers ont besoin pour se positionner.",
+    "explain_dr": "Bundle = Bootstrap + Popper mjmo3in; Popper howa li kay-positioni dropdowns w tooltips.",
+    "example": "<!-- bundle = bootstrap + popper dans un seul fichier -->\n<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'></script>",
+    "q": "Pourquoi préférer le fichier bundle à bootstrap.min.js ?",
+    "a": "Parce que le bundle inclut Popper.js, nécessaire au positionnement des dropdowns, infobulles et popovers — avec bootstrap.min.js seul, il faudrait ajouter Popper séparément."
+  },
+  {
+    "text": "La grille compte toujours 12 colonnes par ligne : les largeurs de colonnes sont des fractions de 12, par ex. col-4 vaut un tiers de la ligne.",
+    "explain_dr": "Grid fih 12 columns — col-4 = 4/12 ya3ni 1/3 dyal row.",
+    "example": "<div class='row'>\n  <div class='col-4'>A</div>\n  <div class='col-4'>B</div>\n  <div class='col-4'>C</div>\n</div>",
+    "q": "Trois colonnes égales dans une ligne — quelle classe pour chacune ?",
+    "a": "col-4 : 4 + 4 + 4 = 12, donc chacune occupe un tiers de la ligne."
+  },
+  {
+    "text": ".container centre le contenu avec des largeurs max fixes responsives ; .container-fluid occupe toujours 100 % de la largeur du viewport.",
+    "explain_dr": "container kay-markazi w 3ndo max-width, container-fluid dayman 100% width.",
+    "example": "<div class='container'><!-- centré, largeur max --></div>\n<div class='container-fluid'><!-- toute la largeur --></div>",
+    "q": "Vous voulez une bannière hero toute en largeur. Quel wrapper utiliser ?",
+    "a": "container-fluid, car il occupe toujours toute la largeur du viewport, contrairement à container qui limite la largeur et centre le contenu."
+  },
+  {
+    "text": "Les breakpoints sont des largeurs minimales mobile-first : sm 576px, md 768px, lg 992px, xl 1200px, xxl 1400px — une classe md s'applique à partir de md et au-delà.",
+    "explain_dr": "Breakpoints mobile-first: sm 576, md 768, lg 992, xl 1200, xxl 1400 — class dyal md kat-khdem mn md lfo9.",
+    "example": "<div class='col-12 col-lg-6'><!-- empilé jusqu'à lg --></div>",
+    "q": "Que fait col-lg-6 sur un écran de 800px de large ?",
+    "a": "Rien pour l'instant — 800px est sous lg (992px), donc col-12 s'applique et la colonne reste pleine largeur ; col-lg-6 s'active à partir de 992px."
+  },
+  {
+    "text": "Combinez une classe de colonne de base avec une classe de breakpoint (col-12 col-md-6) pour empiler sur téléphone et diviser 50/50 sur tablette et plus.",
+    "explain_dr": "col-12 col-md-6 = full-width f tele, nss-nss mn md lfo9.",
+    "example": "<div class='row'>\n  <div class='col-12 col-md-6'>A</div>\n  <div class='col-12 col-md-6'>B</div>\n</div>",
+    "q": "Comment empiler deux colonnes sur mobile mais les placer côte à côte sur desktop ?",
+    "a": "Donnez à chacune col-12 col-md-6 : pleine largeur par défaut (mobile), moitié de largeur à partir du breakpoint md."
+  },
+  {
+    "text": "Les gouttières sont les espaces entre les colonnes : définissez-les sur la ligne avec g-* (g-3), ou gx-* / gy-* pour l'horizontal/vertical uniquement.",
+    "explain_dr": "Gutters = l-faragh bin columns, kat-tzad b g-* 3la row.",
+    "example": "<div class='row g-4'>\n  <div class='col-6'>...</div>\n  <div class='col-6'>...</div>\n</div>",
+    "q": "Pourquoi ajouter g-4 à la ligne plutôt que m-4 à chaque colonne ?",
+    "a": "Parce que les marges sur les colonnes cassent le calcul des 12 colonnes et l'alignement ; g-* définit les gouttières proprement via la ligne."
+  },
+  {
+    "text": "Les utilitaires d'espacement suivent {m|p}-{côté}-{taille} : m = marge, p = padding, côtés t/b/s/e/x/y, taille 0-5 (3 = 1rem), plus auto.",
+    "explain_dr": "m w p, sides t/b/s/e/x/y, sizes 0-5 (3 = 1rem). Hfed had l pattern.",
+    "example": "<div class='mt-3 px-4 mx-auto'>...</div>",
+    "q": "Que fait px-4 ?",
+    "a": "Il ajoute un padding horizontal (gauche + droite) de taille 4, soit 1.5rem de chaque côté."
+  },
+  {
+    "text": "Les utilitaires d'affichage (d-none, d-block, d-flex...) peuvent être limités par breakpoint : d-none d-md-block masque sur téléphone, affiche à partir de md.",
+    "explain_dr": "d-none d-md-block = mkhebbi f tele, bayen mn md lfo9.",
+    "example": "<aside class='d-none d-lg-block'><!-- desktop uniquement --></aside>",
+    "q": "Comment afficher une barre latérale uniquement sur grands écrans ?",
+    "a": "Avec d-none d-lg-block : masqué partout par défaut, affiché en bloc à partir du breakpoint lg."
+  },
+  {
+    "text": "Les utilitaires flex transforment tout élément en conteneur flex : d-flex avec justify-content-* (axe principal) et align-items-* (axe transversal).",
+    "explain_dr": "d-flex + justify-content-* w align-items-* bach t-centreri w t-rteb l children.",
+    "example": "<div class='d-flex justify-content-between align-items-center'>...</div>",
+    "q": "Comment pousser deux enfants aux extrémités opposées d'une ligne flex en les centrant verticalement ?",
+    "a": "d-flex justify-content-between align-items-center : between les répartit aux extrémités, align-items-center les centre sur l'axe transversal."
+  },
+  {
+    "text": "Les utilitaires de texte gèrent l'alignement, la graisse et la taille : text-center, fw-bold, fst-italic, fs-4, text-muted, text-decoration-none.",
+    "explain_dr": "text-* l alignment w colors, fw-bold l weight, fs-* l size.",
+    "example": "<p class='text-center fw-bold fs-5 text-muted'>Hello</p>",
+    "q": "Quelles classes rendent un paragraphe centré, gras et gris ?",
+    "a": "text-center fw-bold text-muted (ajoutez fs-5 pour une taille plus grande)."
+  },
+  {
+    "text": "Les couleurs du thème s'appliquent via bg-* et text-* (bg-primary, text-white, bg-danger...), et les bordures via border / border-primary.",
+    "explain_dr": "Colors: bg-* l background, text-* l text, border-* l borders.",
+    "example": "<div class='bg-primary text-white border border-light p-3'>...</div>",
+    "q": "Comment faire une boîte bleue avec du texte blanc et une bordure claire ?",
+    "a": "bg-primary text-white border border-light — bg-* définit le fond, text-* la couleur du texte, border ajoute la bordure."
+  },
+  {
+    "text": "Les boutons ont besoin de la classe de base .btn plus un style : btn-primary, btn-outline-secondary, btn-lg / btn-sm pour les tailles.",
+    "explain_dr": "Button khaso .btn + style bhal btn-primary wla btn-outline-danger.",
+    "example": "<button class='btn btn-outline-danger btn-sm'>Delete</button>",
+    "q": "Comment faire un petit bouton rouge en contour ?",
+    "a": "btn btn-outline-danger btn-sm : btn est obligatoire, btn-outline-danger donne le style contour rouge, btn-sm le rétrécit."
+  },
+  {
+    "text": "Une carte est .card contenant .card-body, avec en option .card-title, .card-text, .card-img-top et .card-footer.",
+    "explain_dr": "Card = .card w ldakhel .card-body, w ymkn t-zid title, image, footer.",
+    "example": "<div class='card' style='width: 18rem;'>\n  <img class='card-img-top' src='a.jpg'>\n  <div class='card-body'>\n    <h5 class='card-title'>Title</h5>\n  </div>\n</div>",
+    "q": "Où va le titre à l'intérieur d'une carte ?",
+    "a": "Dans .card-body (lui-même dans .card), en utilisant la classe .card-title sur un titre."
+  },
+  {
+    "text": "Une barre de navigation responsive utilise navbar + navbar-expand-lg ; sous lg, les liens se cachent derrière le bouton navbar-toggler qui cible la div collapse.",
+    "explain_dr": "Navbar: navbar-expand-lg bach t-t replia lte7t mn lg, w toggler kay-che3el l collapse.",
+    "example": "<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>\n  <button class='navbar-toggler' data-bs-toggle='collapse' data-bs-target='#nav'>...</button>\n  <div class='collapse navbar-collapse' id='nav'>...</div>\n</nav>",
+    "q": "Le hamburger s'affiche mais le clic ne fait rien — que vérifier en premier ?",
+    "a": "Que le data-bs-target du toggler correspond exactement à l'id de la div collapse (avec le #), et que le bundle JS de Bootstrap est chargé."
+  },
+  {
+    "text": "Les modales exigent l'imbrication .modal > .modal-dialog > .modal-content, et s'ouvrent via data-bs-toggle='modal' data-bs-target='#id' — sans JS personnalisé.",
+    "explain_dr": "Modal = .modal > .modal-dialog > .modal-content, w kat-t7al b data-bs-toggle='modal'.",
+    "example": "<div class='modal' id='demo' tabindex='-1'>\n  <div class='modal-dialog'>\n    <div class='modal-content'><!-- header / body / footer --></div>\n  </div>\n</div>",
+    "q": "Votre modale s'ouvre mais semble cassée (pas de style de boîte de dialogue). Quelle est la cause probable ?",
+    "a": "Les wrappers .modal-dialog et/ou .modal-content manquent — l'imbrication à trois niveaux doit être exacte."
+  },
+  {
+    "text": "Bootstrap 5 a abandonné jQuery : tous les composants interactifs sont en JS natif, déclenchés par des attributs data-bs-* (et non data-*).",
+    "explain_dr": "v5 bla jQuery — components b data-bs-* (data-bs-toggle...).",
+    "example": "<button data-bs-toggle='collapse' data-bs-target='#more'>More</button>",
+    "q": "Vous avez copié un extrait Bootstrap 4 avec data-toggle='modal' et il ne fonctionne pas en v5. Pourquoi ?",
+    "a": "Bootstrap 5 a renommé tous les attributs data vers l'espace de noms data-bs-*, il faut donc data-bs-toggle='modal'."
+  },
+  {
+    "text": "Un accordéon est une pile de blocs .accordion-item ; data-bs-parent sur chaque élément repliable ne garde qu'un seul élément ouvert à la fois.",
+    "explain_dr": "Accordion: items, w data-bs-parent bach wa7ed bo7do yt7al.",
+    "example": "<div class='accordion' id='faq'>\n  <div class='accordion-item'>\n    <div id='c1' class='accordion-collapse collapse' data-bs-parent='#faq'>...</div>\n  </div>\n</div>",
+    "q": "Deux éléments d'accordéon restent ouverts en même temps — quel attribut manque ?",
+    "a": "data-bs-parent='#faq' sur chaque .accordion-collapse : sans lui, les éléments s'ouvrent et se ferment indépendamment."
+  },
+  {
+    "text": "Un carrousel a besoin de .carousel.slide sur le wrapper, d'enfants .carousel-inner > .carousel-item (le premier .active), et de data-bs-ride='carousel' pour défiler automatiquement.",
+    "explain_dr": "Carousel: .carousel.slide + .carousel-item (lwel active) + data-bs-ride.",
+    "example": "<div id='hero' class='carousel slide' data-bs-ride='carousel'>\n  <div class='carousel-inner'>\n    <div class='carousel-item active'>...</div>\n  </div>\n</div>",
+    "q": "Votre carrousel n'affiche que la première diapositive, statique. Qu'est-ce qui le fait défiler ?",
+    "a": "data-bs-ride='carousel' sur le wrapper lance le défilement automatique ; ajoutez des contrôles précédent/suivant ou des indicateurs pour la navigation manuelle."
+  },
+  {
+    "text": "Un dropdown est .dropdown enveloppant un bouton avec data-bs-toggle='dropdown' et une liste .dropdown-menu sœur.",
+    "explain_dr": "Dropdown: button b data-bs-toggle='dropdown' + .dropdown-menu.",
+    "example": "<div class='dropdown'>\n  <button class='btn' data-bs-toggle='dropdown'>Menu</button>\n  <ul class='dropdown-menu'><li><a class='dropdown-item' href='#'>One</a></li></ul>\n</div>",
+    "q": "Le bouton du dropdown ne fait rien au clic. Que vérifier en premier ?",
+    "a": "Que le bouton a bien data-bs-toggle='dropdown' et que le bundle JS de Bootstrap (avec Popper) est chargé — les dropdowns ont besoin de JavaScript."
+  },
+  {
+    "text": "Les infobulles et popovers nécessitent une initialisation JavaScript dans Bootstrap 5 — data-bs-toggle='tooltip' seul ne suffit pas.",
+    "explain_dr": "Tooltip khaso JS init, data attribute bo7do ma kafich.",
+    "example": "<button id='tip' data-bs-toggle='tooltip' title='Hi'>?</button>\n<script>new bootstrap.Tooltip(document.getElementById('tip'));</script>",
+    "q": "Pourquoi votre infobulle n'apparaît-elle pas alors que l'attribut est correct ?",
+    "a": "Parce que Bootstrap 5 exige une initialisation JS explicite — par ex. new bootstrap.Tooltip(element) — pour les infobulles et les popovers."
+  },
+  {
+    "text": "Les contrôles de formulaire utilisent .form-control (champs), .form-label, .form-select (listes déroulantes) et .form-check pour les cases à cocher/radios.",
+    "explain_dr": "Forms: form-control l inputs, form-select l selects, form-check l checkboxes.",
+    "example": "<label class='form-label'>Email</label>\n<input type='email' class='form-control' placeholder='you@mail.com'>\n<select class='form-select'>...</select>",
+    "q": "Votre <select> ressemble à une liste déroulante native du navigateur. Quelle classe le stylise ?",
+    "a": "form-select — la classe Bootstrap qui stylise les éléments <select> natifs (form-control ne concerne que les champs texte)."
+  },
+  {
+    "text": "Validation personnalisée : ajoutez novalidate + .needs-validation au formulaire, puis ajoutez .was-validated à la soumission via JS pour afficher les retours valide/invalide.",
+    "explain_dr": "Validation: novalidate + needs-validation, w melli t-submiti zid was-validated b JS.",
+    "example": "<form class='needs-validation' novalidate>\n  <input class='form-control' required>\n  <div class='invalid-feedback'>Required.</div>\n</form>",
+    "q": "Quand les styles de validation verts/rouges apparaissent-ils réellement ?",
+    "a": "Seulement après l'ajout de .was-validated au formulaire (généralement à la soumission via JavaScript) — .needs-validation seul prépare juste le formulaire."
+  },
+  {
+    "text": "Le mode sombre est un mode de couleur : ajoutez data-bs-theme='dark' à <html> ; les composants s'adaptent automatiquement via les variables CSS.",
+    "explain_dr": "Dark mode: data-bs-theme='dark' 3la <html> w kolchi kaytbedel.",
+    "example": "<html data-bs-theme='dark'><!-- toute la page passe en sombre --></html>",
+    "q": "Comment limiter le mode sombre à une seule carte au lieu de toute la page ?",
+    "a": "Mettez data-bs-theme='dark' sur le div qui enveloppe la carte au lieu de <html> — les modes de couleur se propagent aux descendants."
+  },
   ],
 },
   },
