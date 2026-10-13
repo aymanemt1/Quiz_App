@@ -219,6 +219,13 @@ body {
   display: none;
 }
 
+.game-live .buttons_qsts {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
 .showAnswer-button,
 .removeAnswers-button {
   min-height: 44px;

@@ -280,31 +280,11 @@ export default function App() {
       data-game-finished={questionsOntranslate.length > 0 && question.value > totalQuestion ? true : null}
     >
 
+      {(!gameStarted || runFinished) && (
       <div className="intro">
         <div className="intro-inner">
-         {gameStarted && mode !== 'interview' && <Timer gameFinished={gameFinished} />}
-           <QuizStart questions={questionsOntranslate}/>
-           {mode !== 'interview' && <Indicator questions={questionsOntranslate} question={question} />}
-
-         {/* HELPERS */}
-
-       {!gameFinished && mode !== 'interview' ? (
-          <div className='buttons_qsts'>
-          <button
-             className="showAnswer-button"
-             onClick={()=>ShowCorrectAnswer()}
-           >
-            ShowAnswer
-           </button>
-
-           <button
-             className="removeAnswers-button"
-             onClick={()=>RemoveTwoAnswers()}
-           >
-           50:50
-           </button>
-     </div>
-       ) : ''}
+         {gameStarted && <Timer gameFinished={gameFinished} />}
+         {!gameStarted && <QuizStart questions={questionsOntranslate}/>}
 
           {runFinished && (
             hasAnswers ? (
@@ -351,8 +331,20 @@ export default function App() {
           )}
         </div>
       </div>
+      )}
 
-      <div className="game-area">
+      {(gameStarted && !runFinished) ? (
+      <div className="game-area game-live">
+        {questionsOntranslate.length === 0 ? (
+          <div className="results-empty">
+            <p>{FR ? "Aucune question disponible." : "No questions available."}</p>
+            <button className="menu-back" onClick={() => handleBackToMenu()}>
+              ← {FR ? 'Menu' : 'Menu'}
+            </button>
+          </div>
+        ) : (
+          <>
+        <Indicator questions={questionsOntranslate} question={question} />
         {timedActive && currentQuestion && (
           <QuestionTimer
             key={`t${runKey}-q${currentQuestion.id}`}
@@ -377,12 +369,29 @@ export default function App() {
           />
         )}
 
-        {!questionsOntranslate[question.value] && (
-          <>
-            <QuestionCorrection data={questionsOntranslate}  />
+        <div className='buttons_qsts'>
+          <button
+             className="showAnswer-button"
+             onClick={()=>ShowCorrectAnswer()}
+           >
+            ShowAnswer
+           </button>
+
+           <button
+             className="removeAnswers-button"
+             onClick={()=>RemoveTwoAnswers()}
+           >
+           50:50
+           </button>
+        </div>
           </>
         )}
       </div>
+      ) : runFinished ? (
+      <div className="game-area">
+        <QuestionCorrection data={questionsOntranslate}  />
+      </div>
+      ) : null}
     </div>
 )}
 </>
