@@ -210,3 +210,64 @@ select{
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---- Timed mode toggle ---- */
+.timed-toggle {
+  margin: 12px 0 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.timed-durations {
+  margin-top: 2px;
+}
+
+/* ---- Cours / Examen choice ---- */
+.cours-exam-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.cours-exam-buttons .intro-button {
+  min-width: 150px;
+}
+
+.cours-button {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+/* ---- Streak badge ---- */
+.streak-badge {
+  margin: 2px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffd43b;
+  text-align: center;
+}
+
+/* ---- Notes full-screen ---- */
+.game-notes {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 90px 12px 40px;
+}
+
+@media (max-width: 640px) {
+  .cours-exam-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .cours-exam-buttons .intro-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}

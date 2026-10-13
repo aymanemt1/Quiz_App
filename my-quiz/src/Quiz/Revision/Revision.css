@@ -1,0 +1,112 @@
+.revision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.revision-card-wrap {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.revision-progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.revision-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4dabf7, #9775fa);
+  transition: width 0.3s ease;
+}
+
+.revision-step-label {
+  margin: 10px 0 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.revision-card {
+  width: 100%;
+  min-height: 220px;
+  margin: 14px 0 6px;
+  padding: 32px 28px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: revision-in 0.3s ease;
+}
+
+@keyframes revision-in {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.revision-point {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.75;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+}
+
+.revision-point code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.revision-nav {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.revision-nav-btn {
+  flex: 1;
+  max-width: 220px;
+}
+
+.revision-back {
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .revision-card {
+    min-height: 200px;
+    padding: 24px 20px;
+  }
+  .revision-point {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .revision-nav {
+    flex-direction: row;
+  }
+  .revision-nav-btn {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+}

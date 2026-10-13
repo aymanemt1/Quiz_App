@@ -14,8 +14,11 @@ import { Indicator } from "../Indicator/Indicator";
 import { QuizStart } from "../QuizStart/QuizStart";
 import { Interview } from "../Interview/Interview";
 import { Progress } from "../Progress/Progress";
+import { Revision } from "../Revision/Revision";
+import { QuestionTimer } from "../QuestionTimer/QuestionTimer";
 import { getTopicQuestions, getExamQuestions, TOPIC_KEYS } from "../Data/QuestionAllData";
-import { loadMistakes, addMistakes, removeMistakes, saveHistoryEntry } from "../Data/storage";
+import { getDailyQuestions } from "../Data/daily";
+import { loadMistakes, addMistakes, removeMistakes, saveHistoryEntry, todayStr, recordDailyCompletion } from "../Data/storage";
 import Timer from "../Timer/Timer";
 import { Topbar } from "../Topbar/Topbar";
 import { LangueContext } from "../../Context/LangueContext";
@@ -33,7 +36,8 @@ function useCounter(initialState) {
 export default function App() {
 
   const {setGameFinished,gameFinished,setshowCorrectAnswer,setIsremoved,langue,
-    langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount} =useContext(LangueContext)
+    langueTrans,setGameStarted,gameStarted,mode,level,examTopics,examCount,
+    timed,timePerQuestion} =useContext(LangueContext)
 
   // Build the active question set for the current mode (ids normalized to array index)
   const questionsOntranslate = useMemo(() => {
@@ -43,6 +47,8 @@ export default function App() {
     } else if (mode === 'quiz') {
       const topic = TOPIC_KEYS.includes(langue) ? langue : 'React';
       set = getTopicQuestions(topic, langueTrans, level).map((q, i) => ({ ...q, id: i, selection: null, topic }));
+    } else if (mode === 'daily') {
+      set = getDailyQuestions(langueTrans, todayStr());
     } else if (mode === 'review') {
       const mistakes = loadMistakes().filter((m) => m.lang === langueTrans);
       set = mistakes.map((m, i) => ({
@@ -66,12 +72,19 @@ export default function App() {
   const wrong = useCounter(0);
   const empty = useCounter(0);
 
+  // Bumped on every new run so timers / question state reset cleanly
+  const [runKey, setRunKey] = useState(0);
+
+  // Guard so a question timeout fires only once per question
+  const timedOutRef = useRef(new Set());
+
   // Reset progress whenever the question set changes (mode / topic / language)
   useEffect(() => {
     question.reset();
     correct.reset();
     wrong.reset();
     empty.reset();
+    timedOutRef.current.clear();
     setGameFinished(false);
     setshowCorrectAnswer(false);
     setIsremoved(false);
@@ -109,6 +122,8 @@ export default function App() {
     correct.reset();
     wrong.reset();
     empty.reset();
+    timedOutRef.current.clear();
+    setRunKey((k) => k + 1);
   };
 
   const handleTryagain = () => {
@@ -119,11 +134,25 @@ export default function App() {
     correct.reset();
     wrong.reset();
     empty.reset();
+    timedOutRef.current.clear();
+    setRunKey((k) => k + 1);
+  };
+
+  // Timed mode: when the countdown hits zero, mark the question
+  // unanswered and auto-advance
+  const handleTimeout = () => {
+    const q = questionsOntranslate[question.value];
+    if (!q || timedOutRef.current.has(q.id)) return;
+    timedOutRef.current.add(q.id);
+    setIsremoved(false);
+    setshowCorrectAnswer(false);
+    handleNewQuestionClick(null, q);
   };
 
   useEffect(() => {
     if (gameStarted) {
       document.body.classList.add("game-started");
+      setRunKey((k) => k + 1);
     } else {
       document.body.classList.remove("game-started");
     }
@@ -147,7 +176,9 @@ export default function App() {
         ? [...examTopics]
         : mode === 'review'
           ? ['Review']
-          : [mode];
+          : mode === 'daily'
+            ? ['Daily']
+            : [mode];
     saveHistoryEntry({
       date: new Date().toISOString(),
       mode,
@@ -156,7 +187,8 @@ export default function App() {
       correct: correct.value,
       total,
     });
-    if (mode === 'quiz' || mode === 'exam') {
+    if (mode === 'daily') recordDailyCompletion(correct.value, total);
+    if (mode === 'quiz' || mode === 'exam' || mode === 'daily') {
       const missed = questionsOntranslate
         .filter((q) => q.selection !== null && q.selection !== q.correct)
         .map((q) => ({
@@ -193,11 +225,19 @@ export default function App() {
 
   const showInterview = mode === 'interview' && gameStarted;
   const showProgress = mode === 'progress';
+  const showNotes = mode === 'notes';
+  const timedActive = timed && gameStarted &&
+    (mode === 'quiz' || mode === 'exam' || mode === 'daily');
+  const currentQuestion = questionsOntranslate[question.value];
 
   return (
 <>
 <Topbar />
-{showProgress ? (
+{showNotes ? (
+    <div className="game-notes">
+      <Revision />
+    </div>
+) : showProgress ? (
     <div className="game-progress">
       <Progress />
     </div>
@@ -262,8 +302,18 @@ export default function App() {
       </div>
 
       <div className="game-area">
+        {timedActive && currentQuestion && (
+          <QuestionTimer
+            key={`t${runKey}-q${currentQuestion.id}`}
+            seconds={timePerQuestion}
+            questionId={currentQuestion.id}
+            onTimeout={handleTimeout}
+            FR={langueTrans === "FR"}
+          />
+        )}
         {questionsOntranslate[question.value] && (
           <Question
+            key={`r${runKey}-q${questionsOntranslate[question.value].id}`}
             data={questionsOntranslate[question.value]}
             buttonText = {
               (question.value !== totalQuestion && langueTrans === "EN") ? "Next Question" :

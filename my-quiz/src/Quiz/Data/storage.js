@@ -1,6 +1,7 @@
 // localStorage persistence: score history + mistakes to review
 const HISTORY_KEY = "quizapp_history_v1";
 const MISTAKES_KEY = "quizapp_mistakes_v1";
+const DAILY_KEY = "quizapp_daily_v1";
 
 const read = (key) => {
   try {
@@ -9,6 +10,16 @@ const read = (key) => {
     return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
     return [];
+  }
+};
+
+const readObj = (key) => {
+  try {
+    const raw = localStorage.getItem(key);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch (e) {
+    return {};
   }
 };
 
@@ -55,3 +66,38 @@ export const removeMistakes = (ids) => {
 };
 
 export const clearMistakes = () => write(MISTAKES_KEY, []);
+
+// ---- Daily challenge: { lastDate, streak, result: { date, correct, total } } ----
+export const todayStr = () => {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${mm}-${dd}`;
+};
+
+const yesterdayStr = () => {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${mm}-${dd}`;
+};
+
+export const loadDaily = () => readObj(DAILY_KEY);
+
+export const getStreak = () => loadDaily().streak || 0;
+
+export const getTodayResult = () => {
+  const d = loadDaily();
+  return d.result && d.result.date === todayStr() ? d.result : null;
+};
+
+export const recordDailyCompletion = (correct, total) => {
+  const d = loadDaily();
+  const t = todayStr();
+  if (d.result && d.result.date === t) return d; // already recorded today
+  const streak = d.lastDate === yesterdayStr() ? (d.streak || 0) + 1 : 1;
+  const next = { lastDate: t, streak, result: { date: t, correct, total } };
+  write(DAILY_KEY, next);
+  return next;
+};
