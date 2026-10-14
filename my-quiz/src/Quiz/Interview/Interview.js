@@ -100,6 +100,12 @@ export const Interview = () => {
         ) : (
           <>
             <p className="interview-answer">{current.a}</p>
+            {current.dr && (
+              <div className="interview-dr">
+                <span className="interview-dr-label">💡 {DR ? "Molakhas b Darija" : FR ? "Résumé en darija" : "Darija summary"}</span>
+                <p>{current.dr}</p>
+              </div>
+            )}
             <div className="interview-actions">
               <button className="interview-button is-known" onClick={() => assess(true)}>
                 {DR ? "Kont 3arfha" : FR ? "Je savais" : "I knew it"}

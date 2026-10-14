@@ -113,6 +113,33 @@
   line-height: 1.6;
 }
 
+/* darija summary of the answer */
+.interview-dr {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--pq-dim);
+  background: rgba(198, 255, 61, 0.07);
+  border: 1px dashed rgba(198, 255, 61, 0.35);
+  border-radius: var(--pq-radius-sm);
+  padding: 14px 16px;
+  margin: 0 0 20px;
+  animation: question-in 0.3s ease both;
+}
+
+.interview-dr-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--pq-accent-light);
+  margin-bottom: 6px;
+}
+
+.interview-dr p {
+  margin: 0;
+}
+
 /* summary */
 .interview-summary {
   background: linear-gradient(170deg, rgba(198, 255, 61, 0.13), rgba(198, 255, 61, 0.045));
