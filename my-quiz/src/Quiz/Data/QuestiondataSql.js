@@ -744,7 +744,152 @@ export const sqlQuestions = [
         ],
         "correct": 2,
         "selection": null
-      }
+      },
+      {
+        "id": 50,
+        "level": 4,
+        "explain_dr": "So2al 3la procedures: l procedure kat3yet liha b CALL, machi b SELECT wla RUN. Fker: chno l keyword li MySQL katst3mlo bach texecuti procedure?",
+        "text": "How do you run a stored procedure called get_active_users?",
+        "code": "CREATE PROCEDURE get_active_users()\nBEGIN\n  SELECT * FROM users WHERE active = 1;\nEND",
+        "answers": [
+          "CALL get_active_users();",
+          "RUN get_active_users();",
+          "EXECUTE get_active_users;",
+          "SELECT get_active_users();"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 51,
+        "level": 4,
+        "explain_dr": "So2al 3la parametres: IN kaydkhel valeur, OUT kaykherej valeur l caller, INOUT bjoj. Fker: OUT = output, ya3ni l procedure kat3tik valeur.",
+        "text": "In CREATE PROCEDURE calc(OUT total INT), what does OUT mean?",
+        "answers": [
+          "total is an input value",
+          "total returns a value back to the caller",
+          "total is a table name",
+          "total is optional"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 52,
+        "level": 4,
+        "explain_dr": "So2al 3la fonctions: ay fonction khasha t-returni valeur b RETURN, w 3ndha RETURNS f l declaration. Bla RETURN l fonction ma khdamach.",
+        "text": "What must every MySQL stored function contain?",
+        "code": "CREATE FUNCTION double_it(x INT) RETURNS INT\nBEGIN\n  ???\nEND",
+        "answers": [
+          "A RETURN statement",
+          "A CALL statement",
+          "A TRIGGER",
+          "An index"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 53,
+        "level": 4,
+        "explain_dr": "So2al 3la DELIMITER: l body dyal procedure fih bzaf dyal ';' — ila ma bdeltich l delimiter, MySQL ghadi y7seb blli l CREATE sala f awel ';'. L delimiter jdid kay7mi l body kamel.",
+        "text": "Why change the DELIMITER before creating a stored procedure?",
+        "code": "DELIMITER //\nCREATE PROCEDURE p()\nBEGIN\n  SELECT 1;\n  SELECT 2;\nEND //\nDELIMITER ;",
+        "answers": [
+          "To speed up the procedure",
+          "So the semicolons inside the body don't end the CREATE statement early",
+          "To encrypt the code",
+          "It is required for all queries"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 54,
+        "level": 4,
+        "explain_dr": "So2al 3la IF: f MySQL katkteb IF condition THEN ... END IF; — machi bhal JavaScript b l accolades. 7fed l syntax mzyan.",
+        "text": "Which IF syntax is correct inside a MySQL procedure?",
+        "answers": [
+          "IF x > 5 THEN SET y = 1; END IF;",
+          "if (x > 5) { y = 1; }",
+          "WHEN x > 5 DO y = 1;",
+          "IF x > 5: y = 1"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 55,
+        "level": 5,
+        "explain_dr": "So2al 3la curseur: lwl kat-declarih (DECLARE), kat7elo (OPEN), katjbed ligne b ligne (FETCH), w f lkher katsedo (CLOSE). Had l ordre ma kaytbdlch.",
+        "text": "What is the correct order of cursor operations?",
+        "answers": [
+          "DECLARE → OPEN → FETCH → CLOSE",
+          "OPEN → DECLARE → FETCH → CLOSE",
+          "DECLARE → FETCH → OPEN → CLOSE",
+          "FETCH → OPEN → CLOSE → DECLARE"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 56,
+        "level": 5,
+        "explain_dr": "So2al 3la HANDLER: mli l curseur kaywsl l lkher (ma b9at ta ligne), MySQL katgeneri NOT FOUND — had l handler kay7et done = TRUE bach t3ref imta t7bes l loop.",
+        "text": "What is this handler for?",
+        "code": "DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;",
+        "answers": [
+          "To detect when the cursor has no more rows",
+          "To stop the procedure on any error",
+          "To create a new variable",
+          "To commit the transaction"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 57,
+        "level": 5,
+        "explain_dr": "So2al 3la NEW/OLD: OLD = l valeur l9dima (9bel l update), NEW = l valeur jdida. F BEFORE UPDATE, OLD.price hiya l price li kanet 9bel.",
+        "text": "In a BEFORE UPDATE trigger on products, what does OLD.price contain?",
+        "answers": [
+          "The price before the update",
+          "The new price being set",
+          "Always 0",
+          "The average price"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 58,
+        "level": 5,
+        "explain_dr": "So2al 3la triggers: bach t-blocki insert khayb, khask BEFORE INSERT (9bel ma ydkhel) w t-generi erreur b SIGNAL. AFTER INSERT kayji m3etel — l ligne deja dkhlat.",
+        "text": "You want to reject an INSERT when quantity is negative. Which trigger do you use?",
+        "answers": [
+          "BEFORE INSERT",
+          "AFTER INSERT",
+          "BEFORE DELETE",
+          "AFTER UPDATE"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 59,
+        "level": 5,
+        "explain_dr": "So2al 3la CASE: l syntax hiya CASE WHEN condition THEN valeur ... ELSE ... END. Katst3ml wast SELECT bla ma t7taj procedure.",
+        "text": "Which CASE expression is correct?",
+        "code": "SELECT name, ??? AS availability FROM products;",
+        "answers": [
+          "CASE WHEN stock > 0 THEN 'in stock' ELSE 'out of stock' END",
+          "CASE stock > 0 THEN 'in stock' END CASE",
+          "IF stock > 0 THEN 'in stock' ELSE 'out of stock'",
+          "SWITCH(stock) { case > 0: 'in stock' }"
+        ],
+        "correct": 0,
+        "selection": null
+      },
     ]
   },
   {
@@ -1492,7 +1637,152 @@ export const sqlQuestions = [
         ],
         "correct": 2,
         "selection": null
-      }
+      },
+      {
+        "id": 50,
+        "level": 4,
+        "explain_dr": "So2al 3la procedures: l procedure kat3yet liha b CALL, machi b SELECT wla RUN. Fker: chno l keyword li MySQL katst3mlo bach texecuti procedure?",
+        "text": "Comment exécuter une procédure stockée nommée get_active_users ?",
+        "code": "CREATE PROCEDURE get_active_users()\nBEGIN\n  SELECT * FROM users WHERE active = 1;\nEND",
+        "answers": [
+          "CALL get_active_users();",
+          "RUN get_active_users();",
+          "EXECUTE get_active_users;",
+          "SELECT get_active_users();"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 51,
+        "level": 4,
+        "explain_dr": "So2al 3la parametres: IN kaydkhel valeur, OUT kaykherej valeur l caller, INOUT bjoj. Fker: OUT = output, ya3ni l procedure kat3tik valeur.",
+        "text": "Dans CREATE PROCEDURE calc(OUT total INT), que signifie OUT ?",
+        "answers": [
+          "total est une valeur d'entrée",
+          "total renvoie une valeur à l'appelant",
+          "total est un nom de table",
+          "total est optionnel"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 52,
+        "level": 4,
+        "explain_dr": "So2al 3la fonctions: ay fonction khasha t-returni valeur b RETURN, w 3ndha RETURNS f l declaration. Bla RETURN l fonction ma khdamach.",
+        "text": "Que doit contenir toute fonction stockée MySQL ?",
+        "code": "CREATE FUNCTION double_it(x INT) RETURNS INT\nBEGIN\n  ???\nEND",
+        "answers": [
+          "Une instruction RETURN",
+          "Une instruction CALL",
+          "Un TRIGGER",
+          "Un index"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 53,
+        "level": 4,
+        "explain_dr": "So2al 3la DELIMITER: l body dyal procedure fih bzaf dyal ';' — ila ma bdeltich l delimiter, MySQL ghadi y7seb blli l CREATE sala f awel ';'. L delimiter jdid kay7mi l body kamel.",
+        "text": "Pourquoi changer le DELIMITER avant de créer une procédure stockée ?",
+        "code": "DELIMITER //\nCREATE PROCEDURE p()\nBEGIN\n  SELECT 1;\n  SELECT 2;\nEND //\nDELIMITER ;",
+        "answers": [
+          "Pour accélérer la procédure",
+          "Pour que les points-virgules du corps ne terminent pas le CREATE prématurément",
+          "Pour chiffrer le code",
+          "C'est obligatoire pour toutes les requêtes"
+        ],
+        "correct": 1,
+        "selection": null
+      },
+      {
+        "id": 54,
+        "level": 4,
+        "explain_dr": "So2al 3la IF: f MySQL katkteb IF condition THEN ... END IF; — machi bhal JavaScript b l accolades. 7fed l syntax mzyan.",
+        "text": "Quelle syntaxe IF est correcte dans une procédure MySQL ?",
+        "answers": [
+          "IF x > 5 THEN SET y = 1; END IF;",
+          "if (x > 5) { y = 1; }",
+          "WHEN x > 5 DO y = 1;",
+          "IF x > 5: y = 1"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 55,
+        "level": 5,
+        "explain_dr": "So2al 3la curseur: lwl kat-declarih (DECLARE), kat7elo (OPEN), katjbed ligne b ligne (FETCH), w f lkher katsedo (CLOSE). Had l ordre ma kaytbdlch.",
+        "text": "Quel est l'ordre correct des opérations d'un curseur ?",
+        "answers": [
+          "DECLARE → OPEN → FETCH → CLOSE",
+          "OPEN → DECLARE → FETCH → CLOSE",
+          "DECLARE → FETCH → OPEN → CLOSE",
+          "FETCH → OPEN → CLOSE → DECLARE"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 56,
+        "level": 5,
+        "explain_dr": "So2al 3la HANDLER: mli l curseur kaywsl l lkher (ma b9at ta ligne), MySQL katgeneri NOT FOUND — had l handler kay7et done = TRUE bach t3ref imta t7bes l loop.",
+        "text": "À quoi sert ce handler ?",
+        "code": "DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;",
+        "answers": [
+          "À détecter quand le curseur n'a plus de lignes",
+          "À arrêter la procédure sur n'importe quelle erreur",
+          "À créer une nouvelle variable",
+          "À valider la transaction"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 57,
+        "level": 5,
+        "explain_dr": "So2al 3la NEW/OLD: OLD = l valeur l9dima (9bel l update), NEW = l valeur jdida. F BEFORE UPDATE, OLD.price hiya l price li kanet 9bel.",
+        "text": "Dans un trigger BEFORE UPDATE sur products, que contient OLD.price ?",
+        "answers": [
+          "Le prix avant la mise à jour",
+          "Le nouveau prix en cours d'affectation",
+          "Toujours 0",
+          "Le prix moyen"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 58,
+        "level": 5,
+        "explain_dr": "So2al 3la triggers: bach t-blocki insert khayb, khask BEFORE INSERT (9bel ma ydkhel) w t-generi erreur b SIGNAL. AFTER INSERT kayji m3etel — l ligne deja dkhlat.",
+        "text": "Vous voulez rejeter un INSERT quand la quantité est négative. Quel trigger utiliser ?",
+        "answers": [
+          "BEFORE INSERT",
+          "AFTER INSERT",
+          "BEFORE DELETE",
+          "AFTER UPDATE"
+        ],
+        "correct": 0,
+        "selection": null
+      },
+      {
+        "id": 59,
+        "level": 5,
+        "explain_dr": "So2al 3la CASE: l syntax hiya CASE WHEN condition THEN valeur ... ELSE ... END. Katst3ml wast SELECT bla ma t7taj procedure.",
+        "text": "Quelle expression CASE est correcte ?",
+        "code": "SELECT name, ??? AS availability FROM products;",
+        "answers": [
+          "CASE WHEN stock > 0 THEN 'en stock' ELSE 'rupture' END",
+          "CASE stock > 0 THEN 'en stock' END CASE",
+          "IF stock > 0 THEN 'en stock' ELSE 'rupture'",
+          "SWITCH(stock) { case > 0: 'en stock' }"
+        ],
+        "correct": 0,
+        "selection": null
+      },
     ]
   }
 ];
