@@ -37,7 +37,7 @@ export const Drawer = () => {
 
   const selectMode = (m) => {
     setMode(m);
-    if ((m === 'quiz' || m === 'notes') && !TOPIC_KEYS.includes(langue)) setlangue('React');
+    if ((m === 'quiz' || m === 'notes' || m === 'resume') && !TOPIC_KEYS.includes(langue)) setlangue('React');
     setMenuOpen(false);
     resetGame();
     close();

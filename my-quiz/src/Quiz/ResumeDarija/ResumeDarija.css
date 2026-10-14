@@ -1,0 +1,108 @@
+/* ---- Darija cheat-sheets (Molakhasat) ---- */
+.resume-dr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  animation: resume-dr-in 0.35s ease both;
+}
+
+@keyframes resume-dr-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.resume-dr-sub {
+  color: var(--pq-muted, #9aa0a6);
+  font-size: 14px;
+  margin: 4px 0 14px;
+}
+
+.resume-dr-back {
+  align-self: flex-start;
+  margin-top: 18px;
+}
+
+.resume-dr-stacks-link {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--pq-accent-light);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 8px;
+}
+
+.resume-dr-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.resume-dr-icon {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.resume-dr-topic {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.resume-dr-tagline {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--pq-muted, #9aa0a6);
+}
+
+.resume-dr-sheet {
+  background: var(--pq-card, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--pq-border, rgba(255, 255, 255, 0.09));
+  border-radius: 14px;
+  padding: 18px 18px 8px;
+}
+
+.resume-dr-section {
+  margin-bottom: 16px;
+}
+
+.resume-dr-section:last-child {
+  margin-bottom: 8px;
+}
+
+.resume-dr-section-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: var(--pq-accent-light);
+  text-transform: uppercase;
+}
+
+.resume-dr-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-dr-bullet {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 7px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--pq-text, inherit);
+}
+
+.resume-dr-bullet::before {
+  content: "▸";
+  position: absolute;
+  left: 2px;
+  color: var(--pq-accent);
+  font-weight: 700;
+}

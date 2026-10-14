@@ -15,6 +15,7 @@ import { QuizStart } from "../QuizStart/QuizStart";
 import { Interview } from "../Interview/Interview";
 import { Progress } from "../Progress/Progress";
 import { Revision } from "../Revision/Revision";
+import { ResumeDarija } from "../ResumeDarija/ResumeDarija";
 import { Blitz } from "../Blitz/Blitz";
 import { ShareButton } from "../Share/ShareCard";
 import { QuestionTimer } from "../QuestionTimer/QuestionTimer";
@@ -242,6 +243,7 @@ export default function App() {
   const showBlitz = mode === 'blitz' && gameStarted;
   const showProgress = mode === 'progress';
   const showNotes = mode === 'notes' && notesOpen;
+  const showResume = mode === 'resume';
   const showProfile = mode === 'profile';
   const timedActive = timed && gameStarted &&
     (mode === 'quiz' || mode === 'exam' || mode === 'daily' || mode === 'code');
@@ -263,6 +265,10 @@ export default function App() {
 ) : showNotes ? (
     <div className="game-notes">
       <Revision />
+    </div>
+) : showResume ? (
+    <div className="game-notes">
+      <ResumeDarija />
     </div>
 ) : showProgress ? (
     <div className="game-progress">

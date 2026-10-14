@@ -20,6 +20,13 @@ export const SECTIONS = [
         frDesc: 'Fiches de révision, une notion à la fois',
         drDesc: 'Doros, fikra b fikra',
       },
+      {
+        mode: 'resume', icon: '🗂️',
+        en: 'Stack resumes', fr: 'Résumés stacks', dr: 'Molakhasat',
+        enDesc: 'Each stack condensed, in Darija',
+        frDesc: "L'essentiel de chaque stack, en darija",
+        drDesc: 'Molakhas morakaz dyal kol stack b darija',
+      },
     ],
   },
   {
