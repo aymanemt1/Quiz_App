@@ -25,6 +25,7 @@ export const STACK_ICONS = {
   Postman: "📮",
   NextJs: "▲",
   Bootstrap: "🟪",
+  Mysql: "🐬",
 };
 
 export const stackIcon = (key) => STACK_ICONS[key] || "🧩";

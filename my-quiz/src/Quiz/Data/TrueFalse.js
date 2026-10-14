@@ -129,6 +129,11 @@ const STATEMENTS = [
   S(97,"Bootstrap",2,"Adding d-none d-md-block hides an element on phones but shows it on tablets and larger.","Ajouter d-none d-md-block masque un élément sur téléphone mais l'affiche sur tablette et plus.",true,"d-none kat-khebbi kolchi, w d-md-block kat-rj3o mn md lfo9 — tfekkar chno l resultat."),
   S(98,"Bootstrap",1,"The Bootstrap grid divides each row into 12 columns.","La grille Bootstrap divise chaque ligne en 12 colonnes.",true,"Grid m9assma l 3adad tabet dyal columns — tfekkar ch7al."),
   S(99,"Bootstrap",3,"In Bootstrap 5, tooltips work with data-bs-toggle='tooltip' alone and need no JavaScript.","Dans Bootstrap 5, les infobulles fonctionnent avec le seul data-bs-toggle='tooltip', sans JavaScript.",false,"Tooltip w popover 3ndhom 9a3ida khasa f v5 — tfekkar wach data attribute bo7do kafi."),
+  // Mysql
+  S(100,"Mysql",4,"A stored function must return a value with RETURN.","Une fonction stockée doit retourner une valeur avec RETURN.",true,"Fonction bla RETURN ma khdamach — tfekkar chno l far9 l asasi bin fonction w procedure."),
+  S(101,"Mysql",4,"You execute a stored procedure with a SELECT statement.","On exécute une procédure stockée avec un SELECT.",false,"Procedure kat-t3yet liha b CALL — tfekkar l keyword s7i7."),
+  S(102,"Mysql",5,"In a BEFORE INSERT trigger, OLD holds the previous version of the row.","Dans un trigger BEFORE INSERT, OLD contient la version précédente de la ligne.",false,"F INSERT ma kaynach ligne 9dima — tfekkar imta OLD kay-kon kayn (UPDATE/DELETE)."),
+  S(103,"Mysql",5,"Changing DELIMITER lets a procedure body full of semicolons reach the server as one statement.","Changer le DELIMITER permet au corps d'une procédure plein de points-virgules d'arriver au serveur en un seul bloc.",true,"DELIMITER kay-7mi l body — tfekkar 3lach l ';' ldakhel mochkil."),
 ];
 
 export const trueFalseStatements = [

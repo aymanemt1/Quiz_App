@@ -1152,6 +1152,66 @@ export const interviewQuestions = [
     { id: 257, topic: "Bootstrap", q: "Build a responsive layout: sidebar after content on mobile, sidebar left of content on desktop. How?", a: "Put the sidebar second in the HTML, give content and sidebar col-12 col-lg-* widths, and add order-lg-first to the sidebar so it visually moves first on large screens while staying after content on mobile." },
     { id: 258, topic: "Bootstrap", q: "What are the key breaking changes migrating from Bootstrap 4 to 5?", a: "jQuery was removed — all plugins are vanilla JS. Data attributes were renamed from data-* to data-bs-*. Spacing classes ml-*/mr-* became ms-*/me-* (logical properties), custom-file inputs became form-control, and Internet Explorer support was dropped." },
     { id: 259, topic: "Bootstrap", q: "How do you keep Bootstrap's CSS footprint small in production?", a: "Import only the Sass modules you use instead of the full bundle, or run PurgeCSS at build time to remove unused classes. Also prefer the minified files and avoid loading both the CDN and npm copies." },
+    {
+      id: 260,
+      topic: "Mysql",
+      q: "Explain the difference between a stored procedure and a stored function.",
+      a: "A procedure is called with CALL, can have IN/OUT/INOUT parameters and doesn't have to return a value. A function must return a single value with RETURN and can be used inside SQL expressions like SELECT."
+    },
+    {
+      id: 261,
+      topic: "Mysql",
+      q: "When would you use a cursor, and what should you watch out for?",
+      a: "When you must process rows one by one and set-based SQL can't express the logic. Watch out for performance — cursors are row-by-row and slow on large sets — always CLOSE them, and use a NOT FOUND handler to detect the end."
+    },
+    {
+      id: 262,
+      topic: "Mysql",
+      q: "What are NEW and OLD in a trigger?",
+      a: "NEW holds the incoming row values (INSERT and UPDATE), OLD holds the previous values (UPDATE and DELETE). In a BEFORE trigger you can modify NEW to change what gets written; in an AFTER trigger the row is already written so NEW is read-only."
+    },
+    {
+      id: 263,
+      topic: "Mysql",
+      q: "How do you handle errors inside a stored procedure?",
+      a: "With DECLARE HANDLER: CONTINUE keeps going after the error, EXIT stops the procedure. Common patterns are CONTINUE HANDLER FOR NOT FOUND to end cursor loops, EXIT HANDLER FOR SQLEXCEPTION for fatal errors, and SIGNAL to raise custom errors."
+    },
+    {
+      id: 264,
+      topic: "Mysql",
+      q: "What is a transaction and why does it matter?",
+      a: "A group of statements treated as one atomic unit — all succeed or all fail. It matters for consistency: debiting one account and crediting another must both happen. Use START TRANSACTION, then COMMIT to save or ROLLBACK to undo."
+    },
+    {
+      id: 265,
+      topic: "Mysql",
+      q: "BEFORE vs AFTER trigger — when do you pick each?",
+      a: "BEFORE when you need to validate or modify the incoming data — blocking bad inserts or normalizing NEW values. AFTER when you react to a completed change, like audit logging — the row is already written so you can't change it."
+    },
+    {
+      id: 266,
+      topic: "Mysql",
+      q: "How would you find and fix a slow query?",
+      a: "Run EXPLAIN to see the execution plan, check for missing indexes on WHERE/JOIN columns, avoid SELECT *, watch for full table scans. Add targeted indexes, rewrite the query set-based, and re-measure."
+    },
+    {
+      id: 267,
+      topic: "Mysql",
+      q: "Why do you change the DELIMITER when creating procedures?",
+      a: "Because the procedure body contains semicolons, and the client would treat the first one as the end of the CREATE statement. A temporary delimiter like // lets the whole body reach the server as one statement."
+    },
+    {
+      id: 268,
+      topic: "Mysql",
+      q: "InnoDB vs MyISAM — which and why?",
+      a: "InnoDB: transactions, foreign keys, row-level locking — the modern default and the right choice for almost everything. MyISAM is legacy with no transactions and table-level locks."
+    },
+    {
+      id: 269,
+      topic: "Mysql",
+      q: "How do you back up and restore a MySQL database?",
+      a: "mysqldump mydb > backup.sql for a logical backup, mysql mydb < backup.sql to restore. For large production systems, use physical backups plus binary logs for point-in-time recovery."
+    },
     ]
   },
   {
@@ -2307,6 +2367,66 @@ export const interviewQuestions = [
     { id: 257, topic: "Bootstrap", q: "Construisez une mise en page responsive : barre latérale après le contenu sur mobile, à gauche du contenu sur desktop. Comment ?", a: "Placez la barre latérale en deuxième dans le HTML, donnez au contenu et à la barre latérale des largeurs col-12 col-lg-*, et ajoutez order-lg-first à la barre latérale pour qu'elle passe visuellement en premier sur grands écrans tout en restant après le contenu sur mobile." },
     { id: 258, topic: "Bootstrap", q: "Quels sont les principaux changements cassants lors de la migration de Bootstrap 4 à 5 ?", a: "jQuery a été supprimé — tous les plugins sont en JS natif. Les attributs data ont été renommés de data-* vers data-bs-*. Les classes d'espacement ml-*/mr-* sont devenues ms-*/me-* (propriétés logiques), les champs custom-file sont devenus form-control, et le support d'Internet Explorer a été abandonné." },
     { id: 259, topic: "Bootstrap", q: "Comment garder l'empreinte CSS de Bootstrap réduite en production ?", a: "Importez uniquement les modules Sass que vous utilisez au lieu du bundle complet, ou lancez PurgeCSS au build pour supprimer les classes inutilisées. Préférez aussi les fichiers minifiés et évitez de charger à la fois les copies CDN et npm." },
+    {
+      id: 260,
+      topic: "Mysql",
+      q: "Expliquez la différence entre une procédure stockée et une fonction stockée.",
+      a: "Une procédure s'appelle avec CALL, peut avoir des paramètres IN/OUT/INOUT et ne retourne pas forcément de valeur. Une fonction doit retourner une valeur avec RETURN et peut être utilisée dans des expressions SQL comme SELECT."
+    },
+    {
+      id: 261,
+      topic: "Mysql",
+      q: "Quand utiliseriez-vous un curseur, et à quoi faut-il faire attention ?",
+      a: "Quand il faut traiter les lignes une par une et que le SQL ensembliste ne suffit pas. Attention aux performances — les curseurs sont lents sur de gros volumes — toujours les CLOSE, et utiliser un handler NOT FOUND pour détecter la fin."
+    },
+    {
+      id: 262,
+      topic: "Mysql",
+      q: "Que sont NEW et OLD dans un trigger ?",
+      a: "NEW contient les nouvelles valeurs (INSERT et UPDATE), OLD les anciennes (UPDATE et DELETE). Dans un trigger BEFORE on peut modifier NEW ; dans un AFTER la ligne est déjà écrite donc NEW est en lecture seule."
+    },
+    {
+      id: 263,
+      topic: "Mysql",
+      q: "Comment gérez-vous les erreurs dans une procédure stockée ?",
+      a: "Avec DECLARE HANDLER : CONTINUE poursuit après l'erreur, EXIT arrête la procédure. Classiques : CONTINUE HANDLER FOR NOT FOUND pour finir les boucles de curseur, EXIT HANDLER FOR SQLEXCEPTION pour les erreurs fatales, et SIGNAL pour lever des erreurs personnalisées."
+    },
+    {
+      id: 264,
+      topic: "Mysql",
+      q: "Qu'est-ce qu'une transaction et pourquoi est-ce important ?",
+      a: "Un groupe d'instructions traité comme une unité atomique — tout réussit ou tout échoue. Essentiel pour la cohérence : débiter un compte et créditer un autre doivent arriver ensemble. START TRANSACTION, puis COMMIT ou ROLLBACK."
+    },
+    {
+      id: 265,
+      topic: "Mysql",
+      q: "Trigger BEFORE vs AFTER — quand choisir chacun ?",
+      a: "BEFORE pour valider ou modifier les données entrantes — bloquer les inserts invalides, normaliser NEW. AFTER pour réagir à un changement terminé, comme l'audit — la ligne est déjà écrite, on ne peut plus la modifier."
+    },
+    {
+      id: 266,
+      topic: "Mysql",
+      q: "Comment trouver et corriger une requête lente ?",
+      a: "EXPLAIN pour voir le plan d'exécution, vérifier les index manquants sur les colonnes WHERE/JOIN, éviter SELECT *, traquer les full scans. Ajouter des index ciblés, réécrire en ensembliste, puis re-mesurer."
+    },
+    {
+      id: 267,
+      topic: "Mysql",
+      q: "Pourquoi changer le DELIMITER lors de la création de procédures ?",
+      a: "Parce que le corps contient des points-virgules que le client prendrait pour la fin du CREATE. Un délimiteur temporaire comme // permet d'envoyer tout le corps au serveur en un seul bloc."
+    },
+    {
+      id: 268,
+      topic: "Mysql",
+      q: "InnoDB vs MyISAM — lequel et pourquoi ?",
+      a: "InnoDB : transactions, clés étrangères, verrous ligne — le défaut moderne et le bon choix presque toujours. MyISAM est hérité : pas de transactions, verrous table."
+    },
+    {
+      id: 269,
+      topic: "Mysql",
+      q: "Comment sauvegarder et restaurer une base MySQL ?",
+      a: "mysqldump mydb > backup.sql pour une sauvegarde logique, mysql mydb < backup.sql pour restaurer. En production volumineuse, sauvegardes physiques plus logs binaires pour la restauration point-in-time."
+    },
     ]
   }
 ];

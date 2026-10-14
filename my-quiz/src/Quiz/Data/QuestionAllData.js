@@ -7,6 +7,7 @@ import { nodejsQuestions } from "./QuestiondataNode";
 import { phpQuestions } from "./QuestiondataPhp";
 import {reactQuestions} from './QuestiondataReact'
 import { sqlQuestions } from "./QuestiondataSql";
+import { mysqlQuestions } from "./QuestiondataMysql";
 import { typescriptQuestions } from "./QuestiondataTypescript";
 import { vueQuestions } from "./QuestiondataVue";
 import { tailwindQuestions } from "./QuestiondataTailwind";
@@ -50,6 +51,7 @@ export const TOPIC_KEYS = [
   "Postman",
   "NextJs",
   "Bootstrap",
+  "Mysql",
 ];
 
 export const TOPIC_LABELS = {
@@ -78,6 +80,7 @@ export const TOPIC_LABELS = {
   Postman: "Postman",
   NextJs: "Next.js",
   Bootstrap: "Bootstrap",
+  Mysql: "MySQL",
 };
 
 export const questionsData = {
@@ -107,6 +110,7 @@ export const questionsData = {
     Postman: [...postmanQuestions],
     NextJs: [...nextjsQuestions],
     Bootstrap: [...bootstrapQuestions],
+    Mysql: [...mysqlQuestions],
   }
 };
 

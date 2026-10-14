@@ -2127,6 +2127,50 @@ export const revisionNotesData = [
       "a": "Run a SELECT with the same WHERE first to verify it targets only admin@example.com, because an UPDATE without (or with a wrong) WHERE would hit every row."
     }
   ],
+  "Mysql": [
+    {
+      "text": "Stored procedures bundle reusable SQL logic: CREATE PROCEDURE name() BEGIN ... END, run with CALL name();",
+      "explain_dr": "Procedure hiya batch dyal SQL code kat-7efdo f database w kat-3yet liha b CALL. Mzyana l logic li kat-t3awed.",
+      "example": "DELIMITER //\nCREATE PROCEDURE list_active()\nBEGIN\n  SELECT * FROM users WHERE active = 1;\nEND //\nDELIMITER ;\n\nCALL list_active();",
+      "q": "How do you run the procedure, and why the DELIMITER lines?",
+      "a": "With CALL list_active();. The DELIMITER lines stop the client from ending the CREATE at the first semicolon inside the body."
+    },
+    {
+      "text": "Stored functions must RETURN a value: CREATE FUNCTION name() RETURNS type BEGIN ... RETURN x; END",
+      "explain_dr": "Fonction khasha t-returni valeur b RETURN, w kat-st3ml wast SELECT b7al ay function.",
+      "example": "CREATE FUNCTION double_it(x INT) RETURNS INT\nBEGIN\n  RETURN x * 2;\nEND;\n\nSELECT double_it(21); -- 42",
+      "q": "What is mandatory in every stored function?",
+      "a": "A RETURN statement producing a value of the declared RETURNS type."
+    },
+    {
+      "text": "Cursors walk query results row by row: DECLARE → OPEN → FETCH → CLOSE, with a NOT FOUND handler for the end.",
+      "explain_dr": "Curseur kat-mchi 3la resultat ligne b ligne. L ordre: DECLARE, OPEN, FETCH, CLOSE — w handler bach t3ref imta salaw l lignes.",
+      "example": "DECLARE done INT DEFAULT 0;\nDECLARE c CURSOR FOR SELECT id FROM users;\nDECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;\nOPEN c;\nread_loop: LOOP\n  FETCH c INTO uid;\n  IF done THEN LEAVE read_loop; END IF;\nEND LOOP;\nCLOSE c;",
+      "q": "How do you know when the cursor is finished?",
+      "a": "The CONTINUE HANDLER FOR NOT FOUND sets done = 1 when FETCH finds no more rows, and the loop LEAVEs."
+    },
+    {
+      "text": "Triggers fire automatically: BEFORE/AFTER INSERT/UPDATE/DELETE, with NEW (incoming) and OLD (previous) rows.",
+      "explain_dr": "Trigger kay-tactiva bo7do mli kat-w93 INSERT/UPDATE/DELETE. NEW = jdid, OLD = 9dim.",
+      "example": "CREATE TRIGGER check_qty BEFORE INSERT ON orders\nFOR EACH ROW\nBEGIN\n  IF NEW.qty < 0 THEN\n    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Negative quantity';\n  END IF;\nEND;",
+      "q": "Why BEFORE INSERT here and not AFTER?",
+      "a": "BEFORE lets you validate and reject the row with SIGNAL before it is written; AFTER would be too late."
+    },
+    {
+      "text": "Transactions group statements atomically: START TRANSACTION ... COMMIT to save, ROLLBACK to undo.",
+      "explain_dr": "Transaction = majmou3a dyal operations: ya kolhom y-nj7o ya walo. COMMIT kay-7fed, ROLLBACK kay-rje3.",
+      "example": "START TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT; -- or ROLLBACK on error",
+      "q": "The second UPDATE fails — what should happen?",
+      "a": "ROLLBACK: undo the first UPDATE too, so money is never lost between the two accounts."
+    },
+    {
+      "text": "Control flow inside procedures: IF ... THEN ... END IF, CASE WHEN, and LOOP/WHILE/REPEAT with LEAVE.",
+      "explain_dr": "F wast procedures 3ndek IF, CASE, w loops (LOOP, WHILE, REPEAT) — w LEAVE bach t-khrej mn loop.",
+      "example": "IF stock > 0 THEN\n  SET msg = 'in stock';\nELSE\n  SET msg = 'out of stock';\nEND IF;",
+      "q": "How do you exit a LOOP early?",
+      "a": "With LEAVE label; — e.g. my_loop: LOOP ... LEAVE my_loop; ... END LOOP my_loop;"
+    },
+  ],
   "MongoDb": [
     {
       "text": "MongoDB is a NoSQL document database storing data as flexible, JSON-like BSON documents.",
@@ -5805,6 +5849,50 @@ export const revisionNotesData = [
       "q": "Quelle habitude de sécurité l'exemple illustre-t-il ?",
       "a": "Exécuter d'abord un SELECT avec le même WHERE pour vérifier qu'il ne cible que admin@example.com, car un UPDATE sans (ou avec un mauvais) WHERE toucherait toutes les lignes."
     }
+  ],
+  "Mysql": [
+    {
+      "text": "Les procédures stockées regroupent la logique SQL réutilisable : CREATE PROCEDURE name() BEGIN ... END, exécutée avec CALL name();",
+      "explain_dr": "Procedure hiya batch dyal SQL code kat-7efdo f database w kat-3yet liha b CALL. Mzyana l logic li kat-t3awed.",
+      "example": "DELIMITER //\nCREATE PROCEDURE list_active()\nBEGIN\n  SELECT * FROM users WHERE active = 1;\nEND //\nDELIMITER ;\n\nCALL list_active();",
+      "q": "Comment exécuter la procédure, et pourquoi les lignes DELIMITER ?",
+      "a": "Avec CALL list_active();. Les lignes DELIMITER empêchent le client de terminer le CREATE au premier point-virgule du corps."
+    },
+    {
+      "text": "Les fonctions stockées doivent RETURN une valeur : CREATE FUNCTION name() RETURNS type BEGIN ... RETURN x; END",
+      "explain_dr": "Fonction khasha t-returni valeur b RETURN, w kat-st3ml wast SELECT b7al ay function.",
+      "example": "CREATE FUNCTION double_it(x INT) RETURNS INT\nBEGIN\n  RETURN x * 2;\nEND;\n\nSELECT double_it(21); -- 42",
+      "q": "Qu'est-ce qui est obligatoire dans toute fonction stockée ?",
+      "a": "Une instruction RETURN produisant une valeur du type déclaré dans RETURNS."
+    },
+    {
+      "text": "Les curseurs parcourent les résultats ligne par ligne : DECLARE → OPEN → FETCH → CLOSE, avec un handler NOT FOUND pour la fin.",
+      "explain_dr": "Curseur kat-mchi 3la resultat ligne b ligne. L ordre: DECLARE, OPEN, FETCH, CLOSE — w handler bach t3ref imta salaw l lignes.",
+      "example": "DECLARE done INT DEFAULT 0;\nDECLARE c CURSOR FOR SELECT id FROM users;\nDECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;\nOPEN c;\nread_loop: LOOP\n  FETCH c INTO uid;\n  IF done THEN LEAVE read_loop; END IF;\nEND LOOP;\nCLOSE c;",
+      "q": "Comment savoir quand le curseur est terminé ?",
+      "a": "Le CONTINUE HANDLER FOR NOT FOUND met done = 1 quand FETCH ne trouve plus de lignes, et la boucle fait LEAVE."
+    },
+    {
+      "text": "Les triggers se déclenchent automatiquement : BEFORE/AFTER INSERT/UPDATE/DELETE, avec les lignes NEW (entrante) et OLD (précédente).",
+      "explain_dr": "Trigger kay-tactiva bo7do mli kat-w93 INSERT/UPDATE/DELETE. NEW = jdid, OLD = 9dim.",
+      "example": "CREATE TRIGGER check_qty BEFORE INSERT ON orders\nFOR EACH ROW\nBEGIN\n  IF NEW.qty < 0 THEN\n    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Negative quantity';\n  END IF;\nEND;",
+      "q": "Pourquoi BEFORE INSERT ici et pas AFTER ?",
+      "a": "BEFORE permet de valider et rejeter la ligne avec SIGNAL avant écriture ; AFTER serait trop tard."
+    },
+    {
+      "text": "Les transactions regroupent des instructions atomiquement : START TRANSACTION ... COMMIT pour valider, ROLLBACK pour annuler.",
+      "explain_dr": "Transaction = majmou3a dyal operations: ya kolhom y-nj7o ya walo. COMMIT kay-7fed, ROLLBACK kay-rje3.",
+      "example": "START TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT; -- ou ROLLBACK en cas d'erreur",
+      "q": "Le second UPDATE échoue — que doit-il se passer ?",
+      "a": "ROLLBACK : annuler aussi le premier UPDATE, pour ne jamais perdre d'argent entre les deux comptes."
+    },
+    {
+      "text": "Contrôle de flux dans les procédures : IF ... THEN ... END IF, CASE WHEN, et LOOP/WHILE/REPEAT avec LEAVE.",
+      "explain_dr": "F wast procedures 3ndek IF, CASE, w loops (LOOP, WHILE, REPEAT) — w LEAVE bach t-khrej mn loop.",
+      "example": "IF stock > 0 THEN\n  SET msg = 'en stock';\nELSE\n  SET msg = 'rupture';\nEND IF;",
+      "q": "Comment sortir d'une boucle LOOP plus tôt ?",
+      "a": "Avec LEAVE label; — ex. my_loop: LOOP ... LEAVE my_loop; ... END LOOP my_loop;"
+    },
   ],
   "MongoDb": [
     {
