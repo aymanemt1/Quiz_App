@@ -1102,6 +1102,56 @@ export const interviewQuestions = [
       topic: "Mysql",
       q: "How do you back up and restore a MySQL database?",
       a: "mysqldump mydb > backup.sql for a logical backup, mysql mydb < backup.sql to restore. For large production systems, use physical backups plus binary logs for point-in-time recovery.", dr: "Backup: mysqldump mydb > backup.sql; restore: mysql mydb < backup.sql. Production kbira → physical backups + binary logs." },
+    {
+      id: 270,
+      topic: "Postgresql",
+      q: "When would you choose PostgreSQL over MySQL?",
+      a: "For advanced SQL needs: real JSONB with indexing, CTEs (including recursive and data-modifying), window functions, richer index types (GIN/GiST/BRIN), full-text search and PostGIS. MySQL is simpler to operate; Postgres wins on features and standards compliance.", dr: "Postgres vs MySQL: khtar Postgres l JSONB, CTEs, window functions, GIN/GiST, full-text. MySQL ashel f ops." },
+    {
+      id: 271,
+      topic: "Postgresql",
+      q: "How does MVCC let readers and writers work without blocking each other?",
+      a: "Each transaction sees a snapshot of the database: writers create new row versions instead of overwriting, so readers never wait for writers. Old versions become dead tuples that VACUUM reclaims. The trade-off is storage churn and the need for vacuuming.", dr: "MVCC: kol transaction katshof snapshot; writers kay-khl9o versions jdad bla ma y-bloquiw readers. Dead tuples → VACUUM." },
+    {
+      id: 272,
+      topic: "Postgresql",
+      q: "How would you diagnose and fix a slow query in production?",
+      a: "Run EXPLAIN ANALYZE to get the real plan and timings, look for sequential scans on large tables, wrong row estimates, or nested loops over big sets. Fix with targeted indexes (B-tree for equality/range, GIN for JSONB), rewriting the query, and checking table statistics are fresh with ANALYZE.", dr: "Slow query: EXPLAIN ANALYZE → chof seq scans w estimates ghaltin. 7el: indexes (B-tree/GIN), rewrite, ANALYZE." },
+    {
+      id: 273,
+      topic: "Postgresql",
+      q: "Explain PostgreSQL's transaction isolation levels.",
+      a: "READ COMMITTED (default): sees only committed data, new snapshot per statement. REPEATABLE READ: one snapshot for the whole transaction. SERIALIZABLE: strictest, transactions behave as if serial — can raise serialization errors you must retry. Pick the weakest level that keeps your logic correct.", dr: "Isolation: READ COMMITTED default (snapshot per statement), REPEATABLE READ (per transaction), SERIALIZABLE strict — retry 3la errors." },
+    {
+      id: 274,
+      topic: "Postgresql",
+      q: "How does INSERT ... ON CONFLICT avoid race conditions?",
+      a: "The check-and-insert happens atomically inside the database: two concurrent sessions inserting the same key won't both succeed — one hits the conflict arbiter and takes the DO UPDATE/DO NOTHING path. Doing SELECT-then-INSERT in the app would race.", dr: "ON CONFLICT atomic ldakhel db — joj sessions ma y-nj7och bjoj. SELECT-then-INSERT f app = race condition." },
+    {
+      id: 275,
+      topic: "Postgresql",
+      q: "How do you pick between B-tree, GIN, GiST and BRIN indexes?",
+      a: "B-tree: the default for equality, ranges, sorting. GIN: composite values — JSONB, arrays, full-text. GiST: geometric and range types, nearest-neighbor. BRIN: huge naturally-ordered tables (time series) where a tiny index is enough. Match the index to the operator you query with.", dr: "Index choice: B-tree default (=, range, sort), GIN l JSONB/arrays, GiST l geo/ranges, BRIN l tables kbar mratbin." },
+    {
+      id: 276,
+      topic: "Postgresql",
+      q: "What is your backup and recovery strategy for Postgres?",
+      a: "Nightly pg_dump for logical backups plus continuous WAL archiving for point-in-time recovery. Test restores regularly on a staging host — an untested backup is not a backup. For large DBs, add base backups (pg_basebackup) with WAL streaming.", dr: "Backup: pg_dump nightly + WAL archiving l PITR. Testi restore — backup bla test = walo." },
+    {
+      id: 277,
+      topic: "Postgresql",
+      q: "Why do Postgres apps need connection pooling?",
+      a: "Each connection is a real OS process with significant memory, so thousands of short-lived connections exhaust the server. A pooler like PgBouncer reuses a small set of real connections across many clients. Also use prepared statements and keep transactions short.", dr: "Pooling: kol connection = process OS — bzf connections kay-qtlo server. PgBouncer kay-partagi chouia l bzf clients." },
+    {
+      id: 278,
+      topic: "Postgresql",
+      q: "When and how would you partition a table?",
+      a: "When a table grows to tens of millions of rows and queries mostly touch recent slices: declarative partitioning by RANGE on a date key, with constraint exclusion pruning untouched partitions. Keep partition counts sane (hundreds, not thousands) and index each partition.", dr: "Partitioning: table kbira + queries 3la slices jdad → PARTITION BY RANGE 3la date. Pruning kay-jneb partitions li ma khasch." },
+    {
+      id: 279,
+      topic: "Postgresql",
+      q: "JSONB in Postgres vs a document store like MongoDB — trade-offs?",
+      a: "Postgres gives you JSONB flexibility plus real transactions, joins, and constraints in one system — great when most data is relational with some flexible fields. A document store fits when the whole model is document-shaped and you need its scaling model. Don't split your data across two systems without a reason.", dr: "JSONB vs Mongo: Postgres = relational + flexible f system wa7ed (transactions, joins). Mongo mli kolchi documents. Ma t-freqch data bla sabab." },
     ]
   },
   {
@@ -2207,6 +2257,56 @@ export const interviewQuestions = [
       topic: "Mysql",
       q: "Comment sauvegarder et restaurer une base MySQL ?",
       a: "mysqldump mydb > backup.sql pour une sauvegarde logique, mysql mydb < backup.sql pour restaurer. En production volumineuse, sauvegardes physiques plus logs binaires pour la restauration point-in-time.", dr: "Backup: mysqldump mydb > backup.sql; restore: mysql mydb < backup.sql. Production kbira → physical backups + binary logs." },
+    {
+      id: 270,
+      topic: "Postgresql",
+      q: "Quand choisir PostgreSQL plutôt que MySQL ?",
+      a: "Pour des besoins SQL avancés : vrai JSONB indexable, CTE (récursives et modifiantes), fonctions de fenêtrage, types d'index riches (GIN/GiST/BRIN), recherche plein texte et PostGIS. MySQL est plus simple à opérer ; Postgres gagne en fonctionnalités et conformité aux standards.", dr: "Postgres vs MySQL: khtar Postgres l JSONB, CTEs, window functions, GIN/GiST, full-text. MySQL ashel f ops." },
+    {
+      id: 271,
+      topic: "Postgresql",
+      q: "Comment MVCC permet-il aux lecteurs et écrivains de travailler sans se bloquer ?",
+      a: "Chaque transaction voit un instantané : les écrivains créent de nouvelles versions de lignes au lieu d'écraser, donc les lecteurs n'attendent jamais. Les vieilles versions deviennent des tuples morts récupérés par VACUUM. Le coût : churn de stockage et besoin de vacuum.", dr: "MVCC: kol transaction katshof snapshot; writers kay-khl9o versions jdad bla ma y-bloquiw readers. Dead tuples → VACUUM." },
+    {
+      id: 272,
+      topic: "Postgresql",
+      q: "Comment diagnostiquer et corriger une requête lente en production ?",
+      a: "Lancer EXPLAIN ANALYZE pour le vrai plan et les temps, chercher les seq scans sur grosses tables, mauvaises estimations ou nested loops. Corriger avec des index ciblés (B-tree pour égalité/plages, GIN pour JSONB), réécrire la requête, vérifier les stats avec ANALYZE.", dr: "Slow query: EXPLAIN ANALYZE → chof seq scans w estimates ghaltin. 7el: indexes (B-tree/GIN), rewrite, ANALYZE." },
+    {
+      id: 273,
+      topic: "Postgresql",
+      q: "Expliquez les niveaux d'isolation des transactions PostgreSQL.",
+      a: "READ COMMITTED (défaut) : ne voit que le commité, snapshot par instruction. REPEATABLE READ : un snapshot pour toute la transaction. SERIALIZABLE : le plus strict, tout se passe comme en série — peut lever des erreurs à réessayer. Choisir le niveau le plus faible qui garde la logique correcte.", dr: "Isolation: READ COMMITTED default (snapshot per statement), REPEATABLE READ (per transaction), SERIALIZABLE strict — retry 3la errors." },
+    {
+      id: 274,
+      topic: "Postgresql",
+      q: "Comment INSERT ... ON CONFLICT évite-t-il les race conditions ?",
+      a: "Le test-et-insertion est atomique dans la base : deux sessions concurrentes sur la même clé ne réussissent pas les deux — l'une prend le chemin DO UPDATE/DO NOTHING. Faire SELECT puis INSERT dans l'app créerait une race.", dr: "ON CONFLICT atomic ldakhel db — joj sessions ma y-nj7och bjoj. SELECT-then-INSERT f app = race condition." },
+    {
+      id: 275,
+      topic: "Postgresql",
+      q: "Comment choisir entre index B-tree, GIN, GiST et BRIN ?",
+      a: "B-tree : défaut pour égalité, plages, tri. GIN : valeurs composites — JSONB, tableaux, plein texte. GiST : géométrie et plages, plus proches voisins. BRIN : énormes tables ordonnées (séries temporelles) où un petit index suffit. Adapter l'index à l'opérateur interrogé.", dr: "Index choice: B-tree default (=, range, sort), GIN l JSONB/arrays, GiST l geo/ranges, BRIN l tables kbar mratbin." },
+    {
+      id: 276,
+      topic: "Postgresql",
+      q: "Quelle est votre stratégie de sauvegarde et restauration pour Postgres ?",
+      a: "pg_dump nocturne pour sauvegardes logiques plus archivage WAL continu pour restauration point-in-time. Tester les restaurations sur staging — une sauvegarde non testée n'en est pas une. Pour grosses bases, ajouter base backups (pg_basebackup) avec WAL streaming.", dr: "Backup: pg_dump nightly + WAL archiving l PITR. Testi restore — backup bla test = walo." },
+    {
+      id: 277,
+      topic: "Postgresql",
+      q: "Pourquoi les apps Postgres ont-elles besoin de connection pooling ?",
+      a: "Chaque connexion est un vrai processus OS gourmand en mémoire ; des milliers de connexions épuisent le serveur. Un pooler comme PgBouncer réutilise peu de connexions réelles pour beaucoup de clients. Aussi : prepared statements et transactions courtes.", dr: "Pooling: kol connection = process OS — bzf connections kay-qtlo server. PgBouncer kay-partagi chouia l bzf clients." },
+    {
+      id: 278,
+      topic: "Postgresql",
+      q: "Quand et comment partitionner une table ?",
+      a: "Quand une table atteint des dizaines de millions de lignes et que les requêtes touchent surtout des tranches récentes : partitionnement déclaratif par RANGE sur une clé date, avec pruning des partitions inutiles. Garder un nombre raisonnable de partitions et indexer chacune.", dr: "Partitioning: table kbira + queries 3la slices jdad → PARTITION BY RANGE 3la date. Pruning kay-jneb partitions li ma khasch." },
+    {
+      id: 279,
+      topic: "Postgresql",
+      q: "JSONB dans Postgres vs un document store comme MongoDB — arbitrages ?",
+      a: "Postgres offre flexibilité JSONB plus vraies transactions, jointures et contraintes dans un seul système — idéal quand les données sont surtout relationnelles avec des champs flexibles. Un document store convient quand tout le modèle est document et qu'on veut son scaling. Ne pas éclater les données sans raison.", dr: "JSONB vs Mongo: Postgres = relational + flexible f system wa7ed (transactions, joins). Mongo mli kolchi documents. Ma t-freqch data bla sabab." },
     ]
   }
 ];

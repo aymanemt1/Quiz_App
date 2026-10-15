@@ -2171,6 +2171,50 @@ export const revisionNotesData = [
       "a": "With LEAVE label; — e.g. my_loop: LOOP ... LEAVE my_loop; ... END LOOP my_loop;"
     },
   ],
+  "Postgresql": [
+    {
+      "text": "psql is the interactive terminal: connect with psql -U user -d db, \\l lists databases, \\dt lists tables, \\d describes a table.",
+      "explain_dr": "psql howa CLI: psql -U user -d db l connection. \\l = databases, \\dt = tables, \\d = describe table, \\q = quit.",
+      "example": "psql -U shop -d shopdb\nshopdb=> \\dt\nshopdb=> \\d users",
+      "q": "How do you list tables and inspect one?",
+      "a": "With \\dt to list tables, then \\d users to see its columns, types and indexes."
+    },
+    {
+      "text": "Rich data types: SERIAL (auto-increment via sequence), UUID with gen_random_uuid(), JSONB for documents, native arrays like TEXT[], and TIMESTAMPTZ for time-zone-aware instants.",
+      "explain_dr": "SERIAL = auto-increment, UUID l ids uniques, JSONB l documents, TEXT[] arrays, TIMESTAMPTZ dima l wa9t (bla timezone = machakil).",
+      "example": "CREATE TABLE events (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  tags TEXT[],\n  payload JSONB,\n  created_at TIMESTAMPTZ DEFAULT now()\n);",
+      "q": "Why TIMESTAMPTZ instead of TIMESTAMP?",
+      "a": "TIMESTAMPTZ stores a real instant; plain TIMESTAMP is time-zone-naive and causes bugs across zones."
+    },
+    {
+      "text": "RETURNING gives back affected rows without a second query; UPSERT handles conflicts atomically with INSERT ... ON CONFLICT.",
+      "explain_dr": "RETURNING kat-rje3 rows li t-2athro (b7al id jdid) bla SELECT moraha. ON CONFLICT = insert wla update ila key kayn — atomic, bla race.",
+      "example": "INSERT INTO users (email) VALUES ('a@mail.com')\nON CONFLICT (email) DO UPDATE SET last_seen = now()\nRETURNING id;",
+      "q": "What does EXCLUDED mean in DO UPDATE?",
+      "a": "The row as it would have been inserted — the proposed new values you can copy into the update."
+    },
+    {
+      "text": "JSONB operators: -> returns JSON, ->> returns text, @> tests containment. Index JSONB with GIN for fast containment queries.",
+      "explain_dr": "-> = JSON, ->> = text, @> = wach fiha. GIN index l JSONB bach @> tkhdem b sor3a — B-tree ma kaynfa3ch hna.",
+      "example": "CREATE INDEX idx_specs ON products USING GIN (specs);\nSELECT * FROM products WHERE specs @> '{\"color\":\"red\"}';",
+      "q": "When is GIN the wrong choice?",
+      "a": "For plain equality/range/sort on scalar columns — B-tree is smaller and faster there."
+    },
+    {
+      "text": "CTEs name a subquery with WITH for readability; window functions compute OVER rows without collapsing them like GROUP BY does.",
+      "explain_dr": "WITH kat3ti smiya l subquery — readable. Window functions (ROW_NUMBER() OVER...) kat-7esbo 3la rows bla ma tjme3hom b7al GROUP BY.",
+      "example": "WITH ranked AS (\n  SELECT *, ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary DESC) AS rn\n  FROM staff\n)\nSELECT * FROM ranked WHERE rn = 1;",
+      "q": "PARTITION BY vs GROUP BY?",
+      "a": "PARTITION BY slices rows inside a window function but keeps all rows; GROUP BY collapses each group to one row."
+    },
+    {
+      "text": "Transactions: default isolation READ COMMITTED; MVCC means writers don't block readers but leave dead tuples — VACUUM reclaims them. Back up with pg_dump + WAL archiving for point-in-time recovery.",
+      "explain_dr": "READ COMMITTED default. MVCC: writers ma kay-bloquiwch readers walakin kay-khliw dead tuples → VACUUM kay-nddf. Backup: pg_dump + WAL l PITR.",
+      "example": "BEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;\n-- backup: pg_dump mydb > backup.sql",
+      "q": "UPDATE is slow on a big table full of old rows — what do you check?",
+      "a": "Whether autovacuum keeps up: dead tuples bloat the table and slow scans; check pg_stat_user_tables and VACUUM if needed."
+    },
+  ],
   "MongoDb": [
     {
       "text": "MongoDB is a NoSQL document database storing data as flexible, JSON-like BSON documents.",
@@ -5892,6 +5936,50 @@ export const revisionNotesData = [
       "example": "IF stock > 0 THEN\n  SET msg = 'en stock';\nELSE\n  SET msg = 'rupture';\nEND IF;",
       "q": "Comment sortir d'une boucle LOOP plus tôt ?",
       "a": "Avec LEAVE label; — ex. my_loop: LOOP ... LEAVE my_loop; ... END LOOP my_loop;"
+    },
+  ],
+  "Postgresql": [
+    {
+      "text": "psql est le terminal interactif : connexion avec psql -U user -d db, \\l liste les bases, \\dt liste les tables, \\d décrit une table.",
+      "explain_dr": "psql howa CLI: psql -U user -d db l connection. \\l = databases, \\dt = tables, \\d = describe table, \\q = quit.",
+      "example": "psql -U shop -d shopdb\nshopdb=> \\dt\nshopdb=> \\d users",
+      "q": "Comment lister les tables et en inspecter une ?",
+      "a": "Avec \\dt pour lister les tables, puis \\d users pour voir colonnes, types et index."
+    },
+    {
+      "text": "Types riches : SERIAL (auto-incrément via séquence), UUID avec gen_random_uuid(), JSONB pour documents, tableaux natifs comme TEXT[], et TIMESTAMPTZ pour instants avec fuseau.",
+      "explain_dr": "SERIAL = auto-increment, UUID l ids uniques, JSONB l documents, TEXT[] arrays, TIMESTAMPTZ dima l wa9t (bla timezone = machakil).",
+      "example": "CREATE TABLE events (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  tags TEXT[],\n  payload JSONB,\n  created_at TIMESTAMPTZ DEFAULT now()\n);",
+      "q": "Pourquoi TIMESTAMPTZ plutôt que TIMESTAMP ?",
+      "a": "TIMESTAMPTZ stocke un vrai instant ; TIMESTAMP naïf cause des bugs entre fuseaux."
+    },
+    {
+      "text": "RETURNING renvoie les lignes affectées sans seconde requête ; UPSERT gère les conflits atomiquement avec INSERT ... ON CONFLICT.",
+      "explain_dr": "RETURNING kat-rje3 rows li t-2athro (b7al id jdid) bla SELECT moraha. ON CONFLICT = insert wla update ila key kayn — atomic, bla race.",
+      "example": "INSERT INTO users (email) VALUES ('a@mail.com')\nON CONFLICT (email) DO UPDATE SET last_seen = now()\nRETURNING id;",
+      "q": "Que signifie EXCLUDED dans DO UPDATE ?",
+      "a": "La ligne telle qu'elle aurait été insérée — les nouvelles valeurs proposées à copier dans l'update."
+    },
+    {
+      "text": "Opérateurs JSONB : -> retourne du JSON, ->> du texte, @> teste la contenance. Indexer JSONB en GIN pour des requêtes @> rapides.",
+      "explain_dr": "-> = JSON, ->> = text, @> = wach fiha. GIN index l JSONB bach @> tkhdem b sor3a — B-tree ma kaynfa3ch hna.",
+      "example": "CREATE INDEX idx_specs ON products USING GIN (specs);\nSELECT * FROM products WHERE specs @> '{\"color\":\"red\"}';",
+      "q": "Quand GIN est-il un mauvais choix ?",
+      "a": "Pour égalité/plages/tri sur colonnes scalaires — B-tree est plus petit et plus rapide."
+    },
+    {
+      "text": "Les CTE nomment une sous-requête avec WITH pour la lisibilité ; les fonctions de fenêtrage calculent OVER les lignes sans les réduire comme GROUP BY.",
+      "explain_dr": "WITH kat3ti smiya l subquery — readable. Window functions (ROW_NUMBER() OVER...) kat-7esbo 3la rows bla ma tjme3hom b7al GROUP BY.",
+      "example": "WITH ranked AS (\n  SELECT *, ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary DESC) AS rn\n  FROM staff\n)\nSELECT * FROM ranked WHERE rn = 1;",
+      "q": "PARTITION BY vs GROUP BY ?",
+      "a": "PARTITION BY découpe les lignes dans la fonction de fenêtrage mais garde toutes les lignes ; GROUP BY réduit chaque groupe à une ligne."
+    },
+    {
+      "text": "Transactions : isolation par défaut READ COMMITTED ; MVCC = les écrivains ne bloquent pas les lecteurs mais laissent des tuples morts — VACUUM les récupère. Sauvegarder avec pg_dump + archivage WAL pour restauration point-in-time.",
+      "explain_dr": "READ COMMITTED default. MVCC: writers ma kay-bloquiwch readers walakin kay-khliw dead tuples → VACUUM kay-nddf. Backup: pg_dump + WAL l PITR.",
+      "example": "BEGIN;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;\n-- backup : pg_dump mydb > backup.sql",
+      "q": "Un UPDATE est lent sur une grosse table pleine de vieilles lignes — que vérifier ?",
+      "a": "Si autovacuum suit : les tuples morts gonflent la table et ralentissent les scans ; vérifier pg_stat_user_tables et VACUUM si besoin."
     },
   ],
   "MongoDb": [

@@ -262,6 +262,30 @@ export const resumeDarijaData = {
       "Backup: mysqldump db > backup.sql.",
     ]},
   ],
+  Postgresql: [
+    { t: "Asasiyat", b: [
+      "Port 5432, psql CLI: \\l databases, \\dt tables, \\d table, \\q quit.",
+      "SERIAL = auto-increment, UUID l ids uniques, TIMESTAMPTZ dima l wa9t.",
+      "PRIMARY KEY = unique + NOT NULL. FOREIGN KEY katrbet tables.",
+    ]},
+    { t: "JSONB w Arrays", b: [
+      "JSONB 7sen mn JSON: binary, kat-tindexa, kat-t9leb fiha.",
+      "-> katrje3 JSON, ->> katrje3 text, @> = wach fiha.",
+      "GIN index l JSONB/arrays. TEXT[] = array dyal text, unnest() kat7elha rows.",
+    ]},
+    { t: "Queries 9wiyin", b: [
+      "RETURNING katrje3 rows li t-2athro bla SELECT moraha.",
+      "ON CONFLICT = UPSERT atomic: DO UPDATE wla DO NOTHING.",
+      "WITH = CTE b smiya. Window functions: ROW_NUMBER() OVER (PARTITION BY ...).",
+      "CREATE INDEX default B-tree. EXPLAIN l plan, EXPLAIN ANALYZE kay-executa b se7.",
+    ]},
+    { t: "Ghalat cha2i3in", b: [
+      "TIMESTAMP bla timezone = machakil — dima TIMESTAMPTZ.",
+      "MVCC: UPDATE/DELETE kay-khliw dead tuples — VACUUM kay-nddfhom.",
+      "EXPLAIN ANALYZE kay-executa INSERT/UPDATE/DELETE b se7 — rdd balk.",
+      "Kol connection = process OS — bzf connections = PgBouncer.",
+    ]},
+  ],
   Git: [
     { t: "Workflow", b: [
       "branch mn main → commits sghar → push → pull request → review → merge.",

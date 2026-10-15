@@ -134,6 +134,11 @@ const STATEMENTS = [
   S(101,"Mysql",4,"You execute a stored procedure with a SELECT statement.","On exécute une procédure stockée avec un SELECT.",false,"Procedure kat-t3yet liha b CALL — tfekkar l keyword s7i7."),
   S(102,"Mysql",5,"In a BEFORE INSERT trigger, OLD holds the previous version of the row.","Dans un trigger BEFORE INSERT, OLD contient la version précédente de la ligne.",false,"F INSERT ma kaynach ligne 9dima — tfekkar imta OLD kay-kon kayn (UPDATE/DELETE)."),
   S(103,"Mysql",5,"Changing DELIMITER lets a procedure body full of semicolons reach the server as one statement.","Changer le DELIMITER permet au corps d'une procédure plein de points-virgules d'arriver au serveur en un seul bloc.",true,"DELIMITER kay-7mi l body — tfekkar 3lach l ';' ldakhel mochkil."),
+  // Postgresql
+  S(104,"Postgresql",4,"The -> operator on a JSONB column returns text, while ->> returns a JSON value.","L'opérateur -> sur une colonne JSONB retourne du texte, tandis que ->> retourne une valeur JSON.",false,"Joj operators kat-khalto: wa7ed kay-rje3 JSON w lakhor text — tfekkar ina wa7ed fihom joj sahmat."),
+  S(105,"Postgresql",4,"INSERT ... ON CONFLICT DO NOTHING can silently skip rows whose key already exists.","INSERT ... ON CONFLICT DO NOTHING peut ignorer silencieusement les lignes dont la clé existe déjà.",true,"DO NOTHING = ila kayn conflict, kat-skip bla erreur — tfekkar chno l far9 m3a DO UPDATE."),
+  S(106,"Postgresql",5,"EXPLAIN ANALYZE only estimates the query plan and never executes the query.","EXPLAIN ANALYZE estime seulement le plan et n'exécute jamais la requête.",false,"ANALYZE kat-executa b se7 w kat-3ti real timings — tfekkar l khatar m3a INSERT/UPDATE/DELETE."),
+  S(107,"Postgresql",5,"A GIN index is the right choice for speeding up @> containment queries on a JSONB column.","Un index GIN est le bon choix pour accélérer les requêtes de contenance @> sur une colonne JSONB.",true,"B-tree ma kaynfa3ch m3a @> — tfekkar ina index t-khla9 l JSONB w arrays."),
 ];
 
 export const trueFalseStatements = [
