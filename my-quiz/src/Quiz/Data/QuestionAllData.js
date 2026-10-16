@@ -18,10 +18,6 @@ import { dockerQuestions } from "./QuestiondataDocker";
 import { supabaseQuestions } from "./QuestiondataSupabase";
 import { expressQuestions } from "./QuestiondataExpress";
 import { agileQuestions } from "./QuestiondataAgile";
-import { materialUiQuestions } from "./QuestiondataMaterialUi";
-import { gsapQuestions } from "./QuestiondataGsap";
-import { convexQuestions } from "./QuestiondataConvex";
-import { clerkQuestions } from "./QuestiondataClerk";
 import { postmanQuestions } from "./QuestiondataPostman";
 import { nextjsQuestions } from "./QuestiondataNextJs";
 import { bootstrapQuestions } from "./QuestiondataBootstrap";
@@ -45,10 +41,6 @@ export const TOPIC_KEYS = [
   "Supabase",
   "ExpressJs",
   "Agile",
-  "MaterialUi",
-  "Gsap",
-  "Convex",
-  "Clerk",
   "Postman",
   "NextJs",
   "Bootstrap",
@@ -75,10 +67,6 @@ export const TOPIC_LABELS = {
   Supabase: "Supabase",
   ExpressJs: "Express.js",
   Agile: "Agile/Scrum",
-  MaterialUi: "Material UI",
-  Gsap: "GSAP",
-  Convex: "Convex",
-  Clerk: "Clerk",
   Postman: "Postman",
   NextJs: "Next.js",
   Bootstrap: "Bootstrap",
@@ -106,10 +94,6 @@ export const questionsData = {
     Supabase: [...supabaseQuestions],
     ExpressJs: [...expressQuestions],
     Agile: [...agileQuestions],
-    MaterialUi: [...materialUiQuestions],
-    Gsap: [...gsapQuestions],
-    Convex: [...convexQuestions],
-    Clerk: [...clerkQuestions],
     Postman: [...postmanQuestions],
     NextJs: [...nextjsQuestions],
     Bootstrap: [...bootstrapQuestions],
