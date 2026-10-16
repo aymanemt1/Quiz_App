@@ -361,63 +361,6 @@ export const resumeDarijaData = {
       "Scrum: sprints fixed m3a roles. Kanban: flow mostamir, WIP limits.",
     ]},
   ],
-  MaterialUi: [
-    { t: "Achno howa", b: [
-      "React components b Material Design.",
-      "sx prop: styling m3a theme values (primary.main).",
-    ]},
-    { t: "Mohim", b: [
-      "createTheme + ThemeProvider l theme kamel.",
-      "styled() l reusable, sx l one-off.",
-      "Breakpoints: xs 0, sm 600, md 900, lg 1200, xl 1536.",
-      "Dark mode: palette.mode: 'dark'.",
-    ]},
-    { t: "Ghalat cha2i3in", b: [
-      "styled() dakhel render = kayt3awd kol render.",
-      "Dialog/Menu controlled: parent 3ndo state.",
-    ]},
-  ],
-  Gsap: [
-    { t: "Achno howa", b: [
-      "Animation library. to()/from()/fromTo().",
-      "Timeline: tweens b tartib m3a position params.",
-    ]},
-    { t: "Mohim", b: [
-      "ScrollTrigger: animations 3la 7sab scroll.",
-      "React: useLayoutEffect + gsap.context + cleanup ctx.revert().",
-      "quickTo() l mouse follow bla jank.",
-      "matchMedia() l responsive animations.",
-    ]},
-    { t: "Ghalat cha2i3in", b: [
-      "Tweens kaytna9so: overwrite: 'auto'.",
-      "nsit cleanup = memory leaks w ScrollTriggers miytin.",
-    ]},
-  ],
-  Convex: [
-    { t: "Achno howa", b: [
-      "Backend-as-a-service reactive: data kat sync bo7dha l client.",
-    ]},
-    { t: "Functions", b: [
-      "Query = read-only reactive. Mutation = writes b transactions.",
-      "Action = external APIs (ma katmsch db nichan).",
-      "Scheduler/crons l jobs. internal* ghir l backend.",
-    ]},
-    { t: "Auth", b: [
-      "ctx.auth.getUserIdentity() → identity wla null.",
-      "7fed userId 3la documents w checki 9bel reads/writes.",
-    ]},
-  ],
-  Clerk: [
-    { t: "Achno howa", b: [
-      "Auth kamla jahza: UI, sessions, MFA, OAuth, orgs.",
-    ]},
-    { t: "Mohim", b: [
-      "ClerkProvider + useAuth()/useUser() l guards.",
-      "Backend: verify JWT b Clerk keys — ma tti9ch f userId mn client.",
-      "Webhooks: verify svix signature 9bel kolchi.",
-      "sk_... ghir server — 7ram f browser.",
-    ]},
-  ],
   Postman: [
     { t: "Achno howa", b: [
       "API client: send requests, inspect responses, automate tests.",
